@@ -177,6 +177,8 @@ const commentedExams={
  "ENAMED 2026":["MedVetor","https://medvetor.com.br/provas/enamed-2026"],
  "UNESP 2025":["MedVetor","https://medvetor.com.br/provas/unesp-2025"],
  "UNESP 2026":["MedVetor","https://medvetor.com.br/provas/unesp-2026"],
+ "USP 2023":["MedCof","https://lp.grupomedcof.com.br/wp-content/uploads/2023/12/USP-Prova-Comentada-novo.pdf"],
+ "USP 2024":["MedVetor (assinatura)","https://medvetor.com.br/provas/usp-sp-2024"],
  "USP 2025":["MedCof","https://lp.grupomedcof.com.br/PROVA_COMENTADA_2025_USP-SP.pdf"],
  "USP 2026":["MedVetor","https://medvetor.com.br/provas/usp-sp-2026"],
  "UNIFESP 2025":["MedVetor","https://medvetor.com.br/provas/unifesp-2025"],
@@ -246,11 +248,11 @@ function drawPdf(){
    return '<button class="choice answer-letter '+state+'" data-pdf-choice="'+letter+'" '+(answered?"disabled":"")+'><b>'+letter+'</b>'+(withOptions?'<span>'+safe(q.alternativas_parafraseadas[i])+'</span>':canTranscribe?'<span class="transcribed-option"></span>':"")+'</button>';
  }).join("");
  const pre=String(q.gabarito_status||"").includes("PRELIMINAR");
- const answerLabel=isUNIFESP?"Gabarito consolidado de fonte secundária (conferir com a banca)":isUSP?(q.ano===2026?"Gabarito oficial retificado da Fuvest":"Gabarito oficial da Fuvest"):isUNESP?(q.ano===2025?"Gabarito com retificações oficiais":"Gabarito divulgado em fonte secundária"):outside?"Gabarito comentado de fonte secundária":pre?"Gabarito preliminar do Inep":"Gabarito definitivo";
+ const answerLabel=isUNIFESP?"Gabarito consolidado de fonte secundária (conferir com a banca)":isUSP?(q.ano!==2025?"Gabarito oficial retificado da Fuvest":"Gabarito oficial da Fuvest"):isUNESP?(q.ano===2025?"Gabarito com retificações oficiais":"Gabarito divulgado em fonte secundária"):outside?"Gabarito comentado de fonte secundária":pre?"Gabarito preliminar do Inep":"Gabarito definitivo";
  const summary=renderStudy(q);
  const feedback=graded?(answered?'<div class="feedback"><b>'+(answerMatches(q,p.answer)?"✓ Acertou":"✕ Errou")+'</b><p>Você marcou '+safe(p.answer)+'. '+safe(answerLabel)+': <b>'+safe(displayAnswer(q))+'</b>.</p>'+(pre?'<p><b>Atenção:</b> resultado sujeito a recurso e alteração até publicação do gabarito definitivo.</p>':'')+'<a href="'+safe(validURL(q.gabarito_url))+'" target="_blank" rel="noopener noreferrer">Consultar a fonte do gabarito ↗</a></div>'+summary+'<button id="pdf-retry">Responder novamente</button>':'<div class="'+(withOptions?"answer-list":"answer-grid")+'">'+buttons+'</div><button id="pdf-submit" disabled>Corrigir resposta</button>'):'<div class="feedback"><b>'+safe(q.gabarito==="ANULADA"?"Questão anulada":"Questão excluída")+'</b><p>Ela não participa das estatísticas de acertos.</p></div>'+summary;
- const instruction=(isUSP||isUNESP||isUNIFESP)&&!withOptions?'<p class="muted"><b>Alternativas A–D:</b> use <b>Ler questão em texto</b> ou consulte o PDF.</p>':"";
- const sourceWarning=isUNIFESP?'<p class="muted"><b>UNIFESP:</b> caderno reformatado pela Medway. Correção baseada em fontes secundárias, com divergências entre versões. Questões marcadas como anuladas não são pontuadas.</p>'+(q.anotacao_gabarito&&q.anotacao_gabarito.trim()?'<p class="muted">'+safe(q.anotacao_gabarito)+'</p>':'')+(q.status_classificacao==="Classificação individual pendente"?'<p class="muted">Classificação temática individual ainda pendente.</p>':''):isUSP?(q.ano===2026?'<p class="muted"><b>USP 2026:</b> gabarito da Fuvest retificado em 15/12/2025; as questões 54 e 120 foram anuladas.</p>':'<p class="muted"><b>USP 2025:</b> respostas conferidas no gabarito A1 da Fuvest, publicado em 01/12/2024.</p>')+(q.status_classificacao==="Classificação individual pendente"?'<p class="muted"><b>Módulo a revisar:</b> o assunto específico desta questão ainda não foi conferido; não foi atribuído por suposição.</p>':''):isUNESP?(q.ano===2026?'<p class="muted"><b>Fonte do gabarito:</b> MedCalcApp; falta validação direta na área restrita da Vunesp.</p>':'<p class="muted"><b>Gabarito corrigido após recursos:</b> quatro anulações e seis mudanças de letra já incorporadas.</p>'):"";
+ const instruction=(isUSP||isUNESP||isUNIFESP)&&!withOptions?'<p class="muted"><b>Alternativas A–D:</b> '+(canTranscribe?'use <b>Ler questão em texto</b> ou consulte o PDF.':'consulte o caderno original.')+'</p>':"";
+ const sourceWarning=isUNIFESP?'<p class="muted"><b>UNIFESP:</b> caderno reformatado pela Medway. Correção baseada em fontes secundárias, com divergências entre versões. Questões marcadas como anuladas não são pontuadas.</p>'+(q.anotacao_gabarito&&q.anotacao_gabarito.trim()?'<p class="muted">'+safe(q.anotacao_gabarito)+'</p>':'')+(q.status_classificacao==="Classificação individual pendente"?'<p class="muted">Classificação temática individual ainda pendente.</p>':''):isUSP?(q.ano<2025?'<p class="muted">Gabarito retificado da Fuvest. As questões anuladas ficam fora da pontuação e as duplas respostas são aceitas conforme a banca.</p>':q.ano===2026?'<p class="muted"><b>USP 2026:</b> gabarito da Fuvest retificado em 15/12/2025; as questões 54 e 120 foram anuladas.</p>':'<p class="muted"><b>USP 2025:</b> respostas conferidas no gabarito A1 da Fuvest, publicado em 01/12/2024.</p>')+(q.status_classificacao==="Classificação individual pendente"?'<p class="muted"><b>Módulo a revisar:</b> o assunto específico desta questão ainda não foi conferido; não foi atribuído por suposição.</p>':''):isUNESP?(q.ano===2026?'<p class="muted"><b>Fonte do gabarito:</b> MedCalcApp; falta validação direta na área restrita da Vunesp.</p>':'<p class="muted"><b>Gabarito corrigido após recursos:</b> quatro anulações e seis mudanças de letra já incorporadas.</p>'):"";
  const question=q.enunciado_parafraseado?'<div class="reader-reworded"><span class="tag">Redação editorial da questão real</span><p>'+safe(q.enunciado_parafraseado)+'</p></div><p class="muted">A redação foi adaptada. Para conferir o enunciado original, as imagens e as tabelas, consulte o caderno original.</p>':'<p>'+safe(q.resumo)+'</p>';
  const note=isUNIFESP?"Prova de acesso direto da UNIFESP, caderno reproduzido pela Medway. Gabarito de fonte secundária, sujeito a divergências entre versões.":isUSP?"Caderno oficial da Fuvest. Gabarito da banca é utilizado na correção; variantes A2/AD2 e A3/AD3 não estão duplicadas neste banco.":isUNESP?"Caderno real de acesso direto da UNESP. A página indicada é aproximada até revisão específica; utilize a busca do PDF para encontrar QUESTÃO "+String(q.numero).padStart(2,"0")+". As alternativas aparecem integralmente no documento. Em 2025, anuladas e retificações oficiais estão consideradas; em 2026, o gabarito ainda depende de conferência diretamente na Vunesp.":outside?"Arquivo NIEPAEM disponibilizado por terceiros no Scribd; o acesso pode exigir login e impedir a incorporação. Use Abrir em outra aba para consultar a prova ou o gabarito comentado.":selected.id==="strategy"?"PDF comentado indicado no portal do Estratégia MED. A exibição depende das permissões do servidor; esta versão ainda não pôde ser auditada integralmente pelo Atlas Med.":selected.id==="verified"?"Correção comentada publicada pelo OsceLabs, com gabarito preliminar. Os comentários exibidos no painel foram escritos separadamente.":"Caderno oficial de prova. A correção de cursinhos não substitui o gabarito do Inep.";
  const transcriptQuestion=selected.id==="official"&&canTranscribe?q:null;
@@ -292,7 +294,26 @@ $("exclude-banks-options").addEventListener("change",()=>{
 ["bank","start","end","semester","topic","status","search"].forEach(id=>$(id).addEventListener("input",()=>{renderIndex();renderQuestions()}));
 ["source-bank","source-year"].forEach(id=>$(id).addEventListener("change",renderSources));
 $("module-search").addEventListener("input",modules);
-async function load(){bootFilters();try{let responses=await Promise.all([fetch("data/questoes.json"),fetch("data/provas.json"),fetch("data/indices.json"),fetch("data/niepaem-2026-1.json"),fetch("data/niepaem-2026-2.json"),fetch("data/unifesp-2025.json"),fetch("data/unifesp-2026.json"),fetch("data/classificacao.json")]);if(responses.some(r=>!r.ok))throw Error("Não foi possível carregar o acervo.");let data=await Promise.all(responses.map(r=>r.json()));[questions,sources,indices]=data.slice(0,3);indices=[...indices,...data[3],...data[4],...data[5],...data[6]].map(q=>{
+function archivedUspQuestions(archive, existing){
+ const prior = new Map(existing.filter(q=>q.instituicao==="USP"&&q.ano===2024).map(q=>[q.numero,q]));
+ return Object.entries(archive).flatMap(([year,exam])=>exam.questoes.map(([pagina,answer],index)=>{
+  const ano=Number(year),numero=index+1;
+  const previous=ano===2024?prior.get(numero):null;
+  const gabaritos_aceitos=/^[A-D]{2}$/.test(answer)?[...answer]:undefined;
+  const gabarito=gabaritos_aceitos?gabaritos_aceitos[0]:answer;
+  return {
+   id:previous?.id||"usp-"+year+"-"+(ano===2024?"a1":"a")+"-q"+String(numero).padStart(3,"0"),
+   instituicao:"USP",ano,numero,pagina,caderno:exam.caderno,
+   modulo:previous?.modulo||"Acesso direto — classificação pendente",
+   tema:previous?.tema||"Assunto específico pendente de identificação",
+   subtema:previous?.subtema||"",
+   resumo:previous?.resumo||"Questão "+numero+" de acesso direto da USP "+year+".",
+   fonte_url:exam.pdf_url+"#page="+pagina,pdf_url:exam.pdf_url,gabarito_url:exam.gabarito_url,
+   gabarito,gabaritos_aceitos,modo_resolucao:"pdf",alternativas_quantidade:4,conteudo_reproduzido:false,
+  };
+ }));
+}
+async function load(){bootFilters();try{let responses=await Promise.all([fetch("data/questoes.json"),fetch("data/provas.json"),fetch("data/indices.json"),fetch("data/niepaem-2026-1.json"),fetch("data/niepaem-2026-2.json"),fetch("data/unifesp-2025.json"),fetch("data/unifesp-2026.json"),fetch("data/classificacao.json"),fetch("data/usp-2023-2024.json")]);if(responses.some(r=>!r.ok))throw Error("Não foi possível carregar o acervo.");let data=await Promise.all(responses.map(r=>r.json()));[questions,sources,indices]=data.slice(0,3);const archived=archivedUspQuestions(data[8],indices);indices=[...indices.filter(q=>q.instituicao!=="USP"||q.ano!==2024),...archived,...data[3],...data[4],...data[5],...data[6]].map(q=>{
  const classification=data[7][q.id];
  if(!classification)return q;
  const [modulo,tema,pagina]=classification;

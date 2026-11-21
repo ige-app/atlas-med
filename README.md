@@ -21,10 +21,11 @@ O Atlas Med reúne **questões reais**, por instituição, ano, módulo, assunto
 | NIEPAEM 2026.2 | 120/120 | Gabarito da banca + resolução usando PDF local do caderno |
 | NIEPAEM 2025.1 | 5/120 | Respostas em fonte secundária |
 | NIEPAEM 2025.2 | 8/120 | Respostas em fonte secundária |
-| USP FMUSP 2024 — A1 | 30/120 | Temas indexados; texto/alternativas ainda não integrados |
-| **Total** | **1.123 registros** | **1.072 questões pontuáveis** (inclui respostas preliminares/secundárias sinalizadas) |
+| USP FMUSP 2023 — Prova A | 120/120 | 117 pontuáveis; gabarito retificado da Fuvest e link à prova comentada |
+| USP FMUSP 2024 — A1 | 120/120 | 117 pontuáveis; gabarito retificado da Fuvest e link a comentários externos |
+| **Total** | **1.333 registros** | **1.306 questões pontuáveis** (inclui respostas preliminares/secundárias sinalizadas) |
 
-O catálogo possui **48 referências** entre provas, gabaritos e portais. Fonte catalogada **não significa** que a prova inteira tenha sido incorporada.
+O catálogo possui **51 referências** entre provas, gabaritos e portais. Fonte catalogada **não significa** que a prova inteira tenha sido incorporada.
 
 ## UNIFESP Escola Paulista de Medicina — 2025 e 2026
 
@@ -72,7 +73,7 @@ O arquivo fica armazenado **somente neste navegador** e poderá ser reutilizado 
 
 - **ENAMED 2026:** gabarito ainda preliminar; revisar em 04/12/2026.
 - **UNESP 2026:** fonte de gabarito secundária; pode exigir cotejo com Vunesp.
-- **USP 2024:** há 30 questões classificadas, mas ainda não integradas à resolução.
+- **USP 2023 e 2024:** correção automática disponível pelo gabarito retificado. Em 2024 há 30 temas individuais cadastrados. A classificação das demais questões dessas edições está pendente.
 - **UNESP R+ (Clínica e Cirurgia):** cadernos de 2025 e 2026 já catalogados; faltam respostas individuais.
 - **NIEPAEM 2025:** apenas primeiros lotes, não provas completas.
 - A classificação e os resumos próprios devem preservar o significado da prova, sem apresentar questões de treino como se fossem originais.
@@ -80,6 +81,7 @@ O arquivo fica armazenado **somente neste navegador** e poderá ser reutilizado 
 ## Estrutura e validação
 
 - `index.html`, `styles.css`, `app.js` e `niepaem-pdf.js`: interface, filtros, transcrição local de PDFs com PDF.js, correção e armazenamento privado IndexedDB.
+- `data/usp-2023-2024.json`: páginas e gabaritos retificados das provas A e A1, indexados por questão.
 - `data/indices.json`: questões ENAMED, USP, UNESP e NIEPAEM 2025 com número, módulo, tema, prova e gabarito.
 - `data/niepaem-2026-1.json` e `data/niepaem-2026-2.json`: 120 questões cada, com páginas dos cadernos e comentários editoriais.
 - `data/unifesp-2025.json` e `data/unifesp-2026.json`: 100 questões de acesso direto por edição, referenciadas ao PDF e ao gabarito.

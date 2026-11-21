@@ -1,5 +1,35 @@
 [
   {
+    "id": "usp-2023-a",
+    "instituicao": "USP",
+    "ano": 2023,
+    "titulo": "USP 2023 — prova A (120 questões)",
+    "url": "https://www.fuvest.br/wp-content/uploads/rm2023_prova_residencia_A.pdf",
+    "observacao": "Acesso direto da FMUSP.",
+    "status": "Fonte oficial da Fuvest",
+    "tipo": "caderno"
+  },
+  {
+    "id": "usp-2023-gabarito",
+    "instituicao": "USP",
+    "ano": 2023,
+    "titulo": "USP 2023 — gabarito retificado da prova A",
+    "url": "https://www.fuvest.br/wp-content/uploads/rm2023_prova_gabaritos_retificados_05-01-2023.pdf",
+    "observacao": "Acesso direto da FMUSP.",
+    "status": "Fonte oficial da Fuvest",
+    "tipo": "gabarito"
+  },
+  {
+    "id": "usp-2024-gabarito",
+    "instituicao": "USP",
+    "ano": 2024,
+    "titulo": "USP 2024 — gabarito retificado da prova A1",
+    "url": "https://www.fuvest.br/wp-content/uploads/rm2024_gabarito_areas_basicas_acesso-direto_2023-12-18.pdf",
+    "observacao": "Acesso direto da FMUSP.",
+    "status": "Fonte oficial da Fuvest",
+    "tipo": "gabarito"
+  },
+  {
     "id": "enamed-acervo",
     "instituicao": "ENAMED",
     "ano": null,
@@ -26,7 +56,7 @@
     "titulo": "USP FMUSP — ingresso 2023",
     "url": "https://www.fuvest.br/acervo-residencia-coreme-sp-2023/",
     "observacao": "Acervo da edição de ingresso; distintas modalidades e cadernos.",
-    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "status": "120 questões de acesso direto indexadas com gabarito retificado",
     "tipo": "portal"
   },
   {
@@ -36,7 +66,7 @@
     "titulo": "USP FMUSP — ingresso 2024",
     "url": "https://www.fuvest.br/acervo-residencia-coreme-sp-2024/",
     "observacao": "Acervo da edição de ingresso; distintas modalidades e cadernos.",
-    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "status": "120 questões de acesso direto A1 indexadas com gabarito retificado",
     "tipo": "portal"
   },
   {
@@ -65,8 +95,8 @@
     "ano": 2024,
     "titulo": "USP 2024 — prova A1 (120 questões)",
     "url": "https://www.fuvest.br/wp-content/uploads/rm_2024_a1.pdf",
-    "observacao": "Caderno de acesso direto. Trinta questões deste caderno já possuem indexação temática no Atlas Med.",
-    "status": "30 questões indexadas por tema e gabarito; reprodução integral pendente",
+    "observacao": "Caderno oficial de acesso direto A1, com 120 questões.",
+    "status": "120 questões indexadas com gabarito retificado",
     "tipo": "caderno"
   },
   {

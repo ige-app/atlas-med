@@ -153,6 +153,31 @@ for (const s of sources) {
   if (!banks.has(s.instituicao)) fail("fonte: banca inválida em " + s.id);
   if (!s.titulo || !/^https:\/\//.test(s.url || "")) fail("fonte: URL/título inválido em " + s.id);
 }
+const archivedUsp = read("data/usp-2023-2024.json");
+for (const [year, annulled, multiple] of [
+  [2023, [23, 35, 92], [60]],
+  [2024, [55, 79, 110], [53, 56, 65, 68, 69]],
+]) {
+  const exam = archivedUsp[year];
+  if (!exam?.caderno || !/^https:\/\//.test(exam.pdf_url) || !/^https:\/\//.test(exam.gabarito_url) ||
+      exam.questoes?.length !== 120) {
+    fail("USP " + year + ": esperado caderno completo com gabarito");
+    continue;
+  }
+  const actualAnnulled = [];
+  const actualMultiple = [];
+  for (const [index, [page, key]] of exam.questoes.entries()) {
+    if (!Number.isInteger(page) || page < 1 || (index && page < exam.questoes[index-1][0])) {
+      fail("USP " + year + ": página inválida para questão " + (index+1));
+    }
+    if (key === "ANULADA") actualAnnulled.push(index+1);
+    else if (/^[A-D]{2}$/.test(key) && key[0] !== key[1]) actualMultiple.push(index+1);
+    else if (!/^[A-D]$/.test(key)) fail("USP " + year + ": gabarito inválido na questão " + (index+1));
+  }
+  if (String(actualAnnulled) !== String(annulled) || String(actualMultiple) !== String(multiple)) {
+    fail("USP " + year + ": anulações ou duplas respostas divergentes");
+  }
+}
 const classification = read("data/classificacao.json");
 const catalog = [...indices, ...unifesp2025, ...unifesp2026];
 const pendingClassification = new Set(catalog.filter(q => q.modulo === "Acesso direto — classificação pendente").map(q => q.id));
@@ -166,5 +191,7 @@ if (errors.length) {
   console.error("Falha na validação do Atlas Med:\n" + errors.map(x => "• " + x).join("\n"));
   process.exitCode = 1;
 } else {
-  console.log("Dados válidos:", sources.length, "fontes,", indices.length, "questões indexadas,", questions.length, "questões com texto autorizado.");
+  const archiveCount = Object.values(archivedUsp).reduce((total, exam) => total + exam.questoes.length, 0);
+  const legacyCount = indices.filter(q => q.instituicao === "USP" && q.ano === 2024).length;
+  console.log("Dados válidos:", sources.length, "fontes,", seen.size + archiveCount - legacyCount, "questões indexadas,", questions.length, "questões com texto autorizado.");
 }

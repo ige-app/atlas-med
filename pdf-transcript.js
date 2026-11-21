@@ -3,16 +3,18 @@
 function readQuestionText(pages, bank, count) {
   const fragments = [];
   const markers = [];
+  const legacyUsp=bank==="USP-2023";
   let length = 0;
   for (const content of pages) {
     const items = content.items.filter(item=>item.str!==undefined && item.transform[5]>30 &&
-      (bank!=="USP" || item.transform[5]<805));
+      (!bank.startsWith("USP") || item.transform[5]<805));
     const columns = bank==="UNESP" ?
       [items.filter(item=>item.transform[4]<295),items.filter(item=>item.transform[4]>=295)] : [items];
     for (const column of columns) {
       for (const [i,item] of column.entries()) {
         const rest = column[i+1]?.str || "";
-        const number = bank==="USP" && item.str==="{" ? rest :
+        const number = legacyUsp && [50,319].includes(Math.round(item.transform[4])) && Number(item.str)===markers.length+1 ? item.str :
+          bank==="USP" && item.str==="{" ? rest :
           bank==="UNESP" && item.str==="QUESTÃO" ? column[i+2]?.str :
           bank==="UNIFESP" ? item.str.match(/^QUESTÃO\s+(\d+)\./i)?.[1] : null;
         if (/^\d{1,3}$/.test(number||"")) {
@@ -36,6 +38,7 @@ function readQuestionText(pages, bank, count) {
   const result = {};
   for (const [i,marker] of markers.entries()) {
     let block = whole.slice(marker.offset,markers[i+1]?.offset).replace(/^(?:\{\s*\d+\s*\}|QUESTÃO\s+\d+\.?)/i,"");
+    if(legacyUsp)block=block.replace(/^\d{2,3}\s*/,"");
     {
       const common = block.match(/(?:TEXTO (?:PARA|COMUM)|LEIA O TEXTO A SEGUIR PARA RESPONDER [ÀA]S)[^\n]*QUEST[ÕO]ES\s+(?:DE\s+)?(\d+)\s+(?:E|A)\s+(\d+)[^\n]*\n([\s\S]*)$/i);
       if (common) {
@@ -65,6 +68,7 @@ function readQuestionText(pages, bank, count) {
 const downloadedTranscripts = new Map();
 
 const transcriptCadernos = {
+  "USP 2023": "8bc88f86023a14bfaf7705858478b5ff49b7222609cb78e3bc41ad79221adbac",
   "USP 2025": "673e6e52dfbaa184eae9e1b2016f1bc3ab95069f8f0cf491179656b33907a2df",
   "USP 2026": "f6200fdcb65fbf8fdc4e3676331cb709e12138e480083e4e2f1b96266cdc0127",
   "UNESP 2025": "99958fda3c858d784a940107cd7cf048c233afe094dba53156fc6d15435b3fb4",
@@ -77,7 +81,8 @@ function pdfTranscriptFields(question) {
   const hash=transcriptCadernos[question.instituicao+" "+question.ano];
   if(!hash) return "";
   const count=question.instituicao==="USP"?120:100;
-  return ' data-transcript-bank="'+safe(question.instituicao)+'" data-transcript-count="'+count+
+  const bank=question.instituicao==="USP"&&question.ano===2023?"USP-2023":question.instituicao;
+  return ' data-transcript-bank="'+safe(bank)+'" data-transcript-count="'+count+
     '" data-transcript-number="'+safe(question.numero)+'" data-transcript-hash="'+hash+'"';
 }
 
