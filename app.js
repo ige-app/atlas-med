@@ -28,12 +28,32 @@ function setAllBanks(checked){
  for(const input of bankChoices())input.checked=checked;
 }
 function bootFilters(){$("bank-choices").innerHTML=BANKS.map(bank=>'<label><input type="checkbox" value="'+safe(bank)+'" checked> '+safe(bank)+'</label>').join("");updateBankPicker();select("source-bank",BANKS);select("source-year",Array.from({length:10},(_,i)=>2017+i));for(const id of ["start","end"])select(id,Array.from({length:10},(_,i)=>2017+i));$("start").value="2017";$("end").value="2026"}
+const topicReviews={
+ Ceratite:{
+  text:"Ceratite é inflamação da córnea. Dor, fotofobia, lacrimejamento e redução da visão sugerem acometimento corneano. Um infiltrado focal, especialmente com defeito epitelial que cora com fluoresceína, faz suspeitar de ceratite infecciosa. Lentes de contato, sobretudo quando usadas durante o sono, são um fator de risco importante. Revise como diferenciar ceratite bacteriana, herpética, fúngica e por Acanthamoeba. Na suspeita de infecção corneana, interrompa o uso das lentes e procure avaliação oftalmológica urgente.",
+  link:"https://www.aao.org/eye-health/glasses-contacts/what-is-bacterial-keratitis",
+  source:"American Academy of Ophthalmology"
+ },
+ Glaucoma:{
+  text:"Glaucoma é uma neuropatia óptica que pode causar perda progressiva do campo visual. No glaucoma crônico de ângulo aberto, o início costuma ser silencioso. A avaliação combina nervo óptico, campo visual, pressão intraocular e gonioscopia. No fechamento agudo do ângulo, pense em dor ocular intensa, olho vermelho, visão embaçada ou halos e náuseas, um quadro de urgência oftalmológica. No glaucoma congênito, revise a tríade de lacrimejamento, fotofobia e blefaroespasmo, além do aumento do diâmetro da córnea.",
+  link:"https://www.nei.nih.gov/eye-health-information/eye-conditions-and-diseases/glaucoma",
+  source:"National Eye Institute"
+ }
+};
+
+function topicOf(q){
+ const label=[q.tema,q.subtema].join(" ");
+ if (/\b(?:ceratites?|queratites?)\b/i.test(label))return "Ceratite";
+ if (/\bglaucomas?\b/i.test(label))return "Glaucoma";
+ return q.tema||"";
+}
+
 function currentIndex(){
   const start=+ $("start").value,end=+ $("end").value,sem=$("semester").value,topic=$("topic").value,search=$("search").value.trim().toLocaleLowerCase("pt-BR"),status=$("status").value;
   const banks=selectedBanks();
   return indices.filter(q=>{
     const p=progress[q.id]||{};
-    if(!banks.has(q.instituicao)||(mod&&q.modulo!==mod)||q.ano<start||q.ano>end||(sem&&semesterOf(q)!==sem)||(topic&&q.tema!==topic))return false;
+    if(!banks.has(q.instituicao)||(mod&&q.modulo!==mod)||q.ano<start||q.ano>end||(sem&&semesterOf(q)!==sem)||(topic&&topicOf(q)!==topic))return false;
     if(search&&![q.resumo,q.tema,q.subtema,q.modulo,q.comentario_resumido].join(" ").toLocaleLowerCase("pt-BR").includes(search))return false;
     if(status==="pending"&&(!scoreable(q)||p.answer))return false;
     if(status==="wrong"&&(!p.answer||answerMatches(q,p.answer)))return false;
@@ -41,9 +61,9 @@ function currentIndex(){
     return true;
   }).sort((a,b)=>b.ano-a.ano||(Number(semesterOf(b))||0)-(Number(semesterOf(a))||0)||a.instituicao.localeCompare(b.instituicao)||a.numero-b.numero);
 }
-function current(){let start=+$("start").value,end=+$("end").value,sem=$("semester").value,topic=$("topic").value,search=$("search").value.trim().toLocaleLowerCase("pt-BR"),status=$("status").value;const banks=selectedBanks();return questions.filter(q=>banks.has(q.instituicao)&&(!mod||q.modulo===mod)&&q.ano>=start&&q.ano<=end&&(!sem||semesterOf(q)===sem)&&(!topic||q.tema===topic)&&(!search||[q.enunciado,q.tema,q.subtema,q.modulo].join(" ").toLocaleLowerCase("pt-BR").includes(search))&&(!status||(status==="pending"?!progress[q.id]?.answer:status==="wrong"?progress[q.id]?.answer&&progress[q.id].answer!==q.gabarito:progress[q.id]?.starred)));}
+function current(){let start=+$("start").value,end=+$("end").value,sem=$("semester").value,topic=$("topic").value,search=$("search").value.trim().toLocaleLowerCase("pt-BR"),status=$("status").value;const banks=selectedBanks();return questions.filter(q=>banks.has(q.instituicao)&&(!mod||q.modulo===mod)&&q.ano>=start&&q.ano<=end&&(!sem||semesterOf(q)===sem)&&(!topic||topicOf(q)===topic)&&(!search||[q.enunciado,q.tema,q.subtema,q.modulo].join(" ").toLocaleLowerCase("pt-BR").includes(search))&&(!status||(status==="pending"?!progress[q.id]?.answer:status==="wrong"?progress[q.id]?.answer&&progress[q.id].answer!==q.gabarito:progress[q.id]?.starred)));}
 function modules(){let s=$("module-search").value.toLocaleLowerCase("pt-BR");$("modules").innerHTML='<button class="module-btn '+(!mod?"selected":"")+'" data-module="">Todos os módulos</button>'+MODULES.filter(m=>m.toLocaleLowerCase("pt-BR").includes(s)).map(m=>'<button class="module-btn '+(mod===m?"selected":"")+'" data-module="'+safe(m)+'">'+safe(m)+' ('+(questions.filter(q=>q.modulo===m).length+indices.filter(q=>q.modulo===m).length)+')</button>').join("");}
-function topics(){let prev=$("topic").value;let set=[...new Set([...questions,...indices].filter(q=>!mod||q.modulo===mod).map(q=>q.tema).filter(Boolean))].sort();select("topic",set,false);if(set.includes(prev))$("topic").value=prev;}
+function topics(){let prev=$("topic").value;let set=[...new Set([...questions,...indices].filter(q=>!mod||q.modulo===mod).map(topicOf).filter(Boolean))].sort();select("topic",set,false);if(set.includes(prev))$("topic").value=prev;}
 function metrics(){
   const attempts=[...questions,...indices].filter(q=>scoreable(q)&&progress[q.id]?.answer);
   $("count").textContent=indices.filter(q=>scoreable(q)&&["pdf","pdf-local"].includes(q.modo_resolucao)).length;
@@ -106,28 +126,72 @@ document.addEventListener("keydown",event=>{
  if(event.key==="Escape"&&document.body.classList.contains("quiz-open"))closeQuiz();
 });
 
+const authorModeKey="atlas-med-personal-mode";
+const authorLinkHash="e1883c04d10ccd19496e6302405411c5c83c8d4ec899dd1d4e36b17795e4e921";
+let personalMode=false;
+
+async function initPersonalMode(){
+ try{
+  personalMode=localStorage.getItem(authorModeKey)==="1";
+  const key=new URLSearchParams(location.hash.slice(1)).get("pessoal");
+  if(!key||!/^[a-f0-9]{48}$/.test(key))return;
+  const digest=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(key));
+  const hash=Array.from(new Uint8Array(digest),byte=>byte.toString(16).padStart(2,"0")).join("");
+  if(hash!==authorLinkHash)return;
+  localStorage.setItem(authorModeKey,"1");
+  personalMode=true;
+  history.replaceState(null,"",location.pathname+location.search);
+ }catch{
+  // Reading questions remains available when local storage is disabled.
+ }
+}
+
+window.addEventListener("hashchange",initPersonalMode);
+
+function topicNoteKey(topic){
+ return "atlas-med-topic-note:"+topic.normalize("NFC").toLocaleLowerCase("pt-BR");
+}
+
+function renderTopicReview(q){
+ const topic=topicOf(q);
+ if(!Object.hasOwn(topicReviews,topic))return "";
+ const review=topicReviews[topic];
+ return '<section class="feedback"><h3>Resumo geral · '+safe(topic)+'</h3><p>'+safe(review.text)+'</p>'+
+  '<p><a href="'+safe(review.link)+'" target="_blank" rel="noopener noreferrer">'+safe(review.source)+'</a></p></section>';
+}
+
 const noteKey=id=>"atlas-med-note:"+id;
 
 function renderQuestionNote(q){
- let note="";
- try{note=localStorage.getItem(noteKey(q.id))||""}catch{}
+ if(!personalMode)return "";
+ const topic=topicOf(q);
+ const hasTopic=topic&&q.modulo!=="Acesso direto — classificação pendente";
+ let note="",topicNote="";
+ try{
+  note=localStorage.getItem(noteKey(q.id))||"";
+  if(hasTopic)topicNote=localStorage.getItem(topicNoteKey(topic))||"";
+ }catch{}
+ const topicEditor=hasTopic?'<label for="topic-note">Meu resumo · '+safe(topic)+'</label>'+
+  '<textarea id="topic-note" rows="4" data-topic="'+safe(topic)+'" aria-describedby="topic-note-hint topic-note-status" placeholder="Escreva um resumo para rever em todas as questões deste assunto…">\n'+safe(topicNote)+'</textarea>'+
+  '<p id="topic-note-hint" class="muted">Vinculado ao assunto e salvo neste navegador.</p><p id="topic-note-status" class="muted" role="status"></p>':"";
  return '<section class="question-note">'+
   '<label for="question-note">Minhas anotações</label>'+
   '<textarea id="question-note" data-question-id="'+safe(q.id)+'" rows="4" aria-describedby="question-note-hint question-note-status" placeholder="Escreva o que quer lembrar desta questão…">\n'+safe(note)+'</textarea>'+
   '<p id="question-note-hint" class="muted">Salvamento automático neste navegador.</p>'+
-  '<p id="question-note-status" class="muted" role="status"></p>'+
+  '<p id="question-note-status" class="muted" role="status"></p>'+topicEditor+
   '</section>';
 }
 
 $("quiz-body").addEventListener("input",event=>{
  const field=event.target;
- if(field.id!=="question-note")return;
- const status=$("question-note-status");
+ if(!personalMode||!["question-note","topic-note"].includes(field.id))return;
+ const topic=field.id==="topic-note";
+ const status=$(field.id+"-status");
  try{
-  const key=noteKey(field.dataset.questionId);
+  const key=topic?topicNoteKey(field.dataset.topic):noteKey(field.dataset.questionId);
   if(field.value.trim())localStorage.setItem(key,field.value);
   else localStorage.removeItem(key);
-  status.textContent=field.value.trim()?"Anotação salva.":"Anotação vazia.";
+  status.textContent=field.value.trim()?(topic?"Resumo salvo para este assunto.":"Anotação salva."):"Campo vazio.";
  }catch{
   status.textContent="Não foi possível salvar. Copie a anotação antes de fechar.";
  }
@@ -157,7 +221,7 @@ function renderComment(q){
  const commentFile='<label class="file-instruction" for="comment-pdf-file">Carregar PDF da resolução original da banca (opcional)</label><input type="file" id="comment-pdf-file" accept="application/pdf,.pdf" />';
  const commentLink=commentUrl?commentUrl+"#page="+q.comentario_pagina:"";
  const commentFrame=commentLink?'<div class="local-pdf">'+(compactQuiz()?mobilePdfReader(commentUrl,q.comentario_pagina)+'<p><a href="'+safe(commentLink)+'" target="_blank" rel="noopener noreferrer">Abrir resolução em outra aba ↗</a></p>':'<iframe title="Gabarito comentado NIEPAEM '+safe(sem)+'" src="'+safe(commentLink+"&zoom=110")+'"></iframe>')+'</div>':"";
- const right=interactive?'<div class="reader-answer"><span class="tag">'+safe(q.modulo)+'</span><span class="tag">NIEPAEM 2026.'+safe(sem)+' · Questão '+safe(q.numero)+'</span><h2>'+safe(q.tema)+'</h2>'+questionHtml+submit+(answered?'<h3>Resolução original</h3>'+commentFile+commentFrame+renderQuestionNote(q):'')+'</div>':'<div><h2>'+safe(q.tema)+'</h2><div class="feedback"><b>Gabarito: '+safe(q.gabarito)+'</b><p>'+safe(q.comentario_resumido)+'</p></div>'+commentFile+commentFrame+renderQuestionNote(q)+'</div>';
+ const right=interactive?'<div class="reader-answer"><span class="tag">'+safe(q.modulo)+'</span><span class="tag">NIEPAEM 2026.'+safe(sem)+' · Questão '+safe(q.numero)+'</span><h2>'+safe(q.tema)+'</h2>'+questionHtml+submit+(answered?'<h3>Resolução original</h3>'+commentFile+commentFrame+renderTopicReview(q)+renderQuestionNote(q):'')+'</div>':'<div><h2>'+safe(q.tema)+'</h2><div class="feedback"><b>Gabarito: '+safe(q.gabarito)+'</b><p>'+safe(q.comentario_resumido)+'</p></div>'+commentFile+commentFrame+renderTopicReview(q)+renderQuestionNote(q)+'</div>';
  const left=interactive?'<div class="reader-pdf"><div class="reader-links"><b>Caderno NIEPAEM 2026.'+safe(sem)+' · página '+safe(q.pagina_prova)+'</b>'+navigate+'</div>'+input+bookView+'</div>':'<div><p>Documento de referência.</p></div>';
  $("quiz-body").innerHTML='<div class="comment-view local-quiz">'+left+right+'</div>';
 }
@@ -269,11 +333,11 @@ function drawPdf(){
  const transcriptQuestion=selected.id==="official"&&canTranscribe?q:null;
  const transcriptReader=transcriptQuestion?mobilePdfReader(selected.url,selected.page,transcriptQuestion):"";
  const frame=compactQuiz()?(q.fonte_formato==="Scribd HTML"?"":transcriptReader||mobilePdfReader(selected.url,selected.page)):transcriptReader+'<iframe src="'+safe(viewLink)+'" title="Documento de '+safe(selected.name)+'" loading="lazy" referrerpolicy="no-referrer"></iframe>';
- $("quiz-body").innerHTML='<div class="reader-layout"><div class="reader-pdf"><div class="reader-links"><b>'+safe(q.instituicao)+' '+safe(q.ano)+' · '+safe(q.caderno)+' · Questão '+safe(q.numero)+'</b><a href="'+safe(viewLink)+'" target="_blank" rel="noopener noreferrer">Abrir PDF em outra aba ↗</a></div><div class="reader-tabs">'+controls+'</div>'+(compactQuiz()?'<p><a href="'+safe(viewLink)+'">Abrir documento nesta aba</a></p>':'')+frame+'<p class="muted">'+safe(note)+'</p>'+(selected.id==="official"&&mirror!=="#"?'<a href="'+safe(mirror)+'#page='+safe(q.pagina)+'" target="_blank" rel="noopener noreferrer">Espelho do caderno caso o Inep não carregue ↗</a>':'')+'</div><div class="reader-answer"><div><span class="tag">'+safe(q.modulo)+'</span><span class="tag">Questão '+safe(q.numero)+'</span>'+(pre?'<span class="tag" style="background:#fff2cc;color:#805300">Gabarito preliminar</span>':'')+'</div><h2>'+safe(q.tema)+'</h2>'+question+(canTranscribe?pdfTranscriptBox:'')+instruction+sourceWarning+(pre?'<p class="muted">Resposta baseada no gabarito de setembro de 2026, sujeito a alterações.</p>':'')+feedback+(answered||!graded?renderQuestionNote(q):'')+'</div></div>';
+ $("quiz-body").innerHTML='<div class="reader-layout"><div class="reader-pdf"><div class="reader-links"><b>'+safe(q.instituicao)+' '+safe(q.ano)+' · '+safe(q.caderno)+' · Questão '+safe(q.numero)+'</b><a href="'+safe(viewLink)+'" target="_blank" rel="noopener noreferrer">Abrir PDF em outra aba ↗</a></div><div class="reader-tabs">'+controls+'</div>'+(compactQuiz()?'<p><a href="'+safe(viewLink)+'">Abrir documento nesta aba</a></p>':'')+frame+'<p class="muted">'+safe(note)+'</p>'+(selected.id==="official"&&mirror!=="#"?'<a href="'+safe(mirror)+'#page='+safe(q.pagina)+'" target="_blank" rel="noopener noreferrer">Espelho do caderno caso o Inep não carregue ↗</a>':'')+'</div><div class="reader-answer"><div><span class="tag">'+safe(q.modulo)+'</span><span class="tag">Questão '+safe(q.numero)+'</span>'+(pre?'<span class="tag" style="background:#fff2cc;color:#805300">Gabarito preliminar</span>':'')+'</div><h2>'+safe(q.tema)+'</h2>'+question+(canTranscribe?pdfTranscriptBox:'')+instruction+sourceWarning+(pre?'<p class="muted">Resposta baseada no gabarito de setembro de 2026, sujeito a alterações.</p>':'')+feedback+(answered||!graded?renderTopicReview(q)+renderQuestionNote(q):'')+'</div></div>';
  if(transcriptQuestion)showPdfTranscript($("quiz-body").querySelector("[data-transcript-bank]"));
 }
 function openQuiz(id){$("quiz").classList.remove("pdf-dialog");pdfActive=null;active=questions.find(q=>q.id===id);if(!active)return;choice=progress[id]?.answer||"";drawQuiz();showQuiz();}
-function drawQuiz(){let q=active,p=progress[q.id]||{},answered=Boolean(p.answer);$("quiz-body").innerHTML='<span class="tag">'+safe(q.instituicao)+' · '+safe(q.ano)+'</span><span class="tag">'+safe(q.modulo)+'</span><h2>'+safe(q.tema)+'</h2><p>'+safe(q.enunciado)+'</p>'+q.alternativas.map((a,i)=>{let l="ABCDE"[i],cls=answered?(l===q.gabarito?"correct":l===p.answer?"wrong":""):choice===l?"chosen":"";return '<button class="choice '+cls+'" data-choice="'+l+'" '+(answered?"disabled":"")+'> <b>'+l+'.</b> '+safe(a)+'</button>'}).join("")+(answered?'<div class="feedback"><b>Gabarito: '+safe(q.gabarito)+'</b><p>'+safe(q.comentario||"Confira a fonte oficial.")+'</p></div>'+renderQuestionNote(q):"")+'<div class="quiz-actions">'+(answered?'<button id="retry">Responder novamente</button>':'<button id="submit" '+(!choice||!q.gabarito||q.gabarito==="ANULADA"?"disabled":"")+'>Confirmar resposta</button>')+(q.fonte_url?'<a href="'+safe(validURL(q.fonte_url))+'" target="_blank" rel="noopener noreferrer">Fonte original ↗</a>':"")+'</div>';}
+function drawQuiz(){let q=active,p=progress[q.id]||{},answered=Boolean(p.answer);$("quiz-body").innerHTML='<span class="tag">'+safe(q.instituicao)+' · '+safe(q.ano)+'</span><span class="tag">'+safe(q.modulo)+'</span><h2>'+safe(q.tema)+'</h2><p>'+safe(q.enunciado)+'</p>'+q.alternativas.map((a,i)=>{let l="ABCDE"[i],cls=answered?(l===q.gabarito?"correct":l===p.answer?"wrong":""):choice===l?"chosen":"";return '<button class="choice '+cls+'" data-choice="'+l+'" '+(answered?"disabled":"")+'> <b>'+l+'.</b> '+safe(a)+'</button>'}).join("")+(answered?'<div class="feedback"><b>Gabarito: '+safe(q.gabarito)+'</b><p>'+safe(q.comentario||"Confira a fonte oficial.")+'</p></div>'+renderTopicReview(q)+renderQuestionNote(q):"")+'<div class="quiz-actions">'+(answered?'<button id="retry">Responder novamente</button>':'<button id="submit" '+(!choice||!q.gabarito||q.gabarito==="ANULADA"?"disabled":"")+'>Confirmar resposta</button>')+(q.fonte_url?'<a href="'+safe(validURL(q.fonte_url))+'" target="_blank" rel="noopener noreferrer">Fonte original ↗</a>':"")+'</div>';}
 function switchView(v){document.querySelectorAll(".view").forEach(e=>e.classList.toggle("hidden",e.id!=="view-"+v));document.querySelectorAll("[data-view]").forEach(e=>e.classList.toggle("active",e.dataset.view===v));}
 document.addEventListener("niepaem-pdf-updated",e=>{
  if(commentActive&&commentActive.semestre===e.detail.semester&&commentActive.modo_resolucao==="pdf-local")renderComment(commentActive);
@@ -344,7 +408,7 @@ function archivedResidencyQuestions(exams) {
   };
  }));
 }
-async function load(){bootFilters();try{let responses=await Promise.all([fetch("data/questoes.json"),fetch("data/provas.json"),fetch("data/indices.json"),fetch("data/niepaem-2026-1.json"),fetch("data/niepaem-2026-2.json"),fetch("data/unifesp-2025.json"),fetch("data/unifesp-2026.json"),fetch("data/classificacao.json"),fetch("data/usp-2023-2024.json"),fetch("data/unesp-unifesp-2023-2024.json")]);if(responses.some(r=>!r.ok))throw Error("Não foi possível carregar o acervo.");let data=await Promise.all(responses.map(r=>r.json()));[questions,sources,indices]=data.slice(0,3);const archived=archivedUspQuestions(data[8],indices);indices=[...indices.filter(q=>q.instituicao!=="USP"||q.ano!==2024),...archived,...archivedResidencyQuestions(data[9]),...data[3],...data[4],...data[5],...data[6]].map(q=>{
+async function load(){bootFilters();await initPersonalMode();try{let responses=await Promise.all([fetch("data/questoes.json"),fetch("data/provas.json"),fetch("data/indices.json"),fetch("data/niepaem-2026-1.json"),fetch("data/niepaem-2026-2.json"),fetch("data/unifesp-2025.json"),fetch("data/unifesp-2026.json"),fetch("data/classificacao.json"),fetch("data/usp-2023-2024.json"),fetch("data/unesp-unifesp-2023-2024.json")]);if(responses.some(r=>!r.ok))throw Error("Não foi possível carregar o acervo.");let data=await Promise.all(responses.map(r=>r.json()));[questions,sources,indices]=data.slice(0,3);const archived=archivedUspQuestions(data[8],indices);indices=[...indices.filter(q=>q.instituicao!=="USP"||q.ano!==2024),...archived,...archivedResidencyQuestions(data[9]),...data[3],...data[4],...data[5],...data[6]].map(q=>{
  const classification=data[7][q.id];
  if(!classification)return q;
  const [modulo,tema,pagina]=classification;
