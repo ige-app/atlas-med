@@ -105,7 +105,7 @@ function switchView(v){document.querySelectorAll(".view").forEach(e=>e.classList
 document.addEventListener("change",e=>{
   if(e.target.id!=="comment-pdf-file"||!commentActive)return;
   const file=e.target.files?.[0];if(!file)return;
-  if(!(/\\.pdf$/i.test(file.name)||file.type==="application/pdf")){alert("Selecione um arquivo PDF.");return}
+  if(!(/\.pdf$/i.test(file.name)||file.type==="application/pdf")){alert("Selecione um arquivo PDF.");return}
   if(file.size>40*1024*1024){alert("O PDF ultrapassa 40 MB.");return}
   const sem=commentActive.semestre;
   if(localCommentUrls[sem])URL.revokeObjectURL(localCommentUrls[sem]);
