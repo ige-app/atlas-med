@@ -13,6 +13,10 @@ O Atlas Med reúne **questões reais**, por instituição, ano, módulo, assunto
 | **UNIFESP EPM 2026 — acesso direto R1** | **100/100** | 97 pontuáveis segundo MedAlvo; 53, 55 e 100 marcadas como anuladas, com divergência frente ao PDF Medway |
 | **USP FMUSP 2025 — acesso direto A1** | **120/120** | 120 questões pontuáveis; gabarito oficial da Fuvest |
 | **USP FMUSP 2026 — acesso direto AD1** | **120/120** | 118 pontuáveis; **54 e 120 anuladas**, segundo gabarito retificado |
+| UNESP Botucatu 2023 — acesso direto | 100/100 | Gabarito preliminar da FMB e resolução externa MedPrep |
+| UNESP Botucatu 2024 — acesso direto | 100/100 | Gabarito preliminar da FMB e resolução externa MedPrep |
+| UNIFESP EPM 2023 — acesso direto | 100/100 | 95 pontuáveis após recursos da COREME e resolução externa MedPrep |
+| UNIFESP EPM 2024 — acesso direto | 100/100 | Gabarito com revisão da COREME e acesso à página da resolução no PDF do OsceLabs |
 | UNESP Botucatu 2025 — acesso direto | 100/100 | 96 pontuáveis; 4 anuladas, retificações oficiais consideradas |
 | UNESP Botucatu 2026 — acesso direto | 100/100 | 100 respostas coletadas em fonte secundária, checagem direta na Vunesp pendente |
 | ENAMED 2025 — Caderno 01 | 100/100 | 90 pontuáveis, 10 anuladas/excluídas; enunciados e alternativas reescritos |
@@ -23,9 +27,9 @@ O Atlas Med reúne **questões reais**, por instituição, ano, módulo, assunto
 | NIEPAEM 2025.2 | 8/120 | Respostas em fonte secundária |
 | USP FMUSP 2023 — Prova A | 120/120 | 117 pontuáveis; gabarito retificado da Fuvest e link à prova comentada |
 | USP FMUSP 2024 — A1 | 120/120 | 117 pontuáveis; gabarito retificado da Fuvest e link a comentários externos |
-| **Total** | **1.333 registros** | **1.306 questões pontuáveis** (inclui respostas preliminares/secundárias sinalizadas) |
+| **Total** | **1.733 registros** | **1.701 questões pontuáveis** (inclui respostas preliminares/secundárias sinalizadas) |
 
-O catálogo possui **51 referências** entre provas, gabaritos e portais. Fonte catalogada **não significa** que a prova inteira tenha sido incorporada.
+O catálogo possui **61 referências** entre provas, gabaritos e portais. Fonte catalogada **não significa** que a prova inteira tenha sido incorporada.
 
 ## UNIFESP Escola Paulista de Medicina — 2025 e 2026
 
@@ -81,6 +85,7 @@ O arquivo fica armazenado **somente neste navegador** e poderá ser reutilizado 
 ## Estrutura e validação
 
 - `index.html`, `styles.css`, `app.js` e `niepaem-pdf.js`: interface, filtros, transcrição local de PDFs com PDF.js, correção e armazenamento privado IndexedDB.
+- `data/unesp-unifesp-2023-2024.json`: cadernos, páginas, gabaritos e links das resoluções para 400 questões de acesso direto. A classificação temática individual dessas edições está pendente.
 - `data/usp-2023-2024.json`: páginas e gabaritos retificados das provas A e A1, indexados por questão.
 - `data/indices.json`: questões ENAMED, USP, UNESP e NIEPAEM 2025 com número, módulo, tema, prova e gabarito.
 - `data/niepaem-2026-1.json` e `data/niepaem-2026-2.json`: 120 questões cada, com páginas dos cadernos e comentários editoriais.

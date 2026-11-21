@@ -178,6 +178,35 @@ for (const [year, annulled, multiple] of [
     fail("USP " + year + ": anulações ou duplas respostas divergentes");
   }
 }
+const archivedResidency = read("data/unesp-unifesp-2023-2024.json");
+const expectedResidency = new Map([
+  ["UNESP 2023", {}], ["UNESP 2024", {}],
+  ["UNIFESP 2023", {29:"ANULADA",31:"ANULADA",33:"BC",38:"ANULADA",48:"ANULADA",80:"ANULADA"}],
+  ["UNIFESP 2024", {7:"C",47:"BC",62:"C",68:"BC",100:"BC"}],
+]);
+for (const exam of archivedResidency) {
+  const label = exam.instituicao + " " + exam.ano;
+  const revisions = expectedResidency.get(label);
+  if (!revisions || exam.questoes?.length !== 100) {
+    fail(label + ": esperado caderno de 100 questões");
+    continue;
+  }
+  expectedResidency.delete(label);
+  for (const url of [exam.pdf_url,exam.gabarito_url,exam.resolucao?.[1]]) {
+    if (!/^https:\/\//.test(url)) fail(label + ": faltam referências do caderno ou resolução");
+  }
+  if (label.startsWith("UNIFESP") && !/^https:\/\//.test(exam.revisao_url)) fail(label + ": falta revisão da COREME");
+  for (const [index, [page, key, commentPage]] of exam.questoes.entries()) {
+    if (!Number.isInteger(page) || page < 1 || (index > 0 && page < exam.questoes[index-1][0]) ||
+        key !== (revisions[index+1] ?? key) ||
+        !/^(?:[A-D]|[A-D]{2}|ANULADA)$/.test(key) ||
+        (key.length > 1 && !revisions[index+1]) ||
+        (label === "UNIFESP 2024" && (!Number.isInteger(commentPage) || commentPage < 1))) {
+      fail(label + ": questão inválida " + (index+1));
+    }
+  }
+}
+if (expectedResidency.size) fail("Faltam cadernos de residência: " + [...expectedResidency.keys()].join(", "));
 const classification = read("data/classificacao.json");
 const catalog = [...indices, ...unifesp2025, ...unifesp2026];
 const pendingClassification = new Set(catalog.filter(q => q.modulo === "Acesso direto — classificação pendente").map(q => q.id));
@@ -193,5 +222,5 @@ if (errors.length) {
 } else {
   const archiveCount = Object.values(archivedUsp).reduce((total, exam) => total + exam.questoes.length, 0);
   const legacyCount = indices.filter(q => q.instituicao === "USP" && q.ano === 2024).length;
-  console.log("Dados válidos:", sources.length, "fontes,", seen.size + archiveCount - legacyCount, "questões indexadas,", questions.length, "questões com texto autorizado.");
+  console.log("Dados válidos:", sources.length, "fontes,", seen.size + archiveCount - legacyCount + archivedResidency.reduce((total, exam)=>total+exam.questoes.length,0), "questões indexadas,", questions.length, "questões com texto autorizado.");
 }

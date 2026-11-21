@@ -4,18 +4,33 @@ function readQuestionText(pages, bank, count) {
   const fragments = [];
   const markers = [];
   const legacyUsp=bank==="USP-2023";
+  const legacyUnesp=bank==="UNESP-2023";
+  if(legacyUnesp)bank="UNESP";
   let length = 0;
   for (const content of pages) {
     const items = content.items.filter(item=>item.str!==undefined && item.transform[5]>30 &&
       (!bank.startsWith("USP") || item.transform[5]<805));
-    const columns = bank==="UNESP" ?
+    let columns = bank==="UNESP" ?
       [items.filter(item=>item.transform[4]<295),items.filter(item=>item.transform[4]>=295)] : [items];
+    if (legacyUnesp) {
+      // The full-width questions 81 and 96 sit above the two columns.
+      const heading=items.find(item=>["81","96"].includes(item.str)&&Math.round(item.transform[4])===87&&item.transform[5]>800);
+      if(heading){
+        const next=columns[0].find(item=>item.str===String(Number(heading.str)+1)&&Math.round(item.transform[4])>=86&&Math.round(item.transform[4])<=89);
+        if(next){
+          const boundary=next.transform[5];
+          columns=[items.filter(item=>item.transform[5]>boundary+1),...columns.map(column=>column.filter(item=>item.transform[5]<=boundary+1))];
+        }
+      }
+    }
     for (const column of columns) {
       for (const [i,item] of column.entries()) {
         const rest = column[i+1]?.str || "";
         const number = legacyUsp && [50,319].includes(Math.round(item.transform[4])) && Number(item.str)===markers.length+1 ? item.str :
           bank==="USP" && item.str==="{" ? rest :
           bank==="UNESP" && item.str==="QUESTÃO" ? column[i+2]?.str :
+          bank==="UNESP" && item.str==="Q" &&
+            column.slice(i,i+5).map(part=>part.str).join("").trim().toUpperCase()==="QUESTÃO" ? column[i+5]?.str :
           bank==="UNIFESP" ? item.str.match(/^QUESTÃO\s+(\d+)\./i)?.[1] : null;
         if (/^\d{1,3}$/.test(number||"")) {
           markers.push({number:Number(number),offset:length});
@@ -50,7 +65,7 @@ function readQuestionText(pages, bank, count) {
       if(bank==="USP") block=block.split(/#{3,}/)[0];
     }
     if (i===markers.length-1) block=block.split(/\n\s*(?:GABARITO|RASCUNHO|A1\s*$)/i)[0];
-    if (bank==="UNIFESP" && i===markers.length-1) block=block.split(/\n\s*1\.\s*A\s+B\s+C\s+D/)[0];
+    if (bank==="UNIFESP" && i===markers.length-1) block=block.split(/\n\s*(?:1\.\s*A\s+B\s+C\s+D|RESPOSTAS|NOSSOS CURSOS)/i)[0];
     const options = [...block.matchAll(bank==="UNIFESP" ? /^\s*([A-D])\.\s*/gm : /^\s*\(([A-D])\)\s*/gm)];
     const complete = options.map(option=>option[1]).join("")==="ABCD";
     const statement = clean(block.slice(0,options[0]?.index));
@@ -71,6 +86,10 @@ const transcriptCadernos = {
   "USP 2023": "8bc88f86023a14bfaf7705858478b5ff49b7222609cb78e3bc41ad79221adbac",
   "USP 2025": "673e6e52dfbaa184eae9e1b2016f1bc3ab95069f8f0cf491179656b33907a2df",
   "USP 2026": "f6200fdcb65fbf8fdc4e3676331cb709e12138e480083e4e2f1b96266cdc0127",
+  "UNESP 2023": "7906fdec58096d20a4aba590fbf7ed23ae975b58996cf5e951fc2b7f51cb14c2",
+  "UNESP 2024": "2b5c73c16821f555f189fa9bde3c7f28c8da510816048e529900a5591f5cf9b2",
+  "UNIFESP 2023": "79d2fdff45564950ccbb9405e35a43d84059fd381c26228c9b397e5b1a82a7cf",
+  "UNIFESP 2024": "cc4180ff6304ce21f350d1014cbed9f9fb64ce1688b75559a2e4252406a262d8",
   "UNESP 2025": "99958fda3c858d784a940107cd7cf048c233afe094dba53156fc6d15435b3fb4",
   "UNESP 2026": "5a5a3683344bea32faab402f8814b63b0137dd20c4d5e2869e89635bd79696b6",
   "UNIFESP 2025": "ecda9958497646ec25668013e939bf6f6e8991489bb68b31ffc9dfc22a6a7926",
@@ -81,7 +100,7 @@ function pdfTranscriptFields(question) {
   const hash=transcriptCadernos[question.instituicao+" "+question.ano];
   if(!hash) return "";
   const count=question.instituicao==="USP"?120:100;
-  const bank=question.instituicao==="USP"&&question.ano===2023?"USP-2023":question.instituicao;
+  const bank=question.ano===2023&&["USP","UNESP"].includes(question.instituicao)?question.instituicao+"-2023":question.instituicao;
   return ' data-transcript-bank="'+safe(bank)+'" data-transcript-count="'+count+
     '" data-transcript-number="'+safe(question.numero)+'" data-transcript-hash="'+hash+'"';
 }
