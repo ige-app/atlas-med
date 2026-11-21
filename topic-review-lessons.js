@@ -326,5 +326,144 @@ const topicReviewLessons = {
        "https://www.cdc.gov/field-epi-manual/php/chapters/design-conduct-analyze-field-studies.html"
      ]
    ]
+ },
+ "Sepse": {
+   "overview": "Sepse é disfunção orgânica potencialmente fatal decorrente de resposta desregulada à infecção. Alteração do estado mental, oligúria, hipoxemia e má perfusão ajudam a reconhecer gravidade, mesmo na ausência de febre.",
+   "points": [
+     [
+       "SOFA e choque no adulto",
+       "O Sepsis-3 operacionaliza a disfunção orgânica como aumento de pelo menos dois pontos no SOFA. O qSOFA pode sinalizar risco, mas é insuficiente para triagem isolada. Choque séptico, pelos critérios do Sepsis-3, combina necessidade de vasopressor para manter pressão arterial média de pelo menos 65 mmHg e lactato acima de 2 mmol/L apesar de reposição adequada."
+     ],
+     [
+       "Primeira hora e foco infeccioso",
+       "No choque séptico ou na alta probabilidade de sepse, inicie antimicrobianos prontamente, idealmente na primeira hora. Colha culturas antes se isso não atrasar o tratamento. Ajuste o esquema empírico ao foco e ao risco de resistência. Foco abdominal pode exigir drenagem ou cirurgia, além de cobertura para enterobactérias e anaeróbios."
+     ],
+     [
+       "Fluidos e vasopressores",
+       "Use cristaloides com reavaliação de perfusão e tolerância a fluidos. Hipotensão persistente pode exigir noradrenalina. Em questão sobre acesso periférico, a ideia é iniciar o vasopressor por acesso periférico adequado com vigilância, sem esperar a colocação de acesso central."
+     ],
+     [
+       "Criança e recém-nascido",
+       "Oligúria, alteração do sensório, pulsos fracos e enchimento capilar prolongado podem aparecer antes da hipotensão. No ENAMED, inflamação do coto umbilical e má perfusão apontam para choque séptico distributivo, que pode ter extremidades frias. Compare com choque cardiogênico, obstrutivo e neurogênico. Use critérios e estratégia de ressuscitação da faixa etária."
+     ]
+   ],
+   "sources": [
+     [
+       "Surviving Sepsis Campaign · Adultos",
+       "https://www.sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026"
+     ],
+     [
+       "Surviving Sepsis Campaign · Crianças",
+       "https://www.sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-the-management-of-sepsis-and-septic-shock-in"
+     ]
+   ]
+ },
+ "Sífilis": {
+   "overview": "A sífilis pode ser primária, secundária, latente ou terciária. Cancro habitualmente indolor sugere a fase primária. Exantema que pode atingir palmas e plantas e lesões mucocutâneas sugerem sífilis secundária. As fases precoces têm maior transmissibilidade sexual.",
+   "points": [
+     [
+       "Testes e seguimento",
+       "Testes treponêmicos, como o teste rápido e o FTA-Abs, frequentemente permanecem reagentes após tratamento. A atividade e a evolução são interpretadas com história, exame e VDRL ou RPR quantitativo. Duas diluições correspondem a quatro vezes, como a queda de 1:32 para 1:8. Um VDRL baixo isolado é insuficiente para definir cicatriz sorológica. O item do ENAMED sobre resposta sorológica foi anulado."
+     ],
+     [
+       "Tratamento e pré-natal",
+       "Sífilis recente sem acometimento neurológico costuma ser tratada com uma dose de benzilpenicilina benzatina. Latente tardia ou de duração ignorada requer três doses semanais. Na gestação, trate prontamente conforme o estágio, acompanhe VDRL mensalmente, registre as doses e avalie as parcerias. Se o intervalo entre doses ultrapassar nove dias na gestante, reinicie o esquema. Elevação de duas diluições pede investigação de reinfecção ou falha terapêutica."
+     ],
+     [
+       "Recém-nascido e vigilância",
+       "Compare VDRL materno e neonatal e considere o tratamento materno, exame do bebê e investigação complementar. Um recém-nascido assintomático ainda pode ter sífilis congênita. Esquemas de penicilina variam com a avaliação, incluindo penicilina cristalina por dez dias quando indicada. Hipoacusia é possível manifestação tardia. Compare indicadores de detecção materna e sífilis congênita para avaliar o cuidado pré-natal."
+     ]
+   ],
+   "sources": [
+     [
+       "Ministério da Saúde · Sífilis",
+       "https://portal.aids.gov.br/sifilis"
+     ],
+     [
+       "Ministério da Saúde · Sífilis congênita",
+       "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-z/s/sifilis/gestantes/congenita/congenita/"
+     ]
+   ]
+ },
+ "Hérnias da parede abdominal": {
+   "overview": "Hérnias são protrusões através de um defeito da parede. Na virilha, a hérnia indireta passa lateralmente aos vasos epigástricos inferiores, a direta passa medialmente, e a femoral situa-se abaixo do ligamento inguinal.",
+   "points": [
+     [
+       "Irredutibilidade e estrangulamento",
+       "Irredutibilidade aguda descreve a impossibilidade de reduzir o conteúdo. Estrangulamento envolve comprometimento vascular. Dor intensa persistente, sinais peritoneais ou sofrimento intestinal sugerem urgência cirúrgica. Vômitos e parada de flatos podem indicar obstrução por hérnia. No ENAMED, o caso da massa inguinal dolorosa e irredutível em idosa contrapõe hérnia femoral a inguinal indireta e outras causas de obstrução. O item foi anulado."
+     ],
+     [
+       "Mulheres, hérnia femoral e redução",
+       "Em mulheres, considere hérnia femoral mesmo quando o exame sugere inguinal. A via posterior laparoendoscópica permite avaliar ambos os orifícios quando há experiência. A hérnia femoral tem maior risco de complicações e costuma indicar reparo oportuno. Após redução espontânea, reavalie dor, obstrução e sinais de isquemia antes de decidir observação e programação do reparo."
+     ],
+     [
+       "Inguinal e umbilical na infância",
+       "Hérnia inguinal redutível na criança costuma ter indicação de correção eletiva devido ao risco de encarceramento. Em meninas, o ovário pode estar no saco. Já a hérnia umbilical assintomática frequentemente fecha espontaneamente e pode ser observada até perto dos cinco anos, conforme o caso."
+     ]
+   ],
+   "sources": [
+     [
+       "HerniaSurge · Atualização sobre hérnias da virilha",
+       "https://pmc.ncbi.nlm.nih.gov/articles/10588975/"
+     ],
+     [
+       "American College of Surgeons · Hérnia umbilical pediátrica",
+       "https://www.facs.org/for-patients/the-day-of-your-surgery/pediatric-umbilical-hernia/"
+     ]
+   ]
+ },
+ "Pancreatite": {
+   "overview": "Pancreatite aguda é diagnosticada com dois de três critérios: dor típica, lipase ou amilase pelo menos três vezes acima do limite superior ou imagem compatível. A forma crônica envolve dano progressivo e pode cursar com dor recorrente, insuficiência exócrina e diabetes.",
+   "points": [
+     [
+       "Conduta inicial na forma aguda",
+       "Analgesia, hidratação com cristaloide ajustada à resposta e alimentação oral precoce conforme tolerância são medidas centrais. Jejum prolongado e antibióticos profiláticos não são rotina. Ultrassom investiga causa biliar. Tomografia precoce fica reservada à dúvida diagnóstica ou evolução que exija investigação."
+     ],
+     [
+       "Origem biliar e via biliar",
+       "Colangite concomitante muda a conduta e indica CPRE precoce. Na pancreatite biliar leve, programe colecistectomia na mesma internação quando possível. Colangiografia intraoperatória avalia a via biliar durante a cirurgia. Considere probabilidade de cálculo residual ao escolher entre colangiografia, exames não invasivos e CPRE terapêutica."
+     ],
+     [
+       "Complicações locais e forma crônica",
+       "Pseudocisto é uma coleção encapsulada predominantemente líquida. Necrose delimitada pode conter detritos sólidos. Considere evolução, sintomas e infecção para decidir intervenção. Dor epigástrica recorrente irradiada para dorso, álcool e enzimas normais favorecem pancreatite crônica entre as alternativas do ENAMED. TC ou RM ajudam a confirmar alterações estruturais."
+     ]
+   ],
+   "sources": [
+     [
+       "American College of Gastroenterology · Pancreatite aguda",
+       "https://pmc.ncbi.nlm.nih.gov/articles/PMC13221274/"
+     ],
+     [
+       "American College of Gastroenterology · Pancreatite crônica",
+       "https://doi.org/10.14309/AJG.0000000000000535"
+     ],
+     [
+       "International Association of Pancreatology · Diretriz 2025",
+       "https://doi.org/10.1016/j.pan.2025.04.020"
+     ]
+   ]
+ },
+ "Medidas de associação": {
+   "overview": "Escolha a medida conforme o desenho e os denominadores. Em tabelas 2×2, confira quem é exposto, qual é o desfecho e qual categoria é a referência antes de calcular.",
+   "points": [
+     [
+       "Risco relativo, odds ratio e prevalência",
+       "Se a tabela tem expostos com e sem desfecho (a, b) e não expostos com e sem desfecho (c, d), o risco relativo é [a/(a+b)] ÷ [c/(c+d)]. Para dados transversais, a mesma divisão, com prevalências, produz a razão de prevalências. Em caso-controle, o odds ratio (razão de chances) é ad/bc. Com desfecho comum, interprete odds e risco como medidas distintas."
+     ],
+     [
+       "Intervalo de confiança e direção",
+       "Para razões, o valor nulo é 1. Um IC95% que inclui 1 não demonstra associação estatística ao nível de 5% no teste correspondente. Isso ainda permite efeitos compatíveis com o intervalo. Valor acima de 1 sugere associação positiva e abaixo de 1, inversa, conforme a categoria de referência."
+     ],
+     [
+       "Leitura crítica nas questões",
+       "Para tabelas sobre variantes genéticas, enchentes e bullying, leia cada desfecho e seu intervalo separadamente. Uma razão de 1,30 corresponde a 30% de aumento relativo, não a 30 pontos percentuais. Para diferenças absolutas, o valor nulo é 0. Confundimento, viés de seleção e precisão do intervalo importam antes de interpretar causalidade."
+     ]
+   ],
+   "sources": [
+     [
+       "CDC · Análise e interpretação de medidas epidemiológicas",
+       "https://www.cdc.gov/field-epi-manual/php/chapters/analyze-interpret-data.html"
+     ]
+   ]
  }
 };
