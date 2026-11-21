@@ -4,7 +4,7 @@ const BANKS=["ENAMED","ENARE","USP","UNESP","NIEPAEM","UNIFESP"];
 const MODULES=["Ginecologia","Obstetrícia","Oftalmologia","Cardiologia","Neurologia","Pediatria","Neonatologia","Cirurgia Geral","Clínica Médica","Pneumologia","Nefrologia","Endocrinologia","Gastroenterologia","Hematologia","Geriatria","Genética Médica","Mastologia","Anestesiologia","Cirurgia Vascular","Cirurgia Pediátrica","Neurocirurgia","Infectologia","Reumatologia","Dermatologia","Psiquiatria","Ortopedia","Urologia","Otorrinolaringologia","Medicina de Família e Comunidade","Saúde Coletiva","Emergências","Outros"];
 const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const validURL=u=>{try{let a=new URL(u);return a.protocol==="https:"?a.href:"#"}catch{return"#"}};
-let questions=[],sources=[],indices=[],mod="",active=null,choice="",pdfActive=null,pdfChoice="",readerSource="official",progress={},commentActive=null,localCommentUrls={};
+let questions=[],sources=[],indices=[],mod="",active=null,choice="",pdfActive=null,pdfChoice="",readerSource="official",progress={},commentActive=null,localCommentUrls={},localQuestionUrls={},commentChoice="";
 function scoreable(q){return q.modo_resolucao!=="comentario"&&/^[A-E]$/.test(q.gabarito||"")}
 function semesterOf(q){if(q.semestre)return String(q.semestre);let m=String(q.edicao||q.caderno||"").match(/20\d{2}\.([12])/);return m?m[1]:"";}
 try{progress=JSON.parse(localStorage.getItem("atlas-med-progress")||"{}")||{}}catch{progress={}}
@@ -36,11 +36,11 @@ function metrics(){
 function renderIndex(){
   const items=currentIndex(),root=$("indexed");
   root.innerHTML=items.length?items.map(q=>{
-    const p=progress[q.id]||{},hasReader=q.modo_resolucao==="pdf",commentOnly=q.modo_resolucao==="comentario",graded=scoreable(q),answered=Boolean(p.answer);
-    const state=commentOnly?"Gabarito comentado":graded?(answered?(p.answer===q.gabarito?"✓ Acertou":"✕ Errou"):"Não resolvida"):(q.gabarito==="PENDENTE"?"Gabarito indisponível":q.gabarito==="ANULADA"?"Anulada":"Excluída da pontuação");
+    const p=progress[q.id]||{},hasReader=q.modo_resolucao==="pdf",commentOnly=["comentario","pdf-local"].includes(q.modo_resolucao),graded=scoreable(q),answered=Boolean(p.answer);
+    const state=graded?(answered?(p.answer===q.gabarito?"✓ Acertou":"✕ Errou"):"Não resolvida"):commentOnly?"Gabarito comentado":q.gabarito==="PENDENTE"?"Gabarito indisponível":q.gabarito==="ANULADA"?"Anulada":"Excluída da pontuação";
     const favored='<button data-pdf-star="'+safe(q.id)+'">'+(p.starred?"★ Favorita":"☆ Favoritar")+'</button>';
-    const controls=hasReader?'<button data-pdf-open="'+safe(q.id)+'">'+(graded?"Abrir e responder":"Consultar sem pontuação")+'</button> '+favored:commentOnly?'<button data-comment-open="'+safe(q.id)+'">Ver gabarito e comentário</button> '+favored:'<a href="'+safe(validURL(q.fonte_url))+'" target="_blank" rel="noopener noreferrer">Abrir no caderno original ↗</a>';
-    const description=commentOnly?"Comentário-resumo e gabarito conferidos no material fornecido para esta edição. O enunciado integral ainda não está disponível aqui.":safe(q.enunciado_parafraseado||q.resumo||"").slice(0,230);
+    const controls=hasReader?'<button data-pdf-open="'+safe(q.id)+'">'+(graded?"Abrir e responder":"Consultar sem pontuação")+'</button> '+favored:commentOnly?'<button data-comment-open="'+safe(q.id)+'">'+(q.modo_resolucao==="pdf-local"?"Abrir e responder":"Ver gabarito e comentário")+'</button> '+favored:'<a href="'+safe(validURL(q.fonte_url))+'" target="_blank" rel="noopener noreferrer">Abrir no caderno original ↗</a>';
+    const description=commentOnly?"Questão real do NIEPAEM: leia o caso e as quatro alternativas no caderno original, responda e consulte o comentário resumido.":safe(q.enunciado_parafraseado||q.resumo||"").slice(0,230);
     return '<article class="question index"><div><span class="tag">'+safe(q.instituicao)+' · '+safe(q.ano)+(semesterOf(q)?"."+safe(semesterOf(q)):"")+'</span><span class="tag">'+safe(q.modulo)+'</span><span class="tag">Questão '+safe(q.numero)+'</span><span class="tag">'+safe(state)+'</span></div><h3>'+safe(q.tema)+'</h3><p>'+description+'</p>'+(commentOnly?'<p class="muted">Área original: '+safe(q.categoria_origem)+' · Gabarito comentado, página '+safe(q.comentario_pagina)+'</p>':'<p class="muted">'+safe(q.caderno)+(q.fonte_formato==="Scribd HTML"?" · Documento externo":q.pagina?" · Página "+safe(q.pagina)+" do PDF":"")+'</p>')+'<div class="quiz-actions">'+controls+'</div></article>';
   }).join(""):'<div class="empty">Nenhuma questão corresponde aos filtros. Consulte o acervo para localizar outras provas.</div>';
 }
@@ -60,9 +60,9 @@ function renderComment(q){
   $("quiz-body").innerHTML='<div class="comment-view"><div><span class="tag">NIEPAEM '+safe(q.ano)+'.'+safe(q.semestre)+'</span><span class="tag">Questão '+safe(q.numero)+'</span><span class="tag">'+safe(q.modulo)+'</span><h2>'+safe(q.tema)+'</h2><p class="muted">Gabarito comentado · '+safe(q.caderno)+' · página '+safe(q.comentario_pagina)+' do documento</p><h3>Resposta da banca: '+safe(q.gabarito)+'</h3><div class="feedback"><b>Comentário resumido do Atlas Med</b><p>'+safe(q.comentario_resumido)+'</p></div><p class="muted">Esta é uma síntese independente do comentário, não uma transcrição. O enunciado completo e as alternativas não constam do material de gabarito disponibilizado aqui; o registro não é uma tentativa pontuada.</p></div><div><h3>Visualizador do gabarito original</h3><label for="comment-pdf-file" class="file-instruction">Carregar PDF comentado do '+safe(q.semestre)+'º semestre (somente no navegador)</label><input type="file" id="comment-pdf-file" accept="application/pdf,.pdf" /><p class="muted">Escolha o arquivo TP_NIEPAEM_2026.'+safe(q.semestre)+'_COMENTARIOS.pdf que você enviou nesta conversa. Nenhuma cópia será publicada.</p>'+fileView+(source?'<p><a href="'+safe(validURL(source))+'" target="_blank" rel="noopener noreferrer">Consultar caderno de 2026.1 em fonte externa ↗</a></p>':'<p class="muted">Para transformar esta questão em alternativa A–D respondível, ainda precisamos do caderno de 2026.2.</p>')+'</div></div>';
 }
 function openComment(id){
-  const q=indices.find(x=>x.id===id&&x.modo_resolucao==="comentario");
+  const q=indices.find(x=>x.id===id&&["comentario","pdf-local"].includes(x.modo_resolucao));
   if(!q)return;
-  commentActive=q;pdfActive=null;active=null;
+  commentActive=q;commentChoice="";pdfActive=null;active=null;
   $("quiz").classList.remove("pdf-dialog");
   $("quiz").classList.add("comment-dialog");
   renderComment(q);
