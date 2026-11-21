@@ -89,6 +89,25 @@ for(const [n,g] of [[55,"A"],[56,"C"],[67,"B"],[70,"D"],[73,"C"],[75,"C"]]){
 const u26=indices.filter(q=>q.instituicao==="UNESP"&&q.ano===2026&&q.tipo==="Residência de acesso direto");
 if(u26.some(q=>!/^[A-D]$/.test(q.gabarito)||!q.gabarito_status?.includes("FONTE SECUNDÁRIA")))fail("UNESP 2026: gabarito de fonte secundária precisa ser identificado");
 
+
+for(const [year,code,expectedScorable] of [[2025,"A1",120],[2026,"AD1",118]]){
+ const rows=indices.filter(q=>q.instituicao==="USP"&&q.ano===year&&q.caderno==="Áreas Básicas e Acesso Direto — "+code);
+ const nums=rows.map(q=>q.numero).sort((a,b)=>a-b);
+ if(rows.length!==120||nums.some((v,i)=>v!==i+1))fail("USP "+year+" "+code+": deve ter 120 números distintos 1–120");
+ if(rows.filter(q=>/^[A-D]$/.test(q.gabarito)).length!==expectedScorable)fail("USP "+year+" "+code+": quantidade pontuável incorreta");
+ for(const q of rows){
+  if(q.tipo!=="Residência de acesso direto"||q.modo_resolucao!=="pdf"||q.alternativas_quantidade!==4)fail("USP "+year+": caderno ou modo inválido: "+q.id);
+  if(!q.fonte_url||!q.pdf_url||!q.gabarito_url||!q.pdf_espelho_url)fail("USP "+year+": links insuficientes: "+q.id);
+  if(q.conteudo_reproduzido!==false||q.pagina_estimativa!==true)fail("USP "+year+": aviso de origem e de página necessário: "+q.id);
+  if(q.modulo==="Acesso direto — classificação pendente"&&q.status_classificacao!=="Classificação individual pendente")fail("USP "+year+": questão sem classificação não identificada: "+q.id);
+ }
+}
+const ad1=indices.filter(q=>q.instituicao==="USP"&&q.ano===2026&&q.caderno==="Áreas Básicas e Acesso Direto — AD1");
+if(ad1.filter(q=>q.gabarito==="ANULADA").map(q=>q.numero).join(",")!=="54,120")fail("USP 2026: anuladas do gabarito retificado devem ser 54 e 120");
+for(const [n,letter] of [[109,"B"],[110,"C"],[114,"A"]]){
+ if(ad1.find(q=>q.numero===n)?.gabarito!==letter)fail("USP 2026: retificação não aplicada na questão "+n);
+}
+
 const seen=new Set(indices.map(x=>x.id));
 for(const [sem,entries] of [[1,niepaem1],[2,niepaem2]]){
  if(!Array.isArray(entries)||entries.length!==120)fail("NIEPAEM 2026."+sem+": esperado 120 registros");
