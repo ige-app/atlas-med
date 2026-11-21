@@ -7,7 +7,7 @@ const indices = read("data/indices.json");
 const sources = read("data/provas.json");
 const niepaem1 = read("data/niepaem-2026-1.json");
 const niepaem2 = read("data/niepaem-2026-2.json");
-const banks = new Set(["USP", "UNESP", "UNIFESP", "ENAMED", "ENARE", "NIEPAEM"]);
+const banks = new Set(["USP", "UNESP", "UNIFESP", "ENAMED", "NIEPAEM"]);
 const errors = [];
 const fail = msg => errors.push(msg);
 const unique = (list, field, name) => {
