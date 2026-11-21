@@ -51,7 +51,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Lactente de quatro meses chega desidratado, com vômitos, poliúria, déficit ponderal e sinais de osteopenia e raquitismo resistente à vitamina D. A partir da hipótese de acidose tubular renal, qual distúrbio ácido-básico é esperado? A questão foi excluída do cálculo.",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Alcalose respiratória com hipocloremia",
+      "Acidose metabólica com hipercloremia",
+      "Alcalose respiratória com hipocalemia",
+      "Acidose metabólica com hipercalemia"
+    ]
   },
   {
     "id": "enamed-2025-c01-q003",
@@ -75,7 +81,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Homem de 45 anos sofre queda presumida de escada, com período de inconsciência, trauma em face e pescoço e amnésia do evento. Após recuperar a resposta a comandos, qual conjunto de exames de imagem e tempo de observação é recomendado na emergência?",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Tomografias de crânio, face e coluna cervical e radiografias dos membros; observação durante 12 horas",
+      "Radiografias de crânio, coluna cervical e membros; internação para vigilância",
+      "Tomografias de crânio e face e radiografias dos membros; observação domiciliar após alta",
+      "Radiografias de crânio, face e membros; internação por 24 horas"
+    ]
   },
   {
     "id": "enamed-2025-c01-q004",
@@ -129,7 +141,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Homem de 28 anos apresenta lesão ulcerada na mão, com nódulos satélites, após arranhadura por gato de rua. Biópsia mostra inflamação granulomatosa e corpos asteroides. Qual infecção e esquema antifúngico são prováveis? O caderno inclui uma fotografia clínica.",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Furunculose, com cefalexina por uma semana",
+      "Herpes-zóster, com aciclovir durante dez dias",
+      "Esporotricose, com itraconazol por 120 dias",
+      "Paracoccidioidomicose, com anfotericina B por um mês"
+    ]
   },
   {
     "id": "enamed-2025-c01-q006",
@@ -153,7 +171,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Pessoa com cardiopatia é encaminhada pela atenção primária para seguimento especializado após evento cardiovascular. A questão analisa a classificação de nível de prevenção da saúde em situação de acompanhamento e reabilitação.",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Atenção primária, com prevenção secundária",
+      "Atenção secundária, com prevenção secundária",
+      "Atenção terciária, com prevenção terciária",
+      "Atenção quaternária, com prevenção terciária"
+    ]
   },
   {
     "id": "enamed-2025-c01-q007",
@@ -177,7 +201,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Jovem com esquizofrenia apresenta contrações musculares cervicais involuntárias após modificação de antipsicótico, quadro compatível com reação extrapiramidal aguda. Qual diagnóstico ou intervenção corresponde ao quadro? O Inep anulou a questão.",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Distonia aguda, tratada com biperideno por via intramuscular",
+      "Acatisia, tratada com haloperidol intramuscular",
+      "Discinesia tardia, tratada com diazepam intramuscular",
+      "Síndrome extrapiramidal, tratada com prometazina intramuscular"
+    ]
   },
   {
     "id": "enamed-2025-c01-q008",
@@ -231,7 +261,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Criança de sete anos em quimioterapia para leucemia apresenta febre persistente, taquicardia, dispneia, sinais respiratórios e lactato elevado. A questão pede a classificação da gravidade da síndrome infecciosa. O gabarito foi anulado.",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Sepse",
+      "Choque séptico",
+      "Disfunção de múltiplos órgãos",
+      "Síndrome da resposta inflamatória sistêmica"
+    ]
   },
   {
     "id": "enamed-2025-c01-q010",
@@ -255,7 +291,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Mulher de 78 anos, obesa, apresenta massa dolorosa e irredutível na região inguinal direita, associada a vômitos e redução da eliminação de flatos. Qual hipótese diagnóstica explica a obstrução? A prova traz uma tabela laboratorial e foi anulada.",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Isquemia mesentérica",
+      "Hérnia inguinal indireta",
+      "Hérnia femoral encarcerada",
+      "Neoplasia obstrutiva de cólon"
+    ]
   },
   {
     "id": "enamed-2025-c01-q011",
@@ -279,7 +321,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Gestante de 25 anos, no segundo trimestre, tem teste rápido reagente para sífilis na primeira consulta pré-natal e recebe penicilina benzatina. Qual critério sorológico deve orientar o seguimento da resposta terapêutica? O Inep anulou a questão.",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "O tratamento realizado impede todas as sequelas fetais",
+      "Títulos de VDRL até 1:4 sempre representam cicatriz sorológica",
+      "Queda de dois títulos do VDRL demonstra resposta ao tratamento",
+      "FTA-Abs reagente comprova sífilis ativa"
+    ]
   },
   {
     "id": "enamed-2025-c01-q012",
@@ -303,7 +351,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Homem de 52 anos procura check-up na UBS, tem tabagismo importante e histórico familiar de diabetes e hipertensão. Quais medidas de rastreamento, oferta de testes e aconselhamento para cessação do tabagismo são indicadas?",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Solicitar múltiplos exames, inclusive PSA, radiografia de tórax, colonoscopia e toque retal, além de aconselhar exercício",
+      "Pedir exames metabólicos, sangue oculto fecal e PSA, com toque retal e orientação para grupo de cessação de tabagismo",
+      "Priorizar mudanças de estilo de vida, cessação do tabagismo e seguimento longitudinal, adiando quaisquer exames até outra idade",
+      "Solicitar perfil lipídico, glicemia e pesquisa de sangue oculto, ofertar testes para HIV, sífilis e hepatites B/C, além de abordar cessação do tabagismo"
+    ]
   },
   {
     "id": "enamed-2025-c01-q013",
@@ -327,7 +381,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Trabalhadora rural de 32 anos apresenta cefaleia, tontura, náuseas e dispneia após contato com pulverização de agrotóxicos; uma colega adoeceu de maneira semelhante. Qual sequência de assistência, notificação e vigilância em saúde do trabalhador é adequada?",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Encaminhar a suspeita ao centro estadual de saúde do trabalhador e fazer denúncia ao Ministério Público do Trabalho",
+      "Aguardar confirmação de nexo pelos exames antes de notificar a vigilância municipal",
+      "Tratar sintomas, pedir exames, notificar no Sinan, fornecer atestado e articular Vigilância em Saúde do Trabalhador",
+      "Informar que a CAT deve ser preenchida exclusivamente por médico do trabalho"
+    ]
   },
   {
     "id": "enamed-2025-c01-q014",
@@ -351,7 +411,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Menino de dez anos mantém padrão de discutir com figuras de autoridade, desafiar regras e culpar outras pessoas pelos próprios comportamentos, com irritabilidade diante de limites. Qual transtorno do comportamento é mais provável?",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Transtorno afetivo bipolar",
+      "Transtorno de oposição desafiante",
+      "Transtorno disruptivo da desregulação do humor",
+      "Transtorno de déficit de atenção e hiperatividade"
+    ]
   },
   {
     "id": "enamed-2025-c01-q015",
@@ -375,7 +441,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Paciente de 50 anos apresenta edema, hipoalbuminemia (1,8 g/dL), proteinúria de 3,6 g em 24 horas e alterações laboratoriais renais. Quais achados definem a síndrome nefrótica descrita?",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Proteinúria de 3,6 g/24 horas e albumina de 1,8 g/dL",
+      "Proteinúria de 3,6 g/24 horas e triglicerídeos de 200 mg/dL",
+      "Hematúria e triglicerídeos de 200 mg/dL",
+      "Hematúria e albumina de 1,8 g/dL"
+    ]
   },
   {
     "id": "enamed-2025-c01-q016",
@@ -399,7 +471,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Recém-nascido de 15 dias com síndrome de Down apresenta ganho ponderal e desenvolvimento sem intercorrências agudas. Quais curvas devem ser usadas para acompanhar peso e estatura ao longo do crescimento?",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Curvas OMS habituais, do nascimento à adolescência",
+      "Curvas próprias para síndrome de Down desde o nascimento",
+      "Curvas OMS com peso e comprimento corrigidos para síndrome de Down",
+      "Curvas OMS até dois anos, seguidas de curvas específicas para síndrome de Down"
+    ]
   },
   {
     "id": "enamed-2025-c01-q017",
@@ -423,7 +501,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Jovem politraumatizado apresenta hipoxemia importante, hipotensão, distensão jugular, desvio traqueal e redução do murmúrio vesicular unilateral. Qual procedimento imediato no atendimento pré-hospitalar deve ser realizado?",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Reposição volêmica",
+      "Cricotireoidostomia",
+      "Pericardiocentese",
+      "Toracocentese"
+    ]
   },
   {
     "id": "enamed-2025-c01-q018",
@@ -447,7 +531,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Adolescente de 16 anos com fenótipo feminino e amenorreia primária apresenta ausência de útero, pelos corporais escassos, testosterona em níveis masculinos e cariótipo 46,XY. Qual diagnóstico explica esses achados?",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Disgenesia gonadal",
+      "Malformação mülleriana",
+      "Obstrução do trato genital",
+      "Insensibilidade androgênica"
+    ]
   },
   {
     "id": "enamed-2025-c01-q019",
@@ -471,7 +561,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Mulher de 82 anos, sem comorbidades relevantes, apresenta medidas repetidas de pressão arterial próximas de 145–148/86–88 mmHg e permanece assintomática. Que estratégia inicial de acompanhamento é adequada?",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Referenciar a paciente ao cardiologista",
+      "Solicitar Holter de 24 horas e ecocardiograma",
+      "Prescrever losartana 50 mg noturna com controle na UBS",
+      "Manter conduta expectante, sem remédio, e acompanhar pressão na UBS"
+    ]
   },
   {
     "id": "enamed-2025-c01-q020",
@@ -495,7 +591,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Mulher travesti de 28 anos com exposição sexual desprotegida há dois dias e uso inconsistente de preservativos procura a UBS. Qual sequência de testagem para HIV e sífilis, PEP e posterior PrEP é indicada?",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Iniciar PrEP depois de HIV negativo e PEP após tratamento inicial, com rastreamento de IST trimestral",
+      "Testar HIV e sífilis e iniciar PrEP imediatamente com orientações vacinais",
+      "Testar HIV e sífilis, iniciar PEP com HIV não reagente e planejar PrEP após terminar a PEP",
+      "Ofertar PEP e PrEP ao mesmo tempo e revisar sorologias e adesão em consulta posterior"
+    ]
   },
   {
     "id": "enamed-2025-c01-q021",
@@ -519,7 +621,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Mulher de 21 anos perdeu cerca de 30 kg em dez meses e apresenta amenorreia, desmaio, IMC 14,7, pressão de 80/60 mmHg, bradicardia e alterações eletrocardiográficas. Qual nível de cuidado imediato é indicado?",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Internação em enfermaria de clínica médica",
+      "Internação em enfermaria de saúde mental",
+      "Investigação da amenorreia somente pela UBS",
+      "Acompanhamento ambulatorial no CAPS"
+    ]
   },
   {
     "id": "enamed-2025-c01-q022",
@@ -543,7 +651,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Mulher de 65 anos apresenta lentificação motora, marcha em pequenos passos, tremor de repouso assimétrico, rigidez em roda dentada e prejuízo funcional. Qual combinação de medicamentos é indicada no início do tratamento?",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Levodopa associada à carbidopa",
+      "Donepezila com memantina",
+      "Propranolol com amantadina",
+      "Atorvastatina com baclofeno"
+    ]
   },
   {
     "id": "enamed-2025-c01-q023",
@@ -567,7 +681,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Entre quatro vinhetas de adolescentes com equimoses ou manifestações clínicas variadas, uma menina de 13 anos apresenta lesões de diferentes idades e evita explicar a origem. Em qual situação é necessária notificação ao Conselho Tutelar?",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Adolescente acolhido com febre, púrpura e rigidez nucal, sugestivo de infecção sistêmica",
+      "Adolescente com equimoses em diversos estágios e evasiva ao explicar as lesões",
+      "Adolescente de abrigo com febre, dor retro-orbitária e sangramento gengival",
+      "Adolescente em medida socioeducativa com equimoses, febre, perda ponderal e linfadenopatia"
+    ]
   },
   {
     "id": "enamed-2025-c01-q024",
@@ -591,7 +711,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Paciente apresenta dor abdominal que migra para a fossa ilíaca direita, com sinais compatíveis com apendicite aguda. Qual conduta de investigação e tratamento cirúrgico é adequada?",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Iniciar antibiótico empírico enquanto aguarda exame de urocultura",
+      "Solicitar tomografia abdominal e iniciar metotrexato",
+      "Iniciar antibiótico empírico e acompanhar ambulatorialmente",
+      "Realizar ultrassonografia abdominal e solicitar avaliação cirúrgica"
+    ]
   },
   {
     "id": "enamed-2025-c01-q025",
@@ -615,7 +741,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Puérpera com diagnóstico de diabetes mellitus gestacional tratada com insulina durante a gravidez necessita de orientação após o parto. Qual manejo metabólico deve ser realizado no puerpério?",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Suspender insulina após o parto",
+      "Iniciar hipoglicemiante oral",
+      "Manter insulina NPH com um terço da dose usada na gestação",
+      "Manter doses de insulina iguais às do pré-natal"
+    ]
   },
   {
     "id": "enamed-2025-c01-q026",
@@ -639,7 +771,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Pessoa com dengue apresenta sinais de alarme e requer classificação de risco e escolha do esquema de hidratação. Qual conduta de manejo é indicada conforme a gravidade?",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Classificar como dengue grupo B, dar hidratação oral e manejo sintomático e solicitar hemograma, plaquetas e NS1, com acompanhamento após exames",
+      "Classificar como grupo C e manter hidratação oral e sintomáticos com antígeno NS1/IgM e seguimento ambulatorial",
+      "Classificar como grupo C, iniciar hidratação parenteral e sintomáticos, pedir hemograma, plaquetas e NS1 e observar até estabilização",
+      "Classificar como grupo B, iniciar hidratação parenteral e observação, com hemograma, plaquetas, NS1 e IgM"
+    ]
   },
   {
     "id": "enamed-2025-c01-q027",
@@ -663,7 +801,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Adulto procura atendimento por lombalgia sem sinais de alarme, déficit neurológico ou sintomas constitucionais. Qual abordagem inicial e orientação na atenção primária são adequadas?",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Solicitar ressonância lombar e encaminhar à ortopedia",
+      "Pedir radiografia lombar e corticoide oral, com revisão em dez dias",
+      "Repouso por uma semana e otimização da analgesia com antidepressivo tricíclico",
+      "Orientar natureza benigna, analgesia e atividade física leve, com revisão em quatro a seis semanas"
+    ]
   },
   {
     "id": "enamed-2025-c01-q028",
@@ -687,7 +831,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Notícia sobre internações involuntárias motiva a análise da legislação brasileira de saúde mental. Qual profissional está autorizado a indicar essa internação e quais regras se aplicam?",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Encaminhar internação após avaliação psiquiátrica exclusiva",
+      "Solicitar autorização de familiares sem necessidade de laudo médico",
+      "O procedimento pode ser iniciado mediante laudo médico circunstanciado e observado o fluxo legal",
+      "Determinar internação involuntária apenas por decisão judicial"
+    ]
   },
   {
     "id": "enamed-2025-c01-q029",
@@ -711,7 +861,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Homem de 68 anos com fibrilação atrial, diabetes e hipertensão apresenta déficit neurológico agudo. Tomografia revela isquemia em cerca de 40% do território da artéria cerebral média. Qual achado contraindica trombólise nesse caso?",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Isquemia extensa, envolvendo parcela importante do território arterial",
+      "Fibrilação atrial prévia, isoladamente",
+      "Histórico de diabetes mellitus e hipertensão",
+      "Idade superior a 65 anos"
+    ]
   },
   {
     "id": "enamed-2025-c01-q030",
@@ -735,7 +891,13 @@
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
     "enunciado_parafraseado": "Menino de seis anos apresenta episódios repetidos de balanopostite, prepúcio com anel fibrótico e exposição parcial do meato à retração. Há indicação de conduta cirúrgica ou conservadora?",
-    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
+    "alternativas_parafraseadas": [
+      "Tratamento tópico com corticosteroide e observação",
+      "Tratamento antifúngico prolongado",
+      "Circuncisão pela fimose cicatricial e balanopostites de repetição",
+      "Dilatações forçadas do prepúcio"
+    ]
   },
   {
     "id": "enamed-2025-c01-q031",
