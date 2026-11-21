@@ -106,7 +106,7 @@
     "titulo": "USP FMUSP — ingresso 2025",
     "url": "https://www.fuvest.br/acervo-residencia-coreme-sp-2025/",
     "observacao": "Acervo da edição de ingresso; distintas modalidades e cadernos.",
-    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "status": "120 questões de acesso direto A1 indexadas com gabarito",
     "tipo": "portal"
   },
   {
@@ -116,7 +116,7 @@
     "titulo": "USP FMUSP — ingresso 2026",
     "url": "https://www.fuvest.br/acervo-residencia-coreme-sp-2026/",
     "observacao": "Acervo da edição de ingresso; distintas modalidades e cadernos.",
-    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "status": "120 questões de acesso direto AD1 indexadas, duas anuladas",
     "tipo": "portal"
   },
   {
@@ -478,5 +478,45 @@
     "observacao": "Caderno de prova com pré-requisito (R+); não confundir com acesso direto. Encontrado em espelho público da Medway. Questões e gabaritos ainda não indexados.",
     "status": "PDF encontrado; pendente de importação",
     "tipo": "caderno R+"
+  },
+  {
+    "id": "usp-fmusp-2025-a1-prova",
+    "instituicao": "USP",
+    "ano": 2025,
+    "titulo": "USP FMUSP 2025 — Acesso Direto A1, 120 questões",
+    "url": "https://www.fuvest.br/wp-content/uploads/2024-12-01_rm2025_prova-areasbasicasedeacessodireto_grupo-a1.pdf",
+    "tipo": "caderno",
+    "status": "120/120 questões indexadas com gabarito oficial; assuntos específicos em revisão",
+    "observacao": "Caderno da Fuvest aplicado em 01/12/2024 para ingresso em 2025. Resolução no Atlas Med pela leitura do PDF e marcação A–D. Grupo A1: não duplicar versões A2 e A3."
+  },
+  {
+    "id": "usp-fmusp-2025-a1-gabarito",
+    "instituicao": "USP",
+    "ano": 2025,
+    "titulo": "USP FMUSP 2025 — Gabarito Fuvest dos grupos A1/A2/A3",
+    "url": "https://www.fuvest.br/wp-content/uploads/2024-12-01_rm2025_gabarito-areasbasicasedeacessodireto.pdf",
+    "tipo": "gabarito",
+    "status": "120 respostas A1 cadastradas; gabarito publicado 01/12/2024",
+    "observacao": "Documento oficial de duas páginas com respostas de 120 itens e correspondência de numeração entre A1, A2 e A3."
+  },
+  {
+    "id": "usp-fmusp-2026-ad1-prova",
+    "instituicao": "USP",
+    "ano": 2026,
+    "titulo": "USP FMUSP 2026 — Acesso Direto AD1, 120 questões",
+    "url": "https://www.fuvest.br/wp-content/uploads/rm2026-prova-AD1-areasbasicas-acessodireto.pdf",
+    "tipo": "caderno",
+    "status": "120/120 indexadas, 118 pontuáveis e 2 anuladas; classificação individual em revisão",
+    "observacao": "Caderno AD1 da Fuvest aplicado em 07/12/2025 para ingresso em 2026. 120 questões e 4 alternativas. AD2 e AD3 são versões reordenadas."
+  },
+  {
+    "id": "usp-fmusp-2026-ad1-gabarito-retificado",
+    "instituicao": "USP",
+    "ano": 2026,
+    "titulo": "USP FMUSP 2026 — Gabarito retificado em 15/12/2025",
+    "url": "https://www.fuvest.br/wp-content/uploads/rm2026-gabarito-AD-areasbasicas-acessodireto-retificado.pdf",
+    "tipo": "gabarito",
+    "status": "118 respostas pontuáveis; AD1 questões 54 e 120 anuladas",
+    "observacao": "Documento oficial retificado da Fuvest para AD1, AD2 e AD3. Usar AD1; mudanças marcadas no próprio PDF foram consideradas."
   }
 ]
