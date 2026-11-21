@@ -295,8 +295,8 @@
     "ano": 2025,
     "titulo": "NIEPAEM — Prova 2025.1 (120 questões)",
     "url": "https://pt.scribd.com/document/887296549/TP2025-1-PROVA",
-    "observacao": "Caderno compartilhado em plataforma de terceiros. Conferir autoria, autorização e acesso; não é prova de residência.",
-    "status": "Prova localizada; classificação individual pendente",
+    "observacao": "Teste de Progresso do 1º semestre de 2025, 120 questões. Cinco delas já estão classificadas, com respostas e comentários editoriais.",
+    "status": "5 de 120 questões importadas para resolução; gabarito proveniente de documento comentado compartilhado em site de terceiros",
     "tipo": "caderno"
   },
   {
@@ -316,7 +316,7 @@
     "titulo": "NIEPAEM — Comentários 2025.1",
     "url": "https://pt.scribd.com/document/887296871/TP2025-1-COMENTARIOS",
     "observacao": "Material comentado compartilhado por terceiros, com possível restrição de acesso. Atribuição e direitos de reprodução devem ser conferidos.",
-    "status": "Resolução comentada localizada, não transcrita",
+    "status": "Consultado nas questões 1, 2, 4, 5 e 6. Origem: arquivo de terceiros com direitos reservados.",
     "tipo": "resolucao"
   },
   {
@@ -335,8 +335,8 @@
     "ano": 2025,
     "titulo": "NIEPAEM — Prova 2025.2 (120 questões)",
     "url": "https://pt.scribd.com/document/928884517/TP2025-2-PROVA",
-    "observacao": "Caderno disponibilizado por terceiros; não confundir com edição 2025.1.",
-    "status": "Prova localizada; classificação individual pendente",
+    "observacao": "Teste de Progresso do 2º semestre de 2025. Oito questões indexadas para resolução, com gabarito e síntese própria.",
+    "status": "8 de 120 questões importadas; gabarito comentado proveniente de documento compartilhado por terceiros",
     "tipo": "caderno"
   },
   {
@@ -346,7 +346,7 @@
     "titulo": "NIEPAEM — Comentários 2025.2",
     "url": "https://pt.scribd.com/document/928884512/TP2025-2-COMENTARIOS",
     "observacao": "Material comentado localizado em fonte de terceiros; comentários ainda não verificados questão a questão.",
-    "status": "Resolução localizada, não transcrita",
+    "status": "Consultado nas questões 1, 2, 3, 4, 5, 6, 7 e 9. Arquivo de terceiros; comentários do Atlas Med são próprios.",
     "tipo": "resolucao"
   },
   {
@@ -355,8 +355,8 @@
     "ano": 2026,
     "titulo": "NIEPAEM — Prova 2026.1 (120 questões)",
     "url": "https://pt.scribd.com/document/1070216313/Tp-Niepaem-2026-1-Prova",
-    "observacao": "Caderno do Teste de Progresso de 2026.1 encontrado em fonte de terceiros. Não foi localizado gabarito comentado oficial público verificável.",
-    "status": "Prova localizada; gabarito comentado pendente de verificação",
+    "observacao": "Teste de Progresso aplicado em 13/05/2026. Cinco questões já estão classificadas por assunto; falta gabarito comentado verificável para liberar a pontuação.",
+    "status": "5 de 120 questões classificadas; respostas ainda não cadastradas",
     "tipo": "caderno"
   }
 ]
