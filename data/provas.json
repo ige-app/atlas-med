@@ -1,0 +1,101 @@
+[
+  {
+    "id": "fonte-1",
+    "instituicao": "ENAMED",
+    "ano": 2025,
+    "titulo": "ENAMED — provas e gabaritos",
+    "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enamed/provas-e-gabaritos",
+    "observacao": "Página do acervo; conferir ano e caderno específico.",
+    "status": "referência do portal; conteúdo não importado"
+  },
+  {
+    "id": "fonte-2",
+    "instituicao": "ENAMED",
+    "ano": 2026,
+    "titulo": "ENAMED — provas e gabaritos",
+    "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enamed/provas-e-gabaritos",
+    "observacao": "Página do acervo; conferir ano e caderno específico.",
+    "status": "referência do portal; conteúdo não importado"
+  },
+  {
+    "id": "fonte-3",
+    "instituicao": "ENARE",
+    "ano": null,
+    "titulo": "ENARE — edições anteriores",
+    "url": "https://www.gov.br/hubrasil/pt-br/ensino-e-pesquisa/exame-nacional-de-residencia-enare/edicoes-anteriores",
+    "observacao": "Índice de edições; provas e gabaritos dependem de conferência.",
+    "status": "referência do portal; conteúdo não importado"
+  },
+  {
+    "id": "fonte-4",
+    "instituicao": "USP",
+    "ano": null,
+    "titulo": "FMUSP — acervo Fuvest",
+    "url": "https://www.fuvest.br/acervo-residencia-coreme-sp/",
+    "observacao": "Arquivo da residência; selecionar a edição desejada.",
+    "status": "referência do portal; conteúdo não importado"
+  },
+  {
+    "id": "fonte-5",
+    "instituicao": "UNESP",
+    "ano": null,
+    "titulo": "UNESP FMB — concursos de residência",
+    "url": "https://www.inscricoes.fmb.unesp.br/concurso.asp",
+    "observacao": "Arquivo histórico; confirmar disponibilidade de cada prova.",
+    "status": "referência do portal; conteúdo não importado"
+  },
+  {
+    "id": "fonte-6",
+    "instituicao": "UNESP",
+    "ano": 2025,
+    "titulo": "UNESP FMB — edição 2025",
+    "url": "https://www.vunesp.com.br/FMHO2401",
+    "observacao": "Portal da edição 2025; conferir caderno e gabarito.",
+    "status": "referência do portal; conteúdo não importado"
+  },
+  {
+    "id": "fonte-7",
+    "instituicao": "UNESP",
+    "ano": 2026,
+    "titulo": "UNESP FMB — edição 2026",
+    "url": "https://www.vunesp.com.br/FMHO2501",
+    "observacao": "Portal da edição 2026; conferir caderno e gabarito.",
+    "status": "referência do portal; conteúdo não importado"
+  },
+  {
+    "id": "fonte-8",
+    "instituicao": "UNIFESP",
+    "ano": 2025,
+    "titulo": "UNIFESP — provas e gabaritos",
+    "url": "https://coreme2025.fapunifesp.edu.br/divulgacao-de-provas-e-gabaritos-1-fase-2024-2025",
+    "observacao": "Portal de prova/gabarito 2024–2025.",
+    "status": "referência do portal; conteúdo não importado"
+  },
+  {
+    "id": "fonte-9",
+    "instituicao": "UNIFESP",
+    "ano": 2026,
+    "titulo": "UNIFESP — COREME 2026",
+    "url": "https://coreme2026.fapunifesp.edu.br/",
+    "observacao": "Portal oficial; localizar cadernos no próprio site.",
+    "status": "referência do portal; conteúdo não importado"
+  },
+  {
+    "id": "fonte-10",
+    "instituicao": "NIEPAEM",
+    "ano": 2025,
+    "titulo": "NIEPAEM — teste de progresso 2025",
+    "url": "https://www.edudata.com.br/tp/tp25.html",
+    "observacao": "Teste de progresso, não residência; caderno pode exigir acesso.",
+    "status": "referência do portal; conteúdo não importado"
+  },
+  {
+    "id": "fonte-11",
+    "instituicao": "NIEPAEM",
+    "ano": 2026,
+    "titulo": "NIEPAEM — teste de progresso 2026",
+    "url": "https://www.edudata.com.br/tp/tp26.html",
+    "observacao": "Teste de progresso, não residência; acesso pode ser restrito.",
+    "status": "referência do portal; conteúdo não importado"
+  }
+]
