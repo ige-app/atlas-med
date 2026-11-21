@@ -16,9 +16,32 @@ Banco organizado por **módulo, tema, instituição, ano e semestre**, com respo
 | NIEPAEM 2025.2 | 8/120 | Resolução de primeiro lote em redação editorial |
 | **NIEPAEM 2026.1** | **120/120** | **120 questões respondíveis com caderno original carregado localmente, gabarito e resumo** |
 | **NIEPAEM 2026.2** | **120/120** | **120 questões respondíveis com caderno original carregado localmente, gabarito e resumo** |
-| **Total** | **483 registros** | **443 pontuáveis** e **10 anuladas/excluídas** (240 questões NIEPAEM exigem carregar o caderno no navegador) |
+| **Total (antes da UNESP)** | **483 registros** | **443 pontuáveis** e **10 anuladas/excluídas** (240 questões NIEPAEM exigem carregar o caderno no navegador) |
 
 O catálogo contém **39 referências**, mas essas referências não significam 39 provas integralmente processadas.
+
+## UNESP Botucatu — Residência Médica 2025 e 2026 (acesso direto)
+
+| Seleção | Quantidade indexada | Situação |
+|---|---:|---|
+| **UNESP 2025** (prova de 2024, ingresso em 2025) | **100/100** | **96 pontuáveis**, 4 anuladas em decisão oficial após recursos |
+| **UNESP 2026** (aplicada em 29/11/2025, ingresso em 2026) | **100/100** | **100 questões com letras em fonte secundária**; cotejo direto com Vunesp pendente |
+| **Acervo geral após esta atualização** | **683 registros** | **639 pontuáveis** (considerando os gabaritos secundários de 2026) |
+
+As duas provas de **acesso direto** estão disponíveis para marcar alternativa A–D e acompanhar acertos/erros, usando o leitor de PDF da prova. Isso **não inclui** as provas de especialidades com pré-requisito (R+), que constituem cadernos diferentes.
+
+### Fontes das provas
+
+- [UNESP 2025 — caderno Vunesp de acesso direto (PDF, espelho no Estratégia MED)](https://cdn.medblog.estrategiaeducacional.com.br/wp-content/uploads/2024/12/prova_AD_unesp.pdf)
+- [UNESP 2025 — gabarito-base rediagramado no OsceLabs (PDF)](https://www.oscelabs.com.br/provas-antigas/pdf/psu/unesp-botucatu-2025-r1-objetiva-oscelabs-gabarito.pdf)
+- [UNESP 2025 — despacho **oficial** de 06/12/2024 com retificações (PDF)](https://cdn.medblog.estrategiaeducacional.com.br/wp-content/uploads/2024/12/gabarito-definitvo-unesp.pdf). Anuladas: **8, 10, 54, 79**; alteradas: **55→A, 56→C, 67→B, 70→D, 73→C, 75→C**.
+- [UNESP 2026 — caderno Vunesp de acesso direto (PDF, espelho no Estratégia MED)](https://cdn.medblog.estrategiaeducacional.com.br/wp-content/uploads/2025/12/prova-unesp-2026.pdf)
+- [UNESP 2026 — tabela das 100 respostas publicada no MedCalcApp](https://medcalcapp.com/blog/gabarito-unesp-2026/), identificada lá como definitiva, **ainda não checada diretamente no portal da banca**, cuja seção de gabaritos exige login.
+- [Vunesp — seleção 2025](https://www.vunesp.com.br/FMHO2401) e [seleção 2026](https://www.vunesp.com.br/FMHO2501), fontes institucionais.
+
+**Nível de revisão:** as 200 questões estão numeradas e organizadas nas grandes áreas (Pediatria, Obstetrícia, Ginecologia, Clínica Médica, Cirurgia, Saúde Coletiva). O assunto mais específico já foi confirmado para **78 questões**; nos demais casos, apenas a área e o caderno estão confirmados. As páginas atualmente marcadas no PDF são **aproximadas**, e o estudante deve buscar o número exato da questão no arquivo quando necessário. **Não publicar transcrições literais** dos cadernos sem licença de reprodução. O site apresenta as quatro letras para responder depois que o estudante consulta as alternativas no PDF da Vunesp.
+
+A futura seleção de residência para **ingresso em 2027** ainda **não foi aplicada** em 21/11/2026. Seu caderno e gabarito não podem ser confundidos com a edição 2026 que já está no banco.
 
 ## NIEPAEM 2026: cadernos e gabaritos disponíveis, sem republicar PDFs
 
