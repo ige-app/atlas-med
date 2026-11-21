@@ -1,69 +1,70 @@
 # Atlas Med — Banco de Questões de Medicina
 
 **Site:** https://ige-app.github.io/atlas-med/  
-**Código:** https://github.com/ige-app/atlas-med
+**Repositório:** https://github.com/ige-app/atlas-med
 
-O Atlas Med é uma plataforma de estudo de questões de provas reais, organizada por **módulo, tema, instituição, ano e semestre**, com links às fontes e histórico no navegador.
+Banco organizado por **módulo, tema, instituição, ano e semestre**, com resposta por alternativa, correção pelo gabarito e acompanhamento local de acertos e erros.
 
-## Acervo (21/11/2026)
+## Situação do acervo — 21/11/2026
 
-| Edição | Classificadas | Situação |
+| Prova | Indexadas | Disponibilidade |
 |---|---:|---|
-| ENAMED 2025 | 100/100 | Questões reescritas com quatro alternativas, PDF oficial e gabarito definitivo; 90 pontuáveis |
-| ENAMED 2026 | 100/100 | Questões reescritas e comentadas, gabarito **preliminar** até a publicação do definitivo, prevista para 04/12/2026 |
-| USP FMUSP 2024 A1 | 30/120 | Índice por módulo com acesso à fonte |
-| NIEPAEM 2025.1 | 5/120 | Questões com alternativas e comentário editorial; fonte secundária |
-| NIEPAEM 2025.2 | 8/120 | Questões com alternativas e comentário editorial; fonte secundária |
-| **NIEPAEM 2026.1** | **120/120** | **Gabarito comentado da banca**, classificação e explicações próprias; sem enunciado integral no repositório |
-| **NIEPAEM 2026.2** | **120/120** | **Gabarito comentado da banca**, classificação e explicações próprias; sem enunciado integral no repositório |
-| **TOTAL** | **483 registros** | **213** com alternativas respondíveis; **240** registros NIEPAEM 2026 para consulta do gabarito e explicação, sem simular tentativas |
+| ENAMED 2025 (Caderno 01) | 100/100 | 100 questões com enunciados e alternativas reescritos, PDF original vinculado, gabarito definitivo (90 pontuáveis, 10 anuladas/excluídas) |
+| ENAMED 2026 (Caderno 01) | 100/100 | 100 questões com redação editorial, quatro alternativas e comentários; **gabarito ainda preliminar** |
+| USP 2024 (A1) | 30/120 | Classificação temática e links para a prova e o gabarito |
+| NIEPAEM 2025.1 | 5/120 | Resolução de primeiro lote em redação editorial |
+| NIEPAEM 2025.2 | 8/120 | Resolução de primeiro lote em redação editorial |
+| **NIEPAEM 2026.1** | **120/120** | **120 questões respondíveis com caderno original carregado localmente, gabarito e resumo** |
+| **NIEPAEM 2026.2** | **120/120** | **120 questões respondíveis com caderno original carregado localmente, gabarito e resumo** |
+| **Total** | **483 registros** | **453** podem ser respondidos (240 deles exigem carregar o PDF do caderno no navegador) |
 
-Há **39 referências** de portais, cadernos e gabaritos. Não confundir uma edição catalogada com a prova totalmente importada.
+O catálogo contém **39 referências**, mas essas referências não significam 39 provas integralmente processadas.
 
-## PDFs NIEPAEM 2026 — recebidos da usuária
+## NIEPAEM 2026: cadernos e gabaritos disponíveis, sem republicar PDFs
 
-Os seguintes documentos foram lidos e utilizados **apenas como fonte de conferência das letras e dos temas**, sem publicar suas páginas no GitHub:
+A usuária forneceu quatro documentos:
 
-- **TP_NIEPAEM_2026.1_COMENTARIOS.pdf**: 27 páginas, prova de **13/05/2026**; 120 respostas comentadas, com bibliografia.
-- **TP_NIEPAEM_2026.2_COMENTARIOS.pdf**: 29 páginas, prova de **24/09/2026**; 120 respostas comentadas, com bibliografia.
+| Edição | Caderno de questões | Gabarito comentado |
+|---|---|---|
+| 2026.1, aplicada em 13/05/2026 | `TP_NIEPAEM_2026.1_PROVA.pdf` — **20 páginas**, 120 questões, A–D | `TP_NIEPAEM_2026.1_COMENTARIOS.pdf` — **27 páginas** |
+| 2026.2, aplicada em 24/09/2026 | `TP_NIEPAEM_2026.2_PROVA.pdf` — **24 páginas**, 120 questões, A–D | `TP_NIEPAEM_2026.2_COMENTARIOS.pdf` — **29 páginas** |
 
-Os PDFs afirmam expressamente **“Direitos autorais reservados. Proibida a reprodução, ainda que parcial, sem autorização prévia.”** Por isso, o site contém somente:
-- categoria da banca original (GO, SC, CM, CIR ou PED), classificação de módulo/assunto e gabarito;
-- uma **síntese editorial original** dos pontos médicos principais, não uma transcrição do comentário;
-- referência à **página específica** do documento privado, para conferência.
+As páginas de **todas as 240 questões** foram mapeadas diretamente nos cadernos; os 240 gabaritos e os temas específicos foram conferidos com os comentários da banca. Questões com fotografias, ECG, gráficos, ultrassonografia e figuras são lidas no PDF original.
 
-**O PDF comentado não foi publicado nem incorporado aos arquivos do site público.** Para consultá-lo no próprio Atlas Med, acesse uma questão NIEPAEM 2026 → **Ver gabarito e comentário** → **Carregar PDF comentado** e selecione o arquivo do respectivo semestre **no seu próprio computador**. O arquivo é aberto localmente pelo navegador, sem envio ao GitHub/servidor. O visualizador tentará abrir na página do comentário da questão. Você precisa selecionar o PDF novamente após atualizar a página.
+**Os quatro PDFs dizem expressamente que sua reprodução, ainda que parcial, exige autorização.** Por isso, nenhum desses quatro arquivos foi publicado no GitHub Pages. O código público armazena apenas o número, a página do caderno, o módulo, o assunto, a letra do gabarito e uma explicação resumida escrita pelo Atlas Med. Enunciados e alternativas originais são lidos de um **arquivo local do usuário**, sem transmiti-los a nenhum servidor. É uma interface de estudo de provas reais, não um banco de transcrições publicadas.
 
-As **120 letras de cada semestre** foram conferidas diretamente nos PDFs recebidos, mas essas fontes **não são os cadernos de enunciados com alternativas**. Por isso, as 240 questões de 2026 são exibidas como *gabarito consultável*, **sem botão de resposta A–D nem contabilização de desempenho**. Para habilitar resolução interativa fiel será necessário também dispor dos cadernos e conferir o número das questões e a ordem de alternativas.
+### Como responder qualquer questão NIEPAEM 2026
 
-Caderno NIEPAEM 2026.1 encontrado em [Scribd](https://pt.scribd.com/document/1070216313/Tp-Niepaem-2026-1-Prova), porém a plataforma de terceiros pode exigir autenticação. O caderno 2026.2 não foi incorporado.
+1. Abra https://ige-app.github.io/atlas-med/.
+2. Selecione a banca **NIEPAEM**, o ano **2026** e o **1º** ou **2º semestre**.
+3. Escolha o módulo que está estudando ou use **Todos**.
+4. Clique em **Abrir e responder** na questão escolhida.
+5. No campo **Caderno original**, escolha o arquivo `TP_NIEPAEM_2026.1_PROVA.pdf` ou `TP_NIEPAEM_2026.2_PROVA.pdf` que está no seu dispositivo. O visualizador abre na página correta.
+6. Leia o enunciado e as opções A–D no próprio PDF. Marque a alternativa no painel ao lado e clique em **Corrigir resposta**.
+7. A resposta da banca e uma síntese explicativa aparecem **depois** de responder; o histórico registra seu desempenho. Se quiser comparar com o comentário integral, carregue também `TP_NIEPAEM_2026.1_COMENTARIOS.pdf` ou `TP_NIEPAEM_2026.2_COMENTARIOS.pdf` no campo exibido após a correção.
+8. Use **Anterior/Próxima** para avançar nas questões do semestre que atendem aos filtros.
 
-## Como estudar
+A seleção do PDF vale durante a sessão no mesmo navegador: para outros itens do **mesmo semestre**, não será necessário escolhê-lo novamente. **Após atualizar ou fechar a página, é necessário selecionar o PDF outra vez**. Os arquivos nunca são enviados ao site, e não ficam persistidos no armazenamento do navegador.
 
-1. Selecione a instituição **NIEPAEM**, o ano **2026–2026** e o semestre **1º** ou **2º**.
-2. Escolha um módulo (ex.: Obstetrícia, Cardiologia, Cirurgia Geral) ou deixe **Todos**.
-3. Clique em **Ver gabarito e comentário** para consultar a letra da banca e a síntese explicativa.
-4. Se já tiver o PDF comentado, carregue-o no visualizador **local** para ler a resolução integral da banca em seu próprio dispositivo.
+Os registros NIEPAEM 2026 agora incluem a propriedade `modo_resolucao: "pdf-local"`, `pagina_prova` e referência do PDF de prova. O gabarito só é mostrado após registrar uma resposta. O resumo explicativo é uma redação própria, não a transcrição de terceiros.
 
-Para **ENAMED 2025/2026**, use **Abrir e responder**: há enunciados e alternativas em redação editorial, correção automática, favoritos e estatísticas salvas localmente.
+## Outros cuidados
 
-## Alertas de verificação
-
-- **ENAMED 2026:** só gabarito preliminar, sujeito a recursos e eventual anulação. Confirmar nova versão oficial em 04/12/2026 antes de remover alertas.
-- **NIEPAEM 2025:** primeiras 13 questões disponíveis com base em gabaritos comentados compartilhados por terceiros, não validados contra arquivo fornecido pela banca neste chat.
-- **NIEPAEM 2026:** as letras foram extraídas dos gabaritos comentados enviados; as sínteses e classificações por especialidade são editoriais e podem ser refinadas mediante conferência dos cadernos completos.
-- Para questões com imagens/tabelas, usar a fonte original; nenhum conteúdo de imagem de terceiros foi copiado para o repositório.
+- **ENAMED 2026:** o resultado ainda usa gabarito preliminar do Inep; verificar a versão definitiva prevista para **04/12/2026** e corrigir questões afetadas.
+- **NIEPAEM 2025:** somente as primeiras questões foram verificadas; não declarar provas completas.
+- Os PDFs de terceiros não são armazenados no repositório. Nenhum conteúdo de figuras protegidas foi reproduzido.
+- Desempenho e favoritos são salvos apenas no armazenamento local do navegador, sem sincronização entre aparelhos.
 
 ## Arquivos
 
-- `index.html`, `styles.css`, `app.js`: aplicação estática, filtros, correção e leitor de PDF local.
-- `data/indices.json`: ENAMED 2025/2026, USP 2024 e primeiros lotes NIEPAEM 2025.
-- `data/niepaem-2026-1.json`, `data/niepaem-2026-2.json`: 120 respostas e explicações editoriais por edição.
-- `data/provas.json`: catálogo de fontes.
-- `data/questoes.json`: questões de texto integral autorizado, ainda vazio.
-- `scripts/validar.mjs`: verificação de consistência; executada automaticamente pelo GitHub Actions.
+- `index.html`, `app.js`, `styles.css` — interface, filtros, visualizadores e correção.
+- `data/indices.json` — provas ENAMED, USP e primeiros lotes NIEPAEM 2025.
+- `data/niepaem-2026-1.json` e `data/niepaem-2026-2.json` — 120 questões por semestre, com página do caderno, classificação, letra e síntese do comentário.
+- `data/provas.json` — catálogo de referências.
+- `data/questoes.json` — reserva para material textual com autorização de reprodução.
+- `scripts/validar.mjs` — validação automática no GitHub Actions.
 
-## Desenvolvimento local
+Para rodar localmente:
 
 ```bash
 python3 -m http.server 8080
@@ -71,4 +72,4 @@ node --check app.js
 node scripts/validar.mjs
 ```
 
-O GitHub Pages publica a branch `main`, pasta `/(root)`. Respostas e favoritos ficam no armazenamento local do navegador e **não são sincronizados**.
+A publicação ocorre em GitHub Pages, a partir da branch `main` e da pasta `/(root)`.
