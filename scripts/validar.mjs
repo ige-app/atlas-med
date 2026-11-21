@@ -154,6 +154,13 @@ for (const s of sources) {
   if (!s.titulo || !/^https:\/\//.test(s.url || "")) fail("fonte: URL/título inválido em " + s.id);
 }
 const archivedUsp = read("data/usp-2023-2024.json");
+const pendingModule = "Acesso direto — classificação pendente";
+const originalUsp2024 = new Map(indices
+  .filter(q => q.instituicao === "USP" && q.ano === 2024)
+  .map(q => [q.numero, q]));
+const pendingClassification = new Set([...indices, ...unifesp2025, ...unifesp2026]
+  .filter(q => q.modulo === pendingModule)
+  .map(q => q.id));
 for (const [year, annulled, multiple] of [
   [2023, [23, 35, 92], [60]],
   [2024, [55, 79, 110], [53, 56, 65, 68, 69]],
@@ -167,6 +174,12 @@ for (const [year, annulled, multiple] of [
   const actualAnnulled = [];
   const actualMultiple = [];
   for (const [index, [page, key]] of exam.questoes.entries()) {
+    const number = index + 1;
+    const original = year === 2024 ? originalUsp2024.get(number) : null;
+    if (!original) {
+      const edition = year === 2024 ? "a1" : "a";
+      pendingClassification.add("usp-" + year + "-" + edition + "-q" + String(number).padStart(3, "0"));
+    }
     if (!Number.isInteger(page) || page < 1 || (index && page < exam.questoes[index-1][0])) {
       fail("USP " + year + ": página inválida para questão " + (index+1));
     }
@@ -197,6 +210,8 @@ for (const exam of archivedResidency) {
   }
   if (label.startsWith("UNIFESP") && !/^https:\/\//.test(exam.revisao_url)) fail(label + ": falta revisão da COREME");
   for (const [index, [page, key, commentPage]] of exam.questoes.entries()) {
+    const number = String(index + 1).padStart(3, "0");
+    pendingClassification.add(exam.instituicao.toLowerCase() + "-" + exam.ano + "-ad-q" + number);
     if (!Number.isInteger(page) || page < 1 || (index > 0 && page < exam.questoes[index-1][0]) ||
         key !== (revisions[index+1] ?? key) ||
         !/^(?:[A-D]|[A-D]{2}|ANULADA)$/.test(key) ||
@@ -208,8 +223,6 @@ for (const exam of archivedResidency) {
 }
 if (expectedResidency.size) fail("Faltam cadernos de residência: " + [...expectedResidency.keys()].join(", "));
 const classification = read("data/classificacao.json");
-const catalog = [...indices, ...unifesp2025, ...unifesp2026];
-const pendingClassification = new Set(catalog.filter(q => q.modulo === "Acesso direto — classificação pendente").map(q => q.id));
 for (const [id, entry] of Object.entries(classification)) {
   if (!pendingClassification.delete(id)) fail("Classificação sem registro pendente: " + id);
   if (!Array.isArray(entry) || entry.length !== 3 || !entry[0]?.trim() || !entry[1]?.trim() ||
