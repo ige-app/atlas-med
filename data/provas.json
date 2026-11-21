@@ -438,5 +438,45 @@
     "tipo": "gabarito",
     "status": "118 respostas pontuáveis; AD1 questões 54 e 120 anuladas",
     "observacao": "Documento oficial retificado da Fuvest para AD1, AD2 e AD3. Usar AD1; mudanças marcadas no próprio PDF foram consideradas."
+  },
+  {
+    "id": "unifesp-r1-2025-caderno",
+    "instituicao": "UNIFESP",
+    "ano": 2025,
+    "titulo": "UNIFESP EPM 2025 — Prova de acesso direto, 100 questões",
+    "url": "https://site-medway.s3.sa-east-1.amazonaws.com/wp-content/uploads/sites/5/2026/06/09150008/UNIFESP-2025-r1.pdf",
+    "tipo": "caderno",
+    "status": "100 questões indexadas, leitura e resposta A–D via PDF",
+    "observacao": "Prova aplicada em 08/12/2024 para ingresso em 2025. Caderno rediagramado por Medway, com gabarito ao fim; numeração 1–100."
+  },
+  {
+    "id": "unifesp-r1-2025-gabarito",
+    "instituicao": "UNIFESP",
+    "ano": 2025,
+    "titulo": "UNIFESP EPM 2025 — Gabarito ao final do caderno Medway",
+    "url": "https://site-medway.s3.sa-east-1.amazonaws.com/wp-content/uploads/sites/5/2026/06/09150008/UNIFESP-2025-r1.pdf#page=41",
+    "tipo": "gabarito",
+    "status": "98 respostas pontuáveis, 42 e 60 sinalizadas anuladas",
+    "observacao": "Fonte secundária de 2026 aponta 42 e 60 anuladas e 78 com B/D; outra fonte de gabarito preliminar diverge, por isso aviso de conferência no edital/banca."
+  },
+  {
+    "id": "unifesp-r1-2026-caderno",
+    "instituicao": "UNIFESP",
+    "ano": 2026,
+    "titulo": "UNIFESP EPM 2026 — Prova de acesso direto, 100 questões",
+    "url": "https://site-medway.s3.sa-east-1.amazonaws.com/wp-content/uploads/sites/5/2026/06/09150021/UNIFESP-SP-2026-r1.pdf",
+    "tipo": "caderno",
+    "status": "100 questões indexadas, caderno PDF acessível no Atlas Med",
+    "observacao": "Prova aplicada em 30/11/2025 para ingresso em 2026; reprodução editorial da Medway, com gabarito na última página."
+  },
+  {
+    "id": "unifesp-r1-2026-gabarito",
+    "instituicao": "UNIFESP",
+    "ano": 2026,
+    "titulo": "UNIFESP EPM 2026 — Gabarito MedAlvo com questões anuladas",
+    "url": "https://medalvo.com.br/gabarito/unifesp-2026/",
+    "tipo": "gabarito",
+    "status": "97 respostas pontuáveis na referência; 53, 55 e 100 anuladas",
+    "observacao": "MedAlvo identifica 3 anuladas, enquanto Medway apresenta duas letras nessas posições. É fonte secundária e ainda requer verificação da publicação definitiva da banca."
   }
 ]
