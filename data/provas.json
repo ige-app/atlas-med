@@ -146,7 +146,7 @@
     "titulo": "UNESP FMB — Residência Médica 2025",
     "url": "https://www.vunesp.com.br/FMHO2401",
     "observacao": "Vunesp, seção ‘Provas e Gabaritos’.",
-    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "status": "100 questões da seleção de 2025 indexadas em acesso direto",
     "tipo": "portal"
   },
   {
@@ -156,7 +156,7 @@
     "titulo": "UNESP FMB — Residência Médica 2026",
     "url": "https://www.vunesp.com.br/FMHO2501",
     "observacao": "Vunesp, seção ‘Provas e Gabaritos’.",
-    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "status": "100 questões da seleção de 2026 indexadas em acesso direto",
     "tipo": "portal"
   },
   {
@@ -388,5 +388,55 @@
     "observacao": "Gabarito comentado original de 29 páginas recebido nesta conversa. O arquivo é carregado localmente e não é enviado ao servidor.",
     "status": "120 respostas verificadas; síntese e leitor local disponíveis",
     "tipo": "gabarito comentado"
+  },
+  {
+    "id": "unesp-2025-acesso-direto-prova",
+    "instituicao": "UNESP",
+    "ano": 2025,
+    "titulo": "UNESP FMB 2025 — Prova 001 de Acesso Direto (100 questões)",
+    "url": "https://cdn.medblog.estrategiaeducacional.com.br/wp-content/uploads/2024/12/prova_AD_unesp.pdf",
+    "tipo": "caderno",
+    "status": "100 questões indexadas; 96 válidas e 4 anuladas após recursos",
+    "observacao": "Prova da Vunesp reproduzida por Estratégia MED. Especialidades e subtemas individualizados parcialmente; página do PDF é estimativa até conferência."
+  },
+  {
+    "id": "unesp-2025-acesso-direto-gabarito",
+    "instituicao": "UNESP",
+    "ano": 2025,
+    "titulo": "UNESP FMB 2025 — Gabarito de Acesso Direto (OsceLabs)",
+    "url": "https://www.oscelabs.com.br/provas-antigas/pdf/psu/unesp-botucatu-2025-r1-objetiva-oscelabs-gabarito.pdf",
+    "tipo": "gabarito",
+    "status": "Gabarito consolidado com despacho de retificação oficial de 06/12/2024",
+    "observacao": "Aplicadas anulações 8, 10, 54, 79 e trocas de resposta 55→A, 56→C, 67→B, 70→D, 73→C, 75→C."
+  },
+  {
+    "id": "unesp-2025-acesso-direto-retificacoes",
+    "instituicao": "UNESP",
+    "ano": 2025,
+    "titulo": "UNESP FMB 2025 — Retificação oficial do gabarito (após recursos)",
+    "url": "https://cdn.medblog.estrategiaeducacional.com.br/wp-content/uploads/2024/12/gabarito-definitvo-unesp.pdf",
+    "tipo": "gabarito",
+    "status": "Retificações incorporadas aos 100 registros",
+    "observacao": "Despacho 217/2024-DFM confirma quatro anulações e seis alterações de letras em acesso direto."
+  },
+  {
+    "id": "unesp-2026-acesso-direto-prova",
+    "instituicao": "UNESP",
+    "ano": 2026,
+    "titulo": "UNESP FMB 2026 — Prova 001 de Acesso Direto (100 questões)",
+    "url": "https://cdn.medblog.estrategiaeducacional.com.br/wp-content/uploads/2025/12/prova-unesp-2026.pdf",
+    "tipo": "caderno",
+    "status": "100 questões indexadas; módulos e gabarito externo cadastrados",
+    "observacao": "Prova aplicada em 29/11/2025 para ingresso em 2026. Caderno Vunesp em espelho do Estratégia MED, subtemas e páginas individuais ainda sendo refinados."
+  },
+  {
+    "id": "unesp-2026-acesso-direto-gabarito",
+    "instituicao": "UNESP",
+    "ano": 2026,
+    "titulo": "UNESP FMB 2026 — Gabarito publicado pelo MedCalcApp",
+    "url": "https://medcalcapp.com/blog/gabarito-unesp-2026/",
+    "tipo": "gabarito",
+    "status": "100 respostas registradas de fonte secundária; confronto direto com Vunesp pendente",
+    "observacao": "MedCalcApp apresenta 100 respostas e chama de gabarito definitivo, mas o acesso à seção de provas/gabaritos na Vunesp redireciona a login; aguarda conferência direta."
   }
 ]
