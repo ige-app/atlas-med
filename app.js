@@ -28,7 +28,7 @@ function modules(){let s=$("module-search").value.toLocaleLowerCase("pt-BR");$("
 function topics(){let prev=$("topic").value;let set=[...new Set([...questions,...indices].filter(q=>!mod||q.modulo===mod).map(q=>q.tema).filter(Boolean))].sort();select("topic",set,false);if(set.includes(prev))$("topic").value=prev;}
 function metrics(){
   const attempts=[...questions,...indices].filter(q=>scoreable(q)&&progress[q.id]?.answer);
-  $("count").textContent=indices.filter(q=>q.modo_resolucao==="pdf-local"||(q.enunciado_parafraseado&&q.alternativas_parafraseadas?.length===q.alternativas_quantidade)).length;
+  $("count").textContent=indices.filter(q=>scoreable(q)&&(q.modo_resolucao==="pdf-local"||(q.enunciado_parafraseado&&q.alternativas_parafraseadas?.length===q.alternativas_quantidade))).length;
   $("indexed-count").textContent=indices.length;
   $("sources-count").textContent=sources.length;
   $("solved-count").textContent=attempts.length;
