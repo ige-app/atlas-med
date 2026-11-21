@@ -49,13 +49,13 @@ A **página do PDF indicada no botão é uma estimativa**, não uma referência 
 
 ## NIEPAEM 2026
 
-Dois cadernos completos e dois gabaritos comentados foram fornecidos no chat para **2026.1** e **2026.2**, com 120 itens em cada semestre. A numeração, as letras corretas e as páginas foram integradas ao Atlas Med. **Os quatro PDFs não foram publicados no repositório**, pois o material contém restrição expressa de reprodução. Para resolver:
+Dois cadernos completos e dois gabaritos comentados foram fornecidos no chat para **2026.1** e **2026.2**, com 120 itens em cada semestre. A numeração, as letras corretas e as páginas foram integradas ao Atlas Med. **Os quatro PDFs não foram publicados no repositório**, pois o material contém restrição expressa de reprodução. Para viabilizar a leitura completa no site sem redistribuir os arquivos, incorporamos o **PDF.js**, que lê o PDF enviado e extrai enunciados e alternativas no próprio navegador. A cópia do caderno é guardada em **IndexedDB local**, permitindo reutilizá-la após atualizar a página. Existe um botão para apagar a cópia do navegador. Para resolver:
 
 1. Selecione **NIEPAEM → 2026 → 1º ou 2º semestre**, depois o módulo.
-2. Clique em **Abrir e responder** e selecione o PDF do caderno no seu dispositivo. Ele ficará aberto **localmente no navegador**, sem upload.
+2. Clique em **Abrir e responder** e selecione o PDF do caderno **uma vez** no seu dispositivo. Ele será guardado neste navegador, sem upload. O PDF.js extrai localmente **o enunciado e as quatro alternativas** para exibir em texto no painel da questão. A página original, com imagens e gráficos, fica no visualizador.
 3. Marque A–D; após correção, aparece o comentário resumido e a opção de abrir o PDF comentado também localmente.
 
-O arquivo precisa ser selecionado novamente se atualizar/fechar a página; não se transfere entre dispositivos.
+O arquivo fica armazenado **somente neste navegador** e poderá ser reutilizado depois de fechar/reabrir o site, desde que o armazenamento local esteja disponível. Ele não se transfere entre dispositivos; para apagar, use o botão **Apagar cópia privada deste navegador**. Se o PDF não tiver camada textual ou a leitura falhar, o caderno continua no visualizador.
 
 ## Outras observações de curadoria
 
@@ -68,7 +68,7 @@ O arquivo precisa ser selecionado novamente se atualizar/fechar a página; não 
 
 ## Estrutura e validação
 
-- `index.html`, `styles.css`, `app.js`: interface, filtros, leitores de PDF e correção.
+- `index.html`, `styles.css`, `app.js` e `niepaem-pdf.js`: interface, filtros, transcrição local de PDFs com PDF.js, correção e armazenamento privado IndexedDB.
 - `data/indices.json`: questões ENAMED, USP, UNESP e NIEPAEM 2025 com número, módulo, tema, prova e gabarito.
 - `data/niepaem-2026-1.json` e `data/niepaem-2026-2.json`: 120 questões cada, com páginas dos cadernos e comentários editoriais.
 - `data/provas.json`: catálogo de fontes.
