@@ -27,3 +27,12 @@ dialog.pdf-dialog{width:min(1200px,97vw);max-width:none;max-height:94vh;padding:
 .answer-list button b{display:inline-flex;align-items:center;justify-content:center;flex:none;width:30px;height:30px;border-radius:7px;background:#dcebef}
 .answer-list button span{flex:1}
 .answer-list button.chosen{background:#daecf2;outline:2px solid #287a98}
+
+
+.reader-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+.reader-tabs button{font-size:12px;padding:8px 10px}
+.reader-tabs button.active{background:#184458;color:white}
+.reader-pdf>a{color:var(--blue);font-size:13px}
+.reader-answer .tag{margin-bottom:5px}
+.reader-answer .feedback{margin-bottom:12px}
+.reader-pdf iframe{background:#f7f9fb}
