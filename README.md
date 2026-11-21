@@ -16,7 +16,7 @@ Banco organizado por **módulo, tema, instituição, ano e semestre**, com respo
 | NIEPAEM 2025.2 | 8/120 | Resolução de primeiro lote em redação editorial |
 | **NIEPAEM 2026.1** | **120/120** | **120 questões respondíveis com caderno original carregado localmente, gabarito e resumo** |
 | **NIEPAEM 2026.2** | **120/120** | **120 questões respondíveis com caderno original carregado localmente, gabarito e resumo** |
-| **Total** | **483 registros** | **453** podem ser respondidos (240 deles exigem carregar o PDF do caderno no navegador) |
+| **Total** | **483 registros** | **443 pontuáveis** e **10 anuladas/excluídas** (240 questões NIEPAEM exigem carregar o caderno no navegador) |
 
 O catálogo contém **39 referências**, mas essas referências não significam 39 provas integralmente processadas.
 
