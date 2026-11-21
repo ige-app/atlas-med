@@ -30,20 +30,40 @@ function setAllBanks(checked){
  for(const input of bankChoices())input.checked=checked;
 }
 function bootFilters(){$("bank-choices").innerHTML=BANKS.map(bank=>'<label><input type="checkbox" value="'+safe(bank)+'" checked> '+safe(bank)+'</label>').join("");updateBankPicker();select("source-bank",BANKS);select("source-year",Array.from({length:10},(_,i)=>2017+i));for(const id of ["start","end"])select(id,Array.from({length:10},(_,i)=>2017+i));$("start").value="2017";$("end").value="2026"}
+const searchTextByQuestion=new WeakMap();
+function searchTerms(){
+ return normalizeTopic($("search").value).split(/\s+/).filter(Boolean);
+}
+function matchesSearch(q,terms){
+ if(!terms.length)return true;
+ let text=searchTextByQuestion.get(q);
+ if(text===undefined){
+  const topic=topicOf(q);
+  const lesson=Object.hasOwn(topicReviewLessons,topic)?topicReviewLessons[topic]:null;
+  const review=Object.hasOwn(clinicalTopicReviews,topic)?clinicalTopicReviews[topic]:null;
+  const note=studyNotes[q.id]||q;
+  text=normalizeTopic([topic,q.tema,q.subtema,q.modulo,q.resumo,q.enunciado,q.enunciado_parafraseado,
+   q.alternativas,q.alternativas_parafraseadas,q.comentario,q.comentario_resumido,
+   note.comentario_resumido,note.estudo_alternativas,note.estudo_revisar,
+   lesson?.overview,lesson?.points,lesson?null:review?.text].flat(2).join(" "));
+  searchTextByQuestion.set(q,text);
+ }
+ return terms.every(term=>text.includes(term));
+}
 function currentIndex(){
-  const start=+ $("start").value,end=+ $("end").value,sem=$("semester").value,topic=$("topic").value,subtopic=$("subtopic").value,search=$("search").value.trim().toLocaleLowerCase("pt-BR"),status=$("status").value;
+  const start=+ $("start").value,end=+ $("end").value,sem=$("semester").value,topic=$("topic").value,subtopic=$("subtopic").value,search=searchTerms(),status=$("status").value;
   const banks=selectedBanks();
   return indices.filter(q=>{
     const p=progress[q.id]||{};
     if(!banks.has(q.instituicao)||(mod&&q.modulo!==mod)||q.ano<start||q.ano>end||(sem&&semesterOf(q)!==sem)||(topic&&topicOf(q)!==topic)||(subtopic&&!matchesSubtopic(q,subtopic)))return false;
-    if(search&&![q.resumo,topicOf(q),q.tema,q.subtema,q.modulo,q.comentario_resumido].join(" ").toLocaleLowerCase("pt-BR").includes(search))return false;
+    if(!matchesSearch(q,search))return false;
     if(status==="pending"&&(!scoreable(q)||p.answer))return false;
     if(status==="wrong"&&(!p.answer||answerMatches(q,p.answer)))return false;
     if(status==="starred"&&!p.starred)return false;
     return true;
   }).sort((a,b)=>b.ano-a.ano||(Number(semesterOf(b))||0)-(Number(semesterOf(a))||0)||a.instituicao.localeCompare(b.instituicao)||a.numero-b.numero);
 }
-function current(){let start=+$("start").value,end=+$("end").value,sem=$("semester").value,topic=$("topic").value,subtopic=$("subtopic").value,search=$("search").value.trim().toLocaleLowerCase("pt-BR"),status=$("status").value;const banks=selectedBanks();return questions.filter(q=>banks.has(q.instituicao)&&(!mod||q.modulo===mod)&&q.ano>=start&&q.ano<=end&&(!sem||semesterOf(q)===sem)&&(!topic||topicOf(q)===topic)&&(!subtopic||matchesSubtopic(q,subtopic))&&(!search||[q.enunciado,topicOf(q),q.tema,q.subtema,q.modulo].join(" ").toLocaleLowerCase("pt-BR").includes(search))&&(!status||(status==="pending"?!progress[q.id]?.answer:status==="wrong"?progress[q.id]?.answer&&progress[q.id].answer!==q.gabarito:progress[q.id]?.starred)));}
+function current(){let start=+$("start").value,end=+$("end").value,sem=$("semester").value,topic=$("topic").value,subtopic=$("subtopic").value,search=searchTerms(),status=$("status").value;const banks=selectedBanks();return questions.filter(q=>banks.has(q.instituicao)&&(!mod||q.modulo===mod)&&q.ano>=start&&q.ano<=end&&(!sem||semesterOf(q)===sem)&&(!topic||topicOf(q)===topic)&&(!subtopic||matchesSubtopic(q,subtopic))&&matchesSearch(q,search)&&(!status||(status==="pending"?!progress[q.id]?.answer:status==="wrong"?progress[q.id]?.answer&&progress[q.id].answer!==q.gabarito:progress[q.id]?.starred)));}
 const moduleName=m=>m===pendingModule?"Classificação pendente":m;
 const alphabeticalModules=MODULES.filter(m=>m!==pendingModule).sort((a,b)=>a.localeCompare(b,"pt-BR")).concat(pendingModule);
 function modules(){

@@ -214,5 +214,117 @@ const topicReviewLessons = {
        "https://www.eshre.eu/guideline/endometriosis"
      ]
    ]
+ },
+ "Hipertensão arterial": {
+   "overview": "A hipertensão arterial é definida por pressão persistentemente elevada, confirmada com técnica adequada e medidas repetidas. MAPA e MRPA ajudam a confirmar o diagnóstico e a identificar diferenças entre o consultório e a rotina. A decisão terapêutica considera risco cardiovascular, lesão de órgão-alvo, idade e tolerância.",
+   "points": [
+     [
+       "Aferição e diagnóstico",
+       "Deixe a pessoa em repouso, sentada e com o braço apoiado na altura do coração. Escolha o manguito pela circunferência do braço: um manguito pequeno tende a superestimar a pressão. No avental branco, a pressão sobe no consultório; na hipertensão mascarada, está normal no consultório e elevada fora dele."
+     ],
+     [
+       "Tratamento inicial e idosos",
+       "Mudanças de estilo de vida acompanham o tratamento. No estágio 2 sem lesão aguda, a associação inicial de duas classes é a resposta esperada no NIEPAEM. No idoso, confira medidas repetidas, fragilidade, risco de quedas e hipotensão ortostática. Holter avalia ritmo cardíaco e não substitui MAPA."
+     ],
+     [
+       "Resistência e hipocalemia",
+       "Antes de rotular hipertensão resistente, confira técnica, adesão e pressão fora do consultório. O esquema tríplice usual é IECA ou BRA, bloqueador de canal de cálcio e diurético tiazídico ou similar. Espironolactona costuma ser o próximo passo se função renal e potássio permitirem. Hipocalemia com hipertensão sugere investigar hiperaldosteronismo primário com relação aldosterona-renina."
+     ],
+     [
+       "Emergência e pediatria",
+       "Emergência hipertensiva exige lesão aguda de órgão-alvo, como edema pulmonar ou dissecção aórtica. A pressão isolada não define emergência. Dor torácica pede investigação dirigida. Na infância, interprete a pressão segundo idade, sexo e estatura quando aplicável e considere comorbidades ao escolher o fármaco."
+     ]
+   ],
+   "sources": [
+     [
+       "Diretriz Brasileira de Hipertensão Arterial 2025",
+       "https://abccardiol.org/article/diretriz-brasileira-de-hipertensao-arterial-2025/"
+     ]
+   ]
+ },
+ "Insuficiência cardíaca": {
+   "overview": "É uma síndrome causada por alteração cardíaca estrutural ou funcional. Dispneia, ortopneia, edema e intolerância aos esforços orientam a suspeita. Ecocardiograma caracteriza a fração de ejeção e a estrutura cardíaca. BNP ou NT-proBNP ajudam quando há dúvida diagnóstica, interpretados com o contexto clínico.",
+   "points": [
+     [
+       "Congestão e perfusão",
+       "Estase jugular, ortopneia, edema e aumento do peso ajudam a reconhecer congestão. Ganho rápido de peso pode sinalizar retenção hídrica. O perfil frio e congesto combina hipoperfusão com sobrecarga de volume e requer avaliação urgente. Procure precipitantes, como arritmia, isquemia e infecção."
+     ],
+     [
+       "Quatro pilares na fração de ejeção reduzida",
+       "Combine, conforme tolerância e indicação, ARNI ou IECA/BRA, betabloqueador com evidência, antagonista mineralocorticoide e inibidor de SGLT2. Na questão do ENAMED com fração de ejeção de 38% em uso de IECA, a espironolactona é a opção entre as apresentadas que melhora o prognóstico. Clortalidona e clonidina não cumprem esse papel. A hidralazina pode ter indicação específica em associação ao nitrato."
+     ],
+     [
+       "Diurético, recuperação e medicamentos",
+       "O diurético de alça trata congestão. Se a fração de ejeção melhorou sob tratamento, mantenha as terapias que modificam prognóstico pelo risco de recaída. A pioglitazona pode piorar a retenção hídrica. Em crianças, shunts de cardiopatias congênitas podem produzir congestão pulmonar e dificuldade de ganhar peso."
+     ]
+   ],
+   "sources": [
+     [
+       "AHA, ACC e HFSA · Diretriz de insuficiência cardíaca",
+       "https://www.jacc.org/doi/full/10.1016/j.jacc.2021.12.012"
+     ]
+   ]
+ },
+ "Infecção pelo HIV": {
+   "overview": "A abordagem integra diagnóstico, terapia antirretroviral (TARV) e prevenção combinada. A carga viral acompanha a resposta à TARV e o CD4 orienta a avaliação imunológica. Na cascata de cuidado, diferencie diagnóstico, vinculação, retenção, tratamento e supressão viral e confira o denominador de cada etapa.",
+   "points": [
+     [
+       "PEP e PrEP",
+       "Após exposição de risco, avalie PEP imediatamente, dentro de 72 horas. O esquema dura 28 dias. Faça testagem inicial e avalie outras ISTs sem atrasar uma PEP indicada. Se o risco persistir, planeje transição para PrEP ao fim da PEP conforme o protocolo. Para exposição vaginal, use o esquema oral diário quando indicado. Confira o protocolo vigente para o tempo até proteção. O item do ENAMED 2026 que cita 20 dias está registrado no banco com gabarito preliminar."
+     ],
+     [
+       "Pré-natal e criança exposta",
+       "Acolha, preserve o sigilo e explique o fluxo de confirmação. Após diagnóstico, organize início oportuno de TARV e prevenção da transmissão vertical. Na criança pequena exposta, o diagnóstico exige testes virológicos segundo o protocolo, pois anticorpos maternos podem persistir por meses."
+     ],
+     [
+       "Acompanhamento e prevenção combinada",
+       "A TARV é indicada para todas as pessoas com diagnóstico de HIV, independentemente de CD4, com atenção às situações clínicas que alteram o momento de início. Supressão viral sustentada impede transmissão sexual. A questão sobre rastreamento cervical exige considerar o protocolo específico para pessoas com HIV. No atendimento a adolescentes, avalie risco e confidencialidade segundo o contexto."
+     ]
+   ],
+   "sources": [
+     [
+       "Ministério da Saúde · PEP",
+       "https://portal.aids.gov.br/pep"
+     ],
+     [
+       "Ministério da Saúde · PrEP",
+       "https://h-painel.aids.gov.br/prep.html"
+     ],
+     [
+       "Ministério da Saúde · Manejo da criança exposta",
+       "https://www.gov.br/aids/pt-br/central-de-conteudo/pcdts/PCDT_HIV_Criana_Modulo_1_2024_e.pdf"
+     ],
+     [
+       "Ministério da Saúde · Tratamento",
+       "https://www.gov.br/aids/pt-br/assuntos/prevencao-combinada/tratamento"
+     ]
+   ]
+ },
+ "Delineamentos epidemiológicos": {
+   "overview": "Para identificar o desenho, pergunte qual é a unidade analisada, como os participantes foram selecionados, em que ordem exposição e desfecho foram medidos e se o pesquisador atribuiu a intervenção.",
+   "points": [
+     [
+       "Coorte e caso-controle",
+       "Na coorte, compare pessoas segundo a exposição e observe a ocorrência do desfecho. Mesmo retrospectiva, pode estimar incidência e risco relativo se os denominadores forem conhecidos. No caso-controle, comece por casos e controles e reconstrua exposições anteriores. A medida usual é o odds ratio. Selecionar pessoas com e sem hipertensão e depois revisar exposições caracteriza caso-controle."
+     ],
+     [
+       "Transversal e ecológico",
+       "O transversal mede exposição e desfecho em um recorte e geralmente informa prevalência. A ordem temporal fica incerta. O ecológico usa dados agregados, como municípios ou países. Uma associação entre cidades não autoriza concluir que ela vale individualmente. Série temporal analisa medidas repetidas ao longo do tempo."
+     ],
+     [
+       "Ensaio randomizado e vieses",
+       "A randomização tende a equilibrar confundidores conhecidos e desconhecidos entre os grupos. Mascaramento reduz alguns vieses de informação. Na coorte, perdas de seguimento relacionadas à exposição e ao risco do desfecho podem distorcer o resultado. Em caso-controle, revise viés de memória e a origem dos controles."
+     ],
+     [
+       "Medidas cobradas",
+       "Risco relativo compara incidências. A fração atribuível populacional estima a proporção de eventos que poderia ser evitada na população se a exposição fosse eliminada, sob pressupostos causais. O cálculo depende do efeito e da frequência da exposição na população."
+     ]
+   ],
+   "sources": [
+     [
+       "CDC · Delineamentos e vieses em estudos de campo",
+       "https://www.cdc.gov/field-epi-manual/php/chapters/design-conduct-analyze-field-studies.html"
+     ]
+   ]
  }
 };
