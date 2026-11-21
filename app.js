@@ -5,7 +5,7 @@ const MODULES=["Ginecologia","Obstetrícia","Oftalmologia","Cardiologia","Neurol
 const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const validURL=u=>{try{let a=new URL(u);return a.protocol==="https:"?a.href:"#"}catch{return"#"}};
 let questions=[],sources=[],indices=[],mod="",active=null,choice="",pdfActive=null,pdfChoice="",readerSource="official",progress={},commentActive=null,localCommentUrls={},localQuestionUrls={},commentChoice="";
-function scoreable(q){return q.modo_resolucao!=="comentario"&&/^[A-E]$/.test(q.gabarito||"")}
+function scoreable(q){return /^[A-E]$/.test(q.gabarito||"") && (["pdf","pdf-local"].includes(q.modo_resolucao) || Boolean(q.enunciado&&Array.isArray(q.alternativas)))}
 function semesterOf(q){if(q.semestre)return String(q.semestre);let m=String(q.edicao||q.caderno||"").match(/20\d{2}\.([12])/);return m?m[1]:"";}
 try{progress=JSON.parse(localStorage.getItem("atlas-med-progress")||"{}")||{}}catch{progress={}}
 const save=()=>{try{localStorage.setItem("atlas-med-progress",JSON.stringify(progress))}catch{}};
