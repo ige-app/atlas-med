@@ -10,66 +10,6 @@
     "tipo": "portal"
   },
   {
-    "id": "enare-2020-2021",
-    "instituicao": "ENARE",
-    "ano": 2020,
-    "titulo": "ENARE 2020-2021 — acervo da edição",
-    "url": "https://www.gov.br/hubrasil/pt-br/ensino-e-pesquisa/exame-nacional-de-residencia-enare/edicoes-anteriores/2020-2021",
-    "observacao": "Acervo por edição; conferir cadernos de acesso direto e gabaritos definitivos antes de importar.",
-    "status": "Acervo oficial localizado; cadernos ainda não importados",
-    "tipo": "portal"
-  },
-  {
-    "id": "enare-2021-2022",
-    "instituicao": "ENARE",
-    "ano": 2021,
-    "titulo": "ENARE 2021-2022 — acervo da edição",
-    "url": "https://www.gov.br/hubrasil/pt-br/ensino-e-pesquisa/exame-nacional-de-residencia-enare/edicoes-anteriores/2021-2022",
-    "observacao": "Acervo por edição; conferir cadernos de acesso direto e gabaritos definitivos antes de importar.",
-    "status": "Acervo oficial localizado; cadernos ainda não importados",
-    "tipo": "portal"
-  },
-  {
-    "id": "enare-2022-2023",
-    "instituicao": "ENARE",
-    "ano": 2022,
-    "titulo": "ENARE 2022-2023 — acervo da edição",
-    "url": "https://www.gov.br/hubrasil/pt-br/ensino-e-pesquisa/exame-nacional-de-residencia-enare/edicoes-anteriores/2022-2023",
-    "observacao": "Acervo por edição; conferir cadernos de acesso direto e gabaritos definitivos antes de importar.",
-    "status": "Acervo oficial localizado; cadernos ainda não importados",
-    "tipo": "portal"
-  },
-  {
-    "id": "enare-2023-2024",
-    "instituicao": "ENARE",
-    "ano": 2023,
-    "titulo": "ENARE 2023-2024 — acervo da edição",
-    "url": "https://www.gov.br/hubrasil/pt-br/ensino-e-pesquisa/exame-nacional-de-residencia-enare/edicoes-anteriores/2023-2024",
-    "observacao": "Acervo por edição; conferir cadernos de acesso direto e gabaritos definitivos antes de importar.",
-    "status": "Acervo oficial localizado; cadernos ainda não importados",
-    "tipo": "portal"
-  },
-  {
-    "id": "enare-2024-2025",
-    "instituicao": "ENARE",
-    "ano": 2024,
-    "titulo": "ENARE 2024-2025 — acervo da edição",
-    "url": "https://www.gov.br/hubrasil/pt-br/ensino-e-pesquisa/exame-nacional-de-residencia-enare/edicoes-anteriores/2024-2025",
-    "observacao": "Acervo por edição; conferir cadernos de acesso direto e gabaritos definitivos antes de importar.",
-    "status": "Acervo oficial localizado; cadernos ainda não importados",
-    "tipo": "portal"
-  },
-  {
-    "id": "enare-2025-2026",
-    "instituicao": "ENARE",
-    "ano": 2025,
-    "titulo": "ENARE 2025-2026 — acervo da edição",
-    "url": "https://www.gov.br/hubrasil/pt-br/ensino-e-pesquisa/exame-nacional-de-residencia-enare/edicoes-anteriores/2025-2026",
-    "observacao": "Acervo por edição; conferir cadernos de acesso direto e gabaritos definitivos antes de importar.",
-    "status": "Acervo oficial localizado; cadernos ainda não importados",
-    "tipo": "portal"
-  },
-  {
     "id": "usp-acervo",
     "instituicao": "USP",
     "ano": null,
@@ -217,26 +157,6 @@
     "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enamed/provas-e-gabaritos",
     "observacao": "ENAMED 2026: 100 questões do Caderno 01 indexadas, com comentários editoriais, mas gabarito sujeito a alteração no resultado definitivo previsto para 04/12/2026.",
     "status": "Catalogado; aguardando gabarito definitivo para correção final",
-    "tipo": "portal"
-  },
-  {
-    "id": "enare-2026-2027-provas",
-    "instituicao": "ENARE",
-    "ano": 2026,
-    "titulo": "ENARE 2026/2027 — provas e gabaritos FGV (pré-requisito e áreas)",
-    "url": "https://enare2026.conhecimento.fgv.br/provas/",
-    "observacao": "Provas específicas de pré-requisito, ano adicional e área de atuação. Para residência de acesso direto, a nota da prova objetiva vem do ENAMED 2026; não duplicar questões.",
-    "status": "Acervo oficial encontrado; questões ainda não indexadas",
-    "tipo": "portal"
-  },
-  {
-    "id": "enare-2026-2027-edital",
-    "instituicao": "ENARE",
-    "ano": 2026,
-    "titulo": "ENARE 2026/2027 — portal do processo seletivo FGV",
-    "url": "https://enare2026.conhecimento.fgv.br/",
-    "observacao": "Informações oficiais de inscrição, pré-requisito e seleção de acesso direto por nota do ENAMED.",
-    "status": "Portal catalogado; conteúdo não importado",
     "tipo": "portal"
   },
   {
