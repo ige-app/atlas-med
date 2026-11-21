@@ -1,101 +1,192 @@
 [
   {
-    "id": "fonte-1",
+    "id": "enamed-acervo",
     "instituicao": "ENAMED",
-    "ano": 2025,
-    "titulo": "ENAMED — provas e gabaritos",
-    "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enamed/provas-e-gabaritos",
-    "observacao": "Página do acervo; conferir ano e caderno específico.",
-    "status": "referência do portal; conteúdo não importado"
-  },
-  {
-    "id": "fonte-2",
-    "instituicao": "ENAMED",
-    "ano": 2026,
-    "titulo": "ENAMED — provas e gabaritos",
-    "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enamed/provas-e-gabaritos",
-    "observacao": "Página do acervo; conferir ano e caderno específico.",
-    "status": "referência do portal; conteúdo não importado"
-  },
-  {
-    "id": "fonte-3",
-    "instituicao": "ENARE",
     "ano": null,
-    "titulo": "ENARE — edições anteriores",
-    "url": "https://www.gov.br/hubrasil/pt-br/ensino-e-pesquisa/exame-nacional-de-residencia-enare/edicoes-anteriores",
-    "observacao": "Índice de edições; provas e gabaritos dependem de conferência.",
-    "status": "referência do portal; conteúdo não importado"
+    "titulo": "ENAMED — cadernos e gabaritos (INEP)",
+    "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enamed/provas-e-gabaritos",
+    "observacao": "O exame foi criado em 2025; conferir as edições que o INEP publicou.",
+    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "tipo": "portal"
   },
   {
-    "id": "fonte-4",
+    "id": "enare-2020-2021",
+    "instituicao": "ENARE",
+    "ano": 2020,
+    "titulo": "ENARE 2020-2021 — acervo da edição",
+    "url": "https://www.gov.br/hubrasil/pt-br/ensino-e-pesquisa/exame-nacional-de-residencia-enare/edicoes-anteriores/2020-2021",
+    "observacao": "Acervo por edição; conferir cadernos de acesso direto e gabaritos definitivos antes de importar.",
+    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "tipo": "portal"
+  },
+  {
+    "id": "enare-2021-2022",
+    "instituicao": "ENARE",
+    "ano": 2021,
+    "titulo": "ENARE 2021-2022 — acervo da edição",
+    "url": "https://www.gov.br/hubrasil/pt-br/ensino-e-pesquisa/exame-nacional-de-residencia-enare/edicoes-anteriores/2021-2022",
+    "observacao": "Acervo por edição; conferir cadernos de acesso direto e gabaritos definitivos antes de importar.",
+    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "tipo": "portal"
+  },
+  {
+    "id": "enare-2022-2023",
+    "instituicao": "ENARE",
+    "ano": 2022,
+    "titulo": "ENARE 2022-2023 — acervo da edição",
+    "url": "https://www.gov.br/hubrasil/pt-br/ensino-e-pesquisa/exame-nacional-de-residencia-enare/edicoes-anteriores/2022-2023",
+    "observacao": "Acervo por edição; conferir cadernos de acesso direto e gabaritos definitivos antes de importar.",
+    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "tipo": "portal"
+  },
+  {
+    "id": "enare-2023-2024",
+    "instituicao": "ENARE",
+    "ano": 2023,
+    "titulo": "ENARE 2023-2024 — acervo da edição",
+    "url": "https://www.gov.br/hubrasil/pt-br/ensino-e-pesquisa/exame-nacional-de-residencia-enare/edicoes-anteriores/2023-2024",
+    "observacao": "Acervo por edição; conferir cadernos de acesso direto e gabaritos definitivos antes de importar.",
+    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "tipo": "portal"
+  },
+  {
+    "id": "enare-2024-2025",
+    "instituicao": "ENARE",
+    "ano": 2024,
+    "titulo": "ENARE 2024-2025 — acervo da edição",
+    "url": "https://www.gov.br/hubrasil/pt-br/ensino-e-pesquisa/exame-nacional-de-residencia-enare/edicoes-anteriores/2024-2025",
+    "observacao": "Acervo por edição; conferir cadernos de acesso direto e gabaritos definitivos antes de importar.",
+    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "tipo": "portal"
+  },
+  {
+    "id": "enare-2025-2026",
+    "instituicao": "ENARE",
+    "ano": 2025,
+    "titulo": "ENARE 2025-2026 — acervo da edição",
+    "url": "https://www.gov.br/hubrasil/pt-br/ensino-e-pesquisa/exame-nacional-de-residencia-enare/edicoes-anteriores/2025-2026",
+    "observacao": "Acervo por edição; conferir cadernos de acesso direto e gabaritos definitivos antes de importar.",
+    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "tipo": "portal"
+  },
+  {
+    "id": "usp-acervo",
     "instituicao": "USP",
     "ano": null,
-    "titulo": "FMUSP — acervo Fuvest",
+    "titulo": "USP FMUSP — acervo geral da residência",
     "url": "https://www.fuvest.br/acervo-residencia-coreme-sp/",
-    "observacao": "Arquivo da residência; selecionar a edição desejada.",
-    "status": "referência do portal; conteúdo não importado"
+    "observacao": "Índice oficial da Fuvest com edições 2023–2026.",
+    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "tipo": "portal"
   },
   {
-    "id": "fonte-5",
+    "id": "usp-2023",
+    "instituicao": "USP",
+    "ano": 2023,
+    "titulo": "USP FMUSP — ingresso 2023",
+    "url": "https://www.fuvest.br/acervo-residencia-coreme-sp-2023/",
+    "observacao": "Acervo da edição de ingresso; distintas modalidades e cadernos.",
+    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "tipo": "portal"
+  },
+  {
+    "id": "usp-2024",
+    "instituicao": "USP",
+    "ano": 2024,
+    "titulo": "USP FMUSP — ingresso 2024",
+    "url": "https://www.fuvest.br/acervo-residencia-coreme-sp-2024/",
+    "observacao": "Acervo da edição de ingresso; distintas modalidades e cadernos.",
+    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "tipo": "portal"
+  },
+  {
+    "id": "usp-2025",
+    "instituicao": "USP",
+    "ano": 2025,
+    "titulo": "USP FMUSP — ingresso 2025",
+    "url": "https://www.fuvest.br/acervo-residencia-coreme-sp-2025/",
+    "observacao": "Acervo da edição de ingresso; distintas modalidades e cadernos.",
+    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "tipo": "portal"
+  },
+  {
+    "id": "usp-2026",
+    "instituicao": "USP",
+    "ano": 2026,
+    "titulo": "USP FMUSP — ingresso 2026",
+    "url": "https://www.fuvest.br/acervo-residencia-coreme-sp-2026/",
+    "observacao": "Acervo da edição de ingresso; distintas modalidades e cadernos.",
+    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "tipo": "portal"
+  },
+  {
+    "id": "usp-2024-a1",
+    "instituicao": "USP",
+    "ano": 2024,
+    "titulo": "USP 2024 — prova A1 (100 questões)",
+    "url": "https://www.fuvest.br/wp-content/uploads/rm_2024_a1.pdf",
+    "observacao": "Caderno de acesso direto. Nove questões desse caderno já possuem indexação temática no Atlas Med.",
+    "status": "9 questões indexadas por tema; reprodução integral pendente",
+    "tipo": "caderno"
+  },
+  {
+    "id": "unesp-acervo",
     "instituicao": "UNESP",
     "ano": null,
-    "titulo": "UNESP FMB — concursos de residência",
+    "titulo": "UNESP FMB — portal histórico de concursos",
     "url": "https://www.inscricoes.fmb.unesp.br/concurso.asp",
-    "observacao": "Arquivo histórico; confirmar disponibilidade de cada prova.",
-    "status": "referência do portal; conteúdo não importado"
+    "observacao": "Portal de concursos encerrados permite seleção de anos de 2017 a 2026; disponibilidade de cadernos varia.",
+    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "tipo": "portal"
   },
   {
-    "id": "fonte-6",
+    "id": "unesp-2025",
     "instituicao": "UNESP",
     "ano": 2025,
-    "titulo": "UNESP FMB — edição 2025",
+    "titulo": "UNESP FMB — Residência Médica 2025",
     "url": "https://www.vunesp.com.br/FMHO2401",
-    "observacao": "Portal da edição 2025; conferir caderno e gabarito.",
-    "status": "referência do portal; conteúdo não importado"
+    "observacao": "Vunesp, seção ‘Provas e Gabaritos’.",
+    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "tipo": "portal"
   },
   {
-    "id": "fonte-7",
+    "id": "unesp-2026",
     "instituicao": "UNESP",
     "ano": 2026,
-    "titulo": "UNESP FMB — edição 2026",
+    "titulo": "UNESP FMB — Residência Médica 2026",
     "url": "https://www.vunesp.com.br/FMHO2501",
-    "observacao": "Portal da edição 2026; conferir caderno e gabarito.",
-    "status": "referência do portal; conteúdo não importado"
+    "observacao": "Vunesp, seção ‘Provas e Gabaritos’.",
+    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "tipo": "portal"
   },
   {
-    "id": "fonte-8",
+    "id": "unifesp-2025",
     "instituicao": "UNIFESP",
     "ano": 2025,
-    "titulo": "UNIFESP — provas e gabaritos",
+    "titulo": "UNIFESP — provas e gabaritos 2024–2025",
     "url": "https://coreme2025.fapunifesp.edu.br/divulgacao-de-provas-e-gabaritos-1-fase-2024-2025",
-    "observacao": "Portal de prova/gabarito 2024–2025.",
-    "status": "referência do portal; conteúdo não importado"
+    "observacao": "Página da primeira fase; conferir as diferentes provas.",
+    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "tipo": "portal"
   },
   {
-    "id": "fonte-9",
+    "id": "unifesp-2026",
     "instituicao": "UNIFESP",
     "ano": 2026,
     "titulo": "UNIFESP — COREME 2026",
     "url": "https://coreme2026.fapunifesp.edu.br/",
-    "observacao": "Portal oficial; localizar cadernos no próprio site.",
-    "status": "referência do portal; conteúdo não importado"
+    "observacao": "Portal oficial da edição, a conferir.",
+    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "tipo": "portal"
   },
   {
-    "id": "fonte-10",
+    "id": "niepaem-2025",
     "instituicao": "NIEPAEM",
     "ano": 2025,
-    "titulo": "NIEPAEM — teste de progresso 2025",
+    "titulo": "NIEPAEM — Teste de Progresso 2025",
     "url": "https://www.edudata.com.br/tp/tp25.html",
-    "observacao": "Teste de progresso, não residência; caderno pode exigir acesso.",
-    "status": "referência do portal; conteúdo não importado"
-  },
-  {
-    "id": "fonte-11",
-    "instituicao": "NIEPAEM",
-    "ano": 2026,
-    "titulo": "NIEPAEM — teste de progresso 2026",
-    "url": "https://www.edudata.com.br/tp/tp26.html",
-    "observacao": "Teste de progresso, não residência; acesso pode ser restrito.",
-    "status": "referência do portal; conteúdo não importado"
+    "observacao": "Portal de desempenho do teste de progresso 2025, edições 2025.1 e 2025.2. Não é prova de residência e pode exigir autenticação.",
+    "status": "Acervo oficial localizado; cadernos ainda não importados",
+    "tipo": "portal"
   }
 ]
