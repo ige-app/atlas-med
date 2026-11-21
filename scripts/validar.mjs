@@ -40,6 +40,19 @@ for (const q of questions) {
   if (!q.fonte_url) fail("questão: falta fonte em " + q.id);
   if (q.reproducao_autorizada !== true) fail("questão: publicação integral sem autorização documentada em " + q.id);
 }
+
+const enamed2025=indices.filter(q=>q.instituicao==="ENAMED"&&q.ano===2025&&q.caderno==="Caderno 01");
+const indexedNumbers=enamed2025.map(q=>q.numero).sort((a,b)=>a-b);
+if(enamed2025.length!==100 || indexedNumbers.some((n,i)=>n!==i+1)) fail("ENAMED 2025: devem existir 100 números distintos de 1 a 100");
+const scored=enamed2025.filter(q=>/^[A-D]$/.test(q.gabarito)).length;
+const invalid=enamed2025.filter(q=>["ANULADA","EXCLUIDA"].includes(q.gabarito)).length;
+if(scored!==90 || invalid!==10) fail("ENAMED 2025: esperado 90 válidas e 10 anuladas/excluídas");
+for(const q of enamed2025){
+  if(typeof q.enunciado_parafraseado!=="string"||q.enunciado_parafraseado.length<60) fail("ENAMED 2025: falta enunciado editorial em "+q.id);
+  if(!Array.isArray(q.alternativas_parafraseadas)||q.alternativas_parafraseadas.length!==4||q.alternativas_parafraseadas.some(a=>typeof a!=="string"||a.length<6))fail("ENAMED 2025: faltam quatro alternativas editoriais em "+q.id);
+  if(q.modo_resolucao!=="pdf"||q.conteudo_reproduzido!==false)fail("ENAMED 2025: formato/editorial incorreto em "+q.id);
+}
+
 for (const s of sources) {
   if (!banks.has(s.instituicao)) fail("fonte: banca inválida em " + s.id);
   if (!s.titulo || !/^https:\/\//.test(s.url || "")) fail("fonte: URL/título inválido em " + s.id);
