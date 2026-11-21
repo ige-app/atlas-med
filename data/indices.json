@@ -710,7 +710,7 @@
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
-    "enunciado_parafraseado": "Paciente apresenta dor abdominal que migra para a fossa ilíaca direita, com sinais compatíveis com apendicite aguda. Qual conduta de investigação e tratamento cirúrgico é adequada?",
+    "enunciado_parafraseado": "Mulher de 27 anos procura UPA por dor abdominal contínua, inicialmente epigástrica e depois localizada na fossa ilíaca direita, com febre e sinais de irritação peritoneal. Hemograma revela leucocitose e desvio à esquerda; beta-hCG é negativo. Qual conduta deve ser adotada?",
     "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
     "alternativas_parafraseadas": [
       "Iniciar antibiótico empírico enquanto aguarda exame de urocultura",
@@ -830,13 +830,13 @@
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
     "modo_resolucao": "pdf",
-    "enunciado_parafraseado": "Notícia sobre internações involuntárias motiva a análise da legislação brasileira de saúde mental. Qual profissional está autorizado a indicar essa internação e quais regras se aplicam?",
+    "enunciado_parafraseado": "Uma notícia sobre internações involuntárias na Cracolândia suscita a discussão das regras legais aplicáveis a internações sem consentimento. De acordo com a legislação brasileira, quem pode autorizar essa internação e que obrigações se aplicam?",
     "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep",
     "alternativas_parafraseadas": [
-      "Encaminhar internação após avaliação psiquiátrica exclusiva",
-      "Solicitar autorização de familiares sem necessidade de laudo médico",
-      "O procedimento pode ser iniciado mediante laudo médico circunstanciado e observado o fluxo legal",
-      "Determinar internação involuntária apenas por decisão judicial"
+      "Internação involuntária é determinada pela Justiça, de acordo com a legislação",
+      "A autorização cabe a médico com registro regular no Conselho Regional de Medicina",
+      "A internação deve ser comunicada ao Ministério Público Federal dentro de 15 dias",
+      "O término da internação depende de solicitação do Ministério Público municipal"
     ]
   },
   {
