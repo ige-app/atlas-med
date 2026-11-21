@@ -67,6 +67,28 @@ for(const q of enamed2026){
  if(!q.resolucao_pdf_url || !q.resolucao_verificada_url)fail("ENAMED 2026: PDF de correção ausente "+q.id);
 }
 
+
+// As duas provas de acesso direto da UNESP têm 100 itens. O gabarito de 2025 já
+// inclui as retificações da FMB publicadas em 06/12/2024.
+for(const year of [2025,2026]){
+  const rows=indices.filter(q=>q.instituicao==="UNESP"&&q.ano===year&&q.tipo==="Residência de acesso direto");
+  const nums=rows.map(q=>q.numero).sort((a,b)=>a-b);
+  if(rows.length!==100||nums.some((n,i)=>n!==i+1))fail("UNESP "+year+": esperado caderno de 100 questões sem lacunas");
+  for(const q of rows){
+    if(q.modo_resolucao!=="pdf"||q.alternativas_quantidade!==4||!q.pdf_url||!q.gabarito_url)fail("UNESP "+year+": falta modo de resposta PDF em "+q.id);
+    if(q.conteudo_reproduzido!==false)fail("UNESP "+year+": não publicar transcrição sem licença "+q.id);
+    if(q.pagina_estimativa!==true)fail("UNESP "+year+": marcar páginas aproximadas "+q.id);
+  }
+}
+const u25=indices.filter(q=>q.instituicao==="UNESP"&&q.ano===2025&&q.tipo==="Residência de acesso direto");
+if(u25.filter(q=>q.gabarito==="ANULADA").length!==4)fail("UNESP 2025: quatro anulações esperadas");
+for(const n of [8,10,54,79])if(u25.find(q=>q.numero===n)?.gabarito!=="ANULADA")fail("UNESP 2025: questão anulada "+n);
+for(const [n,g] of [[55,"A"],[56,"C"],[67,"B"],[70,"D"],[73,"C"],[75,"C"]]){
+  if(u25.find(q=>q.numero===n)?.gabarito!==g)fail("UNESP 2025: alteração pós-recurso não aplicada, questão "+n);
+}
+const u26=indices.filter(q=>q.instituicao==="UNESP"&&q.ano===2026&&q.tipo==="Residência de acesso direto");
+if(u26.some(q=>!/^[A-D]$/.test(q.gabarito)||!q.gabarito_status?.includes("FONTE SECUNDÁRIA")))fail("UNESP 2026: gabarito de fonte secundária precisa ser identificado");
+
 const seen=new Set(indices.map(x=>x.id));
 for(const [sem,entries] of [[1,niepaem1],[2,niepaem2]]){
  if(!Array.isArray(entries)||entries.length!==120)fail("NIEPAEM 2026."+sem+": esperado 120 registros");
