@@ -759,7 +759,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Ultrassom para investigar colecistite crônica com cálculos",
+      "Tomografia para examinar pâncreas e vias biliares",
+      "Colangiorressonância pensando em cálculos no colédoco",
+      "Biópsia por agulha da massa palpável"
+    ]
   },
   {
     "id": "enamed-2025-c01-q032",
@@ -783,7 +789,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Captopril, varfarina e AAS",
+      "Furosemida, varfarina e cálcio",
+      "Losartana, enoxaparina e cálcio",
+      "Metildopa, AAS e cálcio"
+    ]
   },
   {
     "id": "enamed-2025-c01-q033",
@@ -807,7 +819,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "TRM positivo sem resistência à rifampicina e baciloscopia negativa: reiniciar esquema básico",
+      "TRM negativo e baciloscopia positiva: reiniciar esquema somente com resistência à rifampicina",
+      "TRM negativo e baciloscopia positiva: pedir cultura e sensibilidade e reiniciar esquema básico enquanto aguarda",
+      "TRM positivo com resistência e baciloscopia positiva: reiniciar esquema básico enquanto aguarda cultura"
+    ]
   },
   {
     "id": "enamed-2025-c01-q034",
@@ -831,7 +849,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Sensibilidade elevada garante que quase todo positivo seja verdadeiro",
+      "Baixa especificidade e baixa prevalência produzem muitos resultados falsos positivos",
+      "Sensibilidade elevada ainda produzirá muitos falsos negativos",
+      "Alta sensibilidade basta para usar o teste como confirmatório"
+    ]
   },
   {
     "id": "enamed-2025-c01-q035",
@@ -855,7 +879,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Começar antidepressivo ISRS imediatamente",
+      "Encaminhar diretamente ao CAPS para seguimento psiquiátrico intensivo",
+      "Solicitar psicoterapia breve na atenção secundária",
+      "Ofertar acolhimento e acompanhamento longitudinal pela UBS"
+    ]
   },
   {
     "id": "enamed-2025-c01-q036",
@@ -879,7 +909,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Investigar catarata antes de alterar tratamento",
+      "Investigar disautonomia com neurologista",
+      "Revisar os fármacos que favorecem hipotensão e quedas",
+      "Adicionar fludrocortisona para elevar a pressão"
+    ]
   },
   {
     "id": "enamed-2025-c01-q037",
@@ -903,7 +939,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Borrelia burgdorferi com doxiciclina",
+      "Staphylococcus aureus com oxacilina",
+      "Treponema pallidum com penicilina benzatina",
+      "Streptococcus pyogenes com penicilina benzatina"
+    ]
   },
   {
     "id": "enamed-2025-c01-q038",
@@ -927,7 +969,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Colangite aguda",
+      "Colecistite aguda",
+      "Úlcera péptica",
+      "Pancreatite crônica"
+    ]
   },
   {
     "id": "enamed-2025-c01-q039",
@@ -951,7 +999,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Repouso e indução apenas após completar 42 semanas",
+      "Doppler fetal e definição de conduta a partir do resultado",
+      "Amnioscopia para verificar mecônio antes de decidir",
+      "Perfil biofísico e cardiotocografia a cada 2–3 dias, com indução até 41 semanas e 6 dias"
+    ]
   },
   {
     "id": "enamed-2025-c01-q040",
@@ -975,7 +1029,13 @@
     "alternativas_quantidade": 4,
     "status": "Excluída do cálculo estatístico",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Artesunato",
+      "Doxiciclina",
+      "Primaquina",
+      "Cloroquina"
+    ]
   },
   {
     "id": "enamed-2025-c01-q041",
@@ -999,7 +1059,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Pancreatite: jejum oral",
+      "Estado hiperosmolar: iniciar insulina",
+      "Cetoacidose: iniciar solução salina isotônica",
+      "Lesão renal aguda: administrar bicarbonato"
+    ]
   },
   {
     "id": "enamed-2025-c01-q042",
@@ -1023,7 +1089,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Choque cardiogênico com ventilação, vasoativo e prostaglandina E1",
+      "Choque neurogênico com cristaloide e corticosteroide",
+      "Choque obstrutivo com cristaloide e descompressão torácica",
+      "Choque distributivo com ventilação, cristaloide, antibiótico e vasoativo"
+    ]
   },
   {
     "id": "enamed-2025-c01-q043",
@@ -1047,7 +1119,13 @@
     "alternativas_quantidade": 4,
     "status": "Anulada pelo Inep",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Drenagem por laparotomia",
+      "Tratamento clínico conservador",
+      "Drenagem orientada por colonoscopia",
+      "Drenagem percutânea orientada por tomografia"
+    ]
   },
   {
     "id": "enamed-2025-c01-q044",
@@ -1071,7 +1149,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Apenas aguardar a placenta desprender espontaneamente",
+      "Tração controlada do cordão enquanto estabiliza o útero",
+      "Realizar curagem uterina imediatamente",
+      "Oferecer mais uterotônico e massagear o útero"
+    ]
   },
   {
     "id": "enamed-2025-c01-q045",
@@ -1095,7 +1179,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Internar para investigar tuberculose",
+      "Solicitar radiografia e exames para TB, garantindo tratamento se positiva",
+      "Internação social para tratamento diretamente observado",
+      "Investigar apenas se a tosse persistir mais de três semanas"
+    ]
   },
   {
     "id": "enamed-2025-c01-q046",
@@ -1119,7 +1209,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Artrite reativa",
+      "Artrite psoriásica",
+      "Espondilite anquilosante",
+      "Lúpus eritematoso sistêmico"
+    ]
   },
   {
     "id": "enamed-2025-c01-q047",
@@ -1143,7 +1239,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "HPV e reforços de hepatite B e dT",
+      "Reforços de hepatite B, dT e tríplice viral",
+      "HPV, meningocócica ACWY e febre amarela",
+      "Tríplice viral, meningocócica ACWY e febre amarela"
+    ]
   },
   {
     "id": "enamed-2025-c01-q048",
@@ -1167,7 +1269,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Ressonância seguida de cirurgia programada",
+      "Tomografia seguida de lobectomia",
+      "Tomografia seguida de drenagem torácica",
+      "Ultrassom torácico seguido de toracocentese"
+    ]
   },
   {
     "id": "enamed-2025-c01-q049",
@@ -1191,7 +1299,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "DIU de cobre",
+      "Sistema intrauterino liberador de levonorgestrel",
+      "Anticoncepcional hormonal injetável mensal",
+      "Contraceptivo oral combinado sem pausas"
+    ]
   },
   {
     "id": "enamed-2025-c01-q050",
@@ -1215,7 +1329,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Suspender antidiabéticos orais e iniciar NPH de manhã e à noite",
+      "Elevar gliclazida e metformina e rever exames antes de insulinizar",
+      "Manter antidiabéticos e iniciar NPH à noite, ajustando conforme glicemia de jejum",
+      "Substituir gliclazida por glibenclamida e aumentar metformina"
+    ]
   },
   {
     "id": "enamed-2025-c01-q051",
@@ -1239,7 +1359,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Tomografia com lesão tumoral hilar",
+      "CPRE mostrando cálculo impactado no colédoco",
+      "Colangiorressonância com estenoses biliares alternadas a segmentos normais ou dilatados",
+      "Ultrassom com espessamento e nódulo de vesícula"
+    ]
   },
   {
     "id": "enamed-2025-c01-q052",
@@ -1263,7 +1389,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Reflexo plantar",
+      "Reflexo de Moro",
+      "Reflexo de busca/procura",
+      "Reflexo tônico cervical"
+    ]
   },
   {
     "id": "enamed-2025-c01-q053",
@@ -1287,7 +1419,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Hematoma subdural: observação com anticonvulsivante",
+      "Contusão cerebral: cirurgia para hipertensão intracraniana",
+      "Hematoma epidural: cirurgia emergencial",
+      "Hematoma intraparenquimatoso: observação com anticonvulsivante"
+    ]
   },
   {
     "id": "enamed-2025-c01-q054",
@@ -1311,7 +1449,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Maior risco de câncer mamário",
+      "Maior risco de diabetes",
+      "Maior risco de acidente vascular cerebral",
+      "Maior risco de hipertensão"
+    ]
   },
   {
     "id": "enamed-2025-c01-q055",
@@ -1335,7 +1479,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Pneumocócica 23v, dT, influenza, COVID-19 e hepatite B; negociar nova visita familiar",
+      "Influenza, COVID-19, dT, hepatite B e zóster; denunciar família",
+      "Pneumocócica 10v, dT, influenza, COVID-19 e hepatite B; exigir termo de responsabilidade",
+      "Pneumocócica 10v, influenza, COVID-19, zóster e dT; aceitar decisão da cuidadora"
+    ]
   },
   {
     "id": "enamed-2025-c01-q056",
@@ -1359,7 +1509,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Medir larvas, notificar mosquitos infectados e avaliar indicadores",
+      "Capacitar agentes e usar inseticidas intensivamente com mutirões",
+      "Vigilância virológica com notificação semanal",
+      "Analisar situação, planejar, executar, monitorar e avaliar ações"
+    ]
   },
   {
     "id": "enamed-2025-c01-q057",
@@ -1383,7 +1539,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Investigar aumento de peso e dislipidemia",
+      "Usar avaliações psicodinâmicas como principal monitorização",
+      "Dosar hemograma e tireoide anualmente com antipsicóticos para efeitos adversos",
+      "Avaliar estatura, peso e pressão periodicamente e reconsiderar continuidade"
+    ]
   },
   {
     "id": "enamed-2025-c01-q058",
@@ -1407,7 +1569,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Baixa captação de iodo radioativo; betabloqueador e anti-inflamatório",
+      "Nódulo quente na cintilografia; cirurgia subtotal",
+      "Elevação de TSH, T4 livre e TRAb; radioiodo",
+      "Elevação de TSH, T3 e T4; antiviral com metimazol e atenolol"
+    ]
   },
   {
     "id": "enamed-2025-c01-q059",
@@ -1431,7 +1599,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Neurofibromatose",
+      "Esclerose tuberosa",
+      "Síndrome de Sturge-Weber",
+      "Doença de von Hippel-Lindau"
+    ]
   },
   {
     "id": "enamed-2025-c01-q060",
@@ -1455,7 +1629,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Radiografia abdominal em três posições",
+      "Colonoscopia com biópsia",
+      "Tomografia abdominal contrastada",
+      "Ultrassonografia abdominal"
+    ]
   },
   {
     "id": "enamed-2025-c01-q061",
