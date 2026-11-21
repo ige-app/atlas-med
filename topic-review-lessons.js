@@ -137,4 +137,82 @@ const topicReviewLessons = {
   ],
   sources: [["Ministério da Saúde · Acurácia diagnóstica", "https://bvsms.saude.gov.br/bvs/publicacoes/diretrizes_metodologicas_estudos_acuracia_diagnostica.pdf"]]
  }
+,
+ "Bronquiolite": {
+   "overview": "A bronquiolite viral aguda costuma começar com coriza e tosse e evoluir para taquipneia, retrações, sibilos ou estertores no lactente. O edema, as secreções e a obstrução das pequenas vias aéreas explicam o aumento do trabalho respiratório. O diagnóstico é clínico e a gravidade depende da respiração, da oxigenação e da capacidade de se alimentar.",
+   "points": [
+     [
+       "Reconhecer o quadro e avaliar a gravidade",
+       "O pródromo viral ajuda a reconhecer a bronquiolite. Apneia, cianose central, exaustão e esforço respiratório importante exigem avaliação imediata. Lactentes pequenos e prematuros têm maior risco de piora. Avalie também ingestão, diurese e saturação."
+     ],
+     [
+       "Suporte e alternativas frequentes",
+       "Ofereça hidratação e oxigênio conforme avaliação clínica. A NICE indica oxigênio se a saturação estiver persistentemente abaixo de 90% a partir de seis semanas de vida, ou abaixo de 92% em menores de seis semanas e em crianças com comorbidades. Salbutamol, adrenalina nebulizada, corticoide, antibiótico e fisioterapia respiratória ficam fora do tratamento de rotina. Radiografia também fica reservada para indicações específicas."
+     ],
+     [
+       "Febre nova após melhora",
+       "Na questão 97 da USP 2023, a febre reaparece após melhora respiratória e vem acompanhada de irritabilidade. Isso pede investigação de outra causa, como otite média aguda. A alternativa mostra uma membrana timpânica abaulada. Hiperemia isolada do tímpano tem menor valor diagnóstico."
+     ]
+   ],
+   "sources": [
+     [
+       "NICE · Diagnóstico e manejo da bronquiolite",
+       "https://www.nice.org.uk/guidance/ng9/chapter/Recommendations"
+     ],
+     [
+       "CDC · Otite média aguda",
+       "https://www.cdc.gov/antibiotic-use/hcp/clinical-care/pediatric-outpatient.html"
+     ]
+   ]
+ },
+ "Hemorragia pós-parto": {
+   "overview": "O reconhecimento da hemorragia pós-parto combina perda sanguínea medida e avaliação da perfusão. As causas são lembradas pelos 4 Ts: tônus (atonia), trauma (lacerações ou lesões), tecido (retenção placentária) e trombina (coagulopatia). A estabilização começa enquanto a equipe procura a causa.",
+   "points": [
+     [
+       "Atonia, macrossomia e sobredistensão",
+       "Útero amolecido com sangramento sugere atonia. Macrossomia, polidrâmnio e gestação múltipla favorecem a sobredistensão uterina. Se o útero estiver firme e houver sangramento persistente, procure especialmente trauma de trajeto e avalie as demais causas."
+     ],
+     [
+       "Índice de choque e instabilidade",
+       "Divida a frequência cardíaca pela pressão arterial sistólica. Na UNESP 2023, o índice de 1,1, a sobredistensão e a atonia orientam o início do tratamento. Na UNIFESP 2024, os sinais de instabilidade justificam acionar o protocolo mesmo quando a perda registrada parece modesta."
+     ],
+     [
+       "Primeiras medidas e escalonamento",
+       "A abordagem inicial inclui massagem uterina, uterotônico, ácido tranexâmico precoce, acesso venoso com fluidos, exame do trato genital e acionamento de suporte. Na atonia, a ocitocina é o uterotônico de primeira linha. Se o sangramento persistir, avalie uterotônicos adicionais, tamponamento e intervenção conforme a causa. A questão da USP 2023 explora o passo após massagem e ocitocina em paciente hipertensa: evite derivados do ergot nessa situação e reconheça o misoprostol entre as opções."
+     ]
+   ],
+   "sources": [
+     [
+       "OMS, FIGO e ICM · Diretriz consolidada de hemorragia pós-parto",
+       "https://www.who.int/publications/i/item/9789240115637"
+     ],
+     [
+       "OMS · Pacote de tratamento inicial",
+       "https://www.ncbi.nlm.nih.gov/books/NBK619233/table/ch3.tab33/"
+     ]
+   ]
+ },
+ "Endometriose": {
+   "overview": "Endometriose é a presença de tecido semelhante ao endométrio fora do útero, associada a inflamação e, em alguns casos, aderências. Dismenorreia, dispareunia profunda, disquesia cíclica e infertilidade ajudam a levantar a hipótese. Ultrassonografia transvaginal especializada e ressonância podem mapear a doença profunda. Imagem normal ainda permite doença superficial.",
+   "points": [
+     [
+       "Dor pélvica e doença profunda",
+       "Disquesia associada ao ciclo menstrual sugere comprometimento posterior, inclusive do retossigmoide. Revise localização, profundidade da lesão, sintomas e comprometimento de órgãos. A UNESP 2023 cobra a possibilidade de manter acompanhamento clínico especializado quando a dor está controlada e o caso permite essa abordagem."
+     ],
+     [
+       "Tratamento quando o objetivo é aliviar a dor",
+       "Contraceptivos hormonais combinados e progestagênios são opções de supressão hormonal. A escolha depende de tolerabilidade, contraindicações, preferências e desejo reprodutivo. Lesões profundas com suspeita de comprometimento de órgãos exigem avaliação especializada. A extensão na imagem, isoladamente, tem valor limitado para decidir operar."
+     ],
+     [
+       "Infertilidade e planejamento reprodutivo",
+       "Tratamento hormonal supressivo pode controlar sintomas, mas não aumenta a chance de gravidez espontânea enquanto utilizado para tratar infertilidade. Discuta idade, reserva ovariana, fator masculino e tubário, cirurgias anteriores e gravidade da dor para decidir entre investigação, cirurgia selecionada e reprodução assistida."
+     ]
+   ],
+   "sources": [
+     [
+       "ESHRE · Diretriz de endometriose",
+       "https://www.eshre.eu/guideline/endometriosis"
+     ]
+   ]
+ }
 };
