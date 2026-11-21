@@ -76,3 +76,8 @@ body.quiz-open #quiz[open]{display:block;position:fixed;inset:12px 0;margin:auto
 .pdf-pages:not([hidden]){display:flex;align-items:center;gap:8px;margin:8px 0}
 .pdf-local-option{margin:8px 0}
 .pdf-local-option summary{cursor:pointer}
+
+.pdf-transcript{padding:12px;border:1px solid var(--line);border-radius:9px;overflow-wrap:anywhere}
+.pdf-transcript h3{margin-top:0}
+.transcribed-context,.transcribed-statement,.transcribed-option,.pdf-transcript li{white-space:pre-line}
+.transcribed-context:empty,.transcribed-option:empty{display:none}

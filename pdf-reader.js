@@ -2,10 +2,12 @@
 
 const pdfReaders = new WeakMap();
 
-function mobilePdfReader(url, page) {
-  return '<div class="mobile-pdf" data-pdf-url="'+safe(url)+'" data-pdf-page="'+safe(page||1)+'">'+
-    '<button type="button" data-load-pdf>Visualizar PDF aqui</button>'+
-    '<p role="status" class="muted"></p>'+
+function mobilePdfReader(url, page, transcriptQuestion) {
+  const transcript=transcriptQuestion ? pdfTranscriptFields(transcriptQuestion) : "";
+  return '<div class="mobile-pdf" data-pdf-url="'+safe(url)+'" data-pdf-page="'+safe(page||1)+'"'+transcript+'>'+
+    '<button type="button" data-load-pdf>'+(transcript?'Ler questão em texto':'Visualizar PDF aqui')+'</button>'+
+    (transcript?'<p role="status" class="pdf-transcript-status muted"></p>':'')+
+    '<p role="status" class="pdf-reader-status muted"></p>'+
     '<div class="pdf-pages" hidden>'+
     '<button type="button" data-pdf-delta="-1" aria-label="Página anterior">Anterior</button>'+
     '<span></span>'+
@@ -17,7 +19,7 @@ function mobilePdfReader(url, page) {
 }
 
 async function showPdfPage(reader, state, number) {
-  const status = reader.querySelector('[role="status"]');
+  const status = reader.querySelector('.pdf-reader-status');
   const canvas = reader.querySelector('canvas');
   const navigation = reader.querySelector('.pdf-pages');
   const buttons = navigation.querySelectorAll('button');
@@ -52,7 +54,7 @@ async function loadReaderPdf(reader, file) {
   const state = {busy: true, page: 1};
   const previous = pdfReaders.get(reader);
   pdfReaders.set(reader, state);
-  const status = reader.querySelector('[role="status"]');
+  const status = reader.querySelector('.pdf-reader-status');
   const button = reader.querySelector('[data-load-pdf]');
   const localOption = reader.querySelector('details');
   reader.querySelector('.pdf-pages').hidden = reader.querySelector('canvas').hidden = true;
@@ -63,7 +65,9 @@ async function loadReaderPdf(reader, file) {
     const pdf = window.pdfjsLib;
     if (!pdf) throw new Error('PDF.js indisponível');
     pdf.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-    const source = file ? {data: await file.arrayBuffer()} : {url: reader.dataset.pdfUrl};
+    const bytes = file ? await file.arrayBuffer() : null;
+    const matchesCaderno = !bytes || await pdfMatchesCaderno(reader,bytes);
+    const source = bytes ? {data: bytes} : {url: reader.dataset.pdfUrl};
     const task = pdf.getDocument({...source, isEvalSupported: false});
     try {
       state.document = await task.promise;
@@ -77,6 +81,8 @@ async function loadReaderPdf(reader, file) {
     }
     const initial = Math.min(state.document.numPages, Number(reader.dataset.pdfPage) || 1);
     await showPdfPage(reader, state, initial);
+    state.busy = true;
+    await preparePdfTranscript(reader, state.document, matchesCaderno);
   } catch {
     status.textContent = file ? 'Não foi possível ler o arquivo selecionado.' :
       'Não foi possível carregar o PDF direto da fonte. Abra o original ou selecione uma cópia dos Arquivos.';
