@@ -19,3 +19,11 @@ dialog.pdf-dialog{width:min(1200px,97vw);max-width:none;max-height:94vh;padding:
 .reader-answer #pdf-submit:disabled{opacity:.5;cursor:not-allowed}
 .reader-answer .feedback{line-height:1.5}
 @media(max-width:790px){dialog.pdf-dialog{width:97vw;padding:12px;max-height:96vh}.reader-layout{grid-template-columns:1fr}.reader-pdf iframe{height:46vh;min-height:320px}.reader-answer{max-height:none}.reader-links{font-size:13px}}
+
+.reader-reworded{padding:13px;border:1px solid #d3e3e6;border-radius:10px;background:#f5fafa}
+.reader-reworded p{font-size:15px;line-height:1.65;margin:12px 0 2px}
+.answer-list{display:grid;gap:7px;margin:14px 0}
+.answer-list button{display:flex;align-items:center;gap:12px;text-align:left;padding:10px 12px;margin:0;line-height:1.3}
+.answer-list button b{display:inline-flex;align-items:center;justify-content:center;flex:none;width:30px;height:30px;border-radius:7px;background:#dcebef}
+.answer-list button span{flex:1}
+.answer-list button.chosen{background:#daecf2;outline:2px solid #287a98}
