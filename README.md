@@ -9,6 +9,8 @@ O Atlas Med reúne **questões reais**, por instituição, ano, módulo, assunto
 
 | Prova | Registros | Correção |
 |---|---:|---|
+| **UNIFESP EPM 2025 — acesso direto R1** | **100/100** | 98 pontuáveis segundo a prova Medway (42 e 60 anuladas); questão 78 com dupla resposta B/D |
+| **UNIFESP EPM 2026 — acesso direto R1** | **100/100** | 97 pontuáveis segundo MedAlvo; 53, 55 e 100 marcadas como anuladas, com divergência frente ao PDF Medway |
 | **USP FMUSP 2025 — acesso direto A1** | **120/120** | 120 questões pontuáveis; gabarito oficial da Fuvest |
 | **USP FMUSP 2026 — acesso direto AD1** | **120/120** | 118 pontuáveis; **54 e 120 anuladas**, segundo gabarito retificado |
 | UNESP Botucatu 2025 — acesso direto | 100/100 | 96 pontuáveis; 4 anuladas, retificações oficiais consideradas |
@@ -20,9 +22,20 @@ O Atlas Med reúne **questões reais**, por instituição, ano, módulo, assunto
 | NIEPAEM 2025.1 | 5/120 | Respostas em fonte secundária |
 | NIEPAEM 2025.2 | 8/120 | Respostas em fonte secundária |
 | USP FMUSP 2024 — A1 | 30/120 | Temas indexados; texto/alternativas ainda não integrados |
-| **Total** | **923 registros** | **877 questões pontuáveis** (inclui respostas preliminares/secundárias sinalizadas) |
+| **Total** | **1.123 registros** | **1.072 questões pontuáveis** (inclui respostas preliminares/secundárias sinalizadas) |
 
-O catálogo possui **52 referências** entre provas, gabaritos e portais. Fonte catalogada **não significa** que a prova inteira tenha sido incorporada.
+O catálogo possui **48 referências** entre provas, gabaritos e portais. Fonte catalogada **não significa** que a prova inteira tenha sido incorporada.
+
+## UNIFESP Escola Paulista de Medicina — 2025 e 2026
+
+Foram adicionadas **100 questões de cada prova de acesso direto**, com caderno PDF no visualizador, número, gabarito de fonte secundária e resposta A–D registrável no histórico.
+
+- **2025:** [Caderno e gabarito Medway (41 páginas)](https://site-medway.s3.sa-east-1.amazonaws.com/wp-content/uploads/sites/5/2026/06/09150008/UNIFESP-2025-r1.pdf); [gabarito anterior divulgado pelo Estratégia MED](https://cdn.medblog.estrategiaeducacional.com.br/wp-content/uploads/2024/12/Gabarito-UNIFESP-Acesso-direto-2025.pdf). O PDF Medway marca **42 e 60 anuladas** e **78 com B ou D**; o outro documento é anterior e tem divergências. O banco usa a versão Medway, com aviso.
+- **2026:** [Caderno e gabarito Medway (42 páginas)](https://site-medway.s3.sa-east-1.amazonaws.com/wp-content/uploads/sites/5/2026/06/09150021/UNIFESP-SP-2026-r1.pdf); [gabarito de fonte secundária no MedAlvo](https://medalvo.com.br/gabarito/unifesp-2026/). A fonte MedAlvo identifica **53, 55 e 100 como anuladas**, enquanto a Medway exibe mais de uma letra nessas posições. As três não entram nas estatísticas até conferência direta no edital ou na publicação final da banca.
+
+**Classificação:** atualmente 53 das 200 questões têm especialidade e tema identificados, e **147** estão em `Acesso direto — classificação pendente`. Não inferir assunto por posição do caderno; os temas pendentes precisam ser revisados um a um. **As páginas apontadas nos PDFs são aproximações**, e a numeração deve ser conferida no documento. Os enunciados e as alternativas **ainda não foram transcritos no painel**; leia-os no PDF para marcar A–D. As referências de correção são secundárias, portanto a pontuação é apenas para estudo até a verificação oficial.
+
+**ENARE foi retirado dos filtros e do catálogo**, conforme solicitado. **ENAMED foi mantido**. Todas as janelas de resolução agora têm um **X de fechar no alto à direita**, além do botão de fechar inferior.
 
 ## USP FMUSP 2025 e 2026: cadernos e gabaritos oficiais
 
@@ -71,6 +84,7 @@ O arquivo fica armazenado **somente neste navegador** e poderá ser reutilizado 
 - `index.html`, `styles.css`, `app.js` e `niepaem-pdf.js`: interface, filtros, transcrição local de PDFs com PDF.js, correção e armazenamento privado IndexedDB.
 - `data/indices.json`: questões ENAMED, USP, UNESP e NIEPAEM 2025 com número, módulo, tema, prova e gabarito.
 - `data/niepaem-2026-1.json` e `data/niepaem-2026-2.json`: 120 questões cada, com páginas dos cadernos e comentários editoriais.
+- `data/unifesp-2025.json` e `data/unifesp-2026.json`: 100 questões de acesso direto por edição, referenciadas ao PDF e ao gabarito.
 - `data/provas.json`: catálogo de fontes.
 - `scripts/validar.mjs`: regras de integridade e verificação por `GitHub Actions`.
 
