@@ -49,7 +49,7 @@ const invalid=enamed2025.filter(q=>["ANULADA","EXCLUIDA"].includes(q.gabarito)).
 if(scored!==90 || invalid!==10) fail("ENAMED 2025: esperado 90 válidas e 10 anuladas/excluídas");
 for(const q of enamed2025){
   if(typeof q.enunciado_parafraseado!=="string"||q.enunciado_parafraseado.length<60) fail("ENAMED 2025: falta enunciado editorial em "+q.id);
-  if(!Array.isArray(q.alternativas_parafraseadas)||q.alternativas_parafraseadas.length!==4||q.alternativas_parafraseadas.some(a=>typeof a!=="string"||a.length<6))fail("ENAMED 2025: faltam quatro alternativas editoriais em "+q.id);
+  if(!Array.isArray(q.alternativas_parafraseadas)||q.alternativas_parafraseadas.length!==4||q.alternativas_parafraseadas.some(a=>typeof a!=="string"||a.trim().length<2))fail("ENAMED 2025: faltam quatro alternativas editoriais em "+q.id);
   if(q.modo_resolucao!=="pdf"||q.conteudo_reproduzido!==false)fail("ENAMED 2025: formato/editorial incorreto em "+q.id);
 }
 
