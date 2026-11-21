@@ -195,8 +195,8 @@
     "ano": 2025,
     "titulo": "ENAMED 2025 — Caderno 01 (100 questões)",
     "url": "https://download.inep.gov.br/enamed/provas_e_gabaritos/2025_caderno_1_preliminar.pdf",
-    "observacao": "Caderno do INEP. As 30 primeiras questões estão classificadas por especialidade; 25 podem ser respondidas com pontuação e 5 constam como anuladas ou excluídas.",
-    "status": "30 de 100 questões classificadas; gabarito definitivo verificado",
+    "observacao": "Caderno oficial do Inep. As 100 questões estão classificadas por módulo e tema, com redações editoriais e alternativas reescritas no Atlas Med. Dez são anuladas/excluídas.",
+    "status": "100 de 100 questões classificadas; 90 pontuáveis pelo gabarito definitivo; 10 anuladas/excluídas",
     "tipo": "caderno"
   },
   {
@@ -217,6 +217,26 @@
     "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enamed/provas-e-gabaritos",
     "observacao": "A edição 2026 já está disponível no portal; o gabarito definitivo está previsto para 4 de dezembro de 2026. Ainda não foi indexada neste banco.",
     "status": "Catalogado; aguardando gabarito definitivo para correção final",
+    "tipo": "portal"
+  },
+  {
+    "id": "enare-2026-2027-provas",
+    "instituicao": "ENARE",
+    "ano": 2026,
+    "titulo": "ENARE 2026/2027 — provas e gabaritos FGV (pré-requisito e áreas)",
+    "url": "https://enare2026.conhecimento.fgv.br/provas/",
+    "observacao": "Provas específicas de pré-requisito, ano adicional e área de atuação. Para residência de acesso direto, a nota da prova objetiva vem do ENAMED 2026; não duplicar questões.",
+    "status": "Acervo oficial encontrado; questões ainda não indexadas",
+    "tipo": "portal"
+  },
+  {
+    "id": "enare-2026-2027-edital",
+    "instituicao": "ENARE",
+    "ano": 2026,
+    "titulo": "ENARE 2026/2027 — portal do processo seletivo FGV",
+    "url": "https://enare2026.conhecimento.fgv.br/",
+    "observacao": "Informações oficiais de inscrição, pré-requisito e seleção de acesso direto por nota do ENAMED.",
+    "status": "Portal catalogado; conteúdo não importado",
     "tipo": "portal"
   }
 ]
