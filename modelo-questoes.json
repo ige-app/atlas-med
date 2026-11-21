@@ -1,0 +1,22 @@
+[
+  {
+    "id": "exemplo-sem-prova-real",
+    "instituicao": "UNESP",
+    "ano": 2025,
+    "modulo": "Oftalmologia",
+    "tema": "Olho vermelho",
+    "subtema": "Diagnóstico diferencial",
+    "numero": 1,
+    "tipo": "Acesso direto",
+    "enunciado": "EXEMPLO FICTÍCIO. Substitua por conteúdo autorizado.",
+    "alternativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D"
+    ],
+    "gabarito": "A",
+    "comentario": "Não corresponde a uma prova real.",
+    "fonte_url": ""
+  }
+]
