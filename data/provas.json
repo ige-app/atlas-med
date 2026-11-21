@@ -206,7 +206,7 @@
     "titulo": "ENAMED 2025 — Gabarito definitivo do Caderno 01",
     "url": "https://download.inep.gov.br/enamed/provas_e_gabaritos/2025_gabarito_caderno_1_v2.pdf",
     "observacao": "Gabarito definitivo do INEP, com questões anuladas e excluídas identificadas.",
-    "status": "Conferido para as questões 1 a 30",
+    "status": "Gabarito definitivo associado às 100 questões do Caderno 01",
     "tipo": "gabarito"
   },
   {
@@ -215,7 +215,7 @@
     "ano": 2026,
     "titulo": "ENAMED 2026 — cadernos e gabaritos preliminares (INEP)",
     "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enamed/provas-e-gabaritos",
-    "observacao": "Edição 2026 publicada no portal do Inep; 30 questões do caderno 01 indexadas até o momento e gabarito preliminar sujeito a recursos até 04/12/2026.",
+    "observacao": "ENAMED 2026: 100 questões do Caderno 01 indexadas, com comentários editoriais, mas gabarito sujeito a alteração no resultado definitivo previsto para 04/12/2026.",
     "status": "Catalogado; aguardando gabarito definitivo para correção final",
     "tipo": "portal"
   },
@@ -245,8 +245,8 @@
     "ano": 2026,
     "titulo": "ENAMED 2026 — Caderno 01 do Inep",
     "url": "https://download.inep.gov.br/enamed/provas_e_gabaritos/2026_caderno_1.pdf",
-    "observacao": "Prova objetiva de 100 questões; primeiras 30 catalogadas por módulo e tema, com alternativas reescritas.",
-    "status": "30 questões classificadas; gabarito preliminar",
+    "observacao": "Prova com 100 questões. Todas as 100 foram classificadas no Atlas Med por módulo e tema, com versões editoriais das alternativas e comentários próprios; respostas ainda preliminares.",
+    "status": "100 questões classificadas; correção provisória pelo gabarito preliminar",
     "tipo": "caderno"
   },
   {
@@ -278,5 +278,85 @@
     "observacao": "PDF acessível de prova comentada baseado no gabarito oficial preliminar, conferido para a classificação do primeiro lote.",
     "status": "Fonte pública inspecionada; 30 questões cruzadas com a prova",
     "tipo": "resolucao"
+  },
+  {
+    "id": "niepaem-2025-1-portal",
+    "instituicao": "NIEPAEM",
+    "ano": 2025,
+    "titulo": "NIEPAEM — Teste de Progresso 2025.1 (portal)",
+    "url": "https://www.edudata.net.br/tp25_1/tp25_1.html",
+    "observacao": "Edição do 1º semestre, aplicada em 08/05/2025; resultados individuais podem exigir identificação.",
+    "status": "Edição identificada, caderno ainda não importado no Atlas Med",
+    "tipo": "portal"
+  },
+  {
+    "id": "niepaem-2025-1-prova",
+    "instituicao": "NIEPAEM",
+    "ano": 2025,
+    "titulo": "NIEPAEM — Prova 2025.1 (120 questões)",
+    "url": "https://pt.scribd.com/document/887296549/TP2025-1-PROVA",
+    "observacao": "Caderno compartilhado em plataforma de terceiros. Conferir autoria, autorização e acesso; não é prova de residência.",
+    "status": "Prova localizada; classificação individual pendente",
+    "tipo": "caderno"
+  },
+  {
+    "id": "niepaem-2025-1-gabarito",
+    "instituicao": "NIEPAEM",
+    "ano": 2025,
+    "titulo": "NIEPAEM — Gabarito 2025.1",
+    "url": "https://www.scribd.com/document/887296576/TP2025-1-GABARITO",
+    "observacao": "Gabarito divulgado em arquivo de terceiros; associar questões só após conferência.",
+    "status": "Fonte encontrada; respostas ainda não importadas",
+    "tipo": "gabarito"
+  },
+  {
+    "id": "niepaem-2025-1-comentarios",
+    "instituicao": "NIEPAEM",
+    "ano": 2025,
+    "titulo": "NIEPAEM — Comentários 2025.1",
+    "url": "https://pt.scribd.com/document/887296871/TP2025-1-COMENTARIOS",
+    "observacao": "Material comentado compartilhado por terceiros, com possível restrição de acesso. Atribuição e direitos de reprodução devem ser conferidos.",
+    "status": "Resolução comentada localizada, não transcrita",
+    "tipo": "resolucao"
+  },
+  {
+    "id": "niepaem-2025-2-portal",
+    "instituicao": "NIEPAEM",
+    "ano": 2025,
+    "titulo": "NIEPAEM — Teste de Progresso 2025.2 (portal)",
+    "url": "https://www.edudata.net.br/tp25_2/tp25_2_0.asp",
+    "observacao": "Edição do 2º semestre de 2025; verificar identificação e modalidade de acesso.",
+    "status": "Edição identificada, questões ainda não importadas",
+    "tipo": "portal"
+  },
+  {
+    "id": "niepaem-2025-2-prova",
+    "instituicao": "NIEPAEM",
+    "ano": 2025,
+    "titulo": "NIEPAEM — Prova 2025.2 (120 questões)",
+    "url": "https://pt.scribd.com/document/928884517/TP2025-2-PROVA",
+    "observacao": "Caderno disponibilizado por terceiros; não confundir com edição 2025.1.",
+    "status": "Prova localizada; classificação individual pendente",
+    "tipo": "caderno"
+  },
+  {
+    "id": "niepaem-2025-2-comentarios",
+    "instituicao": "NIEPAEM",
+    "ano": 2025,
+    "titulo": "NIEPAEM — Comentários 2025.2",
+    "url": "https://pt.scribd.com/document/928884512/TP2025-2-COMENTARIOS",
+    "observacao": "Material comentado localizado em fonte de terceiros; comentários ainda não verificados questão a questão.",
+    "status": "Resolução localizada, não transcrita",
+    "tipo": "resolucao"
+  },
+  {
+    "id": "niepaem-2026-1-prova",
+    "instituicao": "NIEPAEM",
+    "ano": 2026,
+    "titulo": "NIEPAEM — Prova 2026.1 (120 questões)",
+    "url": "https://pt.scribd.com/document/1070216313/Tp-Niepaem-2026-1-Prova",
+    "observacao": "Caderno do Teste de Progresso de 2026.1 encontrado em fonte de terceiros. Não foi localizado gabarito comentado oficial público verificável.",
+    "status": "Prova localizada; gabarito comentado pendente de verificação",
+    "tipo": "caderno"
   }
 ]
