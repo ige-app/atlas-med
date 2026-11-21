@@ -438,5 +438,45 @@
     "tipo": "gabarito",
     "status": "100 respostas registradas de fonte secundária; confronto direto com Vunesp pendente",
     "observacao": "MedCalcApp apresenta 100 respostas e chama de gabarito definitivo, mas o acesso à seção de provas/gabaritos na Vunesp redireciona a login; aguarda conferência direta."
+  },
+  {
+    "id": "unesp-2025-rmais-clinica",
+    "instituicao": "UNESP",
+    "ano": 2025,
+    "titulo": "UNESP 2025 — R+ Clínica Médica",
+    "url": "https://site-medway.s3.sa-east-1.amazonaws.com/wp-content/uploads/sites/5/2024/12/09104247/UNESP-SP-2025-Objetiva-1.pdf",
+    "observacao": "Caderno de prova com pré-requisito (R+); não confundir com acesso direto. Encontrado em espelho público da Medway. Questões e gabaritos ainda não indexados.",
+    "status": "PDF encontrado; pendente de importação",
+    "tipo": "caderno R+"
+  },
+  {
+    "id": "unesp-2025-rmais-cirurgia",
+    "instituicao": "UNESP",
+    "ano": 2025,
+    "titulo": "UNESP 2025 — R+ Cirurgia Geral",
+    "url": "https://site-medway.s3.sa-east-1.amazonaws.com/wp-content/uploads/sites/5/2026/07/20115030/UNESP-SP-2025-Objetiva.pdf",
+    "observacao": "Caderno de prova com pré-requisito (R+); não confundir com acesso direto. Encontrado em espelho público da Medway. Questões e gabaritos ainda não indexados.",
+    "status": "PDF encontrado; pendente de importação",
+    "tipo": "caderno R+"
+  },
+  {
+    "id": "unesp-2026-rmais-clinica",
+    "instituicao": "UNESP",
+    "ano": 2026,
+    "titulo": "UNESP 2026 — R+ Clínica Médica",
+    "url": "https://site-medway.s3.sa-east-1.amazonaws.com/wp-content/uploads/sites/5/2025/12/02110604/UNESP-SP-2026-Objetiva-CM.pdf",
+    "observacao": "Caderno de prova com pré-requisito (R+); não confundir com acesso direto. Encontrado em espelho público da Medway. Questões e gabaritos ainda não indexados.",
+    "status": "PDF encontrado; pendente de importação",
+    "tipo": "caderno R+"
+  },
+  {
+    "id": "unesp-2026-rmais-cirurgia",
+    "instituicao": "UNESP",
+    "ano": 2026,
+    "titulo": "UNESP 2026 — R+ Cirurgia Geral",
+    "url": "https://site-medway.s3.sa-east-1.amazonaws.com/wp-content/uploads/sites/5/2025/12/02110600/UNESP-SP-2026-Objetiva-CG.pdf",
+    "observacao": "Caderno de prova com pré-requisito (R+); não confundir com acesso direto. Encontrado em espelho público da Medway. Questões e gabaritos ainda não indexados.",
+    "status": "PDF encontrado; pendente de importação",
+    "tipo": "caderno R+"
   }
 ]
