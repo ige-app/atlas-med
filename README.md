@@ -33,7 +33,7 @@ Foram adicionadas **100 questões de cada prova de acesso direto**, com caderno 
 - **2025:** [Caderno e gabarito Medway (41 páginas)](https://site-medway.s3.sa-east-1.amazonaws.com/wp-content/uploads/sites/5/2026/06/09150008/UNIFESP-2025-r1.pdf); [gabarito anterior divulgado pelo Estratégia MED](https://cdn.medblog.estrategiaeducacional.com.br/wp-content/uploads/2024/12/Gabarito-UNIFESP-Acesso-direto-2025.pdf). O PDF Medway marca **42 e 60 anuladas** e **78 com B ou D**; o outro documento é anterior e tem divergências. O banco usa a versão Medway, com aviso.
 - **2026:** [Caderno e gabarito Medway (42 páginas)](https://site-medway.s3.sa-east-1.amazonaws.com/wp-content/uploads/sites/5/2026/06/09150021/UNIFESP-SP-2026-r1.pdf); [gabarito de fonte secundária no MedAlvo](https://medalvo.com.br/gabarito/unifesp-2026/). A fonte MedAlvo identifica **53, 55 e 100 como anuladas**, enquanto a Medway exibe mais de uma letra nessas posições. As três não entram nas estatísticas até conferência direta no edital ou na publicação final da banca.
 
-**Classificação:** atualmente 53 das 200 questões têm especialidade e tema identificados, e **147** estão em `Acesso direto — classificação pendente`. Não inferir assunto por posição do caderno; os temas pendentes precisam ser revisados um a um. **As páginas apontadas nos PDFs são aproximações**, e a numeração deve ser conferida no documento. Os enunciados e as alternativas **ainda não foram transcritos no painel**; leia-os no PDF para marcar A–D. As referências de correção são secundárias, portanto a pontuação é apenas para estudo até a verificação oficial.
+**Classificação:** as 200 questões têm especialidade e tema. Os 147 registros que estavam pendentes foram classificados pelo caderno, com a página inicial conferida. Parte dos registros anteriores ainda tem página aproximada. Os enunciados e as alternativas **ainda não foram transcritos no painel**; leia-os no PDF para marcar A–D. As referências de correção são secundárias, portanto a pontuação é apenas para estudo até a verificação oficial.
 
 **ENARE foi retirado dos filtros e do catálogo**, conforme solicitado. **ENAMED foi mantido**. Todas as janelas de resolução agora têm um **X de fechar no alto à direita**, além do botão de fechar inferior.
 
@@ -56,9 +56,7 @@ Ambos os cadernos têm **120 questões de quatro alternativas**. Para a edição
 
 ### Limitações atuais e classificação por módulo
 
-As **240 questões possuem número e gabarito oficial**, mas somente **53** já receberam uma classificação **individual específica por módulo e tema** (39 da edição 2025 e 14 da edição 2026). As demais estão agrupadas explicitamente em **“Acesso direto — classificação pendente”**. Não foram atribuídas a módulos por adivinhação. A meta é identificar as especialidades caso a caso com o caderno original, inclusive para questões que exigem interpretação de imagens.
-
-A **página do PDF indicada no botão é uma estimativa**, não uma referência exata verificada. Se a questão não estiver naquela página, use o PDF em outra aba e procure o número da pergunta. Os enunciados e alternativas **não foram transcritos no repositório público**: são visualizados na prova original. Ainda não há comentários próprios individuais para essas 240 questões.
+As 240 questões possuem módulo e tema. As 187 que estavam pendentes foram classificadas pelo caderno, com a página inicial conferida. Parte dos registros anteriores ainda tem página aproximada. Os enunciados e alternativas **não foram transcritos no repositório público**: são visualizados na prova original. Ainda não há comentários próprios individuais para essas 240 questões.
 
 ## NIEPAEM 2026
 
@@ -85,6 +83,8 @@ O arquivo fica armazenado **somente neste navegador** e poderá ser reutilizado 
 - `data/indices.json`: questões ENAMED, USP, UNESP e NIEPAEM 2025 com número, módulo, tema, prova e gabarito.
 - `data/niepaem-2026-1.json` e `data/niepaem-2026-2.json`: 120 questões cada, com páginas dos cadernos e comentários editoriais.
 - `data/unifesp-2025.json` e `data/unifesp-2026.json`: 100 questões de acesso direto por edição, referenciadas ao PDF e ao gabarito.
+- `data/classificacao.json`: módulo, tema e página conferida dos 334 registros revisados nos cadernos de USP e UNIFESP.
+- `pdf-reader.js`: visualizador paginado para telas pequenas, com abertura por URL ou arquivo local.
 - `data/provas.json`: catálogo de fontes.
 - `scripts/validar.mjs`: regras de integridade e verificação por `GitHub Actions`.
 

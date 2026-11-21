@@ -153,6 +153,15 @@ for (const s of sources) {
   if (!banks.has(s.instituicao)) fail("fonte: banca inválida em " + s.id);
   if (!s.titulo || !/^https:\/\//.test(s.url || "")) fail("fonte: URL/título inválido em " + s.id);
 }
+const classification = read("data/classificacao.json");
+const catalog = [...indices, ...unifesp2025, ...unifesp2026];
+const pendingClassification = new Set(catalog.filter(q => q.modulo === "Acesso direto — classificação pendente").map(q => q.id));
+for (const [id, entry] of Object.entries(classification)) {
+  if (!pendingClassification.delete(id)) fail("Classificação sem registro pendente: " + id);
+  if (!Array.isArray(entry) || entry.length !== 3 || !entry[0]?.trim() || !entry[1]?.trim() ||
+      !Number.isInteger(entry[2]) || entry[2] < 1) fail("Classificação inválida: " + id);
+}
+if (pendingClassification.size) fail("Questões sem classificação: " + [...pendingClassification].join(", "));
 if (errors.length) {
   console.error("Falha na validação do Atlas Med:\n" + errors.map(x => "• " + x).join("\n"));
   process.exitCode = 1;

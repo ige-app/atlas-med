@@ -70,3 +70,9 @@ body.quiz-open #quiz[open]{display:block;position:fixed;inset:12px 0;margin:auto
 .question-note textarea{display:block;width:100%;min-height:96px;resize:vertical;padding:10px;border:1px solid #cbd7dc;border-radius:8px;background:#fff;color:inherit;font:inherit}
 .question-note p{margin:4px 0 0;font-size:14px}
 .question-note [role="status"]{min-height:1.5em}
+
+.mobile-pdf{margin:8px 0;min-width:0}
+.mobile-pdf canvas{max-width:100%;height:auto;background:white;border:1px solid var(--line)}
+.pdf-pages:not([hidden]){display:flex;align-items:center;gap:8px;margin:8px 0}
+.pdf-local-option{margin:8px 0}
+.pdf-local-option summary{cursor:pointer}
