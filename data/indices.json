@@ -1659,7 +1659,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Miconazol intravaginal por sete noites",
+      "Cefalexina oral por sete dias",
+      "Azitromicina por dez dias",
+      "Metronidazol vaginal por dez noites"
+    ]
   },
   {
     "id": "enamed-2025-c01-q062",
@@ -1683,7 +1689,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Preenchimento por IML incluindo hipertensão na cadeia principal",
+      "Preenchimento pela médica, com insuficiência respiratória, pneumonia e síndrome gripal na Parte I e AVE/hipertensão na Parte II",
+      "Preenchimento pelo SAMU, com síndrome gripal antes de pneumonia e insuficiência respiratória",
+      "Preenchimento pelo SVO, com AVC e hipertensão na Parte I e pneumonia na Parte II"
+    ]
   },
   {
     "id": "enamed-2025-c01-q063",
@@ -1707,7 +1719,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Estudo de caso-controle aninhado",
+      "Ensaio clínico não randomizado",
+      "Coorte retrospectiva",
+      "Ensaio clínico randomizado"
+    ]
   },
   {
     "id": "enamed-2025-c01-q064",
@@ -1731,7 +1749,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Retorno para acompanhamento na UBS",
+      "Psicoterapia com equipe da atenção primária",
+      "Avaliação psiquiátrica ambulatorial no CAPS I",
+      "Internação em enfermaria de saúde mental de hospital geral ou serviço equivalente"
+    ]
   },
   {
     "id": "enamed-2025-c01-q065",
@@ -1755,7 +1779,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Presença de fator V de Leiden",
+      "Proteína S acima do normal",
+      "Antitrombina III aumentada",
+      "Fator de von Willebrand reduzido"
+    ]
   },
   {
     "id": "enamed-2025-c01-q066",
@@ -1779,7 +1809,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Reposição de potássio",
+      "Reduzir a glicemia imediatamente",
+      "Infundir bicarbonato de sódio",
+      "Administrar manitol de imediato"
+    ]
   },
   {
     "id": "enamed-2025-c01-q067",
@@ -1803,7 +1839,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Explorar a ferida, pinçar vaso e administrar albumina com soro",
+      "Explorar a ferida, pinçar vaso e administrar soro com glicose",
+      "Comprimir local e, se necessário, usar torniquete proximal; administrar solução salina",
+      "Comprimir e, se necessário, usar torniquete proximal; administrar albumina e solução salina"
+    ]
   },
   {
     "id": "enamed-2025-c01-q068",
@@ -1827,7 +1869,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Conização de colo uterino",
+      "Colposcopia",
+      "Cirurgia de alta frequência",
+      "Nova citologia após seis meses"
+    ]
   },
   {
     "id": "enamed-2025-c01-q069",
@@ -1851,7 +1899,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Intolerância cruzada e uso abusivo de diferentes drogas",
+      "Aceitação da proposta de abstinência",
+      "Tempo dedicado a obter a substância ou a recuperar-se de seus efeitos",
+      "Classificação do tipo de substância como lícita ou ilícita"
+    ]
   },
   {
     "id": "enamed-2025-c01-q070",
@@ -1875,7 +1929,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Isolar casos, tratar um a um e reforçar limpeza",
+      "Tratamento coletivo simultâneo, notificação de surto e reorganização assistencial",
+      "Preferir tratamento tópico individual e reservar medicação só a casos confirmados",
+      "Discutir transferência de casos graves e distribuir folhetos"
+    ]
   },
   {
     "id": "enamed-2025-c01-q071",
@@ -1899,7 +1959,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Delírio",
+      "Obsessão",
+      "Hipertimia",
+      "Compulsão"
+    ]
   },
   {
     "id": "enamed-2025-c01-q072",
@@ -1923,7 +1989,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Neomicina e rifaximina",
+      "Loperamida e escopolamina",
+      "Dieta sem glúten e sem lactose",
+      "Probióticos e inibidor da bomba de prótons"
+    ]
   },
   {
     "id": "enamed-2025-c01-q073",
@@ -1947,7 +2019,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Solicitar eletroencefalograma",
+      "Profilaxia anticonvulsivante com barbitúrico",
+      "Tranquilizar a família e manter puericultura habitual",
+      "Solicitar exames laboratoriais e de imagem"
+    ]
   },
   {
     "id": "enamed-2025-c01-q074",
@@ -1971,7 +2049,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Nervo laríngeo recorrente",
+      "Nervo glossofaríngeo",
+      "Nervo hipoglosso",
+      "Nervo vago"
+    ]
   },
   {
     "id": "enamed-2025-c01-q075",
@@ -1995,7 +2079,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Sistema intrauterino hormonal antes da bariátrica",
+      "Evitar qualquer contracepção hormonal por risco tromboembólico",
+      "Somente preservativo, pois tem anovulação crônica",
+      "Adesivo contraceptivo no período de emagrecimento"
+    ]
   },
   {
     "id": "enamed-2025-c01-q076",
@@ -2019,7 +2109,13 @@
     "alternativas_quantidade": 4,
     "status": "Anulada pelo Inep",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Testar ISTs e iniciar PEP de 28 dias; tratar sífilis se teste reagente",
+      "Investigar urina e prescrever antibióticos para infecção urinária",
+      "Investigar ISTs e usar doxiciclina com tenofovir/emtricitabina por três meses",
+      "Pedir urocultura/citologia e tratar infecções apenas se identificadas"
+    ]
   },
   {
     "id": "enamed-2025-c01-q077",
@@ -2043,7 +2139,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Padronizar as rotinas e priorizar comunicação técnica",
+      "Formar a equipe reconhecendo os saberes e práticas das populações atendidas",
+      "Privilegiar a autonomia profissional da médica",
+      "Aplicar protocolo uniforme a indígenas e ribeirinhos"
+    ]
   },
   {
     "id": "enamed-2025-c01-q078",
@@ -2067,7 +2169,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Exigir avaliação psiquiátrica para diagnóstico de disforia antes de atender",
+      "Iniciar hormonização na UBS imediatamente",
+      "Encaminhar para especialista e transferir todo acompanhamento",
+      "Reconhecer que identidade trans não é doença mental e oferecer cuidado longitudinal na UBS"
+    ]
   },
   {
     "id": "enamed-2025-c01-q079",
@@ -2091,7 +2199,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Antitérmico e hidratação oral com observação",
+      "Antibioticoterapia de amplo espectro ainda na primeira hora",
+      "Antifúngico contra Candida como tratamento inicial",
+      "Antibioticoterapia ampla sem revisão após resultados de culturas"
+    ]
   },
   {
     "id": "enamed-2025-c01-q080",
@@ -2115,7 +2229,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Intubação traqueal e massagem cardíaca externa",
+      "Cateter umbilical e drenagem de hemitórax esquerdo",
+      "Óxido nítrico e surfactante",
+      "Ventilação com balão e pressão expiratória positiva"
+    ]
   },
   {
     "id": "enamed-2025-c01-q081",
@@ -2139,7 +2259,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Abscesso perianal",
+      "Fístula perianal",
+      "Doença pilonidal",
+      "Fissura anal"
+    ]
   },
   {
     "id": "enamed-2025-c01-q082",
@@ -2163,7 +2289,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Pesquisar estreptococo B com 28 semanas",
+      "Internação e atosibano intravenoso até 34 semanas",
+      "Nifedipina oral diariamente até 39 semanas",
+      "Progesterona micronizada vaginal até 36 semanas"
+    ]
   },
   {
     "id": "enamed-2025-c01-q083",
@@ -2187,7 +2319,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Ultrassonografia transvaginal",
+      "Repetir citopatológico em seis meses",
+      "Encaminhar à colposcopia imediatamente",
+      "Repetir citologia imediatamente"
+    ]
   },
   {
     "id": "enamed-2025-c01-q084",
@@ -2211,7 +2349,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Denunciar ao conselho e não intervir clinicamente",
+      "Cuidar de casos vulneráveis sem envolver outras instituições",
+      "Notificar violência institucional, articular órgãos de proteção e elaborar plano conjunto",
+      "Oferecer educação permanente isolada de medidas legais"
+    ]
   },
   {
     "id": "enamed-2025-c01-q085",
@@ -2235,7 +2379,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "N-acetilcisteína",
+      "Flumazenil",
+      "Naloxona",
+      "Atropina"
+    ]
   },
   {
     "id": "enamed-2025-c01-q086",
@@ -2259,7 +2409,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Cefaleia tensional sem exames",
+      "Hemorragia subaracnoidea com estudo do líquor",
+      "Enxaqueca com tomografia cerebral",
+      "Arterite temporal com velocidade de hemossedimentação"
+    ]
   },
   {
     "id": "enamed-2025-c01-q087",
@@ -2283,7 +2439,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Biópsia de pele e HbA1c",
+      "Perfil lipídico e ultrassom abdominal",
+      "Corticoide tópico e fotoproteção",
+      "Antifúngico tópico e teste oral de tolerância à glicose"
+    ]
   },
   {
     "id": "enamed-2025-c01-q088",
@@ -2307,7 +2469,13 @@
     "alternativas_quantidade": 4,
     "status": "Excluída do cálculo estatístico",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Ultrassom, enzimas hepáticas, bilirrubinas e sorologias",
+      "CPRE e marcadores de colestase",
+      "Ressonância abdominal e enzimas pancreáticas/cálcio",
+      "Tomografia abdominal contrastada e CA 19-9"
+    ]
   },
   {
     "id": "enamed-2025-c01-q089",
@@ -2331,7 +2499,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Descolamento placentário; cesariana; útero de Couvelaire",
+      "Ruptura de vasa prévia; amniotomia; anemia fetal",
+      "Trabalho de parto; inibição; prematuridade",
+      "Pré-eclâmpsia; cesariana; ruptura uterina"
+    ]
   },
   {
     "id": "enamed-2025-c01-q090",
@@ -2355,7 +2529,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Higienização, sutura, soro antirrábico e penicilina benzatina",
+      "Antissepsia e aguardar identificação do animal antes da vacina",
+      "Lavagem com água e sabão, vacina antirrábica em quatro doses e imunoglobulina",
+      "Antissepsia, uma dose de vacina e suspender demais diante de reação"
+    ]
   },
   {
     "id": "enamed-2025-c01-q091",
@@ -2379,7 +2559,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Angiotomografia coronariana em 48 horas",
+      "Cateterismo nas primeiras 24 horas",
+      "Cateterismo em até 72 horas",
+      "Ecocardiograma de estresse em até sete dias"
+    ]
   },
   {
     "id": "enamed-2025-c01-q092",
@@ -2403,7 +2589,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Metilprednisolona intravenosa",
+      "Ventilação não invasiva com sedação",
+      "Salbutamol em infusão intravenosa contínua",
+      "Sulfato de magnésio em infusão intravenosa contínua"
+    ]
   },
   {
     "id": "enamed-2025-c01-q093",
@@ -2427,7 +2619,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Analgésico tópico e lubrificante ocular",
+      "Lavagem com água boricada e oclusão",
+      "Irrigação com solução salina e encaminhamento oftalmológico urgente",
+      "Colírio corticoide e avaliação especializada"
+    ]
   },
   {
     "id": "enamed-2025-c01-q094",
@@ -2451,7 +2649,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Hiperplasia endometrial",
+      "Câncer de colo uterino",
+      "Leiomioma submucoso",
+      "Atrofia endometrial"
+    ]
   },
   {
     "id": "enamed-2025-c01-q095",
@@ -2475,7 +2679,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Dosar ferro sérico como único teste decisivo",
+      "Administrar ferro elementar 4 mg/kg/dia e esperar reticulocitose em 4–7 dias",
+      "Classificar a anemia como normocítica pelo HCM",
+      "Encaminhar à hematologia devido à eosinofilia e trombocitose"
+    ]
   },
   {
     "id": "enamed-2025-c01-q096",
@@ -2499,7 +2709,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Sorologia para clamídia e doxiciclina por sete dias",
+      "Biópsia com BAAR e tratamento antituberculose",
+      "VDRL reagente e penicilina benzatina intramuscular",
+      "Gram de material ulceroso com bacilos gram-negativos em cadeia e azitromicina dose única"
+    ]
   },
   {
     "id": "enamed-2025-c01-q097",
@@ -2523,7 +2739,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Acondroplasia",
+      "Síndrome de Turner",
+      "Baixa estatura familiar",
+      "Atraso constitucional de crescimento"
+    ]
   },
   {
     "id": "enamed-2025-c01-q098",
@@ -2547,7 +2769,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Colestase sem colangite e tomografia contrastada",
+      "Colestase com colangite e ressonância das vias biliares",
+      "Colestase sem colangite e colangiorressonância",
+      "Colestase com colangite e CPRE"
+    ]
   },
   {
     "id": "enamed-2025-c01-q099",
@@ -2571,7 +2799,13 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Internar e acompanhar diariamente a mãe e o feto",
+      "Internar e induzir o parto imediatamente",
+      "Dar alta e monitorar diariamente em domicílio",
+      "Dar alta e monitorar semanalmente em domicílio"
+    ]
   },
   {
     "id": "enamed-2025-c01-q100",
@@ -2595,7 +2829,13 @@
     "alternativas_quantidade": 4,
     "status": "Anulada pelo Inep",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "alternativas_parafraseadas": [
+      "Malária no terceiro trimestre",
+      "Hemoglobina 9,5 g/dL na gravidez",
+      "Gemelar dicoriônica e diamniótica",
+      "Diabetes gestacional controlado com dieta"
+    ]
   },
   {
     "id": "usp-2024-a1-q001",
