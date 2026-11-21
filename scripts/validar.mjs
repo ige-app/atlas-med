@@ -7,6 +7,8 @@ const indices = read("data/indices.json");
 const sources = read("data/provas.json");
 const niepaem1 = read("data/niepaem-2026-1.json");
 const niepaem2 = read("data/niepaem-2026-2.json");
+const unifesp2025 = read("data/unifesp-2025.json");
+const unifesp2026 = read("data/unifesp-2026.json");
 const banks = new Set(["USP", "UNESP", "UNIFESP", "ENAMED", "NIEPAEM"]);
 const errors = [];
 const fail = msg => errors.push(msg);
@@ -109,6 +111,27 @@ for(const [n,letter] of [[109,"B"],[110,"C"],[114,"A"]]){
 }
 
 const seen=new Set(indices.map(x=>x.id));
+
+for(const [year,rows,annulled,scoreTotal] of [[2025,unifesp2025,[42,60],98],[2026,unifesp2026,[53,55,100],97]]){
+ if(!Array.isArray(rows)||rows.length!==100)fail("UNIFESP "+year+": são necessárias 100 questões");
+ const nums=rows.map(q=>q.numero).sort((a,b)=>a-b);
+ if(nums.some((n,i)=>n!==i+1))fail("UNIFESP "+year+": numeração fora de 1–100");
+ const marks=rows.filter(q=>q.gabarito==="ANULADA").map(q=>q.numero);
+ if(marks.join(",")!==annulled.join(","))fail("UNIFESP "+year+": revisar questões sem pontuação");
+ if(rows.filter(q=>/^[A-D]$/.test(q.gabarito)).length!==scoreTotal)fail("UNIFESP "+year+": total pontuável inconsistente");
+ for(const q of rows){
+  validateMetadata(q,"UNIFESP "+year);
+  if(seen.has(q.id))fail("UNIFESP "+year+": ID duplicado em "+q.id);
+  seen.add(q.id);
+  if(q.instituicao!=="UNIFESP"||q.ano!==year||q.tipo!=="Residência de acesso direto"||q.modo_resolucao!=="pdf")fail("UNIFESP "+year+": modalidade errada em "+q.id);
+  if(!q.pdf_url||!q.gabarito_url||q.alternativas_quantidade!==4||q.pagina_estimativa!==true)fail("UNIFESP "+year+": PDF/gabarito sem referência em "+q.id);
+  if(q.conteudo_reproduzido!==false||!q.modulo||!q.tema||!q.resumo)fail("UNIFESP "+year+": metadados incompletos em "+q.id);
+  if(!["A","B","C","D","ANULADA"].includes(q.gabarito))fail("UNIFESP "+year+": letra inválida em "+q.id);
+ }
+}
+const double78=unifesp2025.find(q=>q.numero===78);
+if(double78?.gabarito!=="D"||double78.gabaritos_aceitos?.join(",")!=="B,D")fail("UNIFESP 2025: dupla resposta da questão 78 não foi registrada");
+
 for(const [sem,entries] of [[1,niepaem1],[2,niepaem2]]){
  if(!Array.isArray(entries)||entries.length!==120)fail("NIEPAEM 2026."+sem+": esperado 120 registros");
  const nums=entries.map(x=>x.numero).sort((a,b)=>a-b);
