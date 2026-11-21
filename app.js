@@ -144,6 +144,47 @@ function renderPerformance(){
   const byModule=alphabeticalModules.map(m=>({m,q:attempted.filter(q=>q.modulo===m)})).filter(x=>x.q.length);
   $("performance").innerHTML='<h3>Resumo</h3><p>Resolvidas: <b>'+attempted.length+'</b> · Acertos: <b>'+correct+'</b> · Erros: <b>'+errors+'</b> · Aproveitamento: <b>'+(attempted.length?Math.round(correct/attempted.length*100)+"%":"—")+'</b></p><p class="muted">Questões anuladas e excluídas não entram nas estatísticas. Seu desempenho fica salvo apenas neste navegador.</p><h3>Por módulo</h3>'+(byModule.length?byModule.map(({m,q})=>'<p>'+safe(moduleName(m))+': '+q.filter(x=>answerMatches(x,progress[x.id].answer)).length+'/'+q.length+' corretas</p>').join(""):'<p class="muted">Ainda não há respostas registradas.</p>');
 }
+let tagStatistics=[];
+function buildTagStatistics(bank){
+ const rows=new Map();
+ for(const q of bank){
+  const topic=topicOf(q);
+  if(!topic)continue;
+  if(!rows.has(topic))rows.set(topic,{topic,exams:new Set(),count:0,reviewed:Object.hasOwn(topicReviewLessons,topic)});
+  const row=rows.get(topic);
+  row.exams.add([q.instituicao,q.ano,semesterOf(q)].join("|"));
+  row.count++;
+ }
+ return [...rows.values()].sort((a,b)=>b.exams.size-a.exams.size||b.count-a.count||alphabetical(a.topic,b.topic));
+}
+function renderTagStatistics(){
+ const search=normalizeTopic($("tags-search").value);
+ const onlyReviewed=$("tags-reviewed").checked;
+ const visible=tagStatistics.filter(row=>(!onlyReviewed||row.reviewed)&&normalizeTopic(row.topic).includes(search));
+ const count=tagStatistics.filter(row=>row.reviewed).length;
+ $("tags-count").textContent=visible.length+" de "+tagStatistics.length+" tags exibidas · "+count+" com resumo aprofundado no banco.";
+ $("tags-stats").innerHTML=visible.length?visible.map(({topic,exams,count,reviewed})=>
+  '<tr><th scope="row"><button type="button" data-stat-topic="'+safe(topic)+'">'+safe(topic)+'</button></th>'+
+  '<td>'+exams.size+'</td><td>'+count+'</td><td>'+ (reviewed?'<span role="img" aria-label="Com resumo aprofundado">✓</span>':'—')+'</td></tr>'
+ ).join(""):'<tr><td colspan="4">Nenhuma tag corresponde à busca.</td></tr>';
+}
+$("tags-search").addEventListener("input",renderTagStatistics);
+$("tags-reviewed").addEventListener("change",renderTagStatistics);
+$("tags-stats").addEventListener("click",event=>{
+ const topic=event.target.closest("[data-stat-topic]")?.dataset.statTopic;
+ if(!topic)return;
+ switchView("questoes");
+ mod="";
+ clearFilters();
+ updateModuleLink();
+ render();
+ $("topic").value=topic;
+ updateSubtopics();
+ renderIndex();
+ renderQuestions();
+ $("topic").scrollIntoView({block:"center"});
+ $("topic").focus({preventScroll:true});
+});
 function render(){modules();topics();metrics();renderIndex();renderQuestions();renderSources();renderPerformance();}
 const compactQuiz=()=>window.matchMedia("(max-width: 790px)").matches;
 let quizTrigger=null;
@@ -495,13 +536,13 @@ function drawPdf(){
  const archivedSelection=q.ano<2025&&(isUNESP||isUNIFESP);
  const revision=validURL(q.revisao_url);
  const revisionLink=revision==="#"?"":'<p><a href="'+safe(revision)+'" target="_blank" rel="noopener noreferrer">Consultar decisões de recursos da COREME</a></p>';
- const answerLabel=archivedSelection?(isUNESP?"Gabarito preliminar da FMB":"Gabarito Medway com decisões de recursos da COREME"):isUNIFESP?"Gabarito consolidado de fonte secundária (conferir com a banca)":isUSP?(q.ano!==2025?"Gabarito oficial retificado da Fuvest":"Gabarito oficial da Fuvest"):isUNESP?(q.ano===2025?"Gabarito com retificações oficiais":"Gabarito divulgado em fonte secundária"):outside?"Gabarito comentado de fonte secundária":pre?"Gabarito preliminar do Inep":"Gabarito definitivo";
+ const answerLabel=q.ano<=2022?"Gabarito da compilação Medway":archivedSelection?(isUNESP?"Gabarito preliminar da FMB":"Gabarito Medway com decisões de recursos da COREME"):isUNIFESP?"Gabarito consolidado de fonte secundária (conferir com a banca)":isUSP?(q.ano!==2025?"Gabarito oficial retificado da Fuvest":"Gabarito oficial da Fuvest"):isUNESP?(q.ano===2025?"Gabarito com retificações oficiais":"Gabarito divulgado em fonte secundária"):outside?"Gabarito comentado de fonte secundária":pre?"Gabarito preliminar do Inep":"Gabarito definitivo";
  const summary=renderStudy(q);
  const feedback=graded?(answered?'<div class="feedback"><b>'+(answerMatches(q,p.answer)?"✓ Acertou":"✕ Errou")+'</b><p>Você marcou '+safe(p.answer)+'. '+safe(answerLabel)+': <b>'+safe(displayAnswer(q))+'</b>.</p>'+(pre&&!archivedSelection?'<p><b>Atenção:</b> resultado sujeito a recurso e alteração até publicação do gabarito definitivo.</p>':'')+'<a href="'+safe(validURL(q.gabarito_url))+'" target="_blank" rel="noopener noreferrer">Consultar a fonte do gabarito ↗</a></div>'+summary+'<button id="pdf-retry">Responder novamente</button>':'<div class="'+(withOptions?"answer-list":"answer-grid")+'">'+buttons+'</div><button id="pdf-submit" disabled>Corrigir resposta</button>'):'<div class="feedback"><b>'+safe(q.gabarito==="ANULADA"?"Questão anulada":"Questão excluída")+'</b><p>Ela não participa das estatísticas de acertos.</p></div>'+summary;
  const instruction=(isUSP||isUNESP||isUNIFESP)&&!withOptions?'<p class="muted"><b>Alternativas A–D:</b> '+(canTranscribe?'use <b>Ler questão em texto</b> ou consulte o PDF.':'consulte o caderno original.')+'</p>':"";
- const sourceWarning=archivedSelection?(isUNESP?'<p class="muted">Correção pelo gabarito preliminar divulgado pela FMB. A pontuação pode mudar com a revisão de recursos.</p>':'<p class="muted">Correção pelo gabarito da Medway, atualizado com as decisões oficiais de recursos da COREME.</p>'+revisionLink):isUNIFESP?'<p class="muted"><b>UNIFESP:</b> caderno reformatado pela Medway. Correção baseada em fontes secundárias, com divergências entre versões. Questões marcadas como anuladas não são pontuadas.</p>'+(q.anotacao_gabarito&&q.anotacao_gabarito.trim()?'<p class="muted">'+safe(q.anotacao_gabarito)+'</p>':'')+(q.status_classificacao==="Classificação individual pendente"?'<p class="muted">Classificação temática individual ainda pendente.</p>':''):isUSP?(q.ano<2025?'<p class="muted">Gabarito retificado da Fuvest. As questões anuladas ficam fora da pontuação e as duplas respostas são aceitas conforme a banca.</p>':q.ano===2026?'<p class="muted"><b>USP 2026:</b> gabarito da Fuvest retificado em 15/12/2025; as questões 54 e 120 foram anuladas.</p>':'<p class="muted"><b>USP 2025:</b> respostas conferidas no gabarito A1 da Fuvest, publicado em 01/12/2024.</p>')+(q.status_classificacao==="Classificação individual pendente"?'<p class="muted"><b>Módulo a revisar:</b> o assunto específico desta questão ainda não foi conferido; não foi atribuído por suposição.</p>':''):isUNESP?(q.ano===2026?'<p class="muted"><b>Fonte do gabarito:</b> MedCalcApp; falta validação direta na área restrita da Vunesp.</p>':'<p class="muted"><b>Gabarito corrigido após recursos:</b> quatro anulações e seis mudanças de letra já incorporadas.</p>'):"";
+ const sourceWarning=q.ano<=2022?'<p class="muted">Gabarito consultado na compilação da Medway. Sujeito a diferenças em relação às retificações da banca.</p>':archivedSelection?(isUNESP?'<p class="muted">Correção pelo gabarito preliminar divulgado pela FMB. A pontuação pode mudar com a revisão de recursos.</p>':'<p class="muted">Correção pelo gabarito da Medway, atualizado com as decisões oficiais de recursos da COREME.</p>'+revisionLink):isUNIFESP?'<p class="muted"><b>UNIFESP:</b> caderno reformatado pela Medway. Correção baseada em fontes secundárias, com divergências entre versões. Questões marcadas como anuladas não são pontuadas.</p>'+(q.anotacao_gabarito&&q.anotacao_gabarito.trim()?'<p class="muted">'+safe(q.anotacao_gabarito)+'</p>':'')+(q.status_classificacao==="Classificação individual pendente"?'<p class="muted">Classificação temática individual ainda pendente.</p>':''):isUSP?(q.ano<2025?'<p class="muted">Gabarito retificado da Fuvest. As questões anuladas ficam fora da pontuação e as duplas respostas são aceitas conforme a banca.</p>':q.ano===2026?'<p class="muted"><b>USP 2026:</b> gabarito da Fuvest retificado em 15/12/2025; as questões 54 e 120 foram anuladas.</p>':'<p class="muted"><b>USP 2025:</b> respostas conferidas no gabarito A1 da Fuvest, publicado em 01/12/2024.</p>')+(q.status_classificacao==="Classificação individual pendente"?'<p class="muted"><b>Módulo a revisar:</b> o assunto específico desta questão ainda não foi conferido; não foi atribuído por suposição.</p>':''):isUNESP?(q.ano===2026?'<p class="muted"><b>Fonte do gabarito:</b> MedCalcApp; falta validação direta na área restrita da Vunesp.</p>':'<p class="muted"><b>Gabarito corrigido após recursos:</b> quatro anulações e seis mudanças de letra já incorporadas.</p>'):"";
  const question=q.enunciado_parafraseado?'<div class="reader-reworded"><span class="tag">Redação editorial da questão real</span><p>'+safe(q.enunciado_parafraseado)+'</p></div><p class="muted">A redação foi adaptada. Para conferir o enunciado original, as imagens e as tabelas, consulte o caderno original.</p>':'<p>'+safe(q.resumo)+'</p>';
- const note=archivedSelection?"Confira o número da questão no caderno.":isUNIFESP?"Prova de acesso direto da UNIFESP, caderno reproduzido pela Medway. Gabarito de fonte secundária, sujeito a divergências entre versões.":isUSP?"Caderno oficial da Fuvest. Gabarito da banca é utilizado na correção; variantes A2/AD2 e A3/AD3 não estão duplicadas neste banco.":isUNESP?"Caderno real de acesso direto da UNESP. A página indicada é aproximada até revisão específica; utilize a busca do PDF para encontrar QUESTÃO "+String(q.numero).padStart(2,"0")+". As alternativas aparecem integralmente no documento. Em 2025, anuladas e retificações oficiais estão consideradas; em 2026, o gabarito ainda depende de conferência diretamente na Vunesp.":outside?"Arquivo NIEPAEM disponibilizado por terceiros no Scribd; o acesso pode exigir login e impedir a incorporação. Use Abrir em outra aba para consultar a prova ou o gabarito comentado.":selected.id==="strategy"?"PDF comentado indicado no portal do Estratégia MED. A exibição depende das permissões do servidor; esta versão ainda não pôde ser auditada integralmente pelo Atlas Med.":selected.id==="verified"?"Correção comentada publicada pelo OsceLabs, com gabarito preliminar. Os comentários exibidos no painel foram escritos separadamente.":"Caderno oficial de prova. A correção de cursinhos não substitui o gabarito do Inep.";
+ const note=q.ano<=2022?"Confira o número e o enunciado no caderno.":archivedSelection?"Confira o número da questão no caderno.":isUNIFESP?"Prova de acesso direto da UNIFESP, caderno reproduzido pela Medway. Gabarito de fonte secundária, sujeito a divergências entre versões.":isUSP?"Caderno oficial da Fuvest. Gabarito da banca é utilizado na correção; variantes A2/AD2 e A3/AD3 não estão duplicadas neste banco.":isUNESP?"Caderno real de acesso direto da UNESP. A página indicada é aproximada até revisão específica; utilize a busca do PDF para encontrar QUESTÃO "+String(q.numero).padStart(2,"0")+". As alternativas aparecem integralmente no documento. Em 2025, anuladas e retificações oficiais estão consideradas; em 2026, o gabarito ainda depende de conferência diretamente na Vunesp.":outside?"Arquivo NIEPAEM disponibilizado por terceiros no Scribd; o acesso pode exigir login e impedir a incorporação. Use Abrir em outra aba para consultar a prova ou o gabarito comentado.":selected.id==="strategy"?"PDF comentado indicado no portal do Estratégia MED. A exibição depende das permissões do servidor; esta versão ainda não pôde ser auditada integralmente pelo Atlas Med.":selected.id==="verified"?"Correção comentada publicada pelo OsceLabs, com gabarito preliminar. Os comentários exibidos no painel foram escritos separadamente.":"Caderno oficial de prova. A correção de cursinhos não substitui o gabarito do Inep.";
  const transcriptQuestion=selected.id==="official"&&canTranscribe?q:null;
  const transcriptReader=transcriptQuestion?mobilePdfReader(selected.url,selected.page,transcriptQuestion):"";
  const frame=compactQuiz()?(q.fonte_formato==="Scribd HTML"?"":transcriptReader||mobilePdfReader(selected.url,selected.page)):transcriptReader+'<iframe src="'+safe(viewLink)+'" title="Documento de '+safe(selected.name)+'" loading="lazy" referrerpolicy="no-referrer"></iframe>';
@@ -573,7 +614,7 @@ function archivedResidencyQuestions(exams) {
   const numero=index+1;
   const gabaritos_aceitos=/^[A-D]{2}$/.test(key)?[...key]:undefined;
   const gabarito=gabaritos_aceitos?.[0]||key;
-  const resolucao_comentada=[resolucao[0],resolucao[1]+(pagina_comentario?"#page="+pagina_comentario:"")];
+  const resolucao_comentada=resolucao?[resolucao[0],resolucao[1]+(pagina_comentario?"#page="+pagina_comentario:"")]:undefined;
   return {
    id:instituicao.toLowerCase()+"-"+ano+"-ad-q"+String(numero).padStart(3,"0"),
    instituicao,ano,caderno,numero,pagina,pdf_url,gabarito_url,revisao_url,pagina_comentario,
@@ -586,10 +627,10 @@ function archivedResidencyQuestions(exams) {
   };
  }));
 }
-async function load(){bootFilters();if(new URLSearchParams(location.search).get("modulo")==="pendentes")mod=pendingModule;await initPersonalMode();try{let responses=await Promise.all([fetch("data/questoes.json"),fetch("data/provas.json"),fetch("data/indices.json"),fetch("data/niepaem-2026-1.json"),fetch("data/niepaem-2026-2.json"),fetch("data/unifesp-2025.json"),fetch("data/unifesp-2026.json"),fetch("data/classificacao.json?v=2"),fetch("data/usp-2023-2024.json"),fetch("data/unesp-unifesp-2023-2024.json")]);if(responses.some(r=>!r.ok))throw Error("Não foi possível carregar o acervo.");let data=await Promise.all(responses.map(r=>r.json()));[questions,sources,indices]=data.slice(0,3);const archived=archivedUspQuestions(data[8],indices);indices=[...indices.filter(q=>q.instituicao!=="USP"||q.ano!==2024),...archived,...archivedResidencyQuestions(data[9]),...data[3],...data[4],...data[5],...data[6]].map(q=>{
+async function load(){bootFilters();if(new URLSearchParams(location.search).get("modulo")==="pendentes")mod=pendingModule;await initPersonalMode();try{let responses=await Promise.all([fetch("data/questoes.json"),fetch("data/provas.json?v=2"),fetch("data/indices.json"),fetch("data/niepaem-2026-1.json"),fetch("data/niepaem-2026-2.json"),fetch("data/unifesp-2025.json"),fetch("data/unifesp-2026.json"),fetch("data/classificacao.json?v=2"),fetch("data/usp-2023-2024.json"),fetch("data/unesp-unifesp-2023-2024.json"),fetch("data/residencia-2021-2022.json")]);if(responses.some(r=>!r.ok))throw Error("Não foi possível carregar o acervo.");let data=await Promise.all(responses.map(r=>r.json()));[questions,sources,indices]=data.slice(0,3);const archived=archivedUspQuestions(data[8],indices);indices=[...indices.filter(q=>q.instituicao!=="USP"||q.ano!==2024),...archived,...archivedResidencyQuestions([...data[9],...data[10]]),...data[3],...data[4],...data[5],...data[6]].map(q=>{
  const classification=data[7][q.id];
  if(!classification)return q;
  const [modulo,tema,pagina]=classification;
  return {...q,modulo,tema,pagina,subtema:"",resumo:tema,pagina_estimativa:false,status_classificacao:"Classificada pelo caderno"};
- });if(!Array.isArray(questions)||!Array.isArray(sources)||!Array.isArray(indices))throw Error("O acervo deve conter listas JSON.");questions=questions.filter(q=>q.id&&q.modulo&&q.enunciado&&Array.isArray(q.alternativas));}catch(e){console.error(e);$("questions").innerHTML='<p class="empty">Falha ao carregar o banco. Publique em servidor HTTP e confira os arquivos de dados.</p>';return;}indexTopics([...questions,...indices]);render();}
+ });if(!Array.isArray(questions)||!Array.isArray(sources)||!Array.isArray(indices))throw Error("O acervo deve conter listas JSON.");questions=questions.filter(q=>q.id&&q.modulo&&q.enunciado&&Array.isArray(q.alternativas));}catch(e){console.error(e);$("questions").innerHTML='<p class="empty">Falha ao carregar o banco. Publique em servidor HTTP e confira os arquivos de dados.</p>';return;}indexTopics([...questions,...indices]);tagStatistics=buildTagStatistics([...questions,...indices]);renderTagStatistics();render();}
 load();

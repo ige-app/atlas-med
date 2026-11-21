@@ -89,3 +89,11 @@ body.quiz-open #quiz[open]{display:block;position:fixed;inset:12px 0;margin:auto
 #bank-options input{width:18px;height:18px;margin:0;flex:none}
 
 #bank-options > label{font-weight:700;border-bottom:1px solid var(--line)}
+
+#estatisticas-tags{margin-block:2rem}
+#tags-search{max-width:20rem;margin:0 .75rem .75rem .35rem}
+.tags-table-scroll{overflow-x:auto}
+.tags-table{width:100%;border-collapse:collapse}
+.tags-table th,.tags-table td{padding:.5rem .65rem;border-bottom:1px solid var(--line);text-align:left}
+.tags-table th:not(:first-child),.tags-table td:not(:first-child){text-align:center}
+.tags-table tbody button{padding:.25rem .4rem;text-align:left}

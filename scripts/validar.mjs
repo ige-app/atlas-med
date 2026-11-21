@@ -229,11 +229,24 @@ for (const [id, entry] of Object.entries(classification)) {
       !Number.isInteger(entry[2]) || entry[2] < 1) fail("Classificação inválida: " + id);
 }
 if (pendingClassification.size) fail("Questões sem classificação: " + [...pendingClassification].join(", "));
+const olderExams=read("data/residencia-2021-2022.json");
+const olderIds=new Set();
+for(const exam of olderExams){
+ const id=exam.instituicao+" "+exam.ano;
+ if(olderIds.has(id)||!banks.has(exam.instituicao)||![2021,2022].includes(exam.ano)||
+    ![exam.pdf_url,exam.gabarito_url].every(url=>/^https:\/\//.test(url))||exam.questoes.length!==100){
+  fail("Caderno inválido: "+id);
+ }
+ olderIds.add(id);
+ for(const [page,key] of exam.questoes){
+  if(!Number.isInteger(page)||page<1||!/^(?:[A-E]|ANULADA)$/.test(key))fail("Página ou gabarito inválido: "+id);
+ }
+}
 if (errors.length) {
   console.error("Falha na validação do Atlas Med:\n" + errors.map(x => "• " + x).join("\n"));
   process.exitCode = 1;
 } else {
   const archiveCount = Object.values(archivedUsp).reduce((total, exam) => total + exam.questoes.length, 0);
   const legacyCount = indices.filter(q => q.instituicao === "USP" && q.ano === 2024).length;
-  console.log("Dados válidos:", sources.length, "fontes,", seen.size + archiveCount - legacyCount + archivedResidency.reduce((total, exam)=>total+exam.questoes.length,0), "questões indexadas,", questions.length, "questões com texto autorizado.");
+  console.log("Dados válidos:", sources.length, "fontes,", seen.size + archiveCount - legacyCount + archivedResidency.reduce((total, exam)=>total+exam.questoes.length,0) + olderExams.reduce((total, exam)=>total+exam.questoes.length,0), "questões indexadas,", questions.length, "questões com texto autorizado.");
 }
