@@ -18,7 +18,7 @@ Banco organizado por **módulo, tema, instituição, ano e semestre**, com respo
 | **NIEPAEM 2026.2** | **120/120** | **120 questões respondíveis com caderno original carregado localmente, gabarito e resumo** |
 | **Total (antes da UNESP)** | **483 registros** | **443 pontuáveis** e **10 anuladas/excluídas** (240 questões NIEPAEM exigem carregar o caderno no navegador) |
 
-O catálogo contém **39 referências**, mas essas referências não significam 39 provas integralmente processadas.
+O catálogo contém **48 referências**, mas essas referências não significam 39 provas integralmente processadas.
 
 ## UNESP Botucatu — Residência Médica 2025 e 2026 (acesso direto)
 
