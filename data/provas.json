@@ -355,8 +355,8 @@
     "ano": 2026,
     "titulo": "NIEPAEM — Prova 2026.1 (120 questões)",
     "url": "https://pt.scribd.com/document/1070216313/Tp-Niepaem-2026-1-Prova",
-    "observacao": "Caderno da edição de 13/05/2026 compartilhado por terceiros. Todas as 120 respostas estão agora conferidas no gabarito comentado fornecido neste chat, com resumos editoriais no Atlas Med.",
-    "status": "120/120 respostas comentadas indexadas; enunciados e alternativas ainda não importados",
+    "observacao": "Caderno original de 20 páginas, 120 questões, recebido nesta conversa. Páginas das 120 questões mapeadas; use o botão 'Abrir e responder' e carregue a sua cópia local do PDF.",
+    "status": "120/120 páginas de questões identificadas; resolução interativa por PDF local",
     "tipo": "caderno"
   },
   {
@@ -365,8 +365,8 @@
     "ano": 2026,
     "titulo": "NIEPAEM 2026.1 — gabarito comentado fornecido pela usuária",
     "url": "https://www.edudata.com.br/tp/tp26.html",
-    "observacao": "PDF de 27 páginas recebido no chat (13/05/2026). Respostas e conceitos usados em sínteses próprias. Arquivo original com proibição expressa de reprodução; não publicado no GitHub.",
-    "status": "120 respostas conferidas no arquivo; 120 comentários-resumo publicados",
+    "observacao": "Gabarito comentado original de 27 páginas recebido nesta conversa. Na plataforma, a leitura integral usa um arquivo local selecionado pelo usuário após a correção.",
+    "status": "120 respostas verificadas; síntese e leitor local disponíveis",
     "tipo": "gabarito comentado"
   },
   {
@@ -375,8 +375,8 @@
     "ano": 2026,
     "titulo": "NIEPAEM 2026.2 — prova de 24/09/2026",
     "url": "https://www.edudata.com.br/tp/tp26.html",
-    "observacao": "Edição identificada no gabarito comentado de 29 páginas recebido no chat. Caderno completo com enunciados e alternativas ainda não foi disponibilizado.",
-    "status": "Gabarito 120/120 conferido; caderno original pendente",
+    "observacao": "Caderno original de 24 páginas, 120 questões, recebido nesta conversa. Páginas mapeadas, gabaritos comentados já conferidos. Arquivo não hospedado no repositório público.",
+    "status": "120/120 páginas de questões identificadas; resolução interativa por PDF local",
     "tipo": "portal"
   },
   {
@@ -385,8 +385,8 @@
     "ano": 2026,
     "titulo": "NIEPAEM 2026.2 — gabarito comentado fornecido pela usuária",
     "url": "https://www.edudata.com.br/tp/tp26.html",
-    "observacao": "PDF de 29 páginas, prova de 24/09/2026. A banca informa direitos autorais reservados. Conteúdo usado para elaborar sínteses independentes; PDF integral não foi republicado.",
-    "status": "120 respostas conferidas no arquivo; 120 comentários-resumo publicados",
+    "observacao": "Gabarito comentado original de 29 páginas recebido nesta conversa. O arquivo é carregado localmente e não é enviado ao servidor.",
+    "status": "120 respostas verificadas; síntese e leitor local disponíveis",
     "tipo": "gabarito comentado"
   }
 ]
