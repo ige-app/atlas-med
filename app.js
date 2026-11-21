@@ -1,7 +1,8 @@
 "use strict";
 const $=id=>document.getElementById(id);
 const BANKS=["ENAMED","USP","UNESP","NIEPAEM","UNIFESP"];
-const MODULES=["Ginecologia","Obstetrícia","Oftalmologia","Cardiologia","Neurologia","Pediatria","Neonatologia","Cirurgia Geral","Clínica Médica","Pneumologia","Nefrologia","Endocrinologia","Gastroenterologia","Hematologia","Geriatria","Genética Médica","Mastologia","Anestesiologia","Cirurgia Vascular","Cirurgia Pediátrica","Neurocirurgia","Infectologia","Reumatologia","Dermatologia","Psiquiatria","Ortopedia","Urologia","Otorrinolaringologia","Medicina de Família e Comunidade","Saúde Coletiva","Emergências","Acesso direto — classificação pendente","Outros"];
+const pendingModule="Acesso direto — classificação pendente";
+const MODULES=["Ginecologia","Obstetrícia","Oftalmologia","Cardiologia","Neurologia","Pediatria","Neonatologia","Cirurgia Geral","Clínica Médica","Pneumologia","Nefrologia","Endocrinologia","Gastroenterologia","Hematologia","Geriatria","Genética Médica","Mastologia","Anestesiologia","Cirurgia Vascular","Cirurgia Pediátrica","Neurocirurgia","Infectologia","Reumatologia","Dermatologia","Psiquiatria","Ortopedia","Urologia","Otorrinolaringologia","Medicina de Família e Comunidade","Saúde Coletiva","Emergências","Outros",pendingModule];
 const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const validURL=u=>{try{let a=new URL(u);return a.protocol==="https:"?a.href:"#"}catch{return"#"}};
 let questions=[],sources=[],indices=[],mod="",active=null,choice="",pdfActive=null,pdfChoice="",readerSource="official",progress={},commentActive=null,localCommentUrls={},localQuestionUrls={},commentChoice="";
@@ -9,8 +10,9 @@ function scoreable(q){return /^[A-E]$/.test(q.gabarito||"") && (["pdf","pdf-loca
 function answerMatches(q,letter){return q.gabarito===letter||(Array.isArray(q.gabaritos_aceitos)&&q.gabaritos_aceitos.includes(letter));}
 function displayAnswer(q){return Array.isArray(q.gabaritos_aceitos)&&q.gabaritos_aceitos.length>1?q.gabaritos_aceitos.join(" ou "):q.gabarito;}
 function semesterOf(q){if(q.semestre)return String(q.semestre);let m=String(q.edicao||q.caderno||"").match(/20\d{2}\.([12])/);return m?m[1]:"";}
-try{progress=JSON.parse(localStorage.getItem("atlas-med-progress")||"{}")||{}}catch{progress={}}
-const save=()=>{try{localStorage.setItem("atlas-med-progress",JSON.stringify(progress))}catch{}};
+const progressKey="atlas-med-progress";
+try{progress=JSON.parse(localStorage.getItem(progressKey)||"{}")||{}}catch{progress={}}
+const save=()=>{try{localStorage.setItem(progressKey,JSON.stringify(progress))}catch{}};
 const select=(id,values,keep=true)=>{let x=$(id),old=keep?x.value:"";x.innerHTML=(id==="start"||id==="end"?"":"<option value=''>Todos</option>")+values.map(v=>'<option value="'+safe(v)+'">'+safe(v)+'</option>').join("");if(values.map(String).includes(old))x.value=old};
 const bankChoices=()=>$("bank-choices").querySelectorAll("input");
 function selectedBanks(){
@@ -28,19 +30,6 @@ function setAllBanks(checked){
  for(const input of bankChoices())input.checked=checked;
 }
 function bootFilters(){$("bank-choices").innerHTML=BANKS.map(bank=>'<label><input type="checkbox" value="'+safe(bank)+'" checked> '+safe(bank)+'</label>').join("");updateBankPicker();select("source-bank",BANKS);select("source-year",Array.from({length:10},(_,i)=>2017+i));for(const id of ["start","end"])select(id,Array.from({length:10},(_,i)=>2017+i));$("start").value="2017";$("end").value="2026"}
-const topicReviews={
- Ceratite:{
-  text:"Ceratite é inflamação da córnea. Dor, fotofobia, lacrimejamento e redução da visão sugerem acometimento corneano. Um infiltrado focal, especialmente com defeito epitelial que cora com fluoresceína, faz suspeitar de ceratite infecciosa. Lentes de contato, sobretudo quando usadas durante o sono, são um fator de risco importante. Revise como diferenciar ceratite bacteriana, herpética, fúngica e por Acanthamoeba. Na suspeita de infecção corneana, interrompa o uso das lentes e procure avaliação oftalmológica urgente.",
-  link:"https://www.aao.org/eye-health/glasses-contacts/what-is-bacterial-keratitis",
-  source:"American Academy of Ophthalmology"
- },
- Glaucoma:{
-  text:"Glaucoma é uma neuropatia óptica que pode causar perda progressiva do campo visual. No glaucoma crônico de ângulo aberto, o início costuma ser silencioso. A avaliação combina nervo óptico, campo visual, pressão intraocular e gonioscopia. No fechamento agudo do ângulo, pense em dor ocular intensa, olho vermelho, visão embaçada ou halos e náuseas, um quadro de urgência oftalmológica. No glaucoma congênito, revise a tríade de lacrimejamento, fotofobia e blefaroespasmo, além do aumento do diâmetro da córnea.",
-  link:"https://www.nei.nih.gov/eye-health-information/eye-conditions-and-diseases/glaucoma",
-  source:"National Eye Institute"
- }
-};
-
 function currentIndex(){
   const start=+ $("start").value,end=+ $("end").value,sem=$("semester").value,topic=$("topic").value,subtopic=$("subtopic").value,search=$("search").value.trim().toLocaleLowerCase("pt-BR"),status=$("status").value;
   const banks=selectedBanks();
@@ -55,8 +44,38 @@ function currentIndex(){
   }).sort((a,b)=>b.ano-a.ano||(Number(semesterOf(b))||0)-(Number(semesterOf(a))||0)||a.instituicao.localeCompare(b.instituicao)||a.numero-b.numero);
 }
 function current(){let start=+$("start").value,end=+$("end").value,sem=$("semester").value,topic=$("topic").value,subtopic=$("subtopic").value,search=$("search").value.trim().toLocaleLowerCase("pt-BR"),status=$("status").value;const banks=selectedBanks();return questions.filter(q=>banks.has(q.instituicao)&&(!mod||q.modulo===mod)&&q.ano>=start&&q.ano<=end&&(!sem||semesterOf(q)===sem)&&(!topic||topicOf(q)===topic)&&(!subtopic||matchesSubtopic(q,subtopic))&&(!search||[q.enunciado,topicOf(q),q.tema,q.subtema,q.modulo].join(" ").toLocaleLowerCase("pt-BR").includes(search))&&(!status||(status==="pending"?!progress[q.id]?.answer:status==="wrong"?progress[q.id]?.answer&&progress[q.id].answer!==q.gabarito:progress[q.id]?.starred)));}
-const alphabeticalModules=[...MODULES].sort((a,b)=>a.localeCompare(b,"pt-BR"));
-function modules(){let s=$("module-search").value.toLocaleLowerCase("pt-BR");$("modules").innerHTML='<button class="module-btn '+(!mod?"selected":"")+'" data-module="">Todos os módulos</button>'+alphabeticalModules.filter(m=>m.toLocaleLowerCase("pt-BR").includes(s)).map(m=>'<button class="module-btn '+(mod===m?"selected":"")+'" data-module="'+safe(m)+'">'+safe(m)+' ('+(questions.filter(q=>q.modulo===m).length+indices.filter(q=>q.modulo===m).length)+')</button>').join("");}
+const moduleName=m=>m===pendingModule?"Classificação pendente":m;
+const alphabeticalModules=MODULES.filter(m=>m!==pendingModule).sort((a,b)=>a.localeCompare(b,"pt-BR")).concat(pendingModule);
+function modules(){
+ const search=normalizeTopic($("module-search").value);
+ const counts=new Map();
+ for(const q of [...questions,...indices])counts.set(q.modulo,(counts.get(q.modulo)||0)+1);
+ const button=(m,label)=>'<button class="module-btn '+(mod===m?"selected":"")+'" aria-pressed="'+(mod===m)+'" data-module="'+safe(m)+'">'+safe(label)+'</button>';
+ $("modules").innerHTML=button("","Todos os módulos")+alphabeticalModules
+  .filter(m=>normalizeTopic(m).includes(search))
+  .map(m=>button(m,moduleName(m)+" ("+(counts.get(m)||0)+")")).join("");
+}
+function updateModuleLink(){
+ const url=new URL(location.href);
+ if(mod===pendingModule)url.searchParams.set("modulo","pendentes");
+ else url.searchParams.delete("modulo");
+ if(url.href!==location.href)history.replaceState(history.state,"",url);
+}
+function clearFilters(){
+ setAllBanks(true);
+ updateBankPicker();
+ $("start").value="2017";
+ $("end").value="2026";
+ for(const id of ["semester","search","status","topic","subtopic"])$(id).value="";
+}
+function chooseModule(next){
+ mod=next;
+ if(mod===pendingModule)clearFilters();
+ else $("topic").value=$("subtopic").value="";
+ updateModuleLink();
+ render();
+ if(mod===pendingModule&&compactQuiz())$("selection").scrollIntoView({block:"start"});
+}
 const alphabetical=(a,b)=>a.localeCompare(b,"pt-BR");
 function matchesSubtopic(q,value){
  return subtopicsOf(q).some(name=>normalizeTopic(name)===normalizeTopic(value));
@@ -95,13 +114,13 @@ function renderIndex(){
     return '<article class="question index"><div><span class="tag">'+safe(q.instituicao)+' · '+safe(q.ano)+(semesterOf(q)?"."+safe(semesterOf(q)):"")+'</span><span class="tag">'+safe(q.modulo)+'</span><span class="tag">Questão '+safe(q.numero)+'</span><span class="tag">'+safe(state)+'</span></div><h3>'+safe(q.tema)+'</h3><p>'+description+'</p>'+(commentOnly?'<p class="muted">Área original: '+safe(q.categoria_origem)+(q.pagina_prova?' · Caderno, página '+safe(q.pagina_prova):'')+' · Gabarito comentado, página '+safe(q.comentario_pagina)+'</p>':'<p class="muted">'+safe(q.caderno)+(q.fonte_formato==="Scribd HTML"?" · Documento externo":q.pagina?" · Página "+safe(q.pagina)+" do PDF":"")+'</p>')+'<div class="quiz-actions">'+controls+'</div></article>';
   }).join(""):'<div class="empty">Nenhuma questão corresponde aos filtros. Consulte o acervo para localizar outras provas.</div>';
 }
-function renderQuestions(){let list=current();$("selection").textContent=currentIndex().length+" questão(ões) oficiais classificadas"+(mod?" em "+mod:"")+".";const root=$("questions");root.previousElementSibling.classList.toggle("hidden",!list.length);root.classList.toggle("hidden",!list.length);root.innerHTML=list.length?list.map(q=>{let p=progress[q.id]||{};return '<article class="question"><div><span class="tag">'+safe(q.instituicao)+' · '+safe(q.ano)+'</span><span class="tag">'+safe(q.modulo)+'</span><span class="tag">'+safe(q.tema)+'</span></div><h3>'+safe(q.enunciado).slice(0,185)+(q.enunciado.length>185?"…":"")+'</h3><p class="muted">'+(q.numero?"Questão "+safe(q.numero)+" · ":"")+(p.answer?"Respondida: "+safe(p.answer):"Não resolvida")+'</p><button data-open="'+safe(q.id)+'">Resolver questão</button> <button data-star="'+safe(q.id)+'">'+(p.starred?"★ Favorita":"☆ Favoritar")+'</button></article>'}).join(""):'';}
+function renderQuestions(){let list=current();$("selection").textContent=mod===pendingModule?currentIndex().length+" questões com classificação pendente. Selecione uma para abrir.":currentIndex().length+" questões oficiais"+(mod?" em "+mod:"")+".";const root=$("questions");root.previousElementSibling.classList.toggle("hidden",!list.length);root.classList.toggle("hidden",!list.length);root.innerHTML=list.length?list.map(q=>{let p=progress[q.id]||{};return '<article class="question"><div><span class="tag">'+safe(q.instituicao)+' · '+safe(q.ano)+'</span><span class="tag">'+safe(q.modulo)+'</span><span class="tag">'+safe(q.tema)+'</span></div><h3>'+safe(q.enunciado).slice(0,185)+(q.enunciado.length>185?"…":"")+'</h3><p class="muted">'+(q.numero?"Questão "+safe(q.numero)+" · ":"")+(p.answer?"Respondida: "+safe(p.answer):"Não resolvida")+'</p><button data-open="'+safe(q.id)+'">Resolver questão</button> <button data-star="'+safe(q.id)+'">'+(p.starred?"★ Favorita":"☆ Favoritar")+'</button></article>'}).join(""):'';}
 function renderSources(){let bank=$("source-bank").value,year=$("source-year").value;let list=sources.filter(s=>(!bank||s.instituicao===bank)&&(!year||String(s.ano)===year));$("sources").innerHTML=list.length?list.map(s=>'<article class="source"><div><span class="tag">'+safe(s.instituicao)+'</span><span class="tag">'+safe(s.ano??"acervo geral")+'</span></div><h3>'+safe(s.titulo)+'</h3><p>'+safe(s.observacao)+'</p><p class="muted">Status: '+safe(s.status||"referência catalogada")+'.</p><a href="'+safe(validURL(s.url))+'" target="_blank" rel="noopener noreferrer">Abrir portal de origem ↗</a></article>').join(""):'<div class="empty">Nenhuma fonte cadastrada neste filtro. Isso não significa que a prova não exista.</div>';}
 function renderPerformance(){
   const attempted=[...questions,...indices].filter(q=>scoreable(q)&&progress[q.id]?.answer);
   const correct=attempted.filter(q=>answerMatches(q,progress[q.id].answer)).length,errors=attempted.length-correct;
-  const byModule=MODULES.map(m=>({m,q:attempted.filter(q=>q.modulo===m)})).filter(x=>x.q.length);
-  $("performance").innerHTML='<h3>Resumo</h3><p>Resolvidas: <b>'+attempted.length+'</b> · Acertos: <b>'+correct+'</b> · Erros: <b>'+errors+'</b> · Aproveitamento: <b>'+(attempted.length?Math.round(correct/attempted.length*100)+"%":"—")+'</b></p><p class="muted">Questões anuladas e excluídas não entram nas estatísticas. Seu desempenho fica salvo apenas neste navegador.</p><h3>Por módulo</h3>'+(byModule.length?byModule.map(({m,q})=>'<p>'+safe(m)+': '+q.filter(x=>answerMatches(x,progress[x.id].answer)).length+'/'+q.length+' corretas</p>').join(""):'<p class="muted">Ainda não há respostas registradas.</p>');
+  const byModule=alphabeticalModules.map(m=>({m,q:attempted.filter(q=>q.modulo===m)})).filter(x=>x.q.length);
+  $("performance").innerHTML='<h3>Resumo</h3><p>Resolvidas: <b>'+attempted.length+'</b> · Acertos: <b>'+correct+'</b> · Erros: <b>'+errors+'</b> · Aproveitamento: <b>'+(attempted.length?Math.round(correct/attempted.length*100)+"%":"—")+'</b></p><p class="muted">Questões anuladas e excluídas não entram nas estatísticas. Seu desempenho fica salvo apenas neste navegador.</p><h3>Por módulo</h3>'+(byModule.length?byModule.map(({m,q})=>'<p>'+safe(moduleName(m))+': '+q.filter(x=>answerMatches(x,progress[x.id].answer)).length+'/'+q.length+' corretas</p>').join(""):'<p class="muted">Ainda não há respostas registradas.</p>');
 }
 function render(){modules();topics();metrics();renderIndex();renderQuestions();renderSources();renderPerformance();}
 const compactQuiz=()=>window.matchMedia("(max-width: 790px)").matches;
@@ -168,16 +187,19 @@ function topicNoteKey(topic){
 function renderTopicReview(q){
  const topic=topicOf(q);
  if(!topic)return "";
- const review=Object.hasOwn(topicReviews,topic)?topicReviews[topic]:
-  Object.hasOwn(clinicalTopicReviews,topic)?clinicalTopicReviews[topic]:null;
+ const lesson=Object.hasOwn(topicReviewLessons,topic)?topicReviewLessons[topic]:null;
+ const review=Object.hasOwn(clinicalTopicReviews,topic)?clinicalTopicReviews[topic]:null;
  const detail=topicDetails.get(topic);
  const subtopics=[...(detail?.subtopics.values()||[])].sort(alphabetical);
  const questionSubtopics=subtopicsOf(q);
  const list=subtopics.length?'<details><summary>Subassuntos deste tema ('+subtopics.length+')</summary><ul>'+
   subtopics.map(name=>'<li>'+safe(name)+'</li>').join("")+'</ul></details>':"";
- const body=review?'<p>'+safe(review.text)+'</p><p><a href="'+safe(review.link)+'" target="_blank" rel="noopener noreferrer">'+safe(review.source)+'</a></p>':
+ const sourceLinks=lesson?lesson.sources.map(([label,url])=>'<li><a href="'+safe(validURL(url))+'" target="_blank" rel="noopener noreferrer">'+safe(label)+'</a></li>').join(""):"";
+ const body=lesson?'<p>'+safe(lesson.overview)+'</p><h4>O que as questões cobram</h4>'+
+  lesson.points.map(([title,text])=>'<p><b>'+safe(title)+'</b><br>'+safe(text)+'</p>').join("")+
+  '<details><summary>Referências</summary><ul>'+sourceLinks+'</ul></details>':review?'<p>'+safe(review.text)+'</p><p><a href="'+safe(review.link)+'" target="_blank" rel="noopener noreferrer">'+safe(review.source)+'</a></p>':
   '<p class="muted">Questões deste assunto no banco: '+(detail?.count||1)+'. '+(subtopics.length?'Consulte os subassuntos para orientar a revisão.':'Revise o conceito central de '+safe(topic)+'.')+'</p>';
- return '<section class="feedback"><h3>'+ (review?"Resumo geral · ":"Roteiro de revisão · ")+safe(topic)+'</h3>'+
+ return '<section class="feedback"><h3>'+ (lesson||review?"Resumo geral · ":"Roteiro de revisão · ")+safe(topic)+'</h3>'+
   (questionSubtopics.length?'<p><b>Subassuntos desta questão</b><br>'+safe(questionSubtopics.join(" · "))+'</p>':'')+body+list+'</section>';
 }
 
@@ -195,10 +217,105 @@ function loadTopicNote(topic){
 
 const noteKey=id=>"atlas-med-note:"+id;
 
+const backupFormat="atlas-med-backup";
+const isNoteKey=key=>key.startsWith("atlas-med-note:")||key.startsWith("atlas-med-topic-note:");
+const isRecord=value=>value!==null&&typeof value==="object"&&!Array.isArray(value);
+
+function exportStudyBackup(){
+ try{
+  const notes=Object.create(null);
+  if(personalMode){
+   for(let i=0;i<localStorage.length;i++){
+    const key=localStorage.key(i);
+    if(key&&isNoteKey(key))notes[key]=localStorage.getItem(key);
+   }
+  }
+  const content=JSON.stringify({format:backupFormat,version:1,progress,notes});
+  const url=URL.createObjectURL(new Blob([content],{type:"application/json"}));
+  const link=document.createElement("a");
+  link.href=url;
+  link.download="atlas-med-"+new Date().toISOString().slice(0,10)+".json";
+  document.body.append(link);
+  link.click();
+  link.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),30000);
+  $("backup-status").textContent="Arquivo preparado. Abra o Atlas Med no outro aparelho para importar.";
+ }catch{
+  $("backup-status").textContent="Não foi possível exportar os dados deste navegador.";
+ }
+}
+
+function mergeStudyBackup(backup){
+ if(!isRecord(backup)||backup.format!==backupFormat||backup.version!==1||
+    !isRecord(backup.progress)||!isRecord(backup.notes))throw Error("Arquivo inválido. Selecione um arquivo exportado pelo Atlas Med.");
+ const merged=Object.assign(Object.create(null),progress);
+ const notes=Object.entries(backup.notes);
+ if(notes.some(([key,value])=>!isNoteKey(key)||typeof value!=="string"))throw Error("O arquivo contém anotações inválidas.");
+ let conflicts=0;
+ for(const [id,entry] of Object.entries(backup.progress)){
+  if(!id||!isRecord(entry)||(Object.hasOwn(entry,"answer")&&(typeof entry.answer!=="string"||!/^[A-E]$/.test(entry.answer)))||
+     (Object.hasOwn(entry,"starred")&&typeof entry.starred!=="boolean"))throw Error("O arquivo contém respostas ou favoritos inválidos.");
+  const local=merged[id]||{};
+  const next={...local};
+  for(const field of ["answer","starred"]){
+   if(!Object.hasOwn(entry,field))continue;
+   if(!Object.hasOwn(local,field))next[field]=entry[field];
+   else if(local[field]!==entry[field])conflicts++;
+  }
+  merged[id]=next;
+ }
+ const additions=[];
+ if(personalMode){
+  for(const [key,value] of notes){
+   const local=localStorage.getItem(key);
+   if(local===null)additions.push([key,value]);
+   else if(local!==value)conflicts++;
+  }
+ }
+ const previousProgress=localStorage.getItem(progressKey);
+ const savedNotes=[];
+ try{
+  localStorage.setItem(progressKey,JSON.stringify(merged));
+  for(const [key,value] of additions){
+   localStorage.setItem(key,value);
+   savedNotes.push(key);
+  }
+ }catch{
+  for(const key of savedNotes)localStorage.removeItem(key);
+  if(previousProgress===null)localStorage.removeItem(progressKey);
+  else localStorage.setItem(progressKey,previousProgress);
+  throw Error("Não foi possível salvar a importação neste navegador.");
+ }
+ progress=merged;
+ const preserved=conflicts?" Os dados deste aparelho foram mantidos onde havia diferenças.":"";
+ const skipped=notes.length&&!personalMode?" Para importar as anotações, ative seu modo pessoal neste aparelho e importe o arquivo novamente.":"";
+ return "Importação concluída."+preserved+skipped;
+}
+
+$("export-study").addEventListener("click",exportStudyBackup);
+$("import-study").addEventListener("click",()=>$("backup-file").click());
+$("backup-file").addEventListener("change",async event=>{
+ const file=event.target.files?.[0];
+ event.target.value="";
+ if(!file)return;
+ const status=$("backup-status");
+ try{
+  if(file.size>16*1024*1024)throw Error("O arquivo excede o limite de 16 MB.");
+  let data;
+  try{data=JSON.parse(await file.text());}
+  catch{throw Error("Selecione um arquivo JSON exportado pelo Atlas Med.");}
+  status.textContent=mergeStudyBackup(data);
+  render();
+ }catch(error){
+  status.textContent=error.message;
+ }
+});
+
+
 function renderQuestionNote(q){
  if(!personalMode)return "";
  const topic=topicOf(q);
- const hasTopic=topic&&q.modulo!=="Acesso direto — classificação pendente";
+ const hasTopic=topic&&q.modulo!==pendingModule;
  let note="",topicNote="";
  try{
   note=localStorage.getItem(noteKey(q.id))||"";
@@ -393,7 +510,7 @@ document.addEventListener("change",async e=>{
   storage[sem]=URL.createObjectURL(file);
   renderComment(commentActive);
 });
-document.addEventListener("click",e=>{let btn=e.target.closest?.("button");if(!btn)return;if(btn.dataset.view)switchView(btn.dataset.view);if(btn.hasAttribute("data-module")){mod=btn.dataset.module;$("topic").value="";$("subtopic").value="";render()}if(btn.dataset.open)openQuiz(btn.dataset.open);if(btn.dataset.pdfOpen)openPdf(btn.dataset.pdfOpen);if(btn.dataset.commentOpen)openComment(btn.dataset.commentOpen);if(btn.id==="forget-private-pdf"&&commentActive&&window.NIEPAEMPdf&&confirm("Apagar a cópia do caderno armazenada neste navegador?"))window.NIEPAEMPdf.forget(commentActive.semestre).catch(()=>{});if(btn.dataset.commentChoice&&commentActive&&commentActive.modo_resolucao==="pdf-local"&&!progress[commentActive.id]?.answer){commentChoice=btn.dataset.commentChoice;document.querySelectorAll("[data-comment-choice]").forEach(x=>x.classList.toggle("chosen",x.dataset.commentChoice===commentChoice));const submit=$("comment-submit");if(submit)submit.disabled=false;}if(btn.id==="comment-submit"&&commentActive&&commentChoice&&commentActive.modo_resolucao==="pdf-local"){progress[commentActive.id]={...(progress[commentActive.id]||{}),answer:commentChoice};save();renderComment(commentActive);render();}if(btn.id==="comment-retry"&&commentActive){delete progress[commentActive.id]?.answer;save();commentChoice="";renderComment(commentActive);render();}if(btn.dataset.commentNavigate&&commentActive){const list=currentIndex().filter(q=>q.modo_resolucao==="pdf-local"&&q.semestre===commentActive.semestre),at=list.findIndex(q=>q.id===commentActive.id),next=list[at+Number(btn.dataset.commentNavigate)];if(next){commentActive=next;commentChoice="";renderComment(next);}}if(btn.dataset.readerSource&&pdfActive){readerSource=btn.dataset.readerSource;drawPdf();}if(btn.dataset.pdfStar){let id=btn.dataset.pdfStar;progress[id]={...(progress[id]||{}),starred:!progress[id]?.starred};save();render()}if(btn.dataset.pdfChoice&&pdfActive&&!progress[pdfActive.id]?.answer){pdfChoice=btn.dataset.pdfChoice;document.querySelectorAll("[data-pdf-choice]").forEach(x=>x.classList.toggle("chosen",x.dataset.pdfChoice===pdfChoice));let submit=$("pdf-submit");if(submit)submit.disabled=false;}if(btn.id==="pdf-submit"&&pdfActive&&pdfChoice&&scoreable(pdfActive)){progress[pdfActive.id]={...(progress[pdfActive.id]||{}),answer:pdfChoice};save();drawPdf();render()}if(btn.id==="pdf-retry"&&pdfActive){delete progress[pdfActive.id]?.answer;save();pdfChoice="";drawPdf();render()}if(btn.dataset.star){let id=btn.dataset.star;progress[id]={...(progress[id]||{}),starred:!progress[id]?.starred};save();render()}if(btn.dataset.choice&&active&&!progress[active.id]?.answer){choice=btn.dataset.choice;drawQuiz()}if(btn.id==="submit"&&choice&&active){progress[active.id]={...(progress[active.id]||{}),answer:choice};save();drawQuiz();render()}if(btn.id==="retry"&&active){delete progress[active.id]?.answer;save();choice="";drawQuiz();render()}if(btn.id==="close-quiz"||btn.id==="close-quiz-top")closeQuiz();if(btn.id==="clear"){setAllBanks(true);updateBankPicker();mod="";$("semester").value="";$("start").value="2017";$("end").value="2026";$("search").value="";$("status").value="";$("topic").value="";$("subtopic").value="";render()}if(btn.id==="reset-progress"&&confirm("Apagar todas as respostas e favoritos neste navegador?")){progress={};save();render()}});
+document.addEventListener("click",e=>{let btn=e.target.closest?.("button");if(!btn)return;if(btn.dataset.view)switchView(btn.dataset.view);if(btn.hasAttribute("data-module"))chooseModule(btn.dataset.module);if(btn.dataset.open)openQuiz(btn.dataset.open);if(btn.dataset.pdfOpen)openPdf(btn.dataset.pdfOpen);if(btn.dataset.commentOpen)openComment(btn.dataset.commentOpen);if(btn.id==="forget-private-pdf"&&commentActive&&window.NIEPAEMPdf&&confirm("Apagar a cópia do caderno armazenada neste navegador?"))window.NIEPAEMPdf.forget(commentActive.semestre).catch(()=>{});if(btn.dataset.commentChoice&&commentActive&&commentActive.modo_resolucao==="pdf-local"&&!progress[commentActive.id]?.answer){commentChoice=btn.dataset.commentChoice;document.querySelectorAll("[data-comment-choice]").forEach(x=>x.classList.toggle("chosen",x.dataset.commentChoice===commentChoice));const submit=$("comment-submit");if(submit)submit.disabled=false;}if(btn.id==="comment-submit"&&commentActive&&commentChoice&&commentActive.modo_resolucao==="pdf-local"){progress[commentActive.id]={...(progress[commentActive.id]||{}),answer:commentChoice};save();renderComment(commentActive);render();}if(btn.id==="comment-retry"&&commentActive){delete progress[commentActive.id]?.answer;save();commentChoice="";renderComment(commentActive);render();}if(btn.dataset.commentNavigate&&commentActive){const list=currentIndex().filter(q=>q.modo_resolucao==="pdf-local"&&q.semestre===commentActive.semestre),at=list.findIndex(q=>q.id===commentActive.id),next=list[at+Number(btn.dataset.commentNavigate)];if(next){commentActive=next;commentChoice="";renderComment(next);}}if(btn.dataset.readerSource&&pdfActive){readerSource=btn.dataset.readerSource;drawPdf();}if(btn.dataset.pdfStar){let id=btn.dataset.pdfStar;progress[id]={...(progress[id]||{}),starred:!progress[id]?.starred};save();render()}if(btn.dataset.pdfChoice&&pdfActive&&!progress[pdfActive.id]?.answer){pdfChoice=btn.dataset.pdfChoice;document.querySelectorAll("[data-pdf-choice]").forEach(x=>x.classList.toggle("chosen",x.dataset.pdfChoice===pdfChoice));let submit=$("pdf-submit");if(submit)submit.disabled=false;}if(btn.id==="pdf-submit"&&pdfActive&&pdfChoice&&scoreable(pdfActive)){progress[pdfActive.id]={...(progress[pdfActive.id]||{}),answer:pdfChoice};save();drawPdf();render()}if(btn.id==="pdf-retry"&&pdfActive){delete progress[pdfActive.id]?.answer;save();pdfChoice="";drawPdf();render()}if(btn.dataset.star){let id=btn.dataset.star;progress[id]={...(progress[id]||{}),starred:!progress[id]?.starred};save();render()}if(btn.dataset.choice&&active&&!progress[active.id]?.answer){choice=btn.dataset.choice;drawQuiz()}if(btn.id==="submit"&&choice&&active){progress[active.id]={...(progress[active.id]||{}),answer:choice};save();drawQuiz();render()}if(btn.id==="retry"&&active){delete progress[active.id]?.answer;save();choice="";drawQuiz();render()}if(btn.id==="close-quiz"||btn.id==="close-quiz-top")closeQuiz();if(btn.id==="clear"){mod="";clearFilters();updateModuleLink();render()}if(btn.id==="reset-progress"&&confirm("Apagar todas as respostas e favoritos neste navegador?")){progress={};save();render()}});
 $("bank-options").addEventListener("change",event=>{
  if(event.target.id==="bank-all")setAllBanks(event.target.checked);
  updateBankPicker();
@@ -419,7 +536,7 @@ function archivedUspQuestions(archive, existing){
   return {
    id:previous?.id||"usp-"+year+"-"+(ano===2024?"a1":"a")+"-q"+String(numero).padStart(3,"0"),
    instituicao:"USP",ano,numero,pagina,caderno:exam.caderno,
-   modulo:previous?.modulo||"Acesso direto — classificação pendente",
+   modulo:previous?.modulo||pendingModule,
    tema:previous?.tema||"Assunto específico pendente de identificação",
    subtema:previous?.subtema||"",
    resumo:previous?.resumo||"Questão "+numero+" de acesso direto da USP "+year+".",
@@ -440,14 +557,14 @@ function archivedResidencyQuestions(exams) {
    instituicao,ano,caderno,numero,pagina,pdf_url,gabarito_url,revisao_url,pagina_comentario,
    resolucao_comentada,gabarito,gabaritos_aceitos,
    gabarito_status:revisao_url?"COM REVISÃO DE RECURSOS":"PRELIMINAR",
-   modulo:"Acesso direto — classificação pendente",
+   modulo:pendingModule,
    tema:"Assunto específico pendente de identificação",
    resumo:"Questão "+numero+" de acesso direto da "+instituicao+" "+ano+".",
    fonte_url:pdf_url+"#page="+pagina,modo_resolucao:"pdf",alternativas_quantidade:4,
   };
  }));
 }
-async function load(){bootFilters();await initPersonalMode();try{let responses=await Promise.all([fetch("data/questoes.json"),fetch("data/provas.json"),fetch("data/indices.json"),fetch("data/niepaem-2026-1.json"),fetch("data/niepaem-2026-2.json"),fetch("data/unifesp-2025.json"),fetch("data/unifesp-2026.json"),fetch("data/classificacao.json"),fetch("data/usp-2023-2024.json"),fetch("data/unesp-unifesp-2023-2024.json")]);if(responses.some(r=>!r.ok))throw Error("Não foi possível carregar o acervo.");let data=await Promise.all(responses.map(r=>r.json()));[questions,sources,indices]=data.slice(0,3);const archived=archivedUspQuestions(data[8],indices);indices=[...indices.filter(q=>q.instituicao!=="USP"||q.ano!==2024),...archived,...archivedResidencyQuestions(data[9]),...data[3],...data[4],...data[5],...data[6]].map(q=>{
+async function load(){bootFilters();if(new URLSearchParams(location.search).get("modulo")==="pendentes")mod=pendingModule;await initPersonalMode();try{let responses=await Promise.all([fetch("data/questoes.json"),fetch("data/provas.json"),fetch("data/indices.json"),fetch("data/niepaem-2026-1.json"),fetch("data/niepaem-2026-2.json"),fetch("data/unifesp-2025.json"),fetch("data/unifesp-2026.json"),fetch("data/classificacao.json"),fetch("data/usp-2023-2024.json"),fetch("data/unesp-unifesp-2023-2024.json")]);if(responses.some(r=>!r.ok))throw Error("Não foi possível carregar o acervo.");let data=await Promise.all(responses.map(r=>r.json()));[questions,sources,indices]=data.slice(0,3);const archived=archivedUspQuestions(data[8],indices);indices=[...indices.filter(q=>q.instituicao!=="USP"||q.ano!==2024),...archived,...archivedResidencyQuestions(data[9]),...data[3],...data[4],...data[5],...data[6]].map(q=>{
  const classification=data[7][q.id];
  if(!classification)return q;
  const [modulo,tema,pagina]=classification;
