@@ -28,10 +28,11 @@ for (const q of indices) {
   if (!Number.isInteger(q.pagina) || q.pagina < 1) fail("índice: página inválida em " + q.id);
   if (!q.resumo || !q.subtema) fail("índice: classificação incompleta em " + q.id);
   if (!/^https:\/\//.test(q.fonte_url || "")) fail("índice: fonte URL inválida em " + q.id);
-  if (!["A", "B", "C", "D", "E", "ANULADA", "EXCLUIDA"].includes(q.gabarito)) fail("índice: gabarito inválido em " + q.id);
-  if (!/^https:\/\//.test(q.gabarito_url || "")) fail("índice: fonte do gabarito inválida em " + q.id);
+  if (!["A", "B", "C", "D", "E", "ANULADA", "EXCLUIDA"].includes(q.gabarito) && !(q.instituicao === "NIEPAEM" && q.gabarito === "PENDENTE" && q.modo_resolucao === "link")) fail("índice: gabarito inválido em " + q.id);
+  if (q.gabarito !== "PENDENTE" && !/^https:\/\//.test(q.gabarito_url || "")) fail("índice: fonte do gabarito inválida em " + q.id);
   if (q.modo_resolucao === "pdf" && (!/^https:\/\//.test(q.pdf_url || "") || ![4, 5].includes(q.alternativas_quantidade))) fail("índice: visualização PDF incompleta em " + q.id);
   if (q.conteudo_reproduzido !== false) fail("índice: texto não autorizado marcado como reproduzido em " + q.id);
+  if (q.instituicao==="NIEPAEM" && q.gabarito==="PENDENTE" && q.modo_resolucao!=="link") fail("NIEPAEM pendente não pode ser pontuável: "+q.id);
 }
 for (const q of questions) {
   validateMetadata(q, "questão");
