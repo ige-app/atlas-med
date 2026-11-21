@@ -81,3 +81,9 @@ body.quiz-open #quiz[open]{display:block;position:fixed;inset:12px 0;margin:auto
 .pdf-transcript h3{margin-top:0}
 .transcribed-context,.transcribed-statement,.transcribed-option,.pdf-transcript li{white-space:pre-line}
 .transcribed-context:empty,.transcribed-option:empty{display:none}
+
+#exclude-banks{flex:1 1 145px;position:relative}
+#exclude-banks summary{padding:10px;border:1px solid #cbd7dc;border-radius:8px;cursor:pointer;color:var(--navy);background:white;font-weight:600}
+#exclude-banks-options{position:absolute;inset-inline:0;top:100%;z-index:4;background:#fff;padding:6px;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px #102d4026}
+#exclude-banks-options label{display:flex;gap:8px;align-items:center;min-height:36px;padding:4px;font-size:14px;cursor:pointer}
+#exclude-banks-options input{width:18px;height:18px;margin:0;flex:none}
