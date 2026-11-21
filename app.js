@@ -41,30 +41,42 @@ const topicReviews={
  }
 };
 
-function topicOf(q){
- const label=[q.tema,q.subtema].join(" ");
- if (/\b(?:ceratites?|queratites?)\b/i.test(label))return "Ceratite";
- if (/\bglaucomas?\b/i.test(label))return "Glaucoma";
- return q.tema||"";
-}
-
 function currentIndex(){
-  const start=+ $("start").value,end=+ $("end").value,sem=$("semester").value,topic=$("topic").value,search=$("search").value.trim().toLocaleLowerCase("pt-BR"),status=$("status").value;
+  const start=+ $("start").value,end=+ $("end").value,sem=$("semester").value,topic=$("topic").value,subtopic=$("subtopic").value,search=$("search").value.trim().toLocaleLowerCase("pt-BR"),status=$("status").value;
   const banks=selectedBanks();
   return indices.filter(q=>{
     const p=progress[q.id]||{};
-    if(!banks.has(q.instituicao)||(mod&&q.modulo!==mod)||q.ano<start||q.ano>end||(sem&&semesterOf(q)!==sem)||(topic&&topicOf(q)!==topic))return false;
-    if(search&&![q.resumo,q.tema,q.subtema,q.modulo,q.comentario_resumido].join(" ").toLocaleLowerCase("pt-BR").includes(search))return false;
+    if(!banks.has(q.instituicao)||(mod&&q.modulo!==mod)||q.ano<start||q.ano>end||(sem&&semesterOf(q)!==sem)||(topic&&topicOf(q)!==topic)||(subtopic&&!matchesSubtopic(q,subtopic)))return false;
+    if(search&&![q.resumo,topicOf(q),q.tema,q.subtema,q.modulo,q.comentario_resumido].join(" ").toLocaleLowerCase("pt-BR").includes(search))return false;
     if(status==="pending"&&(!scoreable(q)||p.answer))return false;
     if(status==="wrong"&&(!p.answer||answerMatches(q,p.answer)))return false;
     if(status==="starred"&&!p.starred)return false;
     return true;
   }).sort((a,b)=>b.ano-a.ano||(Number(semesterOf(b))||0)-(Number(semesterOf(a))||0)||a.instituicao.localeCompare(b.instituicao)||a.numero-b.numero);
 }
-function current(){let start=+$("start").value,end=+$("end").value,sem=$("semester").value,topic=$("topic").value,search=$("search").value.trim().toLocaleLowerCase("pt-BR"),status=$("status").value;const banks=selectedBanks();return questions.filter(q=>banks.has(q.instituicao)&&(!mod||q.modulo===mod)&&q.ano>=start&&q.ano<=end&&(!sem||semesterOf(q)===sem)&&(!topic||topicOf(q)===topic)&&(!search||[q.enunciado,q.tema,q.subtema,q.modulo].join(" ").toLocaleLowerCase("pt-BR").includes(search))&&(!status||(status==="pending"?!progress[q.id]?.answer:status==="wrong"?progress[q.id]?.answer&&progress[q.id].answer!==q.gabarito:progress[q.id]?.starred)));}
+function current(){let start=+$("start").value,end=+$("end").value,sem=$("semester").value,topic=$("topic").value,subtopic=$("subtopic").value,search=$("search").value.trim().toLocaleLowerCase("pt-BR"),status=$("status").value;const banks=selectedBanks();return questions.filter(q=>banks.has(q.instituicao)&&(!mod||q.modulo===mod)&&q.ano>=start&&q.ano<=end&&(!sem||semesterOf(q)===sem)&&(!topic||topicOf(q)===topic)&&(!subtopic||matchesSubtopic(q,subtopic))&&(!search||[q.enunciado,topicOf(q),q.tema,q.subtema,q.modulo].join(" ").toLocaleLowerCase("pt-BR").includes(search))&&(!status||(status==="pending"?!progress[q.id]?.answer:status==="wrong"?progress[q.id]?.answer&&progress[q.id].answer!==q.gabarito:progress[q.id]?.starred)));}
 const alphabeticalModules=[...MODULES].sort((a,b)=>a.localeCompare(b,"pt-BR"));
 function modules(){let s=$("module-search").value.toLocaleLowerCase("pt-BR");$("modules").innerHTML='<button class="module-btn '+(!mod?"selected":"")+'" data-module="">Todos os módulos</button>'+alphabeticalModules.filter(m=>m.toLocaleLowerCase("pt-BR").includes(s)).map(m=>'<button class="module-btn '+(mod===m?"selected":"")+'" data-module="'+safe(m)+'">'+safe(m)+' ('+(questions.filter(q=>q.modulo===m).length+indices.filter(q=>q.modulo===m).length)+')</button>').join("");}
-function topics(){let prev=$("topic").value;let set=[...new Set([...questions,...indices].filter(q=>!mod||q.modulo===mod).map(topicOf).filter(Boolean))].sort();select("topic",set,false);if(set.includes(prev))$("topic").value=prev;}
+const alphabetical=(a,b)=>a.localeCompare(b,"pt-BR");
+function matchesSubtopic(q,value){
+ return subtopicsOf(q).some(name=>normalizeTopic(name)===normalizeTopic(value));
+}
+function topics(){
+ const scoped=[...questions,...indices].filter(q=>!mod||q.modulo===mod);
+ select("topic",[...new Set(scoped.map(topicOf).filter(Boolean))].sort(alphabetical));
+ updateSubtopics(scoped);
+}
+function updateSubtopics(scoped=[...questions,...indices].filter(q=>!mod||q.modulo===mod)){
+ const selected=$("topic").value;
+ const subtopics=new Map();
+ if(selected){
+  for(const q of scoped.filter(q=>topicOf(q)===selected)){
+   for(const item of subtopicsOf(q))subtopics.set(normalizeTopic(item),item);
+  }
+ }
+ select("subtopic",[...subtopics.values()].sort(alphabetical));
+ $("subtopic-filter").hidden=!subtopics.size;
+}
 function metrics(){
   const attempts=[...questions,...indices].filter(q=>scoreable(q)&&progress[q.id]?.answer);
   $("count").textContent=indices.filter(q=>scoreable(q)&&["pdf","pdf-local"].includes(q.modo_resolucao)).length;
@@ -155,10 +167,30 @@ function topicNoteKey(topic){
 
 function renderTopicReview(q){
  const topic=topicOf(q);
- if(!Object.hasOwn(topicReviews,topic))return "";
- const review=topicReviews[topic];
- return '<section class="feedback"><h3>Resumo geral · '+safe(topic)+'</h3><p>'+safe(review.text)+'</p>'+
-  '<p><a href="'+safe(review.link)+'" target="_blank" rel="noopener noreferrer">'+safe(review.source)+'</a></p></section>';
+ if(!topic)return "";
+ const review=Object.hasOwn(topicReviews,topic)?topicReviews[topic]:
+  Object.hasOwn(clinicalTopicReviews,topic)?clinicalTopicReviews[topic]:null;
+ const detail=topicDetails.get(topic);
+ const subtopics=[...(detail?.subtopics.values()||[])].sort(alphabetical);
+ const questionSubtopics=subtopicsOf(q);
+ const list=subtopics.length?'<details><summary>Subassuntos deste tema ('+subtopics.length+')</summary><ul>'+
+  subtopics.map(name=>'<li>'+safe(name)+'</li>').join("")+'</ul></details>':"";
+ const body=review?'<p>'+safe(review.text)+'</p><p><a href="'+safe(review.link)+'" target="_blank" rel="noopener noreferrer">'+safe(review.source)+'</a></p>':
+  '<p class="muted">Questões deste assunto no banco: '+(detail?.count||1)+'. '+(subtopics.length?'Consulte os subassuntos para orientar a revisão.':'Revise o conceito central de '+safe(topic)+'.')+'</p>';
+ return '<section class="feedback"><h3>'+ (review?"Resumo geral · ":"Roteiro de revisão · ")+safe(topic)+'</h3>'+
+  (questionSubtopics.length?'<p><b>Subassuntos desta questão</b><br>'+safe(questionSubtopics.join(" · "))+'</p>':'')+body+list+'</section>';
+}
+
+function loadTopicNote(topic){
+ const saved=localStorage.getItem(topicNoteKey(topic));
+ if(saved!==null)return saved;
+ const previous=new Map();
+ for(const name of topicDetails.get(topic)?.aliases||[]){
+  const note=localStorage.getItem(topicNoteKey(name));
+  if(note&&!previous.has(note))previous.set(note,name);
+ }
+ if(previous.size<=1)return previous.keys().next().value||"";
+ return [...previous].map(([note,name])=>name+"\n"+note).join("\n\n");
 }
 
 const noteKey=id=>"atlas-med-note:"+id;
@@ -170,7 +202,7 @@ function renderQuestionNote(q){
  let note="",topicNote="";
  try{
   note=localStorage.getItem(noteKey(q.id))||"";
-  if(hasTopic)topicNote=localStorage.getItem(topicNoteKey(topic))||"";
+  if(hasTopic)topicNote=loadTopicNote(topic);
  }catch{}
  const topicEditor=hasTopic?'<label for="topic-note">Meu resumo · '+safe(topic)+'</label>'+
   '<textarea id="topic-note" rows="4" data-topic="'+safe(topic)+'" aria-describedby="topic-note-hint topic-note-status" placeholder="Escreva um resumo para rever em todas as questões deste assunto…">\n'+safe(topicNote)+'</textarea>'+
@@ -190,7 +222,7 @@ $("quiz-body").addEventListener("input",event=>{
  const status=$(field.id+"-status");
  try{
   const key=topic?topicNoteKey(field.dataset.topic):noteKey(field.dataset.questionId);
-  if(field.value.trim())localStorage.setItem(key,field.value);
+  if(topic||field.value.trim())localStorage.setItem(key,field.value);
   else localStorage.removeItem(key);
   status.textContent=field.value.trim()?(topic?"Resumo salvo para este assunto.":"Anotação salva."):"Campo vazio.";
  }catch{
@@ -361,14 +393,20 @@ document.addEventListener("change",async e=>{
   storage[sem]=URL.createObjectURL(file);
   renderComment(commentActive);
 });
-document.addEventListener("click",e=>{let btn=e.target.closest?.("button");if(!btn)return;if(btn.dataset.view)switchView(btn.dataset.view);if(btn.hasAttribute("data-module")){mod=btn.dataset.module;$("topic").value="";render()}if(btn.dataset.open)openQuiz(btn.dataset.open);if(btn.dataset.pdfOpen)openPdf(btn.dataset.pdfOpen);if(btn.dataset.commentOpen)openComment(btn.dataset.commentOpen);if(btn.id==="forget-private-pdf"&&commentActive&&window.NIEPAEMPdf&&confirm("Apagar a cópia do caderno armazenada neste navegador?"))window.NIEPAEMPdf.forget(commentActive.semestre).catch(()=>{});if(btn.dataset.commentChoice&&commentActive&&commentActive.modo_resolucao==="pdf-local"&&!progress[commentActive.id]?.answer){commentChoice=btn.dataset.commentChoice;document.querySelectorAll("[data-comment-choice]").forEach(x=>x.classList.toggle("chosen",x.dataset.commentChoice===commentChoice));const submit=$("comment-submit");if(submit)submit.disabled=false;}if(btn.id==="comment-submit"&&commentActive&&commentChoice&&commentActive.modo_resolucao==="pdf-local"){progress[commentActive.id]={...(progress[commentActive.id]||{}),answer:commentChoice};save();renderComment(commentActive);render();}if(btn.id==="comment-retry"&&commentActive){delete progress[commentActive.id]?.answer;save();commentChoice="";renderComment(commentActive);render();}if(btn.dataset.commentNavigate&&commentActive){const list=currentIndex().filter(q=>q.modo_resolucao==="pdf-local"&&q.semestre===commentActive.semestre),at=list.findIndex(q=>q.id===commentActive.id),next=list[at+Number(btn.dataset.commentNavigate)];if(next){commentActive=next;commentChoice="";renderComment(next);}}if(btn.dataset.readerSource&&pdfActive){readerSource=btn.dataset.readerSource;drawPdf();}if(btn.dataset.pdfStar){let id=btn.dataset.pdfStar;progress[id]={...(progress[id]||{}),starred:!progress[id]?.starred};save();render()}if(btn.dataset.pdfChoice&&pdfActive&&!progress[pdfActive.id]?.answer){pdfChoice=btn.dataset.pdfChoice;document.querySelectorAll("[data-pdf-choice]").forEach(x=>x.classList.toggle("chosen",x.dataset.pdfChoice===pdfChoice));let submit=$("pdf-submit");if(submit)submit.disabled=false;}if(btn.id==="pdf-submit"&&pdfActive&&pdfChoice&&scoreable(pdfActive)){progress[pdfActive.id]={...(progress[pdfActive.id]||{}),answer:pdfChoice};save();drawPdf();render()}if(btn.id==="pdf-retry"&&pdfActive){delete progress[pdfActive.id]?.answer;save();pdfChoice="";drawPdf();render()}if(btn.dataset.star){let id=btn.dataset.star;progress[id]={...(progress[id]||{}),starred:!progress[id]?.starred};save();render()}if(btn.dataset.choice&&active&&!progress[active.id]?.answer){choice=btn.dataset.choice;drawQuiz()}if(btn.id==="submit"&&choice&&active){progress[active.id]={...(progress[active.id]||{}),answer:choice};save();drawQuiz();render()}if(btn.id==="retry"&&active){delete progress[active.id]?.answer;save();choice="";drawQuiz();render()}if(btn.id==="close-quiz"||btn.id==="close-quiz-top")closeQuiz();if(btn.id==="clear"){setAllBanks(true);updateBankPicker();mod="";$("semester").value="";$("start").value="2017";$("end").value="2026";$("search").value="";$("status").value="";$("topic").value="";render()}if(btn.id==="reset-progress"&&confirm("Apagar todas as respostas e favoritos neste navegador?")){progress={};save();render()}});
+document.addEventListener("click",e=>{let btn=e.target.closest?.("button");if(!btn)return;if(btn.dataset.view)switchView(btn.dataset.view);if(btn.hasAttribute("data-module")){mod=btn.dataset.module;$("topic").value="";$("subtopic").value="";render()}if(btn.dataset.open)openQuiz(btn.dataset.open);if(btn.dataset.pdfOpen)openPdf(btn.dataset.pdfOpen);if(btn.dataset.commentOpen)openComment(btn.dataset.commentOpen);if(btn.id==="forget-private-pdf"&&commentActive&&window.NIEPAEMPdf&&confirm("Apagar a cópia do caderno armazenada neste navegador?"))window.NIEPAEMPdf.forget(commentActive.semestre).catch(()=>{});if(btn.dataset.commentChoice&&commentActive&&commentActive.modo_resolucao==="pdf-local"&&!progress[commentActive.id]?.answer){commentChoice=btn.dataset.commentChoice;document.querySelectorAll("[data-comment-choice]").forEach(x=>x.classList.toggle("chosen",x.dataset.commentChoice===commentChoice));const submit=$("comment-submit");if(submit)submit.disabled=false;}if(btn.id==="comment-submit"&&commentActive&&commentChoice&&commentActive.modo_resolucao==="pdf-local"){progress[commentActive.id]={...(progress[commentActive.id]||{}),answer:commentChoice};save();renderComment(commentActive);render();}if(btn.id==="comment-retry"&&commentActive){delete progress[commentActive.id]?.answer;save();commentChoice="";renderComment(commentActive);render();}if(btn.dataset.commentNavigate&&commentActive){const list=currentIndex().filter(q=>q.modo_resolucao==="pdf-local"&&q.semestre===commentActive.semestre),at=list.findIndex(q=>q.id===commentActive.id),next=list[at+Number(btn.dataset.commentNavigate)];if(next){commentActive=next;commentChoice="";renderComment(next);}}if(btn.dataset.readerSource&&pdfActive){readerSource=btn.dataset.readerSource;drawPdf();}if(btn.dataset.pdfStar){let id=btn.dataset.pdfStar;progress[id]={...(progress[id]||{}),starred:!progress[id]?.starred};save();render()}if(btn.dataset.pdfChoice&&pdfActive&&!progress[pdfActive.id]?.answer){pdfChoice=btn.dataset.pdfChoice;document.querySelectorAll("[data-pdf-choice]").forEach(x=>x.classList.toggle("chosen",x.dataset.pdfChoice===pdfChoice));let submit=$("pdf-submit");if(submit)submit.disabled=false;}if(btn.id==="pdf-submit"&&pdfActive&&pdfChoice&&scoreable(pdfActive)){progress[pdfActive.id]={...(progress[pdfActive.id]||{}),answer:pdfChoice};save();drawPdf();render()}if(btn.id==="pdf-retry"&&pdfActive){delete progress[pdfActive.id]?.answer;save();pdfChoice="";drawPdf();render()}if(btn.dataset.star){let id=btn.dataset.star;progress[id]={...(progress[id]||{}),starred:!progress[id]?.starred};save();render()}if(btn.dataset.choice&&active&&!progress[active.id]?.answer){choice=btn.dataset.choice;drawQuiz()}if(btn.id==="submit"&&choice&&active){progress[active.id]={...(progress[active.id]||{}),answer:choice};save();drawQuiz();render()}if(btn.id==="retry"&&active){delete progress[active.id]?.answer;save();choice="";drawQuiz();render()}if(btn.id==="close-quiz"||btn.id==="close-quiz-top")closeQuiz();if(btn.id==="clear"){setAllBanks(true);updateBankPicker();mod="";$("semester").value="";$("start").value="2017";$("end").value="2026";$("search").value="";$("status").value="";$("topic").value="";$("subtopic").value="";render()}if(btn.id==="reset-progress"&&confirm("Apagar todas as respostas e favoritos neste navegador?")){progress={};save();render()}});
 $("bank-options").addEventListener("change",event=>{
  if(event.target.id==="bank-all")setAllBanks(event.target.checked);
  updateBankPicker();
  renderIndex();
  renderQuestions();
 });
-["start","end","semester","topic","status","search"].forEach(id=>$(id).addEventListener("input",()=>{renderIndex();renderQuestions()}));
+["start","end","semester","subtopic","status","search"].forEach(id=>$(id).addEventListener("input",()=>{renderIndex();renderQuestions()}));
+$("topic").addEventListener("change",()=>{
+ $("subtopic").value="";
+ updateSubtopics();
+ renderIndex();
+ renderQuestions();
+});
 ["source-bank","source-year"].forEach(id=>$(id).addEventListener("change",renderSources));
 $("module-search").addEventListener("input",modules);
 function archivedUspQuestions(archive, existing){
@@ -414,5 +452,5 @@ async function load(){bootFilters();await initPersonalMode();try{let responses=a
  if(!classification)return q;
  const [modulo,tema,pagina]=classification;
  return {...q,modulo,tema,pagina,subtema:"",resumo:tema,pagina_estimativa:false,status_classificacao:"Classificada pelo caderno"};
- });if(!Array.isArray(questions)||!Array.isArray(sources)||!Array.isArray(indices))throw Error("O acervo deve conter listas JSON.");questions=questions.filter(q=>q.id&&q.modulo&&q.enunciado&&Array.isArray(q.alternativas));}catch(e){console.error(e);$("questions").innerHTML='<p class="empty">Falha ao carregar o banco. Publique em servidor HTTP e confira os arquivos de dados.</p>';return;}render();}
+ });if(!Array.isArray(questions)||!Array.isArray(sources)||!Array.isArray(indices))throw Error("O acervo deve conter listas JSON.");questions=questions.filter(q=>q.id&&q.modulo&&q.enunciado&&Array.isArray(q.alternativas));}catch(e){console.error(e);$("questions").innerHTML='<p class="empty">Falha ao carregar o banco. Publique em servidor HTTP e confira os arquivos de dados.</p>';return;}indexTopics([...questions,...indices]);render();}
 load();
