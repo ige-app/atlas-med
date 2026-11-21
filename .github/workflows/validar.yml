@@ -16,6 +16,8 @@ jobs:
         with:
           node-version: '22'
       - name: Verificar JavaScript
-        run: node --check app.js
+        run: |
+          node --check app.js
+          node --check niepaem-pdf.js
       - name: Validar fontes, índices e gabaritos
         run: node scripts/validar.mjs
