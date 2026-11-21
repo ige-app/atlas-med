@@ -100,6 +100,48 @@ function openPdf(id){
   drawPdf();
   $("quiz").showModal();
 }
+const commentedExams={
+ "ENAMED 2025":["MedVetor","https://medvetor.com.br/provas/enamed-2025"],
+ "ENAMED 2026":["MedVetor","https://medvetor.com.br/provas/enamed-2026"],
+ "UNESP 2025":["MedVetor","https://medvetor.com.br/provas/unesp-2025"],
+ "UNESP 2026":["MedVetor","https://medvetor.com.br/provas/unesp-2026"],
+ "USP 2025":["MedCof","https://lp.grupomedcof.com.br/PROVA_COMENTADA_2025_USP-SP.pdf"],
+ "USP 2026":["MedVetor","https://medvetor.com.br/provas/usp-sp-2026"],
+ "UNIFESP 2025":["MedVetor","https://medvetor.com.br/provas/unifesp-2025"],
+ "UNIFESP 2026":["MedVetor","https://medvetor.com.br/provas/unifesp-2026"],
+};
+const studyNotes={
+  "enamed-2025-c01-q001": {
+    "comentario_resumido": "A fração de ejeção de 38% identifica insuficiência cardíaca com fração de ejeção reduzida. Entre as opções, a espironolactona acrescenta benefício prognóstico por bloquear o receptor mineralocorticoide.",
+    "estudo_revisar": "Revise os quatro pilares da terapia com benefício prognóstico na ICFEr. Para iniciar um antagonista mineralocorticoide em paciente sintomático, confira se a taxa de filtração glomerular é superior a 30 mL/min/1,73 m² e se o potássio é inferior a 5,0 mEq/L. Monitore ambos após o início.",
+    "estudo_referencia_nome": "Diretriz AHA/ACC/HFSA de insuficiência cardíaca",
+    "estudo_referencia_url": "https://professional.heart.org/en/-/media/832EA0F4E73948848612F228F7FA2D35.pdf"
+  },
+  "enamed-2025-c01-q004": {
+    "comentario_resumido": "A combinação de dismenorreia progressiva e dispareunia profunda favorece endometriose. Dor à mobilização do colo pode ocorrer em outras condições pélvicas e, isoladamente, não define o diagnóstico.",
+    "estudo_revisar": "Revise o padrão cíclico, a disquesia e a infertilidade como outras pistas. Ultrassonografia ou ressonância podem ajudar na investigação. Imagem normal não exclui endometriose superficial.",
+    "estudo_referencia_nome": "Diretriz ESHRE de endometriose",
+    "estudo_referencia_url": "https://www.eshre.eu/-/media/sitecore-files/Guidelines/Endometriosis/ESHRE-GUIDELINE-ENDOMETRIOSIS-2022_2.pdf"
+  },
+  "enamed-2025-c01-q005": {
+    "comentario_resumido": "A inoculação por arranhadura de gato, seguida de úlcera na mão e nódulos ao longo da drenagem linfática, favorece esporotricose linfocutânea. O itraconazol é a opção apresentada para essa forma.",
+    "estudo_revisar": "Revise a diferença entre lesão cutânea fixa e forma linfocutânea, a confirmação por cultura e as indicações de anfotericina B nas formas graves. O tempo de tratamento depende da resposta clínica.",
+    "estudo_referencia_nome": "Ministério da Saúde · Esporotricose humana",
+    "estudo_referencia_url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/e/esporotricose-humana"
+  }
+};
+function renderStudy(q){
+ const note=studyNotes[q.id]||q;
+ const exam=commentedExams[q.instituicao+" "+q.ano];
+ const reference=validURL(note.estudo_referencia_url);
+ if(!note.comentario_resumido&&!exam)return "";
+ return '<section class="feedback"><h3>Resolução e revisão</h3>'+
+  (note.comentario_resumido?'<p>'+safe(note.comentario_resumido)+'</p>':'')+
+  (note.estudo_revisar?'<h4>O que revisar</h4><p>'+safe(note.estudo_revisar)+'</p>':'')+
+  (reference!=="#" ? '<p><a href="'+safe(reference)+'" target="_blank" rel="noopener noreferrer">'+safe(note.estudo_referencia_nome)+'</a></p>':'')+
+  (exam?'<p><a href="'+safe(exam[1])+'" target="_blank" rel="noopener noreferrer">Ver prova comentada · '+safe(exam[0])+'</a></p><p class="muted">Selecione a questão '+safe(q.numero)+' na fonte e compare o enunciado. A cobertura e a ordem das questões podem variar conforme o caderno.</p>':'')+
+  '</section>';
+}
 function drawPdf(){
  const q=pdfActive,p=progress[q.id]||{},graded=scoreable(q),answered=Boolean(p.answer),n=q.alternativas_quantidade||4;
  const official=validURL(q.pdf_url || q.fonte_url),strategy=validURL(q.resolucao_pdf_url),checked=validURL(q.resolucao_verificada_url),mirror=validURL(q.pdf_espelho_url);
@@ -120,8 +162,8 @@ function drawPdf(){
  }).join("");
  const pre=String(q.gabarito_status||"").includes("PRELIMINAR");
  const answerLabel=isUNIFESP?"Gabarito consolidado de fonte secundária (conferir com a banca)":isUSP?(q.ano===2026?"Gabarito oficial retificado da Fuvest":"Gabarito oficial da Fuvest"):isUNESP?(q.ano===2025?"Gabarito com retificações oficiais":"Gabarito divulgado em fonte secundária"):outside?"Gabarito comentado de fonte secundária":pre?"Gabarito preliminar do Inep":"Gabarito definitivo";
- const summary=q.comentario_resumido?'<div class="feedback"><b>Explicação resumida do Atlas Med</b><p>'+safe(q.comentario_resumido)+'</p><p class="muted">Síntese editorial original baseada em fontes identificadas; não é transcrição de correções externas.</p></div>':"";
- const feedback=graded?(answered?'<div class="feedback"><b>'+(answerMatches(q,p.answer)?"✓ Acertou":"✕ Errou")+'</b><p>Você marcou '+safe(p.answer)+'. '+safe(answerLabel)+': <b>'+safe(displayAnswer(q))+'</b>.</p>'+(pre?'<p><b>Atenção:</b> resultado sujeito a recurso e alteração até publicação do gabarito definitivo.</p>':'')+'<a href="'+safe(validURL(q.gabarito_url))+'" target="_blank" rel="noopener noreferrer">Consultar a fonte do gabarito ↗</a></div>'+summary+'<button id="pdf-retry">Responder novamente</button>':'<div class="'+(withOptions?"answer-list":"answer-grid")+'">'+buttons+'</div><button id="pdf-submit" disabled>Corrigir resposta</button>'):'<div class="feedback"><b>'+safe(q.gabarito==="ANULADA"?"Questão anulada":"Questão excluída")+'</b><p>Ela não participa das estatísticas de acertos.</p></div>';
+ const summary=renderStudy(q);
+ const feedback=graded?(answered?'<div class="feedback"><b>'+(answerMatches(q,p.answer)?"✓ Acertou":"✕ Errou")+'</b><p>Você marcou '+safe(p.answer)+'. '+safe(answerLabel)+': <b>'+safe(displayAnswer(q))+'</b>.</p>'+(pre?'<p><b>Atenção:</b> resultado sujeito a recurso e alteração até publicação do gabarito definitivo.</p>':'')+'<a href="'+safe(validURL(q.gabarito_url))+'" target="_blank" rel="noopener noreferrer">Consultar a fonte do gabarito ↗</a></div>'+summary+'<button id="pdf-retry">Responder novamente</button>':'<div class="'+(withOptions?"answer-list":"answer-grid")+'">'+buttons+'</div><button id="pdf-submit" disabled>Corrigir resposta</button>'):'<div class="feedback"><b>'+safe(q.gabarito==="ANULADA"?"Questão anulada":"Questão excluída")+'</b><p>Ela não participa das estatísticas de acertos.</p></div>'+summary;
  const instruction=(isUSP||isUNESP||isUNIFESP)&&!withOptions?'<p class="muted"><b>Alternativas A–D:</b> leia as opções no PDF à esquerda e depois marque a letra abaixo. A página inicial é estimada; procure o número da questão dentro do PDF se necessário.</p>':"";
  const sourceWarning=isUNIFESP?'<p class="muted"><b>UNIFESP:</b> caderno reformatado pela Medway. Correção baseada em fontes secundárias, com divergências entre versões. Questões marcadas como anuladas não são pontuadas.</p>'+(q.anotacao_gabarito&&q.anotacao_gabarito.trim()?'<p class="muted">'+safe(q.anotacao_gabarito)+'</p>':'')+(q.status_classificacao==="Classificação individual pendente"?'<p class="muted">Classificação temática individual ainda pendente.</p>':''):isUSP?(q.ano===2026?'<p class="muted"><b>USP 2026:</b> gabarito da Fuvest retificado em 15/12/2025; as questões 54 e 120 foram anuladas.</p>':'<p class="muted"><b>USP 2025:</b> respostas conferidas no gabarito A1 da Fuvest, publicado em 01/12/2024.</p>')+(q.status_classificacao==="Classificação individual pendente"?'<p class="muted"><b>Módulo a revisar:</b> o assunto específico desta questão ainda não foi conferido; não foi atribuído por suposição.</p>':''):isUNESP?(q.ano===2026?'<p class="muted"><b>Fonte do gabarito:</b> MedCalcApp; falta validação direta na área restrita da Vunesp.</p>':'<p class="muted"><b>Gabarito corrigido após recursos:</b> quatro anulações e seis mudanças de letra já incorporadas.</p>'):"";
  const question=q.enunciado_parafraseado?'<div class="reader-reworded"><span class="tag">Redação editorial da questão real</span><p>'+safe(q.enunciado_parafraseado)+'</p></div><p class="muted">A redação foi adaptada. Para conferir o enunciado original, as imagens e as tabelas, consulte a fonte ao lado.</p>':'<p>'+safe(q.resumo)+'</p>';
