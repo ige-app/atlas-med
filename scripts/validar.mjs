@@ -56,7 +56,7 @@ for(const q of enamed2025){
 
 const enamed2026=indices.filter(q=>q.instituicao==="ENAMED"&&q.ano===2026&&q.caderno==="Caderno 01");
 const numbers2026=enamed2026.map(q=>q.numero).sort((a,b)=>a-b);
-if(enamed2026.length!==30||numbers2026.some((n,i)=>n!==i+1))fail("ENAMED 2026: devem existir as questões 1 a 30 no lote de curadoria");
+if(enamed2026.length!==100||numbers2026.some((n,i)=>n!==i+1))fail("ENAMED 2026: devem existir as 100 questões de 1 a 100");
 for(const q of enamed2026){
  if(q.modo_resolucao!=="pdf")fail("ENAMED 2026: PDF ausente "+q.id);
  if(!q.gabarito_status?.includes("PRELIMINAR"))fail("ENAMED 2026: gabarito sem alerta provisório "+q.id);
