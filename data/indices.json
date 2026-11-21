@@ -49,7 +49,9 @@
     "alternativas_quantidade": 4,
     "status": "Excluída do cálculo dos resultados",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Lactente de quatro meses chega desidratado, com vômitos, poliúria, déficit ponderal e sinais de osteopenia e raquitismo resistente à vitamina D. A partir da hipótese de acidose tubular renal, qual distúrbio ácido-básico é esperado? A questão foi excluída do cálculo.",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q003",
@@ -71,7 +73,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Homem de 45 anos sofre queda presumida de escada, com período de inconsciência, trauma em face e pescoço e amnésia do evento. Após recuperar a resposta a comandos, qual conjunto de exames de imagem e tempo de observação é recomendado na emergência?",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q004",
@@ -123,7 +127,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Homem de 28 anos apresenta lesão ulcerada na mão, com nódulos satélites, após arranhadura por gato de rua. Biópsia mostra inflamação granulomatosa e corpos asteroides. Qual infecção e esquema antifúngico são prováveis? O caderno inclui uma fotografia clínica.",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q006",
@@ -145,7 +151,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Pessoa com cardiopatia é encaminhada pela atenção primária para seguimento especializado após evento cardiovascular. A questão analisa a classificação de nível de prevenção da saúde em situação de acompanhamento e reabilitação.",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q007",
@@ -167,7 +175,9 @@
     "alternativas_quantidade": 4,
     "status": "Anulada no gabarito definitivo",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Jovem com esquizofrenia apresenta contrações musculares cervicais involuntárias após modificação de antipsicótico, quadro compatível com reação extrapiramidal aguda. Qual diagnóstico ou intervenção corresponde ao quadro? O Inep anulou a questão.",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q008",
@@ -219,7 +229,9 @@
     "alternativas_quantidade": 4,
     "status": "Anulada no gabarito definitivo",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Criança de sete anos em quimioterapia para leucemia apresenta febre persistente, taquicardia, dispneia, sinais respiratórios e lactato elevado. A questão pede a classificação da gravidade da síndrome infecciosa. O gabarito foi anulado.",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q010",
@@ -241,7 +253,9 @@
     "alternativas_quantidade": 4,
     "status": "Anulada no gabarito definitivo",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Mulher de 78 anos, obesa, apresenta massa dolorosa e irredutível na região inguinal direita, associada a vômitos e redução da eliminação de flatos. Qual hipótese diagnóstica explica a obstrução? A prova traz uma tabela laboratorial e foi anulada.",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q011",
@@ -263,7 +277,9 @@
     "alternativas_quantidade": 4,
     "status": "Anulada no gabarito definitivo",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Gestante de 25 anos, no segundo trimestre, tem teste rápido reagente para sífilis na primeira consulta pré-natal e recebe penicilina benzatina. Qual critério sorológico deve orientar o seguimento da resposta terapêutica? O Inep anulou a questão.",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q012",
@@ -285,7 +301,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Homem de 52 anos procura check-up na UBS, tem tabagismo importante e histórico familiar de diabetes e hipertensão. Quais medidas de rastreamento, oferta de testes e aconselhamento para cessação do tabagismo são indicadas?",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q013",
@@ -307,7 +325,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Trabalhadora rural de 32 anos apresenta cefaleia, tontura, náuseas e dispneia após contato com pulverização de agrotóxicos; uma colega adoeceu de maneira semelhante. Qual sequência de assistência, notificação e vigilância em saúde do trabalhador é adequada?",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q014",
@@ -329,7 +349,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Menino de dez anos mantém padrão de discutir com figuras de autoridade, desafiar regras e culpar outras pessoas pelos próprios comportamentos, com irritabilidade diante de limites. Qual transtorno do comportamento é mais provável?",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q015",
@@ -351,7 +373,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Paciente de 50 anos apresenta edema, hipoalbuminemia (1,8 g/dL), proteinúria de 3,6 g em 24 horas e alterações laboratoriais renais. Quais achados definem a síndrome nefrótica descrita?",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q016",
@@ -373,7 +397,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Recém-nascido de 15 dias com síndrome de Down apresenta ganho ponderal e desenvolvimento sem intercorrências agudas. Quais curvas devem ser usadas para acompanhar peso e estatura ao longo do crescimento?",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q017",
@@ -395,7 +421,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Jovem politraumatizado apresenta hipoxemia importante, hipotensão, distensão jugular, desvio traqueal e redução do murmúrio vesicular unilateral. Qual procedimento imediato no atendimento pré-hospitalar deve ser realizado?",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q018",
@@ -417,7 +445,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Adolescente de 16 anos com fenótipo feminino e amenorreia primária apresenta ausência de útero, pelos corporais escassos, testosterona em níveis masculinos e cariótipo 46,XY. Qual diagnóstico explica esses achados?",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q019",
@@ -439,7 +469,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Mulher de 82 anos, sem comorbidades relevantes, apresenta medidas repetidas de pressão arterial próximas de 145–148/86–88 mmHg e permanece assintomática. Que estratégia inicial de acompanhamento é adequada?",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q020",
@@ -461,7 +493,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Mulher travesti de 28 anos com exposição sexual desprotegida há dois dias e uso inconsistente de preservativos procura a UBS. Qual sequência de testagem para HIV e sífilis, PEP e posterior PrEP é indicada?",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q021",
@@ -483,7 +517,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Mulher de 21 anos perdeu cerca de 30 kg em dez meses e apresenta amenorreia, desmaio, IMC 14,7, pressão de 80/60 mmHg, bradicardia e alterações eletrocardiográficas. Qual nível de cuidado imediato é indicado?",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q022",
@@ -505,7 +541,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Mulher de 65 anos apresenta lentificação motora, marcha em pequenos passos, tremor de repouso assimétrico, rigidez em roda dentada e prejuízo funcional. Qual combinação de medicamentos é indicada no início do tratamento?",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q023",
@@ -527,7 +565,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Entre quatro vinhetas de adolescentes com equimoses ou manifestações clínicas variadas, uma menina de 13 anos apresenta lesões de diferentes idades e evita explicar a origem. Em qual situação é necessária notificação ao Conselho Tutelar?",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q024",
@@ -549,7 +589,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Paciente apresenta dor abdominal que migra para a fossa ilíaca direita, com sinais compatíveis com apendicite aguda. Qual conduta de investigação e tratamento cirúrgico é adequada?",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q025",
@@ -571,7 +613,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Puérpera com diagnóstico de diabetes mellitus gestacional tratada com insulina durante a gravidez necessita de orientação após o parto. Qual manejo metabólico deve ser realizado no puerpério?",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q026",
@@ -593,7 +637,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Pessoa com dengue apresenta sinais de alarme e requer classificação de risco e escolha do esquema de hidratação. Qual conduta de manejo é indicada conforme a gravidade?",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q027",
@@ -615,7 +661,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Adulto procura atendimento por lombalgia sem sinais de alarme, déficit neurológico ou sintomas constitucionais. Qual abordagem inicial e orientação na atenção primária são adequadas?",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q028",
@@ -637,7 +685,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Notícia sobre internações involuntárias motiva a análise da legislação brasileira de saúde mental. Qual profissional está autorizado a indicar essa internação e quais regras se aplicam?",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q029",
@@ -659,7 +709,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Homem de 68 anos com fibrilação atrial, diabetes e hipertensão apresenta déficit neurológico agudo. Tomografia revela isquemia em cerca de 40% do território da artéria cerebral média. Qual achado contraindica trombólise nesse caso?",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q030",
@@ -681,7 +733,9 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Menino de seis anos apresenta episódios repetidos de balanopostite, prepúcio com anel fibrótico e exposição parcial do meato à retração. Há indicação de conduta cirúrgica ou conservadora?",
+    "status_redacao": "Paráfrase baseada no enunciado oficial; alternativas e informações completas no PDF do Inep"
   },
   {
     "id": "enamed-2025-c01-q031",
