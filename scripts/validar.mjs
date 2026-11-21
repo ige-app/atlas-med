@@ -80,8 +80,8 @@ for(const [sem,entries] of [[1,niepaem1],[2,niepaem2]]){
    if(!["GO","SC","CM","CIR","PED"].includes(q.categoria_origem))fail("Área original inválida "+q.id);
    if(!/^[A-D]$/.test(q.gabarito))fail("Gabarito inválido "+q.id);
    if(!q.tema||!q.modulo||!q.comentario_resumido||q.comentario_resumido.length<30)fail("Sem classificação ou comentário "+q.id);
-   if(q.modo_resolucao!=="comentario"||q.enunciado_disponivel!==false||q.alternativas_disponiveis!==false)fail("Marcado erroneamente como respondível "+q.id);
-   if(q.conteudo_reproduzido!==false||!q.comentario_pagina||!q.arquivo_origem)fail("Fonte do gabarito não registrada "+q.id);
+   if(q.modo_resolucao!=="pdf-local"||q.resolucao_interativa_local!==true||q.enunciado_disponivel!==false||q.alternativas_disponiveis!==false)fail("Modo de prova PDF local inconsistente "+q.id);
+   if(q.conteudo_reproduzido!==false||!q.comentario_pagina||!q.arquivo_origem||!Number.isInteger(q.pagina_prova)||!q.arquivo_prova)fail("Fonte do gabarito ou página do caderno não registrada "+q.id);
  }
 }
 
