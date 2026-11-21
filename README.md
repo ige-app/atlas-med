@@ -5,12 +5,12 @@ Aplicativo estático de estudo por **especialidade, assunto, banca e ano** para 
 ## Estado atual (primeiro lote)
 
 - **19 referências** de portais de provas e gabaritos (`data/provas.json`).
-- **9 questões reais indexadas** por número, tema, subtema, página e gabarito da prova **USP FMUSP 2024, caderno A1** (`data/indices.json`). Os textos dos enunciados **não são reproduzidos**, e cada registro aponta para o PDF e gabarito oficiais.
+- **30 questões reais indexadas** por número, tema, subtema, página e gabarito da prova **USP FMUSP 2024, caderno A1** (`data/indices.json`). Os textos dos enunciados **não são reproduzidos**, e cada registro aponta para o PDF e gabarito oficiais.
 - **0 questões integrais liberadas para resolução na plataforma** (`data/questoes.json`). Essa seção só será preenchida quando as condições de reprodução forem verificadas.
 - Filtros por módulo, instituição, tema, intervalo de anos, busca por palavras-chave; acesso a fontes e gabaritos; estrutura para responder questões e guardar progresso **localmente no navegador**.
 - Verificação automática de consistência e origem: `node scripts/validar.mjs`.
 
-**Não confunda** questões indexadas com questões já reproduzidas no site ou provas integralmente importadas. Os 9 registros atuais vieram de um único caderno; 19 links de origem não significam 19 provas processadas.
+**Não confunda** questões indexadas com questões já reproduzidas no site ou provas integralmente importadas. Os 30 registros atuais vieram de um único caderno; 19 links de origem não significam 19 provas processadas.
 
 ## Provas contempladas
 
