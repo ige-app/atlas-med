@@ -589,7 +589,15 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Mulher de 58 anos, hipertensa, apresenta dispneia progressiva, congestão pulmonar, fração de ejeção de 38% e BNP elevado. Ela já utiliza um IECA. Qual medicamento associado pode melhorar sua sobrevida?",
+    "alternativas_parafraseadas": [
+      "Espironolactona",
+      "Clortalidona",
+      "Hidralazina",
+      "Clonidina"
+    ],
+    "status_redacao": "Versão reescrita e resumida da questão oficial; consulte o PDF para a formulação integral"
   },
   {
     "id": "enamed-2025-c01-q002",
@@ -655,7 +663,15 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Paciente de 30 anos relata cólicas menstruais progressivas e dor profunda nas relações sexuais. O útero não está aumentado, mas há dor à mobilização do colo. Qual é o diagnóstico mais provável?",
+    "alternativas_parafraseadas": [
+      "Doença inflamatória pélvica",
+      "Miomatose uterina",
+      "Cisto hemorrágico",
+      "Endometriose"
+    ],
+    "status_redacao": "Versão reescrita e resumida da questão oficial; consulte o PDF para a formulação integral"
   },
   {
     "id": "enamed-2025-c01-q005",
@@ -743,7 +759,15 @@
     "alternativas_quantidade": 4,
     "status": "Gabarito definitivo conferido",
     "conteudo_reproduzido": false,
-    "modo_resolucao": "pdf"
+    "modo_resolucao": "pdf",
+    "enunciado_parafraseado": "Mulher de 20 anos apresenta poliartrite inflamatória, com edema de punhos e pequenas articulações das mãos e rigidez matinal superior a duas horas. Qual combinação de diagnóstico, achado laboratorial e tratamento inicial é adequada?",
+    "alternativas_parafraseadas": [
+      "Esclerose sistêmica; CK elevada; prednisona",
+      "Artrite reumatoide; fator reumatoide positivo; metotrexato",
+      "Lúpus; FAN pontilhado fino denso; cloroquina",
+      "Doença mista do tecido conjuntivo; FAN pontilhado fino; azatioprina"
+    ],
+    "status_redacao": "Versão reescrita e resumida da questão oficial; consulte o PDF para a formulação integral"
   },
   {
     "id": "enamed-2025-c01-q009",
