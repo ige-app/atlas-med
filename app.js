@@ -4,7 +4,7 @@ const BANKS=["ENAMED","ENARE","USP","UNESP","NIEPAEM","UNIFESP"];
 const MODULES=["Ginecologia","Obstetrícia","Oftalmologia","Cardiologia","Neurologia","Pediatria","Neonatologia","Cirurgia Geral","Clínica Médica","Pneumologia","Nefrologia","Endocrinologia","Gastroenterologia","Hematologia","Geriatria","Genética Médica","Mastologia","Anestesiologia","Cirurgia Vascular","Cirurgia Pediátrica","Neurocirurgia","Infectologia","Reumatologia","Dermatologia","Psiquiatria","Ortopedia","Urologia","Otorrinolaringologia","Medicina de Família e Comunidade","Saúde Coletiva","Emergências","Outros"];
 const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const validURL=u=>{try{let a=new URL(u);return a.protocol==="https:"?a.href:"#"}catch{return"#"}};
-let questions=[],sources=[],indices=[],mod="",active=null,choice="",pdfActive=null,pdfChoice="",readerSource="official",progress={};
+let questions=[],sources=[],indices=[],mod="",active=null,choice="",pdfActive=null,pdfChoice="",readerSource="official",progress={},commentActive=null,localCommentUrls={};
 function scoreable(q){return q.modo_resolucao!=="comentario"&&/^[A-E]$/.test(q.gabarito||"")}
 function semesterOf(q){if(q.semestre)return String(q.semestre);let m=String(q.edicao||q.caderno||"").match(/20\d{2}\.([12])/);return m?m[1]:"";}
 try{progress=JSON.parse(localStorage.getItem("atlas-med-progress")||"{}")||{}}catch{progress={}}
@@ -53,20 +53,26 @@ function renderPerformance(){
   $("performance").innerHTML='<h3>Resumo</h3><p>Resolvidas: <b>'+attempted.length+'</b> · Acertos: <b>'+correct+'</b> · Erros: <b>'+errors+'</b> · Aproveitamento: <b>'+(attempted.length?Math.round(correct/attempted.length*100)+"%":"—")+'</b></p><p class="muted">Questões anuladas e excluídas não entram nas estatísticas. Seu desempenho fica salvo apenas neste navegador.</p><h3>Por módulo</h3>'+(byModule.length?byModule.map(({m,q})=>'<p>'+safe(m)+': '+q.filter(x=>progress[x.id].answer===x.gabarito).length+'/'+q.length+' corretas</p>').join(""):'<p class="muted">Ainda não há respostas registradas.</p>');
 }
 function render(){modules();topics();metrics();renderIndex();renderQuestions();renderSources();renderPerformance();}
+function renderComment(q){
+  const local=localCommentUrls[q.semestre];
+  const source=q.semestre===1?"https://pt.scribd.com/document/1070216313/Tp-Niepaem-2026-1-Prova":null;
+  const fileView=local?'<div class="local-pdf"><iframe title="Gabarito comentado NIEPAEM '+safe(q.ano)+'.'+safe(q.semestre)+' na página '+safe(q.comentario_pagina)+'" src="'+safe(local+"#page="+q.comentario_pagina+"&zoom=110")+'"></iframe><p><a href="'+safe(local+"#page="+q.comentario_pagina)+'" target="_blank" rel="noopener noreferrer">Abrir este PDF local em outra aba ↗</a></p></div>':'<p class="muted">Selecione a cópia do seu gabarito comentado para vê-la nesta página. O site não armazena nem envia o arquivo.</p>';
+  $("quiz-body").innerHTML='<div class="comment-view"><div><span class="tag">NIEPAEM '+safe(q.ano)+'.'+safe(q.semestre)+'</span><span class="tag">Questão '+safe(q.numero)+'</span><span class="tag">'+safe(q.modulo)+'</span><h2>'+safe(q.tema)+'</h2><p class="muted">Gabarito comentado · '+safe(q.caderno)+' · página '+safe(q.comentario_pagina)+' do documento</p><h3>Resposta da banca: '+safe(q.gabarito)+'</h3><div class="feedback"><b>Comentário resumido do Atlas Med</b><p>'+safe(q.comentario_resumido)+'</p></div><p class="muted">Esta é uma síntese independente do comentário, não uma transcrição. O enunciado completo e as alternativas não constam do material de gabarito disponibilizado aqui; o registro não é uma tentativa pontuada.</p></div><div><h3>Visualizador do gabarito original</h3><label for="comment-pdf-file" class="file-instruction">Carregar PDF comentado do '+safe(q.semestre)+'º semestre (somente no navegador)</label><input type="file" id="comment-pdf-file" accept="application/pdf,.pdf" /><p class="muted">Escolha o arquivo TP_NIEPAEM_2026.'+safe(q.semestre)+'_COMENTARIOS.pdf que você enviou nesta conversa. Nenhuma cópia será publicada.</p>'+fileView+(source?'<p><a href="'+safe(validURL(source))+'" target="_blank" rel="noopener noreferrer">Consultar caderno de 2026.1 em fonte externa ↗</a></p>':'<p class="muted">Para transformar esta questão em alternativa A–D respondível, ainda precisamos do caderno de 2026.2.</p>')+'</div></div>';
+}
 function openComment(id){
   const q=indices.find(x=>x.id===id&&x.modo_resolucao==="comentario");
   if(!q)return;
-  pdfActive=null;active=null;
+  commentActive=q;pdfActive=null;active=null;
   $("quiz").classList.remove("pdf-dialog");
-  const original=q.semestre===1?"https://pt.scribd.com/document/1070216313/Tp-Niepaem-2026-1-Prova":null;
-  $("quiz-body").innerHTML='<div><span class="tag">NIEPAEM '+safe(q.ano)+'.'+safe(q.semestre)+'</span><span class="tag">Questão '+safe(q.numero)+'</span><span class="tag">'+safe(q.modulo)+'</span><h2>'+safe(q.tema)+'</h2><p class="muted">Gabarito comentado da banca · '+safe(q.caderno)+' · página '+safe(q.comentario_pagina)+' do arquivo fornecido</p><p><b>Resposta indicada no documento: '+safe(q.gabarito)+'</b></p><div class="feedback"><b>Explicação resumida</b><p>'+safe(q.comentario_resumido)+'</p></div><p class="muted">Esta é uma síntese própria do comentário e não uma transcrição. O PDF comentado foi fornecido nesta conversa e não foi publicado no site porque contém restrição expressa de reprodução. Sem o caderno integral e alternativas conferidas, a questão não é contabilizada como tentativa.</p>'+(original?'<p><a href="'+safe(validURL(original))+'" target="_blank" rel="noopener noreferrer">Consultar o caderno 2026.1 em fonte externa ↗</a></p>':'<p>O caderno original de 2026.2 ainda precisa ser acrescentado para habilitar a resolução por alternativas.</p>')+'</div>';
+  $("quiz").classList.add("comment-dialog");
+  renderComment(q);
   $("quiz").showModal();
 }
 function openPdf(id){
   pdfActive=indices.find(q=>q.id===id&&q.modo_resolucao==="pdf");
   if(!pdfActive)return;
   pdfChoice="";readerSource="official";
-  $("quiz").classList.add("pdf-dialog");
+  $("quiz").classList.remove("comment-dialog");$("quiz").classList.add("pdf-dialog");
   drawPdf();
   $("quiz").showModal();
 }
@@ -96,6 +102,16 @@ function drawPdf(){
 function openQuiz(id){$("quiz").classList.remove("pdf-dialog");pdfActive=null;active=questions.find(q=>q.id===id);if(!active)return;choice=progress[id]?.answer||"";drawQuiz();$("quiz").showModal();}
 function drawQuiz(){let q=active,p=progress[q.id]||{},answered=Boolean(p.answer);$("quiz-body").innerHTML='<span class="tag">'+safe(q.instituicao)+' · '+safe(q.ano)+'</span><span class="tag">'+safe(q.modulo)+'</span><h2>'+safe(q.tema)+'</h2><p>'+safe(q.enunciado)+'</p>'+q.alternativas.map((a,i)=>{let l="ABCDE"[i],cls=answered?(l===q.gabarito?"correct":l===p.answer?"wrong":""):choice===l?"chosen":"";return '<button class="choice '+cls+'" data-choice="'+l+'" '+(answered?"disabled":"")+'> <b>'+l+'.</b> '+safe(a)+'</button>'}).join("")+(answered?'<div class="feedback"><b>Gabarito: '+safe(q.gabarito)+'</b><p>'+safe(q.comentario||"Confira a fonte oficial.")+'</p></div>':"")+'<div class="quiz-actions">'+(answered?'<button id="retry">Responder novamente</button>':'<button id="submit" '+(!choice||!q.gabarito||q.gabarito==="ANULADA"?"disabled":"")+'>Confirmar resposta</button>')+(q.fonte_url?'<a href="'+safe(validURL(q.fonte_url))+'" target="_blank" rel="noopener noreferrer">Fonte original ↗</a>':"")+'</div>';}
 function switchView(v){document.querySelectorAll(".view").forEach(e=>e.classList.toggle("hidden",e.id!=="view-"+v));document.querySelectorAll("[data-view]").forEach(e=>e.classList.toggle("active",e.dataset.view===v));}
+document.addEventListener("change",e=>{
+  if(e.target.id!=="comment-pdf-file"||!commentActive)return;
+  const file=e.target.files?.[0];if(!file)return;
+  if(!(/\\.pdf$/i.test(file.name)||file.type==="application/pdf")){alert("Selecione um arquivo PDF.");return}
+  if(file.size>40*1024*1024){alert("O PDF ultrapassa 40 MB.");return}
+  const sem=commentActive.semestre;
+  if(localCommentUrls[sem])URL.revokeObjectURL(localCommentUrls[sem]);
+  localCommentUrls[sem]=URL.createObjectURL(file);
+  renderComment(commentActive);
+});
 document.addEventListener("click",e=>{let btn=e.target.closest("button");if(!btn)return;if(btn.dataset.view)switchView(btn.dataset.view);if(btn.hasAttribute("data-module")){mod=btn.dataset.module;$("topic").value="";render()}if(btn.dataset.open)openQuiz(btn.dataset.open);if(btn.dataset.pdfOpen)openPdf(btn.dataset.pdfOpen);if(btn.dataset.commentOpen)openComment(btn.dataset.commentOpen);if(btn.dataset.readerSource&&pdfActive){readerSource=btn.dataset.readerSource;drawPdf();}if(btn.dataset.pdfStar){let id=btn.dataset.pdfStar;progress[id]={...(progress[id]||{}),starred:!progress[id]?.starred};save();render()}if(btn.dataset.pdfChoice&&pdfActive&&!progress[pdfActive.id]?.answer){pdfChoice=btn.dataset.pdfChoice;document.querySelectorAll("[data-pdf-choice]").forEach(x=>x.classList.toggle("chosen",x.dataset.pdfChoice===pdfChoice));let submit=$("pdf-submit");if(submit)submit.disabled=false;}if(btn.id==="pdf-submit"&&pdfActive&&pdfChoice&&scoreable(pdfActive)){progress[pdfActive.id]={...(progress[pdfActive.id]||{}),answer:pdfChoice};save();drawPdf();render()}if(btn.id==="pdf-retry"&&pdfActive){delete progress[pdfActive.id]?.answer;save();pdfChoice="";drawPdf();render()}if(btn.dataset.star){let id=btn.dataset.star;progress[id]={...(progress[id]||{}),starred:!progress[id]?.starred};save();render()}if(btn.dataset.choice&&active&&!progress[active.id]?.answer){choice=btn.dataset.choice;drawQuiz()}if(btn.id==="submit"&&choice&&active){progress[active.id]={...(progress[active.id]||{}),answer:choice};save();drawQuiz();render()}if(btn.id==="retry"&&active){delete progress[active.id]?.answer;save();choice="";drawQuiz();render()}if(btn.id==="close-quiz")$("quiz").close();if(btn.id==="clear"){mod="";$("semester").value="";$("bank").value="";$("start").value="2017";$("end").value="2026";$("search").value="";$("status").value="";$("topic").value="";render()}if(btn.id==="reset-progress"&&confirm("Apagar todas as respostas e favoritos neste navegador?")){progress={};save();render()}});
 ["bank","start","end","semester","topic","status","search"].forEach(id=>$(id).addEventListener("input",()=>{renderIndex();renderQuestions()}));
 ["source-bank","source-year"].forEach(id=>$(id).addEventListener("change",renderSources));
