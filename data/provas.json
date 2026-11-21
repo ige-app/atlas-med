@@ -215,7 +215,7 @@
     "ano": 2026,
     "titulo": "ENAMED 2026 — cadernos e gabaritos preliminares (INEP)",
     "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enamed/provas-e-gabaritos",
-    "observacao": "A edição 2026 já está disponível no portal; o gabarito definitivo está previsto para 4 de dezembro de 2026. Ainda não foi indexada neste banco.",
+    "observacao": "Edição 2026 publicada no portal do Inep; 30 questões do caderno 01 indexadas até o momento e gabarito preliminar sujeito a recursos até 04/12/2026.",
     "status": "Catalogado; aguardando gabarito definitivo para correção final",
     "tipo": "portal"
   },
@@ -238,5 +238,45 @@
     "observacao": "Informações oficiais de inscrição, pré-requisito e seleção de acesso direto por nota do ENAMED.",
     "status": "Portal catalogado; conteúdo não importado",
     "tipo": "portal"
+  },
+  {
+    "id": "enamed-2026-c01-pdf",
+    "instituicao": "ENAMED",
+    "ano": 2026,
+    "titulo": "ENAMED 2026 — Caderno 01 do Inep",
+    "url": "https://download.inep.gov.br/enamed/provas_e_gabaritos/2026_caderno_1.pdf",
+    "observacao": "Prova objetiva de 100 questões; primeiras 30 catalogadas por módulo e tema, com alternativas reescritas.",
+    "status": "30 questões classificadas; gabarito preliminar",
+    "tipo": "caderno"
+  },
+  {
+    "id": "enamed-2026-c01-prelim",
+    "instituicao": "ENAMED",
+    "ano": 2026,
+    "titulo": "ENAMED 2026 — gabarito preliminar 01",
+    "url": "https://download.inep.gov.br/enamed/provas_e_gabaritos/2026_gabarito_caderno_1_preliminar.pdf",
+    "observacao": "Gabarito do Inep de 15/09/2026, sujeito a retificações depois de recursos.",
+    "status": "Preliminar — não usar como resultado definitivo",
+    "tipo": "gabarito"
+  },
+  {
+    "id": "enamed-2026-estrategia",
+    "instituicao": "ENAMED",
+    "ano": 2026,
+    "titulo": "Estratégia MED — Prova Comentada ENAMED/ENARE 2026/27",
+    "url": "https://cdn.medblog.estrategiaeducacional.com.br/wp-content/uploads/2026/10/ENAMED-2026-Prova-Comentada-Estrategia-MED-1.pdf",
+    "observacao": "E-book anunciado pelo Estratégia MED. O PDF não pôde ser inspecionado integralmente nesta etapa; abrir diretamente se o visualizador embutido não funcionar.",
+    "status": "Fonte externa localizada; comentários do Atlas Med não são transcrições do Estratégia",
+    "tipo": "resolucao"
+  },
+  {
+    "id": "enamed-2026-oscelabs",
+    "instituicao": "ENAMED",
+    "ano": 2026,
+    "titulo": "OsceLabs — ENAMED 2026 Caderno 1 comentado",
+    "url": "https://www.oscelabs.com.br/provas-antigas/pdf/enamed/enamed-2026-caderno-1-comentada-v3.pdf",
+    "observacao": "PDF acessível de prova comentada baseado no gabarito oficial preliminar, conferido para a classificação do primeiro lote.",
+    "status": "Fonte pública inspecionada; 30 questões cruzadas com a prova",
+    "tipo": "resolucao"
   }
 ]
