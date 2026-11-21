@@ -90,6 +90,33 @@ document.addEventListener("keydown",event=>{
  if(event.key==="Escape"&&document.body.classList.contains("quiz-open"))closeQuiz();
 });
 
+const noteKey=id=>"atlas-med-note:"+id;
+
+function renderQuestionNote(q){
+ let note="";
+ try{note=localStorage.getItem(noteKey(q.id))||""}catch{}
+ return '<section class="question-note">'+
+  '<label for="question-note">Minhas anotações</label>'+
+  '<textarea id="question-note" data-question-id="'+safe(q.id)+'" rows="4" aria-describedby="question-note-hint question-note-status" placeholder="Escreva o que quer lembrar desta questão…">\n'+safe(note)+'</textarea>'+
+  '<p id="question-note-hint" class="muted">Salvamento automático neste navegador.</p>'+
+  '<p id="question-note-status" class="muted" role="status"></p>'+
+  '</section>';
+}
+
+$("quiz-body").addEventListener("input",event=>{
+ const field=event.target;
+ if(field.id!=="question-note")return;
+ const status=$("question-note-status");
+ try{
+  const key=noteKey(field.dataset.questionId);
+  if(field.value.trim())localStorage.setItem(key,field.value);
+  else localStorage.removeItem(key);
+  status.textContent=field.value.trim()?"Anotação salva.":"Anotação vazia.";
+ }catch{
+  status.textContent="Não foi possível salvar. Copie a anotação antes de fechar.";
+ }
+});
+
 function renderComment(q){
  const sem=q.semestre,privatePdf=window.NIEPAEMPdf||null,info=privatePdf?.info(sem),book=info?.url||localQuestionUrls[sem],commentUrl=localCommentUrls[sem];
  const interactive=q.modo_resolucao==="pdf-local",p=progress[q.id]||{},answered=Boolean(p.answer);
@@ -114,7 +141,7 @@ function renderComment(q){
  const commentFile='<label class="file-instruction" for="comment-pdf-file">Carregar PDF da resolução original da banca (opcional)</label><input type="file" id="comment-pdf-file" accept="application/pdf,.pdf" />';
  const commentLink=commentUrl?commentUrl+"#page="+q.comentario_pagina:"";
  const commentFrame=commentLink?'<div class="local-pdf">'+(compactQuiz()?'<p><a href="'+safe(commentLink)+'" target="_blank" rel="noopener noreferrer">Abrir resolução em outra aba ↗</a></p>':'<iframe title="Gabarito comentado NIEPAEM '+safe(sem)+'" src="'+safe(commentLink+"&zoom=110")+'"></iframe>')+'</div>':"";
- const right=interactive?'<div class="reader-answer"><span class="tag">'+safe(q.modulo)+'</span><span class="tag">NIEPAEM 2026.'+safe(sem)+' · Questão '+safe(q.numero)+'</span><h2>'+safe(q.tema)+'</h2>'+questionHtml+submit+(answered?'<h3>Resolução original</h3>'+commentFile+commentFrame:'')+'</div>':'<div><h2>'+safe(q.tema)+'</h2><div class="feedback"><b>Gabarito: '+safe(q.gabarito)+'</b><p>'+safe(q.comentario_resumido)+'</p></div>'+commentFile+commentFrame+'</div>';
+ const right=interactive?'<div class="reader-answer"><span class="tag">'+safe(q.modulo)+'</span><span class="tag">NIEPAEM 2026.'+safe(sem)+' · Questão '+safe(q.numero)+'</span><h2>'+safe(q.tema)+'</h2>'+questionHtml+submit+(answered?'<h3>Resolução original</h3>'+commentFile+commentFrame+renderQuestionNote(q):'')+'</div>':'<div><h2>'+safe(q.tema)+'</h2><div class="feedback"><b>Gabarito: '+safe(q.gabarito)+'</b><p>'+safe(q.comentario_resumido)+'</p></div>'+commentFile+commentFrame+renderQuestionNote(q)+'</div>';
  const left=interactive?'<div class="reader-pdf"><div class="reader-links"><b>Caderno NIEPAEM 2026.'+safe(sem)+' · página '+safe(q.pagina_prova)+'</b>'+navigate+'</div>'+input+bookView+'</div>':'<div><p>Documento de referência.</p></div>';
  $("quiz-body").innerHTML='<div class="comment-view local-quiz">'+left+right+'</div>';
 }
@@ -206,10 +233,10 @@ function drawPdf(){
  const question=q.enunciado_parafraseado?'<div class="reader-reworded"><span class="tag">Redação editorial da questão real</span><p>'+safe(q.enunciado_parafraseado)+'</p></div><p class="muted">A redação foi adaptada. Para conferir o enunciado original, as imagens e as tabelas, consulte o caderno original.</p>':'<p>'+safe(q.resumo)+'</p>';
  const note=isUNIFESP?"Prova de acesso direto da UNIFESP, caderno reproduzido pela Medway. Página inicial aproximada: confira o número da questão no PDF. Gabarito de fonte secundária, sujeito a divergências entre versões.":isUSP?"Caderno oficial da Fuvest. A localização inicial da questão no PDF é aproximada; procure o número da pergunta. Gabarito da banca é utilizado na correção; variantes A2/AD2 e A3/AD3 não estão duplicadas neste banco.":isUNESP?"Caderno real de acesso direto da UNESP. A página indicada é aproximada até revisão específica; utilize a busca do PDF para encontrar QUESTÃO "+String(q.numero).padStart(2,"0")+". As alternativas aparecem integralmente no documento. Em 2025, anuladas e retificações oficiais estão consideradas; em 2026, o gabarito ainda depende de conferência diretamente na Vunesp.":outside?"Arquivo NIEPAEM disponibilizado por terceiros no Scribd; o acesso pode exigir login e impedir a incorporação. Use Abrir em outra aba para consultar a prova ou o gabarito comentado.":selected.id==="strategy"?"PDF comentado indicado no portal do Estratégia MED. A exibição depende das permissões do servidor; esta versão ainda não pôde ser auditada integralmente pelo Atlas Med.":selected.id==="verified"?"Correção comentada publicada pelo OsceLabs, com gabarito preliminar. Os comentários exibidos no painel foram escritos separadamente.":"Caderno oficial de prova. A correção de cursinhos não substitui o gabarito do Inep.";
  const frame=compactQuiz()?"":'<iframe src="'+safe(viewLink)+'" title="Documento de '+safe(selected.name)+'" loading="lazy" referrerpolicy="no-referrer"></iframe>';
- $("quiz-body").innerHTML='<div class="reader-layout"><div class="reader-pdf"><div class="reader-links"><b>'+safe(q.instituicao)+' '+safe(q.ano)+' · '+safe(q.caderno)+' · Questão '+safe(q.numero)+'</b><a href="'+safe(viewLink)+'" target="_blank" rel="noopener noreferrer">Abrir PDF em outra aba ↗</a></div><div class="reader-tabs">'+controls+'</div>'+frame+'<p class="muted">'+safe(note)+'</p>'+(selected.id==="official"&&mirror!=="#"?'<a href="'+safe(mirror)+'#page='+safe(q.pagina)+'" target="_blank" rel="noopener noreferrer">Espelho do caderno caso o Inep não carregue ↗</a>':'')+'</div><div class="reader-answer"><div><span class="tag">'+safe(q.modulo)+'</span><span class="tag">Questão '+safe(q.numero)+'</span>'+(pre?'<span class="tag" style="background:#fff2cc;color:#805300">Gabarito preliminar</span>':'')+'</div><h2>'+safe(q.tema)+'</h2>'+question+instruction+sourceWarning+(pre?'<p class="muted">Resposta baseada no gabarito de setembro de 2026, sujeito a alterações.</p>':'')+feedback+'</div></div>';
+ $("quiz-body").innerHTML='<div class="reader-layout"><div class="reader-pdf"><div class="reader-links"><b>'+safe(q.instituicao)+' '+safe(q.ano)+' · '+safe(q.caderno)+' · Questão '+safe(q.numero)+'</b><a href="'+safe(viewLink)+'" target="_blank" rel="noopener noreferrer">Abrir PDF em outra aba ↗</a></div><div class="reader-tabs">'+controls+'</div>'+frame+'<p class="muted">'+safe(note)+'</p>'+(selected.id==="official"&&mirror!=="#"?'<a href="'+safe(mirror)+'#page='+safe(q.pagina)+'" target="_blank" rel="noopener noreferrer">Espelho do caderno caso o Inep não carregue ↗</a>':'')+'</div><div class="reader-answer"><div><span class="tag">'+safe(q.modulo)+'</span><span class="tag">Questão '+safe(q.numero)+'</span>'+(pre?'<span class="tag" style="background:#fff2cc;color:#805300">Gabarito preliminar</span>':'')+'</div><h2>'+safe(q.tema)+'</h2>'+question+instruction+sourceWarning+(pre?'<p class="muted">Resposta baseada no gabarito de setembro de 2026, sujeito a alterações.</p>':'')+feedback+(answered||!graded?renderQuestionNote(q):'')+'</div></div>';
 }
 function openQuiz(id){$("quiz").classList.remove("pdf-dialog");pdfActive=null;active=questions.find(q=>q.id===id);if(!active)return;choice=progress[id]?.answer||"";drawQuiz();showQuiz();}
-function drawQuiz(){let q=active,p=progress[q.id]||{},answered=Boolean(p.answer);$("quiz-body").innerHTML='<span class="tag">'+safe(q.instituicao)+' · '+safe(q.ano)+'</span><span class="tag">'+safe(q.modulo)+'</span><h2>'+safe(q.tema)+'</h2><p>'+safe(q.enunciado)+'</p>'+q.alternativas.map((a,i)=>{let l="ABCDE"[i],cls=answered?(l===q.gabarito?"correct":l===p.answer?"wrong":""):choice===l?"chosen":"";return '<button class="choice '+cls+'" data-choice="'+l+'" '+(answered?"disabled":"")+'> <b>'+l+'.</b> '+safe(a)+'</button>'}).join("")+(answered?'<div class="feedback"><b>Gabarito: '+safe(q.gabarito)+'</b><p>'+safe(q.comentario||"Confira a fonte oficial.")+'</p></div>':"")+'<div class="quiz-actions">'+(answered?'<button id="retry">Responder novamente</button>':'<button id="submit" '+(!choice||!q.gabarito||q.gabarito==="ANULADA"?"disabled":"")+'>Confirmar resposta</button>')+(q.fonte_url?'<a href="'+safe(validURL(q.fonte_url))+'" target="_blank" rel="noopener noreferrer">Fonte original ↗</a>':"")+'</div>';}
+function drawQuiz(){let q=active,p=progress[q.id]||{},answered=Boolean(p.answer);$("quiz-body").innerHTML='<span class="tag">'+safe(q.instituicao)+' · '+safe(q.ano)+'</span><span class="tag">'+safe(q.modulo)+'</span><h2>'+safe(q.tema)+'</h2><p>'+safe(q.enunciado)+'</p>'+q.alternativas.map((a,i)=>{let l="ABCDE"[i],cls=answered?(l===q.gabarito?"correct":l===p.answer?"wrong":""):choice===l?"chosen":"";return '<button class="choice '+cls+'" data-choice="'+l+'" '+(answered?"disabled":"")+'> <b>'+l+'.</b> '+safe(a)+'</button>'}).join("")+(answered?'<div class="feedback"><b>Gabarito: '+safe(q.gabarito)+'</b><p>'+safe(q.comentario||"Confira a fonte oficial.")+'</p></div>'+renderQuestionNote(q):"")+'<div class="quiz-actions">'+(answered?'<button id="retry">Responder novamente</button>':'<button id="submit" '+(!choice||!q.gabarito||q.gabarito==="ANULADA"?"disabled":"")+'>Confirmar resposta</button>')+(q.fonte_url?'<a href="'+safe(validURL(q.fonte_url))+'" target="_blank" rel="noopener noreferrer">Fonte original ↗</a>':"")+'</div>';}
 function switchView(v){document.querySelectorAll(".view").forEach(e=>e.classList.toggle("hidden",e.id!=="view-"+v));document.querySelectorAll("[data-view]").forEach(e=>e.classList.toggle("active",e.dataset.view===v));}
 document.addEventListener("niepaem-pdf-updated",e=>{
  if(commentActive&&commentActive.semestre===e.detail.semester&&commentActive.modo_resolucao==="pdf-local")renderComment(commentActive);

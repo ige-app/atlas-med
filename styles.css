@@ -64,3 +64,9 @@ body.quiz-open #quiz[open]{display:block;position:fixed;inset:12px 0;margin:auto
  #quiz .reader-answer{overflow:visible}
  #quiz .reader-links{padding-right:48px}
 }
+
+.question-note{margin:16px 0;padding:14px;border:1px solid var(--line);border-radius:9px;background:#f5f8f8}
+.question-note label{display:block;margin-bottom:6px;font-weight:700}
+.question-note textarea{display:block;width:100%;min-height:96px;resize:vertical;padding:10px;border:1px solid #cbd7dc;border-radius:8px;background:#fff;color:inherit;font:inherit}
+.question-note p{margin:4px 0 0;font-size:14px}
+.question-note [role="status"]{min-height:1.5em}
