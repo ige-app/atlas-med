@@ -5,6 +5,8 @@ const read = path => JSON.parse(readFileSync(resolve(process.cwd(), path), "utf8
 const questions = read("data/questoes.json");
 const indices = read("data/indices.json");
 const sources = read("data/provas.json");
+const niepaem1 = read("data/niepaem-2026-1.json");
+const niepaem2 = read("data/niepaem-2026-2.json");
 const banks = new Set(["USP", "UNESP", "UNIFESP", "ENAMED", "ENARE", "NIEPAEM"]);
 const errors = [];
 const fail = msg => errors.push(msg);
@@ -63,6 +65,24 @@ for(const q of enamed2026){
  if(!q.gabarito_status?.includes("PRELIMINAR"))fail("ENAMED 2026: gabarito sem alerta provisório "+q.id);
  if(!q.enunciado_parafraseado || !q.comentario_resumido || q.alternativas_parafraseadas?.length!==4)fail("ENAMED 2026: texto, alternativas ou comentário ausentes "+q.id);
  if(!q.resolucao_pdf_url || !q.resolucao_verificada_url)fail("ENAMED 2026: PDF de correção ausente "+q.id);
+}
+
+const seen=new Set(indices.map(x=>x.id));
+for(const [sem,entries] of [[1,niepaem1],[2,niepaem2]]){
+ if(!Array.isArray(entries)||entries.length!==120)fail("NIEPAEM 2026."+sem+": esperado 120 registros");
+ const nums=entries.map(x=>x.numero).sort((a,b)=>a-b);
+ if(nums.some((n,i)=>n!==i+1))fail("NIEPAEM 2026."+sem+": números incompletos ou duplicados");
+ for(const q of entries){
+   validateMetadata(q,"NIEPAEM 2026."+sem);
+   if(seen.has(q.id))fail("ID duplicado no acervo completo: "+q.id);
+   seen.add(q.id);
+   if(q.semestre!==sem||q.edicao!=="NIEPAEM 2026."+sem)fail("Semestre incorreto "+q.id);
+   if(!["GO","SC","CM","CIR","PED"].includes(q.categoria_origem))fail("Área original inválida "+q.id);
+   if(!/^[A-D]$/.test(q.gabarito))fail("Gabarito inválido "+q.id);
+   if(!q.tema||!q.modulo||!q.comentario_resumido||q.comentario_resumido.length<30)fail("Sem classificação ou comentário "+q.id);
+   if(q.modo_resolucao!=="comentario"||q.enunciado_disponivel!==false||q.alternativas_disponiveis!==false)fail("Marcado erroneamente como respondível "+q.id);
+   if(q.conteudo_reproduzido!==false||!q.comentario_pagina||!q.arquivo_origem)fail("Fonte do gabarito não registrada "+q.id);
+ }
 }
 
 for (const s of sources) {
