@@ -54,3 +54,13 @@ dialog.comment-dialog{width:min(1100px,97vw);max-width:none;max-height:93vh;padd
 dialog#quiz{position:relative}
 dialog#quiz>#close-quiz-top{position:sticky;top:6px;float:right;z-index:40;display:flex;align-items:center;justify-content:center;width:42px;height:42px;padding:0;margin:0 0 -46px 9px;border-radius:50%;font-size:29px;font-weight:500;line-height:1;color:var(--navy);background:#fff;box-shadow:0 3px 14px rgba(0,0,0,.17);border:1px solid var(--line)}
 dialog#quiz>#close-quiz-top:hover,dialog#quiz>#close-quiz-top:focus-visible{background:var(--navy);color:#fff}
+
+body.quiz-open{overflow:hidden}
+body.quiz-open::before{content:"";position:fixed;inset:0;background:#0b283b99;z-index:100}
+body.quiz-open #quiz[open]{display:block;position:fixed;inset:12px 0;margin:auto;width:min(720px,calc(100% - 24px));max-width:none;max-height:calc(100% - 24px);height:fit-content;z-index:101;overscroll-behavior:contain}
+@media(max-width:790px){
+ body.quiz-open #quiz[open]{padding:12px}
+ #quiz .reader-layout,#quiz .comment-view{grid-template-columns:minmax(0,1fr)}
+ #quiz .reader-answer{overflow:visible}
+ #quiz .reader-links{padding-right:48px}
+}
