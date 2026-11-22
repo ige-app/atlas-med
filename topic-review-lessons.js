@@ -500,5 +500,235 @@ const topicReviewLessons = {
   overview:"A avaliação renal combina creatinina, diurese, urina e contexto. Diferencie alterações recentes da doença persistente e reconheça padrões glomerulares.",
   points:[["Agudo ou crônico","Compare creatinina atual e prévia e acompanhe diurese. Na lesão aguda, avalie perfusão, nefrotóxicos e obstrução. Doença renal crônica requer alterações estruturais ou funcionais por pelo menos três meses e é classificada por taxa de filtração e albuminúria."],["Nefrítica e nefrótica","Hematúria glomerular, hipertensão e queda de filtração favorecem síndrome nefrítica. Proteinúria importante, hipoalbuminemia e edema favorecem síndrome nefrótica. O padrão guia exames e investigação etiológica."]],
   sources:[["KDIGO · Avaliação e manejo da doença renal crônica","https://kdigo.org/guidelines/ckD-Evaluation-and-Management/"]]
+ },
+ "Amenorreia": {
+   "overview": "Amenorreia é a ausência de menstruação. Investigue a forma primária se não houve menarca aos 15 anos com desenvolvimento sexual secundário normal. Na secundária, investigue após mais de três meses sem menstruar se os ciclos eram regulares, ou seis meses se eram irregulares.",
+   "points": [
+     [
+       "Primeiro passo",
+       "Exclua gestação quando biologicamente possível. Na amenorreia secundária, história, exame, TSH, prolactina e FSH orientam a avaliação. Estradiol baixo com FSH alto aponta para insuficiência ovariana. FSH baixo ou inadequadamente normal sugere causa hipotalâmica ou hipofisária."
+     ],
+     [
+       "Amenorreia primária e anatomia",
+       "Mamas desenvolvidas com útero ausente levantam duas hipóteses frequentes nas provas. Na síndrome de Rokitansky, os ovários funcionam e a pilificação costuma ser normal. Na insensibilidade completa aos andrógenos, a pilificação pubiana costuma ser escassa e a testosterona está na faixa masculina."
+     ],
+     [
+       "Puberdade e prolactina",
+       "Puberdade incompleta com FSH alto sugere disgenesia gonadal, como Turner. Gonadotrofinas baixas com anosmia sugerem Kallmann. Na amenorreia secundária com cefaleia ou alteração visual, investigue causa hipofisária. Restrição energética, exercício intenso e estresse podem causar supressão hipotalâmica."
+     ]
+   ],
+   "sources": [
+     [
+       "ASRM — avaliação da amenorreia",
+       "https://www.asrm.org/practice-guidance/practice-committee-documents/current-evaluation-of-amenorrhea/"
+     ]
+   ]
+ },
+ "Reanimação neonatal": {
+   "overview": "Na sala de parto, avalie respiração, tônus e frequência cardíaca. Mantenha a temperatura e posicione a via aérea. A ventilação eficaz é a intervenção que costuma elevar a frequência cardíaca no recém-nascido que precisa de reanimação.",
+   "points": [
+     [
+       "Quando ventilar",
+       "Apneia, gasping ou frequência cardíaca abaixo de 100/min após as medidas iniciais indicam ventilação com pressão positiva. Em recém-nascidos a termo, comece com ar ambiente e ajuste o oxigênio pela saturação pré-ductal e pelo protocolo."
+     ],
+     [
+       "Ventilação antes das compressões",
+       "Se a frequência não sobe, confira expansão torácica, vedação da máscara e posição da cabeça. Se continuar abaixo de 60/min após 30 segundos de ventilação eficaz, inicie compressões sincronizadas na relação 3:1 e assegure via aérea adequada."
+     ],
+     [
+       "Como decidir o próximo passo",
+       "Nas questões sobre dispositivos, veja se máscara está ventilando bem ou se é preciso uma via aérea alternativa. Com respiração espontânea adequada e frequência acima de 100/min, pode-se suspender a ventilação e reavaliar a oxigenação e o esforço respiratório."
+     ]
+   ],
+   "sources": [
+     [
+       "AHA/AAP — diretriz neonatal 2025",
+       "https://publications.aap.org/pediatrics/article/157/1/e2025074352/205237/Part-5-Neonatal-Resuscitation-2025-American-Heart"
+     ]
+   ]
+ },
+ "Incontinência urinária": {
+   "overview": "Separe perda com aumento da pressão abdominal, perda acompanhada de urgência e perda associada à retenção. História, exame, teste de urina e diário miccional ajudam a caracterizar o padrão.",
+   "points": [
+     [
+       "Esforço, urgência e forma mista",
+       "Perda ao tossir, espirrar ou fazer exercício sugere incontinência de esforço. Desejo súbito difícil de adiar, com frequência e noctúria, sugere bexiga hiperativa. Na forma mista, trate primeiro o componente predominante."
+     ],
+     [
+       "Tratamento inicial",
+       "Na incontinência de esforço ou mista, ofereça treinamento supervisionado do assoalho pélvico por pelo menos três meses, inclusive quando indicado no puerpério. Na urgência, o treinamento vesical é uma medida inicial. Avalie medicamentos e causas reversíveis no idoso."
+     ],
+     [
+       "Quando considerar sling",
+       "O sling pode ser discutido para perda de esforço persistente após manejo conservador, com avaliação dos riscos e opções. Sintomas de esvaziamento incompleto orientam a medir resíduo pós-miccional. O exercício de Kegel deve recrutar o assoalho pélvico."
+     ]
+   ],
+   "sources": [
+     [
+       "NICE — incontinência urinária e prolapso",
+       "https://www.nice.org.uk/guidance/ng123"
+     ]
+   ]
+ },
+ "Hipertensão na gestação": {
+   "overview": "Hipertensão antes da gestação ou antes de 20 semanas sugere hipertensão crônica. A partir de 20 semanas, diferencie hipertensão gestacional de pré-eclâmpsia avaliando proteinúria, disfunção materna e sinais de comprometimento uteroplacentário.",
+   "points": [
+     [
+       "Pré-eclâmpsia sem proteinúria",
+       "Hipertensão nova associada a disfunção renal, hepática, hematológica ou neurológica pode preencher critérios mesmo sem proteinúria. Cefaleia persistente, alteração visual, dor epigástrica e hipertensão grave exigem avaliação urgente. Restrição do crescimento e Doppler ajudam na avaliação fetal."
+     ],
+     [
+       "Gravidade e parto",
+       "Hipertensão grave exige controle pressórico urgente. Sulfato de magnésio previne e trata convulsões eclâmpticas quando indicado. Estabilize a gestante e avalie idade gestacional, gravidade e condições fetais para decidir o momento e a via do parto. Na pré-eclâmpsia a termo, costuma-se indicar o parto."
+     ],
+     [
+       "Prevenção",
+       "Para gestantes de alto risco, vale reconhecer a indicação de AAS em baixa dose iniciado precocemente conforme protocolo. A indicação de cálcio segue a diretriz local. Na questão, diferencie prevenção de tratamento de doença estabelecida."
+     ]
+   ],
+   "sources": [
+     [
+       "ISSHP — classificação, diagnóstico e manejo",
+       "https://isshp.org/wp-content/uploads/2023/09/ISSHP-2021-guidelines.pdf"
+     ]
+   ]
+ },
+ "Infecção urinária": {
+   "overview": "Disúria e polaciúria sem manifestação sistêmica favorecem cistite. Febre, dor lombar ou repercussão geral favorecem pielonefrite. Gestação, obstrução e instabilidade mudam a investigação e o manejo.",
+   "points": [
+     [
+       "Coleta e gravidade",
+       "Em pielonefrite, gestação ou criança febril, obtenha urina para cultura, de preferência antes do antibiótico quando isso não atrasar o atendimento. A escolha empírica considera gravidade, resistência local e penetração renal. Na suspeita de pielonefrite na gestação, a avaliação inicial costuma ser hospitalar."
+     ],
+     [
+       "Obstrução infectada",
+       "Febre ou sepse com via urinária obstruída exige avaliação urológica urgente para drenagem, junto com antibiótico. O cateter duplo J ou a nefrostomia tratam a obstrução conforme o cenário."
+     ],
+     [
+       "Imagem na infância",
+       "Ultrassom avalia anatomia e dilatação. Cintilografia DMSA tardia pode avaliar cicatriz renal em casos selecionados, e a uretrocistografia pesquisa refluxo quando indicada. Idade, recorrência, evolução e agente não E. coli influenciam quais exames pedir."
+     ]
+   ],
+   "sources": [
+     [
+       "NICE — ITU em menores de 16 anos",
+       "https://www.nice.org.uk/guidance/ng224"
+     ]
+   ]
+ },
+ "Colelitíase e coledocolitíase": {
+   "overview": "Cálculos na vesícula podem causar cólica biliar ou colecistite. Cálculo no colédoco pode causar colestase, colangite ou pancreatite. Dor persistente, inflamação e alterações das provas hepáticas ajudam a localizar a complicação.",
+   "points": [
+     [
+       "Colecistite",
+       "Dor persistente em hipocôndrio direito e sinais inflamatórios favorecem colecistite. Ultrassom é o exame inicial usual. Em pacientes operáveis, a colecistectomia precoce é o tratamento de referência. No paciente crítico com alto risco operatório ou colecistite alitiásica, pode-se indicar drenagem da vesícula."
+     ],
+     [
+       "Colédoco e CPRE",
+       "Na probabilidade intermediária de cálculo no colédoco, colangiorressonância ou ecoendoscopia ajudam a confirmar. Indícios de alto risco, como cálculo visto em imagem ou colangite, podem indicar CPRE terapêutica. Após bypass gástrico, a anatomia pode tornar necessária uma via alternativa."
+     ],
+     [
+       "Antibiótico e controle do foco",
+       "Após colecistectomia com controle adequado do foco em quadro não complicado, evite prolongar antibiótico por rotina. Na colangite, antibiótico e drenagem biliar têm funções complementares."
+     ]
+   ],
+   "sources": [
+     [
+       "ASGE — avaliação endoscópica da coledocolitíase",
+       "https://www.guidelinecentral.com/guideline/9442/"
+     ]
+   ]
+ },
+ "Climatério e menopausa": {
+   "overview": "Climatério é a transição reprodutiva. Em pessoas com mais de 45 anos e quadro típico, o diagnóstico costuma ser clínico. Menopausa natural é reconhecida retrospectivamente após 12 meses sem menstruação, quando o padrão pode ser interpretado.",
+   "points": [
+     [
+       "Fogachos e terapia sistêmica",
+       "A terapia hormonal sistêmica é uma opção eficaz para sintomas vasomotores. Na presença de útero, associe proteção endometrial com progestagênio. Escolha via e esquema conforme risco e preferência. A via transdérmica costuma ser preferida quando há risco aumentado de tromboembolismo."
+     ],
+     [
+       "Câncer de mama e opções não hormonais",
+       "Antecedente de câncer de mama exige avaliação individualizada. Para fogachos, considere estratégias não hormonais; em uso de tamoxifeno, confira possíveis interações ao escolher antidepressivos."
+     ],
+     [
+       "Sintomas geniturinários",
+       "Secura, dispareunia e sintomas urinários podem responder a hidratantes, lubrificantes e, quando apropriado, estrogênio vaginal. Em quem teve câncer de mama, discuta sintomas persistentes e opções com a equipe assistente. Sangramento pós-menopausa requer avaliação."
+     ]
+   ],
+   "sources": [
+     [
+       "NICE — identificação e manejo da menopausa",
+       "https://www.nice.org.uk/guidance/ng23"
+     ]
+   ]
+ },
+ "Prematuridade": {
+   "overview": "Parto prematuro ocorre antes de 37 semanas completas. Diferencie contrações sem modificação cervical, trabalho de parto prematuro, insuficiência cervical e ruptura prematura de membranas.",
+   "points": [
+     [
+       "Colo curto, história e cerclagem",
+       "Comprimento cervical por ultrassom transvaginal e história obstétrica ajudam a estratificar risco. Progesterona e cerclagem têm indicações específicas. Dilatação indolor no segundo trimestre sugere insuficiência cervical. Antes de cerclagem de emergência, avalie infecção, trabalho de parto e condições das membranas."
+     ],
+     [
+       "Preparo para nascimento prematuro",
+       "Quando há risco de nascimento dentro da janela indicada, corticosteroide antenatal favorece maturação fetal e sulfato de magnésio pode ser indicado para neuroproteção. Tocólise pode ganhar tempo para essas intervenções ou transferência quando segura."
+     ],
+     [
+       "Antibióticos e contraindicações",
+       "Diferencie profilaxia intraparto para estreptococo do grupo B e antibiótico de latência na ruptura pré-termo de membranas. Infecção intra-amniótica ou comprometimento materno-fetal pode exigir parto em vez de tentar prolongar a gestação."
+     ]
+   ],
+   "sources": [
+     [
+       "NICE — trabalho de parto prematuro e nascimento",
+       "https://www.nice.org.uk/guidance/ng25"
+     ]
+   ]
+ },
+ "Delirium": {
+   "overview": "Delirium é uma alteração aguda e flutuante da atenção e da consciência, geralmente desencadeada por doença, intervenção ou medicamento. Pode ocorrer sobre demência prévia.",
+   "points": [
+     [
+       "Reconhecimento",
+       "Compare com o estado basal relatado pela família e procure desatenção, oscilação e mudança em horas ou dias. O subtipo hipoativo pode se apresentar com lentificação e sonolência. O hiperativo costuma ter inquietação ou agitação. O 4AT apoia a avaliação em enfermaria."
+     ],
+     [
+       "Causas cobradas",
+       "Revise hipóxia, infecção, dor, desidratação, alterações metabólicas, retenção urinária, constipação e medicamentos. Na pessoa com confusão aguda e globo vesical, retenção urinária é uma causa tratável a investigar."
+     ],
+     [
+       "Manejo",
+       "Trate a causa e oriente com relógio, calendário, óculos, aparelhos auditivos, mobilização e rotina de sono. Medicamentos para agitação ficam reservados a situações selecionadas com sofrimento ou risco e após tentativa de medidas não farmacológicas. Benzodiazepínicos têm indicações específicas, como abstinência alcoólica."
+     ]
+   ],
+   "sources": [
+     [
+       "NICE — prevenção, diagnóstico e manejo do delirium",
+       "https://www.nice.org.uk/guidance/cg103"
+     ]
+   ]
+ },
+ "Doença falciforme": {
+   "overview": "A hemoglobina S pode polimerizar sob desoxigenação, levando a hemólise e vaso-oclusão. Traço falciforme é condição heterozigótica e tem perfil clínico diferente da doença. Na triagem neonatal, o padrão FAS é compatível com traço.",
+   "points": [
+     [
+       "Crise dolorosa, febre e tórax agudo",
+       "Faça analgesia e investigue desencadeantes e complicações. Febre com dor óssea localizada pede avaliação de osteomielite, considerando Salmonella e Staphylococcus aureus. Novo infiltrado pulmonar com febre ou sintomas respiratórios sugere síndrome torácica aguda e exige avaliação rápida."
+     ],
+     [
+       "Queda de hemoglobina e reticulócitos",
+       "Queda brusca da hemoglobina com reticulocitopenia sugere crise aplástica, frequentemente por parvovírus B19. Sequestro esplênico associa aumento agudo do baço e costuma ter resposta reticulocitária preservada."
+     ],
+     [
+       "Transfusão e compatibilidade",
+       "Planeje compatibilidade antigênica ampliada para reduzir aloimunização. Na síndrome torácica aguda grave, a troca transfusional pode ser indicada. Reação alérgica grave prévia é informação essencial para selecionar o hemocomponente com a hemoterapia."
+     ]
+   ],
+   "sources": [
+     [
+       "ASH — suporte transfusional na doença falciforme",
+       "https://ashpublications.org/bloodadvances/article/4/2/327/440607/American-Society-of-Hematology-2020-guidelines-for"
+     ]
+   ]
  }
 };
