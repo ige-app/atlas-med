@@ -233,8 +233,9 @@ const olderExams=read("data/residencia-2021-2022.json");
 const olderIds=new Set();
 for(const exam of olderExams){
  const id=exam.instituicao+" "+exam.ano;
+ const expectedCount=id==="USP 2021"?120:100;
  if(olderIds.has(id)||!banks.has(exam.instituicao)||![2021,2022].includes(exam.ano)||
-    ![exam.pdf_url,exam.gabarito_url].every(url=>/^https:\/\//.test(url))||exam.questoes.length!==100){
+    ![exam.pdf_url,exam.gabarito_url].every(url=>/^https:\/\//.test(url))||exam.questoes.length!==expectedCount){
   fail("Caderno inválido: "+id);
  }
  olderIds.add(id);
