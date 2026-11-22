@@ -84,6 +84,15 @@ function normalizeTopic(text){
  return String(text||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("pt-BR").trim();
 }
 
+const relatedTopicGroups=[
+ ["Abdome agudo", /abdome agudo|apendicite|obstrucao intestinal|suboclusao intestinal|diverticulite aguda|colecistite aguda|pancreatite (?:aguda|biliar)|isquemia mesenterica|peritonite|ulcera perfurada|invaginacao intestinal|gravidez ectopica rota|torsao (?:ovariana|anexial)/],
+ ["Artrites", /artrit[ei]s?|osteoartrose|\bartrose\b|anti-ccp|\bgota\b|pseudogota|condrocalcinose|espondiloartrite/],
+ ["Antibioticoterapia", /antibi[o]?tic|antimicrobian|antibioprofilax|\b(?:amoxicilina|azitromicina|ceftriaxona|penicilina|vancomicina|meropenem)\b/],
+ ["Anemias", /\banemias?\b|falciform|talassemia|ferropriva|deficiencia de ferro|anemia fetal/],
+ ["Aneurismas", /aneurisma/],
+ ["Tromboembolismo venoso", /tromboembolismo pulmonar|embolia pulmonar|trombose venosa profunda|\b(?:tep|tvp)\b/],
+ ["Doenças renais", /doenca renal cronica|nefroprotecao|(?:lesao|injuria|insuficiencia) renal aguda|sindrome nefrotica|sindrome nefritica|glomerulonefrite/],
+];
 function groupedTopicOf(q){
  if(q.modulo==="Acesso direto — classificação pendente")return "";
  const match=groupedTopics.find(([,pattern])=>pattern.test(normalizeTopic(q.tema)));
@@ -98,8 +107,15 @@ function topicOf(q){
  return topicLabels.get(normalizeTopic(topic))||topic;
 }
 
-function subtopicsOf(q){
- const topic=normalizeTopic(topicOf(q));
+function topicsOf(q){
+ const primary=topicOf(q);
+ if(!primary)return [];
+ const label=normalizeTopic(q.tema);
+ return [...new Set([primary,...relatedTopicGroups.filter(([,pattern])=>pattern.test(label)).map(([topic])=>topic)])];
+}
+
+function subtopicsOf(q, selected=topicOf(q)){
+ const topic=normalizeTopic(selected);
  const parts=[q.tema,q.subtema].filter(part=>part&&normalizeTopic(part)!==topic);
  return parts.filter((part,index)=>parts.findIndex(other=>normalizeTopic(other)===normalizeTopic(part))===index);
 }
@@ -111,13 +127,11 @@ function indexTopics(questions){
   const topic=groupedTopicOf(q);
   if(topic&&!topicLabels.has(normalizeTopic(topic)))topicLabels.set(normalizeTopic(topic),topic);
  }
- for(const q of questions){
-  const topic=topicOf(q);
-  if(!topic)continue;
+ for(const q of questions)for(const topic of topicsOf(q)){
   if(!topicDetails.has(topic))topicDetails.set(topic,{subtopics:new Map(),aliases:new Set(),count:0});
   const details=topicDetails.get(topic);
   details.count++;
-  for(const item of subtopicsOf(q)){
+  for(const item of subtopicsOf(q,topic)){
    const key=normalizeTopic(item);
    if(!details.subtopics.has(key))details.subtopics.set(key,item);
   }

@@ -942,5 +942,19 @@
   "usp-2024-a1-q096": ["Saúde Coletiva", "Retenção no cuidado ao HIV, volume assistencial e supressão viral", 31],
   "usp-2024-a1-q111": ["Obstetrícia", "Distócia de ombro e manobras obstétricas", 34],
   "usp-2024-a1-q112": ["Obstetrícia", "Cetoacidose diabética na gestação", 34],
-  "usp-2024-a1-q113": ["Mastologia", "Semiologia mamária e técnica de palpação", 34]
+  "usp-2024-a1-q113": ["Mastologia", "Semiologia mamária e técnica de palpação", 34],
+  "usp-2021-ad-q003": ["Reumatologia", "Dermatomiosite com poliartrite e rastreamento de neoplasia", 4],
+  "usp-2021-ad-q009": ["Neurologia", "Porfiria aguda, abdome agudo e paralisia flácida", 7],
+  "usp-2021-ad-q014": ["Medicina de Família e Comunidade", "Rastreamento em tabagista e aneurisma de aorta abdominal", 11],
+  "usp-2021-ad-q017": ["Endocrinologia", "Cetoacidose diabética e tratamento inicial", 13],
+  "usp-2021-ad-q053": ["Hematologia", "Anemia falciforme, síndrome torácica aguda e seleção de hemocomponente", 30],
+  "usp-2021-ad-q058": ["Pediatria", "Pneumonia pediátrica e reavaliação da antibioticoterapia", 34],
+  "usp-2021-ad-q070": ["Neonatologia", "Onfalite neonatal e antibioticoterapia empírica", 40],
+  "usp-2021-ad-q073": ["Cirurgia Geral", "Obstrução intestinal por neoplasia retal e derivação", 41],
+  "usp-2021-ad-q074": ["Cirurgia Vascular", "Isquemia mesentérica venosa e anticoagulação", 42],
+  "usp-2021-ad-q079": ["Gastroenterologia", "Pancreatite aguda biliar e indicação de imagem adicional", 46],
+  "usp-2021-ad-q082": ["Cirurgia Geral", "Síndrome de realimentação após apendicite complicada", 48],
+  "usp-2021-ad-q094": ["Urologia", "Diverticulite complicada, pneumatúria e fístula colovesical", 54],
+  "usp-2021-ad-q106": ["Ginecologia", "Abdome agudo ginecológico e massa anexial dolorosa", 60],
+  "usp-2021-ad-q112": ["Obstetrícia", "Endometrite puerperal e antibioticoterapia inicial", 64]
 }

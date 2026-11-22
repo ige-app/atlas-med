@@ -39,13 +39,13 @@ function matchesSearch(q,terms){
  let text=searchTextByQuestion.get(q);
  if(text===undefined){
   const topic=topicOf(q);
-  const lesson=Object.hasOwn(topicReviewLessons,topic)?topicReviewLessons[topic]:null;
+  const lessons=topicsOf(q).filter(name=>Object.hasOwn(topicReviewLessons,name)).map(name=>topicReviewLessons[name]);
   const review=Object.hasOwn(clinicalTopicReviews,topic)?clinicalTopicReviews[topic]:null;
   const note=studyNotes[q.id]||q;
   text=normalizeTopic([topic,q.tema,q.subtema,q.modulo,q.resumo,q.enunciado,q.enunciado_parafraseado,
    q.alternativas,q.alternativas_parafraseadas,q.comentario,q.comentario_resumido,
    note.comentario_resumido,note.estudo_alternativas,note.estudo_revisar,
-   lesson?.overview,lesson?.points,lesson?null:review?.text].flat(2).join(" "));
+   topicsOf(q),...lessons.flatMap(lesson=>[lesson.overview,lesson.points]),review?.text].flat(2).join(" "));
   searchTextByQuestion.set(q,text);
  }
  return terms.every(term=>text.includes(term));
@@ -55,7 +55,7 @@ function currentIndex(){
   const banks=selectedBanks();
   return indices.filter(q=>{
     const p=progress[q.id]||{};
-    if(!banks.has(q.instituicao)||(mod&&q.modulo!==mod)||q.ano<start||q.ano>end||(sem&&semesterOf(q)!==sem)||(topic&&topicOf(q)!==topic)||(subtopic&&!matchesSubtopic(q,subtopic)))return false;
+    if(!banks.has(q.instituicao)||(mod&&q.modulo!==mod)||q.ano<start||q.ano>end||(sem&&semesterOf(q)!==sem)||(topic&&!topicsOf(q).includes(topic))||(subtopic&&!matchesSubtopic(q,subtopic)))return false;
     if(!matchesSearch(q,search))return false;
     if(status==="pending"&&(!scoreable(q)||p.answer))return false;
     if(status==="wrong"&&(!p.answer||answerMatches(q,p.answer)))return false;
@@ -63,7 +63,7 @@ function currentIndex(){
     return true;
   }).sort((a,b)=>b.ano-a.ano||(Number(semesterOf(b))||0)-(Number(semesterOf(a))||0)||a.instituicao.localeCompare(b.instituicao)||a.numero-b.numero);
 }
-function current(){let start=+$("start").value,end=+$("end").value,sem=$("semester").value,topic=$("topic").value,subtopic=$("subtopic").value,search=searchTerms(),status=$("status").value;const banks=selectedBanks();return questions.filter(q=>banks.has(q.instituicao)&&(!mod||q.modulo===mod)&&q.ano>=start&&q.ano<=end&&(!sem||semesterOf(q)===sem)&&(!topic||topicOf(q)===topic)&&(!subtopic||matchesSubtopic(q,subtopic))&&matchesSearch(q,search)&&(!status||(status==="pending"?!progress[q.id]?.answer:status==="wrong"?progress[q.id]?.answer&&progress[q.id].answer!==q.gabarito:progress[q.id]?.starred)));}
+function current(){let start=+$("start").value,end=+$("end").value,sem=$("semester").value,topic=$("topic").value,subtopic=$("subtopic").value,search=searchTerms(),status=$("status").value;const banks=selectedBanks();return questions.filter(q=>banks.has(q.instituicao)&&(!mod||q.modulo===mod)&&q.ano>=start&&q.ano<=end&&(!sem||semesterOf(q)===sem)&&(!topic||topicsOf(q).includes(topic))&&(!subtopic||matchesSubtopic(q,subtopic))&&matchesSearch(q,search)&&(!status||(status==="pending"?!progress[q.id]?.answer:status==="wrong"?progress[q.id]?.answer&&progress[q.id].answer!==q.gabarito:progress[q.id]?.starred)));}
 const moduleName=m=>m===pendingModule?"Classificação pendente":m;
 const alphabeticalModules=MODULES.filter(m=>m!==pendingModule).sort((a,b)=>a.localeCompare(b,"pt-BR")).concat(pendingModule);
 function modules(){
@@ -98,19 +98,19 @@ function chooseModule(next){
 }
 const alphabetical=(a,b)=>a.localeCompare(b,"pt-BR");
 function matchesSubtopic(q,value){
- return subtopicsOf(q).some(name=>normalizeTopic(name)===normalizeTopic(value));
+ return subtopicsOf(q,$("topic").value).some(name=>normalizeTopic(name)===normalizeTopic(value));
 }
 function topics(){
  const scoped=[...questions,...indices].filter(q=>!mod||q.modulo===mod);
- select("topic",[...new Set(scoped.map(topicOf).filter(Boolean))].sort(alphabetical));
+ select("topic",[...new Set(scoped.flatMap(topicsOf))].sort(alphabetical));
  updateSubtopics(scoped);
 }
 function updateSubtopics(scoped=[...questions,...indices].filter(q=>!mod||q.modulo===mod)){
  const selected=$("topic").value;
  const subtopics=new Map();
  if(selected){
-  for(const q of scoped.filter(q=>topicOf(q)===selected)){
-   for(const item of subtopicsOf(q))subtopics.set(normalizeTopic(item),item);
+  for(const q of scoped.filter(q=>topicsOf(q).includes(selected))){
+   for(const item of subtopicsOf(q,selected))subtopics.set(normalizeTopic(item),item);
   }
  }
  select("subtopic",[...subtopics.values()].sort(alphabetical));
@@ -147,9 +147,7 @@ function renderPerformance(){
 let tagStatistics=[];
 function buildTagStatistics(bank){
  const rows=new Map();
- for(const q of bank){
-  const topic=topicOf(q);
-  if(!topic)continue;
+ for(const q of bank)for(const topic of topicsOf(q)){
   if(!rows.has(topic))rows.set(topic,{topic,exams:new Set(),count:0,reviewed:Object.hasOwn(topicReviewLessons,topic)});
   const row=rows.get(topic);
   row.exams.add([q.instituicao,q.ano,semesterOf(q)].join("|"));
@@ -248,13 +246,18 @@ function topicNoteKey(topic){
 }
 
 function renderTopicReview(q){
- const topic=topicOf(q);
- if(!topic)return "";
+ return topicsOf(q).map((topic,i)=>{
+  if(i===0)return renderReviewForTopic(q,topic);
+  return '<details class="feedback"><summary>Resumo geral · '+safe(topic)+'</summary>'+renderReviewForTopic(q,topic)+'</details>';
+ }).join("");
+}
+
+function renderReviewForTopic(q,topic){
  const lesson=Object.hasOwn(topicReviewLessons,topic)?topicReviewLessons[topic]:null;
  const review=Object.hasOwn(clinicalTopicReviews,topic)?clinicalTopicReviews[topic]:null;
  const detail=topicDetails.get(topic);
  const subtopics=[...(detail?.subtopics.values()||[])].sort(alphabetical);
- const questionSubtopics=subtopicsOf(q);
+ const questionSubtopics=subtopicsOf(q,topic);
  const list=subtopics.length?'<details><summary>Subassuntos deste tema ('+subtopics.length+')</summary><ul>'+
   subtopics.map(name=>'<li>'+safe(name)+'</li>').join("")+'</ul></details>':"";
  const sourceLinks=lesson?lesson.sources.map(([label,url])=>'<li><a href="'+safe(validURL(url))+'" target="_blank" rel="noopener noreferrer">'+safe(label)+'</a></li>').join(""):"";
@@ -627,7 +630,7 @@ function archivedResidencyQuestions(exams) {
   };
  }));
 }
-async function load(){bootFilters();if(new URLSearchParams(location.search).get("modulo")==="pendentes")mod=pendingModule;await initPersonalMode();try{let responses=await Promise.all([fetch("data/questoes.json"),fetch("data/provas.json?v=4"),fetch("data/indices.json"),fetch("data/niepaem-2026-1.json"),fetch("data/niepaem-2026-2.json"),fetch("data/unifesp-2025.json"),fetch("data/unifesp-2026.json"),fetch("data/classificacao.json?v=2"),fetch("data/usp-2023-2024.json"),fetch("data/unesp-unifesp-2023-2024.json"),fetch("data/residencia-2021-2022.json?v=3")]);if(responses.some(r=>!r.ok))throw Error("Não foi possível carregar o acervo.");let data=await Promise.all(responses.map(r=>r.json()));[questions,sources,indices]=data.slice(0,3);const archived=archivedUspQuestions(data[8],indices);indices=[...indices.filter(q=>q.instituicao!=="USP"||q.ano!==2024),...archived,...archivedResidencyQuestions([...data[9],...data[10]]),...data[3],...data[4],...data[5],...data[6]].map(q=>{
+async function load(){bootFilters();if(new URLSearchParams(location.search).get("modulo")==="pendentes")mod=pendingModule;await initPersonalMode();try{let responses=await Promise.all([fetch("data/questoes.json"),fetch("data/provas.json?v=4"),fetch("data/indices.json"),fetch("data/niepaem-2026-1.json"),fetch("data/niepaem-2026-2.json"),fetch("data/unifesp-2025.json"),fetch("data/unifesp-2026.json"),fetch("data/classificacao.json?v=3"),fetch("data/usp-2023-2024.json"),fetch("data/unesp-unifesp-2023-2024.json"),fetch("data/residencia-2021-2022.json?v=3")]);if(responses.some(r=>!r.ok))throw Error("Não foi possível carregar o acervo.");let data=await Promise.all(responses.map(r=>r.json()));[questions,sources,indices]=data.slice(0,3);const archived=archivedUspQuestions(data[8],indices);indices=[...indices.filter(q=>q.instituicao!=="USP"||q.ano!==2024),...archived,...archivedResidencyQuestions([...data[9],...data[10]]),...data[3],...data[4],...data[5],...data[6]].map(q=>{
  const classification=data[7][q.id];
  if(!classification)return q;
  const [modulo,tema,pagina]=classification;

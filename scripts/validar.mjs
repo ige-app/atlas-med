@@ -222,14 +222,16 @@ for (const exam of archivedResidency) {
   }
 }
 if (expectedResidency.size) fail("Faltam cadernos de residência: " + [...expectedResidency.keys()].join(", "));
+const olderExams=read("data/residencia-2021-2022.json");
+const olderQuestionIds=new Set(olderExams.flatMap(exam=>exam.questoes.map((_,i)=>
+ exam.instituicao.toLowerCase()+"-"+exam.ano+"-ad-q"+String(i+1).padStart(3,"0"))));
 const classification = read("data/classificacao.json");
 for (const [id, entry] of Object.entries(classification)) {
-  if (!pendingClassification.delete(id)) fail("Classificação sem registro pendente: " + id);
+  if (!pendingClassification.delete(id)&&!olderQuestionIds.has(id)) fail("Classificação sem registro pendente: " + id);
   if (!Array.isArray(entry) || entry.length !== 3 || !entry[0]?.trim() || !entry[1]?.trim() ||
       !Number.isInteger(entry[2]) || entry[2] < 1) fail("Classificação inválida: " + id);
 }
 if (pendingClassification.size) fail("Questões sem classificação: " + [...pendingClassification].join(", "));
-const olderExams=read("data/residencia-2021-2022.json");
 const olderIds=new Set();
 for(const exam of olderExams){
  const id=exam.instituicao+" "+exam.ano;
