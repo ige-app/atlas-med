@@ -22,6 +22,7 @@ const groupedTopics = [
  ["Diabetes mellitus", /\bdiabetes\b|cetoacidose diabetica|neuropatia diabetica/],
  ["Hipertireoidismo", /hipertireoidismo|hipertiroidismo|doenca de graves|crise tireotoxica/],
  ["Hipotireoidismo", /hipotireoidismo|hipotiroidismo/],
+ ["Hipocalcemia e hipoparatireoidismo", /hipocalcemia|hipoparatireoidismo|hipocalcemico|hipocalcemica|tetania|sinal de trousseau|sinal de chvostek|pos-tireoidectomia|apos tireoidectomia/],
  ["Doença renal crônica", /doenca renal cronica|nefroprotecao/],
  ["Lesão renal aguda", /(?:lesao|injuria|insuficiencia) renal aguda/],
  ["Distúrbios do sódio", /hiponatremia|hipernatremia|hipernatremica/],
