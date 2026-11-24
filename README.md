@@ -102,3 +102,11 @@ node scripts/validar.mjs
 ```
 
 Hospedado no **GitHub Pages**, branch `main` e pasta raiz.
+
+## Resumos por tag e progresso do estudo (24/11/2026)
+
+- Cada cartão de questão possui um botão **Resumo da matéria**, que abre os resumos compartilhados da tag sem exigir que a questão seja respondida primeiro. Os conteúdos ficam em `topic-review-lessons.js`; as regras de agrupamento ficam em `topic-groups.js`.
+- Os resumos de **Abdome agudo**, **Dengue** e **Hipocalcemia e hipoparatireoidismo** foram ampliados com as primeiras três aulas interativas.
+- A seção **Meu progresso de estudo · Atlas Med** no fim da página cruza o histórico verificado de sessões do ChatGPT (`study-history.js`) com o histórico de respostas do navegador (`localStorage`) por ID, sem duplicar questões. Mostra dias estudados, sequência, questões, acertos, aproveitamento, assuntos, bancas, resumos, atividade diária e lista de questões estudadas juntas.
+- As respostas do navegador são privadas desse navegador e só são transportadas pelo recurso de exportação/importação já existente; as três sessões incluídas no arquivo `study-history.js` são públicas no site. Histórico anterior sem data não entra no gráfico diário.
+- Para registrar novas sessões, acrescente em `study-history.js` apenas uma questão real efetivamente respondida e corrigida, incluindo data, ID, prova, número, assunto, alternativa e acerto. Revise os resumos compartilhados com fontes e datas, mantendo o restante do banco intacto.
