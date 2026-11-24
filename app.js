@@ -149,7 +149,7 @@ function studyAttempts(){
   const p=progress[q.id];
   if(!scoreable(q)||!p?.answer)continue;
   const old=byId.get(q.id);
-  const iso=typeof p.answeredAt==="string"&&/^\\d{4}-\\d{2}-\\d{2}/.test(p.answeredAt)?p.answeredAt.slice(0,10):null;
+  const iso=typeof p.answeredAt==="string"&&/^\d{4}-\d{2}-\d{2}/.test(p.answeredAt)?p.answeredAt.slice(0,10):null;
   // For overlap, keep the verified study date and the browser's most recent answer.
   byId.set(q.id,{id:q.id,date:iso||old?.date||"",bank:q.instituicao,exam:q.edicao||q.caderno||q.instituicao+" "+q.ano,number:q.numero,topic:topicOf(q)||old?.topic||q.tema,answer:p.answer,correct:answerMatches(q,p.answer),source:old?"ChatGPT + navegador":"Navegador",summary:Boolean(old?.summary||topicsOf(q).some(t=>Object.hasOwn(topicReviewLessons,t)))});
  }
