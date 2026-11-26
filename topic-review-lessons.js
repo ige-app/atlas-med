@@ -31,11 +31,18 @@ const topicReviewLessons = {
  Glaucoma: {
   overview: "Glaucoma é uma neuropatia óptica progressiva que pode comprometer o campo visual. A pressão intraocular é um fator de risco modificável. A avaliação combina exame do nervo óptico, tonometria, campo visual e gonioscopia para caracterizar o ângulo da câmara anterior.",
   points: [
+   ["Anatomia e fisiologia","Humor aquoso produzido pelos processos ciliares passa da câmara posterior pela pupila à anterior; drena principalmente pela malha trabecular e canal de Schlemm, além da via uveoescleral. PIO usual 10–21 mmHg, sem excluir glaucoma de pressão normal."],
+   ["Mecanismos","No bloqueio pupilar, o gradiente de pressão arqueia a íris e fecha o ângulo; no ângulo aberto há resistência à drenagem sem fechamento anatômico. Hipermetropia, câmara rasa, idade e cristalino volumoso favorecem fechamento."],
+   ["Diagnóstico diferencial do olho vermelho","Uveíte anterior: miose, fotofobia e células/flare; ceratite: defeito epitelial à fluoresceína; conjuntivite: secreção e visão geralmente preservada; neurite óptica: dor ao movimento, discromatopsia e defeito aferente."],
+   ["Exames","Acuidade visual, pupilas, biomicroscopia, tonometria e gonioscopia. OCT de fibras nervosas e campimetria avaliam dano crônico. Não atrasar tratamento de emergência para exames eletivos."],
+   ["Conduta no fechamento angular agudo","Encaminhamento oftalmológico imediato; reduzir PIO com supressores de humor aquoso tópicos e acetazolamida sistêmica se não contraindicado; manitol em casos selecionados. Pilocarpina após redução inicial da PIO quando mecanismo pupilar; iridotomia a laser após estabilização, avaliar olho contralateral. Evitar timolol em asma e bradicardia relevante. Fechamento secundário a topiramato exige abordagem diferente."],
+   ["Tratamento crônico e prova","Reduzir PIO-alvo individualizada com análogos de prostaglandina, outros colírios, laser trabecular ou cirurgia conforme tipo e estágio. Extração do cristalino pode ser indicada no fechamento angular selecionado; iridotomia não resolve todos os mecanismos."],
    ["Fechamento agudo do ângulo", "Dor intensa e de início súbito, olho vermelho, visão turva ou halos, cefaleia e náuseas apontam para fechamento agudo do ângulo. Edema corneano e pupila em média midríase pouco reativa reforçam a hipótese. É uma urgência oftalmológica."],
    ["Glaucoma congênito", "Em lactente, pense na tríade de lacrimejamento, fotofobia e blefaroespasmo. Aumento do diâmetro da córnea, edema corneano e buftalmo são pistas importantes. Compare com a obstrução do ducto nasolacrimal, que costuma causar lacrimejamento e secreção com córnea de aspecto normal."],
    ["Glaucoma primário de ângulo aberto", "É frequentemente assintomático no início. A lesão do nervo óptico e a perda progressiva do campo visual orientam o diagnóstico e o seguimento. Pressão intraocular elevada sem dano detectado corresponde a hipertensão ocular, enquanto o glaucoma pode ocorrer mesmo com pressão dentro da faixa usual."]
   ],
   sources: [
+   ["Ministério da Saúde · PCDT Glaucoma, Portaria 28 de 06/12/2023","https://www.gov.br/saude/pt-br/assuntos/pcdt/g/glaucoma/view"],
    ["National Eye Institute · Tipos de glaucoma", "https://www.nei.nih.gov/eye-health-information/eye-conditions-and-diseases/glaucoma"],
    ["American Academy of Ophthalmology · Glaucoma congênito primário", "https://www.aao.org/eyenet/article/diagnosis-treatment-of-primary-congenital-glaucoma"]
   ]
