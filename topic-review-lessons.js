@@ -759,5 +759,40 @@ const topicReviewLessons = {
        "https://ashpublications.org/bloodadvances/article/4/2/327/440607/American-Society-of-Hematology-2020-guidelines-for"
      ]
    ]
- }
+ },
+ "Toxoplasmose na gestação": {
+  "overview": "Infecção por Toxoplasma gondii, protozoário intracelular. A primoinfecção materna pode causar transmissão transplacentária; o risco de transmissão aumenta com a idade gestacional, enquanto a gravidade fetal tende a ser maior nas infecções precoces.",
+  "points": [
+    [
+      "Ciclo e prevenção",
+      "Felídeos eliminam oocistos; humanos adquirem infecção por água, solo ou alimentos contaminados e cistos em carne malcozida. Taquizoítos disseminam-se; bradizoítos persistem em cistos. Higienizar alimentos, cozinhar carnes e evitar contato desprotegido com terra e fezes de gatos."
+    ],
+    [
+      "Clínica e diferenciais",
+      "Gestante frequentemente assintomática; pode ter febre e linfadenopatia, como CMV ou EBV. Infecção congênita pode causar coriorretinite, hidrocefalia e calcificações intracranianas, ou ser assintomática ao nascer."
+    ],
+    [
+      "Sorologia",
+      "IgG e IgM devem ser interpretadas com histórico, idade gestacional e referência do ensaio. IgM pode persistir ou ser falso-positiva. Soroconversão de IgG documenta infecção recente; avidez alta precoce favorece infecção anterior, baixa não comprova infecção aguda."
+    ],
+    [
+      "Investigação fetal",
+      "PCR em líquido amniótico a partir de 18 semanas e pelo menos quatro semanas após provável infecção; ultrassom seriado. PCR negativo não exclui completamente infecção."
+    ],
+    [
+      "Conduta",
+      "Tratamento precoce conforme idade gestacional e probabilidade de infecção fetal. Espiramicina reduz risco de transmissão; sulfadiazina, pirimetamina e ácido folínico constituem esquema com ação fetal. Evitar pirimetamina no primeiro trimestre; monitorar hemograma no esquema tríplice. Seguir fluxogramas nacionais para decisão e encaminhamento ao alto risco."
+    ],
+    [
+      "Pontos de prova",
+      "Não confundir ácido folínico com ácido fólico; não interpretar IgM isoladamente como confirmação. Notificar casos suspeitos e avaliar recém-nascido exposto. Soronegativas necessitam prevenção e repetição periódica da sorologia."
+    ]
+  ],
+  "sources": [
+    [
+      "Ministério da Saúde — Nota Técnica 100/2022 (página atualizada em 24/04/2025)",
+      "https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/notas-tecnicas/2022/nota-tecnica-no-1002022-cgpam-dsmi-saps-ms.pdf/view"
+    ]
+  ]
+}
 };
