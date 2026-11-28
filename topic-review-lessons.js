@@ -1,6 +1,49 @@
 "use strict";
 
 const topicReviewLessons = {
+  "Estenose aórtica": {
+  "overview": "Valvopatia obstrutiva da via de saída do ventrículo esquerdo, geralmente por calcificação degenerativa, valva bicúspide ou doença reumática.",
+  "points": [
+    [
+      "Fundamentos",
+      "A valva aórtica abre na sístole. A obstrução aumenta a pós-carga, induz hipertrofia concêntrica e reduz a complacência ventricular."
+    ],
+    [
+      "Clínica",
+      "Dispneia, angina e síncope de esforço; sopro sistólico ejetivo em foco aórtico irradiado para carótidas, pulso parvus et tardus e possível B4."
+    ],
+    [
+      "Diagnóstico",
+      "Ecocardiograma transtorácico Doppler: área valvar, velocidade máxima, gradiente médio e fração de ejeção. Gravidade de alto gradiente: velocidade ≥4 m/s, gradiente médio ≥40 mmHg, área geralmente ≤1 cm². Discordâncias exigem avaliação integrada de fluxo e, conforme o caso, eco com dobutamina ou cálcio valvar por TC."
+    ],
+    [
+      "Diferenciais",
+      "Esclerose aórtica sem obstrução significativa, cardiomiopatia hipertrófica obstrutiva, insuficiência mitral, arritmias e outras causas de síncope."
+    ],
+    [
+      "Conduta",
+      "Estratificar gravidade e sintomas; encaminhar ao especialista/Heart Team para avaliação de intervenção valvar cirúrgica ou transcateter conforme anatomia, risco, expectativa de vida e preferências. Medicamentos tratam comorbidades e congestão, não corrigem a obstrução. Evitar teste de esforço em pacientes com estenose grave claramente sintomática."
+    ],
+    [
+      "Pontos de prova",
+      "Distinguir sobrecarga de pressão (hipertrofia concêntrica) de volume; intensidade do sopro não mede isoladamente gravidade. Baixo fluxo pode produzir gradiente baixo apesar de obstrução grave."
+    ]
+  ],
+  "sources": [
+    [
+      "SBC — Diretriz Brasileira de Valvopatias 2026",
+      "https://journals.cardiol.br/wp-content/uploads/articles_xml/0066-782x-abc-123-10-e20260796/0066-782x-abc-123-10-e20260796.pdf"
+    ],
+    [
+      "SBC — Diretrizes de Valvopatias 2020",
+      "https://journals.cardiol.br/article/atualizacao-das-diretrizes-brasileiras-de-valvopatias-2020/"
+    ],
+    [
+      "ESC/EACTS — Diretriz 2025",
+      "https://academic.oup.com/eurheartj/article/46/44/4635/8234488"
+    ]
+  ]
+},
   "Hipocalcemia e hipoparatireoidismo": {
     overview: "O PTH mantém o cálcio sérico ao estimular a reabsorção renal de cálcio, a ativação renal de vitamina D e a mobilização óssea de cálcio; também aumenta a excreção renal de fosfato. Após tireoidectomia total ou esvaziamento cervical, lesão, remoção ou desvascularização das paratireoides pode reduzir o PTH, ocasionando hipocalcemia e hiperexcitabilidade neuromuscular.",
     points: [
